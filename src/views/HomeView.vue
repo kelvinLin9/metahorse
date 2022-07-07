@@ -1,6 +1,6 @@
 <template>
-  <NavbarUser></NavbarUser>
-  <Banner></Banner>
+  <NavbarUser/>
+  <Banner/>
 
   <section class="my-5">
        <div class="container">
@@ -133,7 +133,7 @@
   <section>
     1232131313
   </section>
-  <Footer></Footer>
+  <Footer/>
 </template>
 
 <script>

@@ -1,7 +1,6 @@
 <template>
 <div class="container">
-  <h3 class="text-center mt-5 mb-3 fs-1 fw-bolder">其他商品</h3>
-  <p class="text-center mt-1 mb-3 fs-4 fw-bolder">也可以作為道具在遊戲中使用</p>
+  <h3 class="text-center mt-5 mb-3 fs-1 fw-bolder">熱銷商品</h3>
   <div class="row g-4 pb-5">
     <swiper
       :slidesPerView="3"

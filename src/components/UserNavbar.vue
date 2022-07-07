@@ -29,8 +29,12 @@
             :class="{ 'text-warning':  status === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/user/productstest" class="nav-link fs-5"
+            :class="{ 'text-warning':  status === 'productstest' }">產品列表(分頁測試)</router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/user/checkOrder" class="nav-link fs-5"
-            :class="{ 'text-warning':  status === 'checkOrder' }">訂單查詢</router-link>
+            :class="{ 'text-warning':  status === 'CheckOrder' }">訂單查詢</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/user/cart" class="nav-link fs-5"
@@ -56,7 +60,7 @@
               </div>
             </RouterLink>
           </li>
-          <li class="nav-item">
+          <li class="nav-item position-relative">
             <RouterLink to="/user/Favorite" class="nav-link px-3"
             :class="{ 'text-warning':  status === 'favorite' }">
               <i class="bi bi-search-heart fs-4"></i>
@@ -143,17 +147,10 @@ export default {
 
 <style scoped>
 
-/* .material-icons{
-  line-height: 40px;
-} */
-.navbar-light .navbar-nav .nav-link {
-  position: relative;
-}
 .num{
   width:20px;
-  line-height: 20px;
-  top: 8px;
-  right: 8px;
+  top: 5px;
+  right: 5px;
   font-size: 12px;
 }
 </style>

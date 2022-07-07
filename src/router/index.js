@@ -18,7 +18,7 @@ const routes = [
     children: [
       {
         path: 'products',
-        component: () => import('../views/ProductsView.vue')
+        component: () => import('../views/AdminProducts.vue')
       },
       {
         path: 'orders',
@@ -38,6 +38,11 @@ const routes = [
         path: 'products',
         name: 'products',
         component: () => import('../views/UserProducts.vue')
+      },
+      {
+        path: 'productstest',
+        name: 'productstest',
+        component: () => import('../views/UserProductsTest.vue')
       },
       {
         path: 'checkout',

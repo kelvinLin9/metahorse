@@ -10,16 +10,22 @@
     </div>
     <div class="container pt-5">
       <div class="row gx-4 justify-content-center" v-if="favorite.length !== 0">
-        <div class="col-md-6 col-lg-4 mb-3" v-for="item in favorite" :key="item.id" @click="viewProduct(item.id)">
+        <div class="col-md-6 col-lg-4 mb-3"
+        v-for="item in favorite" :key="item.id"
+        @click="viewProduct(item.id)">
           <div class="bg-white border cursorPointer">
             <div class="overflow-hidden position-relative">
               <button class="btn fs-4 position-absolute text-white w-100 h-100 bg-dark bg-opacity-75" type="button">查看更多</button>
               <img class="img-fit" :src="item.imageUrl">
             </div>
-            <div class="d-flex pt-4 px-4 fw-bold">
-              <span class="">{{ item.title }}</span>
-              <span class="ms-auto">NT${{ item.price }}</span>
-            </div>
+
+          <div class="d-flex flex-column text-center pt-4 px-4 fw-bold">
+            <span class="fs-5 mb-1">{{ item.title }}</span>
+            <span class="fs-5">NT ${{ item.price }}
+              <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
+            </span>
+        </div>
+
             <div class="d-flex p-4">
               <button type="button" class="btn btn-outline-secondary fw-bold w-50 me-2" @click.stop="removeFavorite(item)">移除收藏</button>
               <button type="button" class="btn btn-primary fw-bold text-white w-50" @click.stop="addCart(item.id)">
@@ -86,19 +92,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.banner{
-  height: 300px;
-  background-image: url("https://storage.googleapis.com/vue-course-api.appspot.com/vuefindcard/1650378758414.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=IXOsC2tInR5zqNMuw1K28EFRAFMwvJ2KpOWKSOgQziFyyQQywR0lWB6p1Qpe%2BUOplzRhTPpqmLSsmLWtDDV1Fynq5IYQWZ3FMtRp4CNgn%2FgLVmPbqkuKtsBUjRT1P6xiARUvHx6GMA2PY%2FJ6%2FIFRZlwhTBxOEN%2BitKWBDXqP676uF6IzARPYvTCjL9TEcaDIdZqelHXXMFijS5kgT8r86U2FM4ULgyM8NWGqntun%2Fcc%2F7%2BKR8Puz4r3K2FJbhXqF8edesGm%2Fi8JiREMJKbnaEk4N5n1npBIwKXE9HoKqjlH6GFm1%2F2kAxM0DCJFFGULg7Q077qye3%2B9f5spYhBMKPQ%3D%3D");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  @media (max-width:768px) {
-    height: 250px;
-  }
-  @media (max-width:576px) {
-    height: 200px;
-  }
-}
+
 .vh-remain{
   min-height: calc(100vh - 300px);
 }
@@ -106,7 +100,6 @@ export default {
   font-size: 64px;
 }
 .img-fit{
-  height: 250px;
   width: 100%;
   object-fit: cover;
   transition: .5s;

@@ -89,14 +89,22 @@
 </template>
 
 <script>
-import Pagination from '@/components/Pagination.vue'
 import emitter from '@/methods/emitter'
 import Footer from '@/components/Footer.vue'
 export default {
   data () {
     return {
-      products: [],
-      pagination: {}, // 分頁資訊
+      products: [], // jsonData
+      productss: [],
+      eachPage: [],
+      perPage: 8, // 每頁預設有8筆資料
+      page: {
+        totalPage: 0, // 總頁數
+        currentPage: 1, // 當前頁數
+        pageNumBox: [], // 每次只存放的頁碼數(預定5頁)
+        hasPage: false, // 上一頁
+        hasNext: false // 下一頁
+      },
       favorite: [],
       favoriteIds: [],
       category: 'all',
@@ -109,26 +117,75 @@ export default {
     }
   },
   components: {
-    Footer,
-    Pagination
+    Footer
   },
   inject: ['emitter'],
   methods: {
     getProducts (page = 1) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`
       this.isLoading = true
       this.$http.get(url).then((res) => {
-        // this.products = res.data.products
+        this.products = res.data.products
         console.log('products:', res)
         this.isLoading = false
       })
-      // 兩種順序不同 先留著之後再改
-      this.$http.get(api).then((res) => {
-        this.products = res.data.products
-        this.pagination = res.data.pagination
-        this.isLoading = false
+    },
+    pagination (nowPage) { // 製作分頁(分頁元件會回傳點擊到的頁面  )
+      this.page.currentPage = nowPage
+      console.log(1, nowPage)
+      console.log(2, this.filterProducts)
+      this.page.totalPage = Math.ceil(this.filterProducts.length / this.perPage) // 總共有 17頁
+      this.eachPage = [] // 每次都要清空一次
+      // 將currentPage 可能會遇到的情況加以限制
+      if (this.page.currentPage < 1) {
+        this.page.currentPage = 1
+      }
+      if (this.page.currentPage > this.page.totalPage) {
+        this.page.currentPage = this.page.totalPage
+      }
+      // 判斷是否有前後頁
+      this.page.hasPage = this.page.currentPage > 1
+      this.page.hasNext = this.page.currentPage < this.page.totalPage
+
+      // 由前面可知 最小數字為 6 ，所以用答案來回推公式。
+      const minData = (this.page.currentPage * this.perPage) - this.perPage + 1 // 每頁第1筆資料 索引值
+      const maxData = (this.page.currentPage * this.perPage) // 每頁最後1筆資料 索引值
+
+      // 這邊將會使用 ES6 forEach 做資料處理
+      // 首先必須使用索引來判斷資料位子，所以要使用 index
+      this.filterProducts.forEach((item, index) => {
+        // 獲取陣列索引，但因為索引是從 0 開始所以要 +1。
+        const num = index + 1
+        // 這邊判斷式會稍微複雜一點
+        // 當 num 比 minData 大且又小於 maxData 就push進去新陣列。
+        if (num >= minData && num <= maxData) {
+          // 將全部資料每20筆寫入至eachPage裡
+          this.eachPage.push(item)
+        }
       })
+      this.showPageBox()
+    },
+    showPageBox () { // 製作下面頁碼呈現方式
+      const pageBox = 5 // 下面頁碼只會顯示五頁
+      let startPage = this.page.currentPage - Math.floor(pageBox / 2) // 起始：目前頁數 − (5/2的最大整數＝2)
+      let endPage = this.page.currentPage + Math.floor(pageBox / 2) // 結尾：目前頁數 ＋ (5/2的最大整數＝2)
+      if (startPage < 1) { // 頁數1，2會套用
+        startPage = 1
+        endPage = pageBox
+      }
+      if (endPage > this.page.totalPage) { // 頁數16，17套用
+        endPage = this.page.totalPage
+        startPage = this.page.totalPage - (pageBox - 1)
+      }
+      if (this.page.totalPage < 5) { // 如果頁數總長<5，就套用起始頁＝１，結尾頁＝總頁
+        startPage = 1
+        endPage = this.page.totalPage
+      }
+      this.page.pageNumBox = [] // 每次都淨空重新渲染一次
+      for (let i = startPage; i <= endPage; i++) { // 其餘頁數套用
+        this.page.pageNumBox.push(i)
+      }
+      console.log(this.page.pageNumBox)
     },
     getProduct (id) {
       // 使用this.$router進入特定頁面
@@ -254,12 +311,14 @@ export default {
           })
           break
       }
+      console.log(999, this.filterProducts)
       return filterProducts
     }
   },
   created () {
     this.getProducts()
     this.getFavorite()
+    this.pagination(1)
   }
 }
 </script>

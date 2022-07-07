@@ -1,5 +1,4 @@
 <template>
-<NavbarUser></NavbarUser>
 <br><br>
   <div class="CheckOrder mt-5">
     <Loading v-model:active="isLoading"/>
