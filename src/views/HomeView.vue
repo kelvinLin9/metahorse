@@ -99,11 +99,11 @@
                   <h4>幸運 <i class="bi bi-dice-6-fill mx-1"></i>：</h4>
                 </div>
                 <div class="col-1"
-                    v-for="(item, key) in temp.agility" :key="key">
+                    v-for="(item, key) in temp.lucky" :key="key">
                   <i class="bi bi-star-fill"></i>
                 </div>
                 <div class="col-1"
-                    v-for="(item, key) in (5 - temp.agility)" :key="key">
+                    v-for="(item, key) in (5 - temp.lucky)" :key="key">
                   <i class="bi bi-star"></i>
                 </div>
               </li>
@@ -112,11 +112,11 @@
                   <h4>智慧 <i class="bi bi-mortarboard-fill mx-1"></i>：</h4>
                 </div>
                 <div class="col-1 "
-                    v-for="(item, key) in temp.endurance" :key="key">
+                    v-for="(item, key) in temp.intelligence" :key="key">
                   <i class="bi bi-star-fill"></i>
                 </div>
                 <div class="col-1 "
-                    v-for="(item, key) in (5 - temp.endurance)" :key="key">
+                    v-for="(item, key) in (5 - temp.intelligence)" :key="key">
                   <i class="bi bi-star"></i>
                 </div>
               </li>
@@ -159,32 +159,32 @@ export default {
           // imageUrl: 'https://i.imgur.com/lx57Zsk.jpg',
           speed: 5,
           stamina: 5,
-          agility: 5,
-          endurance: 5
+          lucky: 5,
+          intelligence: 5
         },
         {
           level: 'A',
           imageUrl: 'https://imgur.com/Bj7I9T4.jpg',
           speed: 4,
           stamina: 4,
-          agility: 3,
-          endurance: 5
+          lucky: 3,
+          intelligence: 5
         },
         {
           level: 'B',
           imageUrl: 'https://imgur.com/BextSIV.jpg',
           speed: 3,
           stamina: 3,
-          agility: 1,
-          endurance: 3
+          lucky: 1,
+          intelligence: 3
         },
         {
           level: 'C',
           imageUrl: 'https://imgur.com/5PsDE2E.jpg',
           speed: 2,
           stamina: 1,
-          agility: 2,
-          endurance: 1
+          lucky: 2,
+          intelligence: 1
         }
       ],
       temp: {
@@ -192,8 +192,8 @@ export default {
         imageUrl: 'https://imgur.com/kdTurd4.jpg',
         speed: 5,
         stamina: 5,
-        agility: 5,
-        endurance: 5
+        lucky: 5,
+        intelligence: 5
       }
     }
   },

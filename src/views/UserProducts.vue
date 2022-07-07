@@ -39,8 +39,8 @@
                           :class="{ 'text-primary' : category == '馬蹄鐵' ,'fs-4' : category == '馬蹄鐵'}"
                           @click.prevent="category = '馬蹄鐵'">- 馬蹄鐵</a>
                         <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == '飼料' ,'fs-4' : category == '飼料'}"
-                          @click.prevent="category = '飼料'">- 飼料</a>
+                          :class="{ 'text-primary' : category == '馬飼料' ,'fs-4' : category == '馬飼料'}"
+                          @click.prevent="category = '馬飼料'">- 馬飼料</a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -252,9 +252,9 @@ export default {
             return item.category === '馬蹄鐵'
           })
           break
-        case '飼料':
+        case '馬飼料':
           filterProducts = this.products.filter((item) => {
-            return item.category === '飼料'
+            return item.category === '馬飼料'
           })
           break
       }
