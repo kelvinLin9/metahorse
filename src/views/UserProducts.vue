@@ -6,13 +6,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <h2 class="fw-bold ps-lg-3 text-center text-lg-start f-kalam">Level</h2>
-                    <div class="fw-bold list-group list-group-flush bg-none flex-row flex-lg-column ">
-                        <a href="#" class="list-group-item  list-group-item-action bg-lightpaper border-0 design-text" @click.prevent="category = 'all'">- All</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-lightpaper border-0 design-text" @click.prevent="category = 'S'">- S</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-lightpaper border-0 design-text" @click.prevent="category = 'A'">- A</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-lightpaper border-0 design-text" @click.prevent="category = 'B'">- B</a>
-                        <a href="#" class="list-group-item list-group-item-action bg-lightpaper border-0 design-text" @click.prevent="category = 'C'">- C</a>
+                    <h2 class="fw-bold text-center f-kalam bg-primary">賽馬( Level )</h2>
+                    <div class="fw-bold list-group flex-row flex-lg-column ">
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ activee : category == 'all' }"
+                          @click.prevent="category = 'all'">- All</a>
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ activee : category == 'S' }"
+                          @click.prevent="category = 'S'">- S</a>
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ active : category == 'A' }"
+                          @click.prevent="category = 'A'">- A</a>
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ active : category == 'B' }"
+                          @click.prevent="category = 'B'">- B</a>
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ active : category == 'C' }"
+                          @click.prevent="category = 'C'">- C</a>
+                    </div>
+                    <hr>
+                    <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
+                      <div class="fw-bold list-group flex-row flex-lg-column ">
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ active : category == '馬鞍' }"
+                          @click.prevent="category = '馬鞍'">- 馬鞍</a>
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ active : category == '馬蹄鐵' }"
+                          @click.prevent="category = '馬蹄鐵'">- 馬蹄鐵</a>
+                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-4"
+                          :class="{ active : category == '飼料' }"
+                          @click.prevent="category = '飼料'">- 飼料</a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -20,12 +43,18 @@
                     <div class="col-lg-4 col-md-6 col-10"
                           v-for="item in filterProducts" :key="item.id">
                       <div class="card all-hover border-0 rounded-3">
-                          <div class="card-img">
+                          <div class="card-img position-relative">
                             <a href="#">
-                              <img class="img-fluid rounded-3
-                              " :src="item.imageUrl" alt=""
+                              <img class="img-fluid rounded-3"
+                                   :src="item.imageUrl" alt=""
                               @click.prevent="getProduct(item.id)">
                             </a>
+                            <span class="cursorPointer material-icons position-absolute rounded-circle fs-4 p-2 bbb"
+                                  :class="{'favorite': isFavorite(item.id)}"
+                                  @click.stop="toggleFavorite(item)">
+                                  <i :class="favState(item.id)"
+                                     class=""></i>
+                            </span>
                           </div>
                           <div class="card-body">
                               <h5 class="card-text">{{ item.title }}</h5>
@@ -35,18 +64,14 @@
                               <div class="h5" v-if="item.price">現在只要 {{ item.price }} 元</div>
                           </div>
                           <div class="btn-group btn-group-sm">
-                            <button type="button" class="btn btn-outline-secondary"
-                                    @click="getProduct(item.id)">
-                              商品資訊
-                            </button>
                             <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
-                            <button type="button" class="btn btn-outline-danger"
+                            <button type="button" class="btn btn-outline-primary text-dark fw-bold fs-5 "
                                     :disabled="this.status.loadingItem === item.id"
                                     @click="addCart(item.id)">
                               <div v-if="this.status.loadingItem === item.id"
                                     class="spinner-grow text-danger spinner-grow-sm" role="status">
-                                  <span class="visually-hidden">Loading...</span>
-                                </div>
+                                <span class="visually-hidden">Loading...</span>
+                              </div>
                                 加到購物車
                             </button>
                             </div>
@@ -60,6 +85,8 @@
 </template>
 
 <script>
+import emitter from '@/methods/emitter'
+import Footer from '@/components/Footer.vue'
 export default {
   data () {
     return {
@@ -74,6 +101,9 @@ export default {
         loadingItem: ''
       }
     }
+  },
+  components: {
+    Footer
   },
   methods: {
     getProducts () {
@@ -114,9 +144,57 @@ export default {
         this.cart = response.data.data
         this.isLoading = false
       })
+    },
+    getFavorite () {
+      this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
+      this.favoriteIds = []
+      this.favorite.forEach((item) => {
+        this.favoriteIds.push(item.id)
+      })
+      // console.log(this.favoriteIds)
+    },
+    viewProduct (id) {
+      this.$router.push(`/product/${id}`)
+    },
+    isFavorite (id) {
+      return this.favoriteIds.some((item) => item === id)
+    },
+    toggleFavorite (item) {
+      const id = item.id
+      const hasFavorite = this.favorite.some((item) => item.id === id)
+      if (!hasFavorite) {
+        this.favorite.push(item)
+        localStorage.setItem('favorite', JSON.stringify(this.favorite))
+        // this.$swal({
+        //   title: `已將 ${item.title} 加入我的最愛`,
+        //   width: '28rem'
+        // })
+      } else {
+        const delItem = this.favorite.find((item) => {
+          return item.id === id
+        })
+        this.favorite.splice(this.favorite.indexOf(delItem), 1)
+        localStorage.setItem('favorite', JSON.stringify(this.favorite))
+        // this.$swal({
+        //   title: `取消關注 ${item.title}`,
+        //   width: '24rem'
+        // })
+      }
+      this.getFavorite()
+      emitter.emit('update-favorite')
     }
   },
   computed: {
+    favState () { // 閉包傳送參數 https://segmentfault.com/q/1010000009648670
+      // 因為v-for的關係，有幾個項目就會觸發幾次
+      return function (id) {
+        if (this.favoriteIds.indexOf(id) > -1) {
+          return 'bi bi-heart-fill'
+        } else {
+          return 'bi bi-heart'
+        }
+      }
+    },
     filterProducts () {
       let filterProducts
       switch (this.category) {
@@ -145,16 +223,63 @@ export default {
             return item.category === 'C'
           })
           break
+        case '馬鞍':
+          filterProducts = this.products.filter((item) => {
+            return item.category === '馬鞍'
+          })
+          break
+        case '馬蹄鐵':
+          filterProducts = this.products.filter((item) => {
+            return item.category === '馬蹄鐵'
+          })
+          break
+        case '飼料':
+          filterProducts = this.products.filter((item) => {
+            return item.category === '飼料'
+          })
+          break
       }
       return filterProducts
     }
   },
   created () {
     this.getProducts()
+    this.getFavorite()
   }
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.bbb {
+  color: rgb(230, 103, 235);
+  right: 5px;
+}
+.activee {
+  color: rgb(230, 191, 21);
+}
+.img-fit{
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  transition: .5s;
+}
+.cursorPointer{
+  cursor: pointer;
+  &:hover{
+    img{
+      transform: scale(1.15);
+    }
+    box-shadow:0 0 8px rgb(128, 209, 214, .2);
+  }
+  .material-icons {
+    transition: .3s;
+    top: 8px;
+    right: 8px;
+    background-color: rgb(255, 255, 255, .3);
+    color: #dee2e6;
+    &:hover,&.favorite {
+      color: #FF5959;
+    }
+  }
+}
 </style>
