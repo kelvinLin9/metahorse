@@ -10,6 +10,9 @@
     </div>
     <div class="container pt-5">
       <div class="row gx-4 justify-content-center" v-if="favorite.length !== 0">
+        <div class="d-flex justify-content-center">
+          <h1 class="fs-2 text-center fw-bold">我的最愛</h1>
+        </div>
         <div class="col-md-6 col-lg-4 mb-3"
         v-for="item in favorite" :key="item.id"
         @click="viewProduct(item.id)">

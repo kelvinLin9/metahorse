@@ -1,9 +1,14 @@
 <template>
     <section class="my-5">
-        <div class="text-center py-5">
-            拿來放圖的地方
+      <div class="container-fliud productBanner">
+        <div class="bg-dark bg-opacity-50 w-100 h-100 d-flex align-items-center">
+          <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
+          <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>
+          <span class="fs-3 text-primary align-self-end">/ All Product</span>
+          </h1>
         </div>
-        <div class="container">
+      </div>
+        <div class="container py-5">
             <div class="row">
                 <div class="col-lg-3">
                     <h2 class="fw-bold text-center f-kalam bg-primary">賽馬( Level )</h2>
@@ -56,12 +61,11 @@
                                      class=""></i>
                             </span>
                           </div>
-                          <div class="card-body">
-                              <h5 class="card-text">{{ item.title }}</h5>
-                              <p class="card-text">{{ item.description }}</p>
-                              <div class="h5" v-if="!item.price">{{ item.origin_price }} 元</div>
-                              <del class="h6" v-if="item.price">原價 {{ item.origin_price }} 元</del>
-                              <div class="h5" v-if="item.price">現在只要 {{ item.price }} 元</div>
+                          <div class="card-body d-flex flex-column text-center pt-4 px-4 fw-bold">
+                            <span class="fs-5 mb-1">{{ item.title }}</span>
+                              <span class="fs-5">NT ${{ item.price }}
+                              <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
+                            </span>
                           </div>
                           <div class="btn-group btn-group-sm">
                             <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
@@ -265,6 +269,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.productBanner {
+  height: 300px;
+  background-image: url(https://i.imgur.com/4vGqi7D.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center ;
+  @media (max-width:768px) {
+    height: 250px;
+  }
+  @media (max-width:576px) {
+    height: 200px;
+  }
+}
 .bbb {
   color: rgb(230, 103, 235);
   right: 5px;

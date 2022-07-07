@@ -5,7 +5,7 @@
   <Loading :active="isLoading"></Loading>
   <div class="container">
       <div class="d-flex justify-content-center">
-        <h2 class="fs-1 fw-bold text-primary">購物車清單</h2>
+        <h1 class="fs-2 text-center fw-bold">購物清單</h1>
       </div>
     <div class="row mt-4">
       <!-- 購物車列表 -->

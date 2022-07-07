@@ -156,6 +156,7 @@ export default {
         {
           level: 'S',
           imageUrl: 'https://imgur.com/kdTurd4.jpg',
+          // imageUrl: 'https://i.imgur.com/lx57Zsk.jpg',
           speed: 5,
           stamina: 5,
           agility: 5,

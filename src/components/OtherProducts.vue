@@ -142,7 +142,6 @@ export default {
 
 <style lang="scss" scoped>
 .img-fit{
-  height: 250px;
   width: 100%;
   object-fit: cover;
   transition: .5s;
