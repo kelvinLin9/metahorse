@@ -6,25 +6,25 @@
   <div class="container">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
+        <li class="breadcrumb-item fs-5">
           <router-link to="/user/products">產品列表</router-link>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">
+        <li class="breadcrumb-item active fs-5" aria-current="page">
           {{ product.title }}
         </li>
       </ol>
     </nav>
     <div class="row justify-content-center ">
-      <article class="col-md-4 position-relative">
+      <article class="col-md-6 position-relative">
         <img :src="product.imageUrl" alt="" class="img-fluid mb-3 rounded">
-        <span class="cursorPointer material-icons position-absolute rounded-circle fs-4 p-2 bbb"
+        <span class="position-absolute rounded-circle fs-4 p-2 bbb"
             :class="{'favorite': isFavorite(id)}"
             @click.stop="toggleFavorite(product)">
           <i :class="favState(id)"
             class="fs-1"></i>
         </span>
       </article>
-      <div class="col-md-4">
+      <div class="col-md-6">
         <h2>{{ product.title }}</h2>
         <div>{{ product.description }}</div>
         <hr>
@@ -41,7 +41,47 @@
         </button>
       </div>
     </div>
-    <h2>常見問題</h2>
+    <div class="my-5">
+      <h2>常見問題</h2>
+      <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
   </div>
 </template>
 
@@ -145,50 +185,4 @@ export default {
   right: 15px;
 }
 
-// .list-group-flush > .list-group-item {
-//   white-space: nowrap;
-//   width: auto;
-//   transition: .7s;
-//   background-color: transparent;
-//   color: #587778;
-//   &:hover,&:focus,&.active {
-//     color: #ffffff;
-//     box-shadow: inset 0 0 0 3em #587778;
-//   }
-//   @media(max-width: 768px){
-//     flex-grow: 1;
-//   }
-//   @media(max-width: 576px){
-//     flex-grow: 0;
-//     width: 50%;
-//   }
-// }
-// .list-group-item + .list-group-item.active{
-//   margin-top: 0;
-// }
-.img-fit{
-  height: 250px;
-  width: 100%;
-  object-fit: cover;
-  transition: .5s;
-}
-.cursorPointer{
-  cursor: pointer;
-  &:hover{
-    img{
-      transform: scale(1.15);
-    }
-    box-shadow:0 0 8px rgb(128, 209, 214, .2);
-  }
-  .material-icons {
-    transition: .3s;
-    top: 8px;
-    right: 8px;
-    background-color: rgb(255, 255, 255, .3);
-    color: #dee2e6;
-    &:hover,&.favorite {
-      color: #FF5959;
-    }
-  }
-}
 </style>

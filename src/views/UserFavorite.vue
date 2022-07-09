@@ -1,11 +1,10 @@
 <template>
-<br><br>
+<br><br><br><br>
   <div class="bg-light">
     <div class="container-fliud" v-if="favorite.length === 0">
-      <div class="d-flex flex-column justify-content-center align-items-center text-secondary vh-remain">
-        <span class="material-icons mb-3">production_quantity_limits</span>
-        <p class="fs-5 fw-bold mb-5">目前沒有收藏任何商品</p>
-        <RouterLink to="products" type="button" class="btn btn-primary fs-5 fw-bold text-white mt-3 px-4 py-3">瀏覽商品</RouterLink>
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="fs-2 text-center fw-bold mb-5">目前沒有收藏任何商品</h1>
+        <RouterLink to="products" type="button" class="btn btn-outline-primary text-dark fw-bold fs-5">回產品列表</RouterLink>
       </div>
     </div>
     <div class="container pt-5">
@@ -96,32 +95,4 @@ export default {
 
 <style lang="scss" scoped>
 
-.vh-remain{
-  min-height: calc(100vh - 300px);
-}
-.material-icons{
-  font-size: 64px;
-}
-.img-fit{
-  width: 100%;
-  object-fit: cover;
-  transition: .5s;
-}
-.cursorPointer{
-  cursor: pointer;
-  &:hover{
-    .btn{
-      opacity: 1;
-    }
-    img{
-      transform: scale(1.15);
-    }
-    box-shadow:0 0 8px rgb(128, 209, 214, .2);
-  }
-}
-.btn.bg-dark{
-  z-index: 1;
-  opacity: 0;
-  transition: .5s;
-}
 </style>

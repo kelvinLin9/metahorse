@@ -77,6 +77,11 @@ const routes = [
         component: () => import('../views/CheckoutPay.vue')
       }
     ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404Page',
+    component: () => import('../views/404Page.vue')
   }
 ]
 

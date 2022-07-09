@@ -134,6 +134,7 @@
     1232131313
   </section>
   <Footer/>
+  <GoTop/>
 </template>
 
 <script>
@@ -142,13 +143,15 @@ import NavbarUser from '../components/UserNavbar.vue'
 import Banner from '@/components/Banner.vue'
 import OtherProducts from '@/components/OtherProducts.vue'
 import Footer from '@/components/Footer.vue'
+import GoTop from '@/components/GoTop.vue'
 export default {
   name: 'HomeView',
   components: {
     NavbarUser,
     Banner,
     OtherProducts,
-    Footer
+    Footer,
+    GoTop
   },
   data () {
     return {
