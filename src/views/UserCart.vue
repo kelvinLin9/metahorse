@@ -2,9 +2,7 @@
 <br>
 <br>
 <br>
-  <div class="container">
-    <UserCoupon/>
-  </div>
+  <UserCoupon/>
   <Loading :active="isLoading"></Loading>
   <div class="container my-5">
       <div class="d-flex justify-content-center">

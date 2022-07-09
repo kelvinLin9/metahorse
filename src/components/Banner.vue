@@ -16,17 +16,24 @@
     <swiper-slide>
       <div class="header-bg d-flex justify-content-center"
       style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
-      <!-- <img src="../image/001.jpg" alt=""> -->
-      <h1 class="fw-bold align-self-center header-text mb-0 d-none d-md-block f-kalam">
-        DIGITAL EQUATES REALITY
+      <h1 class="fw-bold align-self-center header-text f-kalam">
+        DIGITAL
+        <br class="d-md-none">
+        EQUATES
+        <br class="d-md-none">
+        REALITY
       </h1>
       </div>
     </swiper-slide>
     <swiper-slide>
       <div class="header-bg d-flex justify-content-center"
       style="background-image: url('https://imgur.com/QA3pXeQ.jpg');">
-      <h1 class="fw-bold align-self-center header-text mb-0 d-none d-md-block f-kalam">
-        DIGITAL EQUATES REALITY
+      <h1 class="fw-bold align-self-center header-text f-kalam">
+        DIGITAL
+        <br class="d-md-none">
+        EQUATES
+        <br class="d-md-none">
+        REALITY
       </h1>
       </div>
     </swiper-slide>
@@ -61,29 +68,19 @@ export default {
 }
 </script>
 
-<style>
-.header-bg {
-  /* background-image: url(../image/002.jpg); */
-  background-size: cover;
-  background-position: center;
-  height: 635px;
-  /* margin-top: 74px; */
+<style scoped>
+.f-kalam {
+  font-family: 'Kalam', cursive;
 }
-
-@media (min-width: 768px) {
-  .header-bg {
-    /* background-image: url(../image/002.jpg); */
-    background-size: cover;
-    background-position: center center;
-    height: 810px;
-    /* margin-top: 74px; */
-  }
-  .header-text {
-    /* font-family: 'Kalam', cursive; */
-    /* color: #838761; */
+.header-bg {
+  background-size: cover;
+  background-position: center center;
+  height: 810px;
+}
+.header-text {
     color: #000;
     -webkit-text-stroke: 2px rgb(241, 229, 59);
     font-size: 70px;
   }
-}
+
 </style>

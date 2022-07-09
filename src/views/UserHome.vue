@@ -1,23 +1,29 @@
 <template>
   <NavbarUser/>
+  <br><br><br>
   <Banner/>
 
   <section class="my-5">
-       <div class="container">
-           <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
-             <div class="col-lg-6">
-                 <h3 class="f-kalam text-center text-lg-start text-primary">About Me</h3>
-                 <h2 class="fw-bold text-center text-lg-start lh-lg">全球首個數字馬 NFT
-                 <br class="d-lg-none">幣安智能鏈上的 GAMEFI</h2>
-                 <p class="lh-lg">
-                   世界上第一個數字和創新的馬 NFT，幣安智能鏈上的 GameFi，讓您通過成為 MetaHorse 在數字世界和現實生活中受益並獲得真正的馬。 它使您能夠擁有和交易數字真馬，並得到實體馬匹的支持，並幫助您參加賽馬比賽。
-                 </p>
-             </div>
-             <div class="col-lg-6">
-                 <img src="../image/003.jpg" alt="" class="w-100">
-             </div>
-           </div>
-       </div>
+    <div class="container">
+      <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
+        <div class="col-lg-6">
+          <h3 class="f-kalam text-center text-lg-start text-primary">
+            About Me
+          </h3>
+          <h2 class="fw-bold text-center text-lg-start lh-lg">
+            全球首個數字馬 NFT
+            <br class="d-lg-none">
+            幣安智能鏈上的 GAMEFI
+          </h2>
+          <p class="lh-lg">
+            世界上第一個數字和創新的馬 NFT，幣安智能鏈上的 GameFi，讓您通過成為 MetaHorse 在數字世界和現實生活中受益並獲得真正的馬。 它使您能夠擁有和交易數字真馬，並得到實體馬匹的支持，並幫助您參加賽馬比賽。
+          </p>
+        </div>
+        <div class="col-lg-6">
+          <img src="../image/003.jpg" alt="" class="w-100">
+        </div>
+      </div>
+    </div>
   </section>
 <br>
 <br>
@@ -130,9 +136,7 @@
   <hr>
   <OtherProducts></OtherProducts>
   <hr>
-  <section>
-    1232131313
-  </section>
+  <UserCoupon/>
   <Footer/>
   <GoTop/>
 </template>
@@ -144,6 +148,7 @@ import Banner from '@/components/Banner.vue'
 import OtherProducts from '@/components/OtherProducts.vue'
 import Footer from '@/components/Footer.vue'
 import GoTop from '@/components/GoTop.vue'
+import UserCoupon from '@/components/UserCoupon.vue'
 export default {
   name: 'HomeView',
   components: {
@@ -151,7 +156,8 @@ export default {
     Banner,
     OtherProducts,
     Footer,
-    GoTop
+    GoTop,
+    UserCoupon
   },
   data () {
     return {
@@ -237,10 +243,4 @@ export default {
   font-family: 'Kalam', cursive;
 }
 
-/* @media (max-width: 992px) {
-.upper-shot{
-  width:400px;
-  height:400px;
-  }
-} */
 </style>

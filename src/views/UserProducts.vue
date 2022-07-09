@@ -1,5 +1,6 @@
 <template>
     <section class="my-5">
+      <!-- 外層放背景，內層放黑底 -->
       <div class="container-fliud productBanner">
         <div class="bg-dark bg-opacity-50 w-100 h-100 d-flex align-items-center">
           <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
@@ -45,16 +46,19 @@
                 </div>
                 <div class="col-lg-9">
                   <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 col-10"
-                          v-for="item in filterProducts" :key="item.id">
-                      <div class="card all-hover border-0 rounded-3">
-                          <div class="card-img position-relative">
+                    <div class="col-lg-4 col-md-6 col-12"
+                        v-for="item in filterProducts" :key="item.id">
+                      <div class="card rounded-3 cursorPointer">
+                          <div class="card-img overflow-hidden position-relative">
+                            <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100  bg-opacity-75" type="button"
+                            @click.prevent="getProduct(item.id)">
+                              詳細資訊
+                            </button>
                             <a href="#">
-                              <img class="img-fluid rounded-3"
-                                   :src="item.imageUrl" alt=""
-                              @click.prevent="getProduct(item.id)">
+                              <img class="rounded-3 img-fit"
+                                   :src="item.imageUrl" alt="">
                             </a>
-                            <span class="cursorPointer material-icons position-absolute rounded-circle fs-4 p-2 bbb"
+                            <span class="position-absolute rounded-circle fs-2 p-2 fav-icon bg-white text-center"
                                   :class="{'favorite': isFavorite(item.id)}"
                                   @click.stop="toggleFavorite(item)">
                                   <i :class="favState(item.id)"
@@ -282,36 +286,35 @@ export default {
     height: 200px;
   }
 }
-.bbb {
-  color: rgb(230, 103, 235);
+.fav-icon {
+  width: 50px;
+  height: 50px;
+  color: rgb(201, 54, 54);
+  top: 5px;
   right: 5px;
+  z-index: 2;
 }
-.activee {
-  color: rgb(230, 191, 21);
+.img-fit{
+  width: 100%;
+  object-fit: cover;
+  transition: .5s;
 }
-// .img-fit{
-//   height: 250px;
-//   width: 100%;
-//   object-fit: cover;
-//   transition: .5s;
-// }
+// 圖片放大
 .cursorPointer{
   cursor: pointer;
   &:hover{
+    .btn{
+      opacity: 1;
+    }
     img{
       transform: scale(1.15);
     }
     box-shadow:0 0 8px rgb(128, 209, 214, .2);
   }
-  .material-icons {
-    transition: .3s;
-    top: 8px;
-    right: 8px;
-    background-color: rgb(255, 255, 255, .3);
-    color: #dee2e6;
-    &:hover,&.favorite {
-      color: #FF5959;
-    }
-  }
+}
+.btn.bg-dark{
+  z-index: 1;
+  opacity: 0;
+  transition: .5s;
 }
 </style>

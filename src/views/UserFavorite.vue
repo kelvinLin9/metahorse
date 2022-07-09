@@ -94,5 +94,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.img-fit{
+  width: 100%;
+  object-fit: cover;
+  transition: .5s;
+}
+.cursorPointer{
+  cursor: pointer;
+  &:hover{
+    .btn{
+      opacity: 1;
+    }
+    img{
+      transform: scale(1.15);
+    }
+    box-shadow:0 0 8px rgb(128, 209, 214, .2);
+  }
+}
 </style>
