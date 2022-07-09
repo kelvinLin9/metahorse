@@ -54,10 +54,8 @@
                   </div>
                 </td>
                 <td class="text-end">
-                  <div v-if="item.final_total == item.total">
-                    <div class="fs-2">
+                  <div v-if="item.final_total == item.total" class="fs-3">   
                       NT$ {{ $filters.currency(item.final_total) }}
-                    </div>
                   </div>
                   <div v-if="item.final_total !== item.total" class="fs-3">
                     <small class="text-secondary fs-6">

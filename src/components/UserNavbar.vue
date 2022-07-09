@@ -28,10 +28,10 @@
             <router-link to="/user/products" class="nav-link fs-5"
             :class="{ 'text-warning':  status === 'products' }">產品列表</router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/user/productstest" class="nav-link fs-5"
             :class="{ 'text-warning':  status === 'productstest' }">產品列表(分頁測試)</router-link>
-          </li>
+          </li> -->
           <li class="nav-item">
             <router-link to="/user/checkOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  status === 'CheckOrder' }">訂單查詢</router-link>
