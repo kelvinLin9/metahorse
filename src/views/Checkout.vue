@@ -65,13 +65,13 @@
          <table class="table lh-lg">
           <thead class="table-primary">
             <tr class="table-nowrap">
-              <th>商品名稱</th>
+              <th class="text-start">商品名稱</th>
                 <th>數量</th>
                 <th class="text-end">價格</th>
               </tr>
             </thead>
             <tbody class="text-center">
-              <tr class="table-nowrap" v-for="item in carts" :key="item.id">
+              <tr class="table-nowrap text-start" v-for="item in carts" :key="item.id">
                 <td>{{ item.product.title }}</td>
                 <td>{{ item.qty }}</td>
                 <td class="text-end">
@@ -83,9 +83,8 @@
              </tbody>
              <tfoot class="text-center table-primary">
                <tr>
-                 <td colspan="2" class="text-end text-strong">總計 :</td>
-                 <td class="text-end text-strong">
-                  NT$ {{ $filters.currency(final_total) }} 元
+                <td colspan="3" class="text-end fs-4">
+                  總計 :NT$ {{ $filters.currency(final_total) }} 元
                 </td>
                </tr>
                </tfoot>
@@ -131,16 +130,6 @@ export default {
         }
       })
     },
-    // createOrder () {
-    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
-    //   const order = this.form
-    //   this.$http.post(api, { data: order }).then((response) => {
-    //     if (response.data.success) {
-    //       this.emitter.emit('message:push', { message: response.data.message, status: 'success' })
-    //       this.$router.push(`/checkoutPay/${response.data.orderId}`)
-    //     }
-    //   })
-    // },
     createOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const order = this.form
@@ -160,11 +149,4 @@ export default {
 }
 </script>
 
-<style>
-/* 載入字體 */
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 
-.cwTeXFangSong {
-  font-family: 'cwTeXFangSong', cursive;
-}
-</style>

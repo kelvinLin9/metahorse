@@ -30,7 +30,7 @@
               <table class="table lh-lg">
                 <tbody>
                   <tr class="table-nowrap">
-                    <th width="100" class="fw-bold text-end">訂單編號 :</th>
+                    <th width="150" class="fw-bold text-end">訂單編號 :</th>
                     <td>{{ order.id }}</td>
                   </tr>
                   <tr class="table-nowrap">
