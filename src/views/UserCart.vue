@@ -2,8 +2,11 @@
 <br>
 <br>
 <br>
-  <Loading :active="isLoading"></Loading>
   <div class="container">
+    <UserCoupon/>
+  </div>
+  <Loading :active="isLoading"></Loading>
+  <div class="container my-5">
       <div class="d-flex justify-content-center">
         <h1 class="fs-2 text-center fw-bold">購物清單</h1>
       </div>
@@ -114,10 +117,17 @@
       </div>
     </div>
   </div>
+  <Footer/>
 </template>
 
 <script>
+import UserCoupon from '@/components/UserCoupon.vue'
+import Footer from '@/components/Footer.vue'
 export default {
+  components: {
+    UserCoupon,
+    Footer
+  },
   data () {
     return {
       products: [],
