@@ -31,10 +31,15 @@
             <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
           </span>
         </div>
-        <div class="d-flex justify-content-center p-4 fw-bold">
-            <button type="submit"
-                    class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
-                    @click="addCart(item.id)">
+        <div class="d-flex justify-content-center pb-2 fw-bold">
+          <button type="button"
+                  class="btn btn-outline-primary text-dark fw-bold fs-5 px-5"
+                  :disabled="this.status.loadingItem === item.id"
+                  @click="addCart(item.id)">
+            <div v-if="this.status.loadingItem === item.id"
+              class="spinner-grow text-danger spinner-grow-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
             加到購物車
           </button>
         </div>

@@ -1,4 +1,5 @@
 <template>
+<br>
     <section class="my-5">
       <!-- 外層放背景，內層放黑底 -->
       <div class="container-fliud productBanner">
@@ -49,6 +50,7 @@
                     <div class="col-lg-4 col-md-6 col-12"
                         v-for="item in filterProducts" :key="item.id">
                       <div class="card rounded-3 cursorPointer">
+
                           <div class="card-img overflow-hidden position-relative">
                             <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100  bg-opacity-75" type="button"
                             @click.prevent="getProduct(item.id)">
@@ -58,31 +60,38 @@
                               <img class="rounded-3 img-fit"
                                    :src="item.imageUrl" alt="">
                             </a>
-                            <span class="position-absolute rounded-circle fs-2 p-2 fav-icon bg-white text-center"
+
+                            <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
                                   :class="{'favorite': isFavorite(item.id)}"
                                   @click.stop="toggleFavorite(item)">
-                                  <i :class="favState(item.id)"
-                                     class=""></i>
+                                  <i :class="favState(item.id)"></i>
                             </span>
                           </div>
-                          <div class="card-body d-flex flex-column text-center pt-4 px-4 fw-bold">
-                            <span class="fs-5 mb-1">{{ item.title }}</span>
-                              <span class="fs-5">NT ${{ item.price }}
+
+                          <div class="card-body d-flex flex-column text-center fw-bold">
+                            <span class="fs-4">
+                              {{ item.title }}
+                              <span class="fs-6 text-muted">（{{ item.category }}）</span>
+                            </span>
+                            <span class="fs-5">
+                              NT ${{ item.price }}
                               <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
                             </span>
                           </div>
-                          <div class="btn-group btn-group-sm">
-                            <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
-                            <button type="button" class="btn btn-outline-primary text-dark fw-bold fs-5 "
+
+                          <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
+                          <div class="d-flex justify-content-center pb-2 fw-bold">
+                            <button type="button"
+                                    class="btn btn-outline-primary text-dark fw-bold fs-5 px-5"
                                     :disabled="this.status.loadingItem === item.id"
                                     @click="addCart(item.id)">
                               <div v-if="this.status.loadingItem === item.id"
-                                    class="spinner-grow text-danger spinner-grow-sm" role="status">
+                                class="spinner-grow text-danger spinner-grow-sm" role="status">
                                 <span class="visually-hidden">Loading...</span>
                               </div>
-                                加到購物車
+                              加到購物車
                             </button>
-                            </div>
+                          </div>
                       </div>
                     </div>
                   </div>
@@ -128,7 +137,7 @@ export default {
       this.isLoading = true
       this.$http.get(url).then((res) => {
         // this.products = res.data.products
-        console.log('products:', res)
+        // console.log('products:', res)
         this.isLoading = false
       })
       // 兩種順序不同 先留著之後再改
@@ -139,6 +148,7 @@ export default {
       })
     },
     getProduct (id) {
+      console.log(id)
       // 使用this.$router進入特定頁面
       // 進入單一頁面之後，重新取的遠端資料
       this.$router.push(`/user/product/${id}`)
@@ -156,6 +166,7 @@ export default {
           this.status.loadingItem = ''
           console.log(res)
           this.getCart()
+          emitter.emit('update-cart')
         })
     },
     getCart () {
@@ -279,12 +290,12 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
-  @media (max-width:768px) {
-    height: 250px;
-  }
-  @media (max-width:576px) {
-    height: 200px;
-  }
+  // @media (max-width:768px) {
+  //   height: 250px;
+  // }
+  // @media (max-width:576px) {
+  //   height: 200px;
+  // }
 }
 .fav-icon {
   width: 50px;

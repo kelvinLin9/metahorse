@@ -119,6 +119,7 @@
 </template>
 
 <script>
+import emitter from '@/methods/emitter'
 import UserCoupon from '@/components/UserCoupon.vue'
 import Footer from '@/components/Footer.vue'
 export default {
@@ -179,6 +180,7 @@ export default {
         this.isLoading = false
       })
     },
+    // 更改購物車商品數量
     updateCart (item) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
       this.isLoading = true
@@ -202,6 +204,7 @@ export default {
         this.status.loadingItem = ''
         this.getCart()
         this.isLoading = false
+        emitter.emit('update-cart')
       })
     },
     addCouponCode () {

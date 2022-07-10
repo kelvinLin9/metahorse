@@ -1,4 +1,5 @@
 <template>
+
   <NavbarUser/>
   <br><br><br>
   <Banner/>
