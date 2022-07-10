@@ -26,10 +26,6 @@
             <router-link to="/user/products" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'products' }">產品列表</router-link>
           </li>
-          <!-- <li class="nav-item">
-            <router-link to="/user/productstest" class="nav-link fs-5"
-            :class="{ 'text-warning':  status === 'productstest' }">產品列表(分頁測試)</router-link>
-          </li> -->
           <li class="nav-item">
             <router-link to="/user/checkOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'CheckOrder' }">訂單查詢</router-link>
@@ -93,7 +89,7 @@
             </div>
             <h5 class="fw-bold text-center mb-3" v-if="cartNum==0">產品尚未加入購物車!</h5>
             <div class="d-flex justify-content-end">
-              <button type="button" class="btn btn-dark btn-hover rounded-0" 
+              <button type="button" class="btn btn-dark btn-hover rounded-0"
               @click="goCart"
               v-if="cartNum > 0">
                 <i class="fas fa-shopping-cart"></i> 結帳去
@@ -149,7 +145,7 @@ export default {
   },
   watch: {
     $route (to) {
-      console.log(99, to)
+      console.log('$route', to)
       this.routeName = this.$route.name
       if (document.body.offsetWidth < 992) {
         if (this.isCollapse) {

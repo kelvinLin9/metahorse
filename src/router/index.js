@@ -40,14 +40,9 @@ const routes = [
         component: () => import('../views/UserProducts.vue')
       },
       {
-        path: 'productstest',
-        name: 'productstest',
-        component: () => import('../views/UserProductsTest.vue')
-      },
-      {
         path: 'checkout',
         name: 'checkout',
-        component: () => import('../views/Checkout.vue')
+        component: () => import('../views/UserCheckout.vue')
       },
       // {
       //   path: 'checkoutPat',

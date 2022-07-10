@@ -1,7 +1,7 @@
 <template>
 <br><br><br><br>
   <div class="bg-light">
-    <div class="container-fliud"
+    <div class="container-fluid"
     v-if="favorite.length === 0">
       <div class="d-flex flex-column justify-content-center align-items-center">
         <h1 class="fs-2 text-center fw-bold mb-5">目前沒有收藏任何商品</h1>
@@ -92,16 +92,6 @@ export default {
         // this.$router.push('/user/cart')
       })
     },
-    // 別人的
-    // addCart (id) {
-    //   this.isLoading = true
-    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-    //   this.$http.post(api, { data: { product_id: id, qty: 1 } }).then(() => {
-    //     // this.$swal('商品已加入購物車')
-    //     emitter.emit('update-cart')
-    //     this.isLoading = false
-    //   })
-    // },
     viewProduct (id) {
       this.$router.push(`/product/${id}`)
     }

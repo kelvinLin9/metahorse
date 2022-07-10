@@ -2,7 +2,7 @@
 <br>
     <section class="my-5">
       <!-- 外層放背景，內層放黑底 -->
-      <div class="container-fliud productBanner">
+      <div class="container-fluid productBanner">
         <div class="bg-dark bg-opacity-50 w-100 h-100 d-flex align-items-center">
           <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
           <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>
@@ -199,20 +199,12 @@ export default {
       if (!hasFavorite) {
         this.favorite.push(item)
         localStorage.setItem('favorite', JSON.stringify(this.favorite))
-        // this.$swal({
-        //   title: `已將 ${item.title} 加入我的最愛`,
-        //   width: '28rem'
-        // })
       } else {
         const delItem = this.favorite.find((item) => {
           return item.id === id
         })
         this.favorite.splice(this.favorite.indexOf(delItem), 1)
         localStorage.setItem('favorite', JSON.stringify(this.favorite))
-        // this.$swal({
-        //   title: `取消關注 ${item.title}`,
-        //   width: '24rem'
-        // })
       }
       this.getFavorite()
       emitter.emit('update-favorite')

@@ -99,8 +99,8 @@ export default {
       this.isLoading = true
       this.$http.get(url).then((response) => {
         this.products = response.data.products.splice(12, 5)
-        console.log('products:', response.data.products)
-        console.log('products:', this.products)
+        // console.log('products:', response.data.products)
+        // console.log('products:', this.products)
         this.isLoading = false
       })
     },

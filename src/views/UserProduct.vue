@@ -16,7 +16,6 @@
     </nav>
     <div class="row justify-content-center ">
 
-
       <div class="col-md-6 position-relative">
         <img :src="product.imageUrl" alt="" class="img-fluid mb-3 rounded">
 
@@ -26,7 +25,6 @@
           <i :class="favState(id)"></i>
         </span>
       </div>
-
 
       <div class="col-md-6">
         <h2>{{ product.title }}</h2>
@@ -121,7 +119,7 @@ export default {
       this.isLoading = true
       this.$http.post(url, { data: cart }).then((response) => {
         this.isLoading = false
-        this.$httpMessageState(response, '加入購物車') 
+        this.$httpMessageState(response, '加入購物車')
         emitter.emit('update-cart')
       })
     },

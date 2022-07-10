@@ -74,7 +74,7 @@
                 Level：{{temp.level}}
               </h4>
             </div>
-            <ul class="col" >
+            <ul class="col">
               <li class="d-flex row">
                 <div class="col-4">
                   <h4>速度 <i class="bi bi-lightning-fill mx-1"></i>：</h4>
