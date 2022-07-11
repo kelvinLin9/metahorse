@@ -1,6 +1,6 @@
 <template>
   <footer class="footer bg-dark mt-3 py-4 mt-md-5">
-    <div class="container">
+    <div class="container-fluid">
       <ul class="list-inline text-center">
         <li class="list-inline-item text-light">
           © Copyright 2022 MetaHorse

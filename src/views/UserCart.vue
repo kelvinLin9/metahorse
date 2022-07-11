@@ -1,4 +1,5 @@
 <template>
+  <UserNavbar/>
 <br>
 <br>
 <br>
@@ -120,10 +121,12 @@
 
 <script>
 import emitter from '@/methods/emitter'
+import UserNavbar from '@/components/UserNavbar.vue'
 import UserCoupon from '@/components/UserCoupon.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   components: {
+    UserNavbar,
     UserCoupon,
     Footer
   },

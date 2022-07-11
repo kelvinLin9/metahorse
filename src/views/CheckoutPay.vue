@@ -1,6 +1,7 @@
 <template>
-<br>
-<br>
+  <UserNavbar/>
+  <br>
+  <br>
   <Loading :active="isLoading"></Loading>
   <div class="my-5 row justify-content-center">
     <h2 class="fs-1 text-center fw-bold text-primary">購物明細</h2>
@@ -63,15 +64,25 @@
         </tr>
         </tbody>
       </table>
-      <div class="text-end" v-if="order.is_paid === false">
-        <button class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg">確認付款</button>
+      <div class="text-center">
+        <button class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
+        @click="goHome">
+          確認付款
+        </button>
       </div>
     </form>
   </div>
+  <Footer/>
 </template>
 
 <script>
+import UserNavbar from '@/components/UserNavbar.vue'
+import Footer from '@/components/Footer'
 export default {
+  components: {
+    UserNavbar,
+    Footer
+  },
   data () {
     return {
       order: {
@@ -101,6 +112,9 @@ export default {
             this.getOrder()
           }
         })
+    },
+    goHome () {
+      this.$router.push('/')
     }
   },
   created () {

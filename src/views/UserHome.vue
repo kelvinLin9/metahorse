@@ -1,7 +1,6 @@
 <template>
 
-  <NavbarUser/>
-  <br><br><br>
+  <UserNavbar/>
   <Banner/>
 
   <section class="my-5">
@@ -68,7 +67,7 @@
             <hr>
             <div class="col">
               <h3 class="fw-bold text-center text-lg-start lh-lg">
-                遊戲中數值：
+                遊戲中數值
               </h3>
               <h4 class="fw-bold text-center text-lg-start lh-lg">
                 Level：{{temp.level}}
@@ -144,7 +143,7 @@
 
 <script>
 // @ is an alias to /src
-import NavbarUser from '../components/UserNavbar.vue'
+import UserNavbar from '../components/UserNavbar.vue'
 import Banner from '@/components/Banner.vue'
 import OtherProducts from '@/components/OtherProducts.vue'
 import Footer from '@/components/Footer.vue'
@@ -153,7 +152,7 @@ import UserCoupon from '@/components/UserCoupon.vue'
 export default {
   name: 'HomeView',
   components: {
-    NavbarUser,
+    UserNavbar,
     Banner,
     OtherProducts,
     Footer,

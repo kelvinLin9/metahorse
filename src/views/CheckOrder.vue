@@ -1,4 +1,5 @@
 <template>
+<UserNavbar/>
 <br><br>
   <div class="CheckOrder mt-5">
     <Loading v-model:active="isLoading"/>
@@ -94,10 +95,12 @@
 </template>
 
 <script>
+import UserNavbar from '@/components/UserNavbar.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   name: 'CheckOrder',
   components: {
+    UserNavbar,
     Footer
   },
   data () {

@@ -1,4 +1,5 @@
 <template>
+<div class="my-5">
   <swiper
     :spaceBetween="30"
     :centeredSlides="true"
@@ -38,6 +39,7 @@
       </div>
     </swiper-slide>
   </swiper>
+</div>
 </template>
 
 <script>

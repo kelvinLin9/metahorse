@@ -1,5 +1,6 @@
 <template>
-<br><br><br><br>
+  <UserNavbar/>
+  <br><br><br><br>
   <div class="bg-light">
     <div class="container-fluid"
     v-if="favorite.length === 0">
@@ -54,8 +55,7 @@
 
 <script>
 import emitter from '@/methods/emitter'
-// import SectionOnSale from '@/components/SectionOnSale'
-// import SectionBanner from '@/components/SectionBanner'
+import UserNavbar from '@/components/UserNavbar.vue'
 import Footer from '@/components/Footer'
 export default {
   data () {
@@ -65,8 +65,7 @@ export default {
     }
   },
   components: {
-    // SectionOnSale,
-    // SectionBanner,
+    UserNavbar,
     Footer
   },
   methods: {

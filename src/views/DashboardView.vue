@@ -1,8 +1,8 @@
 <template>
-  <Navbar></Navbar>
+  <Navbar/>
   <div class="container-fluid mt-3 position-relative">
-    <ToastMessages></ToastMessages>
-    <router-view/>
+    <ToastMessages/>
+    <!-- <router-view/> -->
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 // 拆分元件後再import進來 .vue記得要加
 import emitter from '@/methods/emitter'
 import ToastMessages from '@/components/ToastMessages.vue'
-import Navbar from '../components/AdminNavbar.vue'
+import Navbar from '../components/AdminNavbar1.vue'
 
 export default {
   // 區域註冊

@@ -1,4 +1,5 @@
 <template>
+<UserNavbar/>
 <br>
     <section class="my-5">
       <!-- 外層放背景，內層放黑底 -->
@@ -106,6 +107,7 @@
 </template>
 
 <script>
+import UserNavbar from '@/components/UserNavbar.vue'
 import Pagination from '@/components/Pagination.vue'
 import emitter from '@/methods/emitter'
 import Footer from '@/components/Footer.vue'
@@ -126,8 +128,9 @@ export default {
     }
   },
   components: {
+    UserNavbar,
     Footer,
-    Pagination
+    Pagination,
   },
   inject: ['emitter'],
   methods: {

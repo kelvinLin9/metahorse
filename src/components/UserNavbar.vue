@@ -19,10 +19,6 @@
       <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item">
-           <a class="nav-link fs-5" href="/user/checkOrder"
-           :class="{ 'text-warning':  routeName === 'home' }">首頁(a標籤試試)</a>
-          </li>
-          <li class="nav-item">
            <RouterLink to="/" class="nav-link fs-5"
            :class="{ 'text-warning':  routeName === 'home' }">首頁</RouterLink>
           </li>
@@ -91,7 +87,7 @@
                 </tbody>
               </table>
             </div>
-            <h5 class="fw-bold text-center mb-3" v-if="cartNum = 0">產品尚未加入購物車!</h5>
+            <h5 class="fw-bold text-center mb-3" v-if="cartNum == 0">產品尚未加入購物車!</h5>
             <div class="d-flex justify-content-end">
               <button type="button" class="btn btn-dark btn-hover rounded-0"
               @click="goCart"
@@ -137,7 +133,7 @@ export default {
       isCollapse: false,
       routeName: '',
       favoriteNum: 0,
-      cartNum: 0,
+      cartNum: 2,
       cart: {},
       status: {
         // 對應品項 id 當loadingItem為一個特定品項的時候
@@ -150,17 +146,7 @@ export default {
   watch: {
     $route (to) {
       console.log('$route', to)
-      this.routeName = this.$route.name
-      // if (document.body.offsetWidth < 992) {
-      //   if (this.isCollapse) {
-      //     this.$refs.navbarBtn.click()
-      //   }
-      // }
-      // this.status = to.name
-      // if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-      //   document.body.scrollTop = 0 // For Safari
-      //   document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
-      // }
+      this.routeName = this.$route.name // 放這裡是沒用的
     }
   },
   methods: {
@@ -168,7 +154,7 @@ export default {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
       this.$http.get(url).then((res) => {
-        // console.log(7, res)
+        // console.log('getCart(res)', res)
         this.cartNum = res.data.data.carts.length
         this.cart = res.data.data
         this.isLoading = false
@@ -209,8 +195,8 @@ export default {
   },
   mounted () {
     this.routeName = this.$route.name // 點擊後圖標變色
-    console.log(87, this.routeName)
-    console.log(88, this.status)
+    // console.log(87, this.routeName)
+    // console.log(88, this.status)
     // 接收資料
     emitter.on('update-cart', () => {
       this.getCart()
@@ -218,7 +204,11 @@ export default {
     emitter.on('update-favorite', () => {
       this.getFavorite()
     })
-  }
+  },
+  // updated () {
+  //   this.routeName = this.$route.name // 點擊後圖標變色
+  //   console.log(98, this.routeName)
+  // }
 }
 </script>
 

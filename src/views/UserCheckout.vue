@@ -1,4 +1,5 @@
 <template>
+  <UserNavbar/>
   <br>
   <br>
   <br>
@@ -97,12 +98,17 @@
          </div>
     </div>
   </div>
+  <Footer/>
 </template>
 
 <script>
+import UserNavbar from '@/components/UserNavbar.vue'
+import Footer from '@/components/Footer'
 export default {
   // name: 'Checkout',
   components: {
+    UserNavbar,
+    Footer
   },
   data () {
     return {
