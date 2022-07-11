@@ -19,6 +19,10 @@
       <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item">
+           <a class="nav-link fs-5" href="/user/checkOrder"
+           :class="{ 'text-warning':  routeName === 'home' }">首頁(a標籤試試)</a>
+          </li>
+          <li class="nav-item">
            <RouterLink to="/" class="nav-link fs-5"
            :class="{ 'text-warning':  routeName === 'home' }">首頁</RouterLink>
           </li>
@@ -87,7 +91,7 @@
                 </tbody>
               </table>
             </div>
-            <h5 class="fw-bold text-center mb-3" v-if="cartNum==0">產品尚未加入購物車!</h5>
+            <h5 class="fw-bold text-center mb-3" v-if="cartNum = 0">產品尚未加入購物車!</h5>
             <div class="d-flex justify-content-end">
               <button type="button" class="btn btn-dark btn-hover rounded-0"
               @click="goCart"
@@ -105,7 +109,7 @@
             :class="{ 'text-warning':  routeName === 'favorite' }">
               <i class="bi bi-search-heart fs-4"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
-                    v-if="favoriteNum !== 0">
+                    v-if="favoriteNum != 0">
                 {{ favoriteNum }}
               </div>
             </RouterLink>
@@ -147,16 +151,16 @@ export default {
     $route (to) {
       console.log('$route', to)
       this.routeName = this.$route.name
-      if (document.body.offsetWidth < 992) {
-        if (this.isCollapse) {
-          this.$refs.navbarBtn.click()
-        }
-      }
-      this.status = to.name
-      if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-        document.body.scrollTop = 0 // For Safari
-        document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
-      }
+      // if (document.body.offsetWidth < 992) {
+      //   if (this.isCollapse) {
+      //     this.$refs.navbarBtn.click()
+      //   }
+      // }
+      // this.status = to.name
+      // if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+      //   document.body.scrollTop = 0 // For Safari
+      //   document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
+      // }
     }
   },
   methods: {
