@@ -1,9 +1,8 @@
 <template>
-<br>
-<br>
-<br>
+  <UserNavbar/>
+  <br>
   <Loading :active="isLoading"></Loading>
-  <div class="container">
+  <div class="container my-5">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item fs-5">
@@ -88,8 +87,12 @@
 </template>
 
 <script>
+import UserNavbar from '@/components/UserNavbar.vue'
 import emitter from '@/methods/emitter'
 export default {
+  components: {
+    UserNavbar
+  },
   data () {
     return {
       product: {},
@@ -182,6 +185,13 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.productBanner {
+  height: 300px;
+  background-image: url(https://i.imgur.com/4vGqi7D.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center ;
+}
 .fav-icon {
   width: 50px;
   height: 50px;
