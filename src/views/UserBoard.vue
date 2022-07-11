@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-3 position-relative">
+  <div class="position-relative">
     <ToastMessages></ToastMessages>
     <router-view/>
   </div>

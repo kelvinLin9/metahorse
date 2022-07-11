@@ -1,7 +1,7 @@
 <template>
   <UserNavbar/>
       <!-- 外層放背景，內層放黑底 -->
-      <div class="productsBanner my-5">
+      <div class="productsBanner mb-5">
         <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
           <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
             <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>

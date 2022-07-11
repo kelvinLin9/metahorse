@@ -14,7 +14,7 @@ const routes = [
   },
   {
     path: '/dashboard',
-    component: () => import('../views/DashboardView.vue'),
+    component: () => import('../views/AdminDashboard.vue'),
     children: [
       {
         path: 'products',
@@ -22,11 +22,11 @@ const routes = [
       },
       {
         path: 'orders',
-        component: () => import('../views/Orders.vue')
+        component: () => import('../views/AdminOrders.vue')
       },
       {
         path: 'coupons',
-        component: () => import('../views/Coupons.vue')
+        component: () => import('../views/AdminCoupons.vue')
       }
     ]
   },

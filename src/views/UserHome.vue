@@ -236,7 +236,7 @@ export default {
   /* left: 10px; */
 }
 .test {
-  outline: 1px solid #000;
+  outline: 3px solid red;
 }
 
 .f-kalam {

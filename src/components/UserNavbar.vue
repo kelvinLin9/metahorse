@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark mb-5">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2">MetaHorse</span>

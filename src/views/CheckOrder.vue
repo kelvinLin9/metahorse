@@ -1,9 +1,7 @@
 <template>
 <UserNavbar/>
-<br><br>
-  <div class="CheckOrder mt-5">
     <Loading v-model:active="isLoading"/>
-    <div class="container">
+    <div class="container my-5">
       <h1 class="fs-2 text-center fw-bold">訂單查詢</h1>
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
@@ -90,7 +88,7 @@
         </div>
       </div>
     </div>
-  </div>
+
   <Footer/>
 </template>
 

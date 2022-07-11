@@ -1,4 +1,5 @@
 <template>
+<!-- <Navbar/> -->
   <div>
     <Loading :active="isLoading"></Loading>
     <div class="text-end mt-4">
@@ -47,10 +48,15 @@
 </template>
 
 <script>
+// import Navbar from '../components/AdminNavbar1.vue'
 import CouponModal from '@/components/CouponModal.vue'
 import DelModal from '@/components/DelModal.vue'
 export default {
-  components: { CouponModal, DelModal },
+  components: {
+    // Navbar
+    CouponModal,
+    DelModal
+  },
   props: {
     config: Object
   },
