@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
+
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
 import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -34,8 +36,10 @@ configure({
 setLocale('zh_TW')
 // 此函式的用途是整合 Ajax 的錯誤事件，統一整理發送給予 Toast 處理
 app.config.globalProperties.$httpMessageState = $httpMessageState
+
 app.use(VueAxios, axios)
 app.use(router)
+
 app.component('Loading', Loading)
 app.component('Form', Form)
 app.component('Field', Field)

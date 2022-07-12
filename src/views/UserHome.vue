@@ -134,9 +134,8 @@
     </div>
   </section>
   <hr>
-  <OtherProducts></OtherProducts>
+  <OtherProducts/>
   <hr>
-  <UserCoupon/>
   <Footer/>
   <GoTop/>
 </template>
@@ -148,7 +147,7 @@ import Banner from '@/components/Banner.vue'
 import OtherProducts from '@/components/OtherProducts.vue'
 import Footer from '@/components/Footer.vue'
 import GoTop from '@/components/GoTop.vue'
-import UserCoupon from '@/components/UserCoupon.vue'
+// import UserCoupon from '@/components/UserCoupon.vue'
 export default {
   name: 'HomeView',
   components: {
@@ -157,7 +156,6 @@ export default {
     OtherProducts,
     Footer,
     GoTop,
-    UserCoupon
   },
   data () {
     return {
