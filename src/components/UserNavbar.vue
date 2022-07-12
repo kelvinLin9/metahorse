@@ -50,7 +50,7 @@
             <RouterLink to="" class="nav-link px-3"
             :class="{ 'text-warning':  routeName === 'cart' }"
             @click.prevent="cartBoxToggle">
-              <i class="bi bi-cart3 fs-4 cart"></i>
+              <i class="bi bi-cart3 fs-4 cart" ></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
                     v-if="cartNum !== 0">
                 {{ cartNum }}
