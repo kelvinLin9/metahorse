@@ -155,7 +155,7 @@ export default {
     Banner,
     OtherProducts,
     Footer,
-    GoTop,
+    GoTop
   },
   data () {
     return {

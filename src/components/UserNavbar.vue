@@ -50,7 +50,7 @@
             <RouterLink to="" class="nav-link px-3"
             :class="{ 'text-warning':  routeName === 'cart' }"
             @click.prevent="cartBoxToggle">
-              <i class="bi bi-cart3 fs-4 cart" ></i>
+              <i class="bi bi-cart3 fs-4 cart" data-bs-toggle="tooltip" data-bs-placement="top" title="購物車"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
                     v-if="cartNum !== 0">
                 {{ cartNum }}
@@ -103,7 +103,7 @@
           <li class="nav-item position-relative">
             <RouterLink to="/user/Favorite" class="nav-link px-3"
             :class="{ 'text-warning':  routeName === 'favorite' }">
-              <i class="bi bi-search-heart fs-4"></i>
+              <i class="bi bi-search-heart fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="我的最愛"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
                     v-if="favoriteNum != 0">
                 {{ favoriteNum }}
@@ -113,7 +113,7 @@
           <li class="nav-item">
             <RouterLink to="/login" class="nav-link px-3"
             :class="{ 'text-warning':  routeName === '/login' }">
-              <i class="bi bi-person-workspace fs-4"></i>
+              <i class="bi bi-person-workspace fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="管理員登入"></i>
             </RouterLink>
           </li>
         </ul>

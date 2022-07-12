@@ -8,11 +8,11 @@
 <script>
 import emitter from '@/methods/emitter'
 import ToastMessages from '@/components/ToastMessages.vue'
-import UserNavbar from '../components/UserNavbar.vue'
+// import UserNavbar from '../components/UserNavbar.vue'
 export default {
   components: {
-    ToastMessages,
-    UserNavbar
+    ToastMessages
+    // UserNavbar
   },
   provide () {
     return {

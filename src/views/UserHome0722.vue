@@ -43,7 +43,7 @@
                   <a href="#" @click.prevent="temp = item">
                     <img :src="item.imageUrl" alt=""
                     class="shadow rounded img-thumbnail" width="150"
-                    :class="{'bg-primary':  item.level === temp.level}">
+                    :class="{'bg-primary':  item.category === temp.category}">
                   </a>
                   </div>
               </div>
@@ -155,7 +155,7 @@ export default {
     Banner,
     OtherProducts,
     Footer,
-    GoTop,
+    GoTop
   },
   data () {
     return {
@@ -163,7 +163,6 @@ export default {
         {
           level: 'S',
           imageUrl: 'https://imgur.com/kdTurd4.jpg',
-          // imageUrl: 'https://i.imgur.com/lx57Zsk.jpg',
           speed: 5,
           stamina: 5,
           lucky: 5,
@@ -202,9 +201,9 @@ export default {
         lucky: 5,
         intelligence: 5
       },
-      productsX:[],
-      productsY:[],
-      productsZ:[]
+      productsX: [], // 放後端全部資料
+      productsY: [], // 手動選的資料
+      productsZ: [] // 試著用函式寫看看
     }
   },
   methods: {
@@ -212,7 +211,7 @@ export default {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       this.isLoading = true
       this.$http.get(url).then((res) => {
-        // 我全都要 
+        // 我全都要
         this.productsX = res.data.products
 
         // 手動挑出想展示的商品
@@ -220,11 +219,12 @@ export default {
         this.productsY.push(res.data.products[10])
         this.productsY.push(res.data.products[8])
         this.productsY.push(res.data.products[5])
+        this.temp = this.productsY[0]
 
         // 重複的商品只挑一個
-        const set = new Set();
-        const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false);
-        console.log(1,productsZ); 
+        const set = new Set()
+        const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false)
+        console.log(1, productsZ)
         this.isLoading = false
       })
     },
