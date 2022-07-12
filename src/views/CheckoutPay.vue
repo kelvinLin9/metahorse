@@ -1,5 +1,4 @@
 <template>
-  <UserNavbar/>
   <br>
   <br>
   <Loading :active="isLoading"></Loading>
@@ -79,11 +78,9 @@
 </template>
 
 <script>
-import UserNavbar from '@/components/UserNavbar.vue'
 import Footer from '@/components/Footer'
 export default {
   components: {
-    UserNavbar,
     Footer
   },
   data () {

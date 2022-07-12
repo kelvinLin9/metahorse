@@ -1,5 +1,4 @@
 <template>
-  <UserNavbar/>
       <!-- 外層放背景，內層放黑底 -->
       <div class="productsBanner mb-5">
         <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
@@ -105,7 +104,6 @@
 </template>
 
 <script>
-import UserNavbar from '@/components/UserNavbar.vue'
 // import Pagination from '@/components/Pagination.vue'
 import emitter from '@/methods/emitter'
 import Footer from '@/components/Footer.vue'
@@ -126,7 +124,6 @@ export default {
     }
   },
   components: {
-    UserNavbar,
     Footer
     // Pagination
   },
@@ -173,10 +170,10 @@ export default {
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
-      this.$http.get(url).then((response) => {
-        console.log(response)
+      this.$http.get(url).then((res) => {
+        console.log(res)
         // 包含陣列列表、總金額
-        this.cart = response.data.data
+        this.cart = res.data.data
         this.isLoading = false
       })
     },

@@ -1,6 +1,4 @@
 <template>
-  <UserNavbar/>
-<br>
   <div class="cartBanner">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
@@ -126,13 +124,9 @@
 
 <script>
 import emitter from '@/methods/emitter'
-import UserNavbar from '@/components/UserNavbar.vue'
-import UserCoupon from '@/components/UserCoupon.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   components: {
-    UserNavbar,
-    UserCoupon,
     Footer
   },
   data () {

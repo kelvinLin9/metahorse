@@ -1,5 +1,4 @@
 <template>
-  <UserNavbar/>
   <br>
   <Loading :active="isLoading"></Loading>
   <div class="container my-5">
@@ -29,7 +28,37 @@
         <h2>{{ product.title }}</h2>
         <div>{{ product.description }}</div>
         <hr>
-        <h5>商品說明﹔</h5>
+        <h5>商品說明：</h5>
+        <hr>
+        <div class="w-50">
+
+          <h5>遊戲中素質：</h5>
+          <span>速度<i class="bi bi-lightning-fill mx-1"></i></span>
+          <div class="progress mb-3">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.speed*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              {{product.speed}}
+            </div>
+          </div>
+          <span>耐力<i class="bi bi-clock-fill mx-1"></i></span>
+          <div class="progress mb-3">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.stamina*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">   
+              {{product.stamina}}
+            </div>
+          </div>
+          <span>幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
+          <div class="progress mb-3">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.lucky*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              {{product.lucky}}
+            </div>
+          </div>
+          <span>智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
+          <div class="progress mb-3">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.intelligence*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              {{product.intelligence}}
+          </div>
+        </div>
+        </div>
+
         <div>{{ product.content }}</div>
         <hr>
         <div class="h5" v-if="!product.price">{{ product.origin_price }} 元</div>
@@ -87,12 +116,8 @@
 </template>
 
 <script>
-import UserNavbar from '@/components/UserNavbar.vue'
 import emitter from '@/methods/emitter'
 export default {
-  components: {
-    UserNavbar
-  },
   data () {
     return {
       product: {},
@@ -146,20 +171,12 @@ export default {
       if (!hasFavorite) {
         this.favorite.push(item)
         localStorage.setItem('favorite', JSON.stringify(this.favorite))
-        // this.$swal({
-        //   title: `已將 ${item.title} 加入我的最愛`,
-        //   width: '28rem'
-        // })
       } else {
         const delItem = this.favorite.find((item) => {
           return item.id === id
         })
         this.favorite.splice(this.favorite.indexOf(delItem), 1)
         localStorage.setItem('favorite', JSON.stringify(this.favorite))
-        // this.$swal({
-        //   title: `取消關注 ${item.title}`,
-        //   width: '24rem'
-        // })
       }
       this.getFavorite()
       emitter.emit('update-favorite')

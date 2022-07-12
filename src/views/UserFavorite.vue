@@ -1,6 +1,4 @@
 <template>
-  <UserNavbar/>
-  <br><br><br><br>
   <div class="bg-light">
     <div class="container-fluid"
     v-if="favorite.length === 0">
@@ -16,8 +14,8 @@
           <h1 class="fs-2 text-center fw-bold">我的最愛</h1>
         </div>
         <div class="col-md-6 col-lg-4 mb-3"
-        v-for="item in favorite" :key="item.id"
-        @click="viewProduct(item.id)">
+            v-for="item in favorite" :key="item.id"
+            @click.prevent="getProduct(item.id)">
           <div class="bg-white border cursorPointer">
             <div class="overflow-hidden position-relative">
               <button class="btn fs-4 position-absolute text-white w-100 h-100 bg-dark bg-opacity-75" type="button">查看更多</button>
@@ -33,11 +31,13 @@
 
             <div class="d-flex p-4">
               <button type="button" class="btn btn-outline-secondary fw-bold w-50 me-2"
-              @click.stop="removeFavorite(item)">移除收藏</button>
-              <button type="button" class="btn btn-primary fw-bold text-white w-50"
-              @click.stop="addToCart(item.id)">
-                <div class="spinner-border text-white spinner-border-sm" role="status"
-                v-if="isLoading">
+                      @click.stop="removeFavorite(item)">移除收藏</button>
+              <button type="button"
+                      class="btn btn-outline-primary text-dark fw-bold w-50"
+                      :disabled="this.status.loadingItem === item.id"
+                      @click.stop="addCart(item.id)">
+                <div v-if="this.status.loadingItem === item.id"
+                  class="spinner-grow text-danger spinner-grow-sm" role="status">
                   <span class="visually-hidden">Loading...</span>
                 </div>
                 加到購物車
@@ -55,17 +55,20 @@
 
 <script>
 import emitter from '@/methods/emitter'
-import UserNavbar from '@/components/UserNavbar.vue'
 import Footer from '@/components/Footer'
 export default {
   data () {
     return {
       favorite: [],
-      isLoading: false
+      isLoading: false,
+      status: {
+        // 對應品項 id 當loadingItem為一個特定品項的時候
+        // 我們就會把這個按鈕轉為disabled(配合v-if做提示效果)
+        loadingItem: ''
+      }
     }
   },
   components: {
-    UserNavbar,
     Footer
   },
   methods: {
@@ -91,8 +94,35 @@ export default {
         // this.$router.push('/user/cart')
       })
     },
-    viewProduct (id) {
-      this.$router.push(`/product/${id}`)
+    addCart (id) {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.status.loadingItem = id
+      const cart = {
+        product_id: id,
+        qty: 1 // 產品數量
+      }
+      this.$http.post(url, { data: cart })
+        .then((res) => {
+          // 等到ajax成功之後，再把id清空
+          this.status.loadingItem = ''
+          console.log('加入購物車後回傳的訊息', res)
+          this.getCart()
+          emitter.emit('update-cart')
+        })
+    },
+    getCart () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.isLoading = true
+      this.$http.get(url).then((res) => {
+        console.log('重新取得購物車訊息', res)
+        // 包含陣列列表、總金額
+        this.cart = res.data.data
+        this.isLoading = false
+      })
+    },
+    getProduct (id) {
+      console.log(id)
+      this.$router.push(`/user/product/${id}`)
     }
   },
   created () {

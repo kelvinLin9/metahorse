@@ -1,8 +1,4 @@
 <template>
-  <UserNavbar/>
-  <br>
-  <br>
-  <br>
   <div class="container">
     <div class="my-5 row justify-content-center">
       <Form class="col-md-6" v-slot="{ errors }"
@@ -102,12 +98,10 @@
 </template>
 
 <script>
-import UserNavbar from '@/components/UserNavbar.vue'
 import Footer from '@/components/Footer'
 export default {
   // name: 'Checkout',
   components: {
-    UserNavbar,
     Footer
   },
   data () {

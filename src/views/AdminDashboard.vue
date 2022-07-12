@@ -1,5 +1,5 @@
 <template>
-  <Navbar/>
+  <Navbar :key="$route.path"/>
   <div class="container-fluid mt-3 position-relative">
     <ToastMessages/>
     <router-view/>

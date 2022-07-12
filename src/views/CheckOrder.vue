@@ -1,5 +1,4 @@
 <template>
-<UserNavbar/>
     <Loading v-model:active="isLoading"/>
     <div class="container my-5">
       <h1 class="fs-2 text-center fw-bold">訂單查詢</h1>
@@ -93,12 +92,10 @@
 </template>
 
 <script>
-import UserNavbar from '@/components/UserNavbar.vue'
 import Footer from '@/components/Footer.vue'
 export default {
   name: 'CheckOrder',
   components: {
-    UserNavbar,
     Footer
   },
   data () {
