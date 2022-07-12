@@ -1,60 +1,58 @@
 <template>
-<UserNavbar/>
-<br>
-    <section class="my-5">
+  <UserNavbar/>
       <!-- 外層放背景，內層放黑底 -->
-      <div class="container-fluid productBanner">
-        <div class="bg-dark bg-opacity-50 w-100 h-100 d-flex align-items-center">
+      <div class="productsBanner mb-5">
+        <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
           <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
-          <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>
-          <span class="fs-3 text-primary align-self-end">/ All Product</span>
+            <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>
+            <span class="fs-3 text-primary align-self-end">/ All Product</span>
           </h1>
         </div>
       </div>
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-3">
-                    <h2 class="fw-bold text-center f-kalam bg-primary">賽馬( Level )</h2>
-                    <div class="fw-bold list-group flex-row flex-lg-column ">
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == 'all' ,'fs-4' : category == 'all'}"
-                          @click.prevent="category = 'all'">- All</a>
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == 'S' ,'fs-4' : category == 'S'}"
-                          @click.prevent="category = 'S'">- S</a>
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == 'A' ,'fs-4' : category == 'A'}"
-                          @click.prevent="category = 'A'">- A</a>
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == 'B' ,'fs-4' : category == 'B'}"
-                          @click.prevent="category = 'B'">- B</a>
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == 'C' ,'fs-4' : category == 'C'}"
-                          @click.prevent="category = 'C'">- C</a>
-                    </div>
-                    <hr>
-                    <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
-                      <div class="fw-bold list-group flex-row flex-lg-column ">
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == '馬鞍' ,'fs-4' : category == '馬鞍'}"
-                          @click.prevent="category = '馬鞍'">- 馬鞍</a>
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == '馬蹄鐵' ,'fs-4' : category == '馬蹄鐵'}"
-                          @click.prevent="category = '馬蹄鐵'">- 馬蹄鐵</a>
-                        <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-                          :class="{ 'text-primary' : category == '馬飼料' ,'fs-4' : category == '馬飼料'}"
-                          @click.prevent="category = '馬飼料'">- 馬飼料</a>
-                    </div>
-                </div>
-                <div class="col-lg-9">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <h2 class="fw-bold text-center f-kalam bg-primary">賽馬( Level )</h2>
+            <div class="fw-bold list-group flex-row flex-lg-column ">
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == 'all' ,'fs-4' : category == 'all'}"
+                  @click.prevent="category = 'all'">- All</a>
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == 'S' ,'fs-4' : category == 'S'}"
+                  @click.prevent="category = 'S'">- S</a>
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == 'A' ,'fs-4' : category == 'A'}"
+                  @click.prevent="category = 'A'">- A</a>
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == 'B' ,'fs-4' : category == 'B'}"
+                  @click.prevent="category = 'B'">- B</a>
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == 'C' ,'fs-4' : category == 'C'}"
+                  @click.prevent="category = 'C'">- C</a>
+            </div>
+            <hr>
+            <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
+              <div class="fw-bold list-group flex-row flex-lg-column ">
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == '馬鞍' ,'fs-4' : category == '馬鞍'}"
+                  @click.prevent="category = '馬鞍'">- 馬鞍</a>
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == '馬蹄鐵' ,'fs-4' : category == '馬蹄鐵'}"
+                  @click.prevent="category = '馬蹄鐵'">- 馬蹄鐵</a>
+                <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
+                  :class="{ 'text-primary' : category == '馬飼料' ,'fs-4' : category == '馬飼料'}"
+                  @click.prevent="category = '馬飼料'">- 馬飼料</a>
+            </div>
+          </div>
+          <div class="col-lg-9">
                   <div class="row g-4">
                     <div class="col-lg-4 col-md-6 col-12"
                         v-for="item in filterProducts" :key="item.id">
                       <div class="card rounded-3 cursorPointer">
 
                           <div class="card-img overflow-hidden position-relative">
-                            <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100  bg-opacity-75" type="button"
-                            @click.prevent="getProduct(item.id)">
+                            <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
+                                    @click.prevent="getProduct(item.id)">
                               詳細資訊
                             </button>
                             <a href="#">
@@ -96,19 +94,19 @@
                       </div>
                     </div>
                   </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-    <Pagination
-    :pages="pagination"
-    @emit-pages="getProducts"></Pagination>
+      </div>
+    <!-- <Pagination
+      :pages="pagination"
+      @emit-pages="getProducts">
+    </Pagination> -->
     <Footer/>
 </template>
 
 <script>
 import UserNavbar from '@/components/UserNavbar.vue'
-import Pagination from '@/components/Pagination.vue'
+// import Pagination from '@/components/Pagination.vue'
 import emitter from '@/methods/emitter'
 import Footer from '@/components/Footer.vue'
 export default {
@@ -129,26 +127,26 @@ export default {
   },
   components: {
     UserNavbar,
-    Footer,
-    Pagination,
+    Footer
+    // Pagination
   },
   inject: ['emitter'],
   methods: {
     getProducts (page = 1) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`
+      // const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`
       this.isLoading = true
       this.$http.get(url).then((res) => {
-        // this.products = res.data.products
+        this.products = res.data.products
         // console.log('products:', res)
         this.isLoading = false
       })
       // 兩種順序不同 先留著之後再改
-      this.$http.get(api).then((res) => {
-        this.products = res.data.products
-        this.pagination = res.data.pagination
-        this.isLoading = false
-      })
+      // this.$http.get(api).then((res) => {
+      //   this.products = res.data.products
+      //   this.pagination = res.data.pagination
+      //   this.isLoading = false
+      // })
     },
     getProduct (id) {
       console.log(id)
@@ -279,18 +277,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.productBanner {
+.productsBanner {
   height: 300px;
   background-image: url(https://i.imgur.com/4vGqi7D.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
-  // @media (max-width:768px) {
-  //   height: 250px;
-  // }
-  // @media (max-width:576px) {
-  //   height: 200px;
-  // }
 }
 .fav-icon {
   width: 50px;
@@ -315,12 +307,12 @@ export default {
     img{
       transform: scale(1.15);
     }
-    box-shadow:0 0 8px rgb(128, 209, 214, .2);
   }
 }
+
 .btn.bg-dark{
-  z-index: 1;
+  z-index: 1; // 往上拉才點的到，不然會點到a標籤
   opacity: 0;
-  transition: .5s;
+  transition: 0.5s;
 }
 </style>

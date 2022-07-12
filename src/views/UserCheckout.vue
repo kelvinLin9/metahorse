@@ -8,7 +8,7 @@
       <Form class="col-md-6" v-slot="{ errors }"
               @submit="createOrder">
         <div class="d-flex justify-content-center">
-          <h1 class="fs-2 text-center fw-bold">購物清單</h1>
+          <h1 class="fs-2 text-center fw-bold">收件人資訊</h1>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label fw-bold fs-5 ">Email</label>

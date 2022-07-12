@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2">MetaHorse</span>
@@ -52,7 +52,7 @@ export default {
         // 對應品項 id 當loadingItem為一個特定品項的時候
         // 我們就會把這個按鈕轉為disabled
         loadingItem: ''
-      },
+      }
     }
   },
   watch: {
@@ -73,7 +73,7 @@ export default {
   mounted () {
     this.routeName = this.$route.path // 點擊後圖標變色
     console.log('this.$route.path', this.$route.path)
-  },
+  }
 }
 </script>
 

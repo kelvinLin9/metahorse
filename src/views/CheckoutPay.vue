@@ -4,7 +4,9 @@
   <br>
   <Loading :active="isLoading"></Loading>
   <div class="my-5 row justify-content-center">
-    <h2 class="fs-1 text-center fw-bold text-primary">購物明細</h2>
+    <div class="d-flex justify-content-center">
+      <h1 class="fs-2 text-center fw-bold">購物明細</h1>
+    </div>
     <form class="col-md-4" @submit.prevent="payOrder">
       <table class="table align-middle">
         <thead class="table-primary">
@@ -16,14 +18,15 @@
         <tr v-for="item in order.products" :key="item.id">
           <td>{{ item.product.title }}</td>
           <td>{{ item.qty }}</td>
-          <td class="text-end">{{ item.final_total }}</td>
+          <td class="text-end">
+            NT$ {{ $filters.currency(item.final_total) }} 元
+          </td>
         </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="2" class="text-end text-strong">總計 :</td>
-            <td class="text-end text-strong">
-              NT$ {{ order.total }} 元
+            <td colspan="3" class="text-end fs-4">
+              總計 :NT$ {{ $filters.currency(order.total) }} 元
             </td>
           </tr>
         </tfoot>

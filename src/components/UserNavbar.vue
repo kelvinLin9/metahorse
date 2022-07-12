@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2">MetaHorse</span>
@@ -120,7 +120,6 @@
       </div>
     </div>
   </nav>
-
 </template>
 
 <script>
@@ -133,7 +132,7 @@ export default {
       isCollapse: false,
       routeName: '',
       favoriteNum: 0,
-      cartNum: 2,
+      cartNum: 0,
       cart: {},
       status: {
         // 對應品項 id 當loadingItem為一個特定品項的時候
@@ -204,7 +203,7 @@ export default {
     emitter.on('update-favorite', () => {
       this.getFavorite()
     })
-  },
+  }
   // updated () {
   //   this.routeName = this.$route.name // 點擊後圖標變色
   //   console.log(98, this.routeName)

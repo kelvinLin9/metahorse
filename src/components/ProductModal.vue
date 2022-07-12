@@ -149,14 +149,15 @@
                 ></textarea>
               </div>
               <div class="mb-3">
-                <label for="content" class="form-label">說明內容</label>
-                <textarea
-                  type="text"
-                  class="form-control"
-                  id="content"
-                  v-model="tempProduct.content"
-                  placeholder="請輸入產品說明內容"
-                ></textarea>
+                <p>賽馬素質</p>
+                <label for="speed">速度</label>
+                <input id="speed" type="number" min="1" max="5" v-model="tempProduct.speed">
+                <label for="stamina">耐力</label>
+                <input id="stamina" type="number" min="1" max="5" v-model="tempProduct.stamina">
+                <label for="lucky">幸運</label>
+                <input id="lucky" type="number" min="1" max="5" v-model="tempProduct.lucky">
+                <label for="intelligence">智慧</label>
+                <input id="intelligence" type="number" min="1" max="5" v-model="tempProduct.intelligence">
               </div>
               <div class="mb-3">
                 <div class="form-check">
@@ -177,8 +178,6 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>

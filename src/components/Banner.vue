@@ -1,5 +1,5 @@
 <template>
-<div class="my-5">
+<div class="mb-5">
   <swiper
     :spaceBetween="30"
     :centeredSlides="true"
