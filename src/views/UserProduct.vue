@@ -30,8 +30,8 @@
         <hr>
         <h5>商品說明：</h5>
         <hr>
-        <div class="w-50">
-
+        <div class="w-50"
+            v-if="product.speed">
           <h5>遊戲中素質：</h5>
           <span>速度<i class="bi bi-lightning-fill mx-1"></i></span>
           <div class="progress mb-3">
@@ -41,7 +41,7 @@
           </div>
           <span>耐力<i class="bi bi-clock-fill mx-1"></i></span>
           <div class="progress mb-3">
-            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.stamina*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">   
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.stamina*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
               {{product.stamina}}
             </div>
           </div>
@@ -55,8 +55,8 @@
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.intelligence*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
               {{product.intelligence}}
+            </div>
           </div>
-        </div>
         </div>
 
         <div>{{ product.content }}</div>
