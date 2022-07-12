@@ -22,3 +22,8 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+UserHome0722 
+修改賽馬素質呈現方式
+改將數值放入後台
+改用進度條方法試試

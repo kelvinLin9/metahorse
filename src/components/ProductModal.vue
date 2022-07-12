@@ -148,6 +148,16 @@
                   placeholder="請輸入產品描述"
                 ></textarea>
               </div>
+                            <div class="mb-3">
+                <label for="content" class="form-label">產品說明</label>
+                <textarea
+                  type="text"
+                  class="form-control"
+                  id="content"
+                  v-model="tempProduct.content"
+                  placeholder="請輸入產品描述"
+                ></textarea>
+              </div>
               <div class="mb-3">
                 <p>賽馬素質</p>
                 <label for="speed">速度</label>
@@ -181,7 +191,7 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button
+          <button 
             type="button"
             class="btn btn-primary"
             @click="$emit('update-product', tempProduct)"
@@ -200,11 +210,11 @@ export default {
   props: {
     product: {
       type: Object,
-      // 預設回傳空物件
+      // 如果外層沒有正確傳遞，預設回傳空物件
       default () { return {} }
     }
   },
-  // 監聽product內容有沒有變動，每次外層更新資料經過props傳進來，就會觸發watch，再傳到data()因為單向數據流
+  // 監聽product內容有沒有變動，每次外層更新資料經過props傳進來，就會觸發watch，再傳到data()因為單向數據流，不能直接修改外層資料
   watch: {
     product () {
       this.tempProduct = this.product

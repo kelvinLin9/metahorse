@@ -102,6 +102,8 @@ export default {
         }
       })
     },
+    // 新增(isNew)，tempProduct清空
+    // 編輯(!isNew)，tempProduct = item
     openModal (isNew, item) {
       if (isNew) {
         this.tempProduct = {}

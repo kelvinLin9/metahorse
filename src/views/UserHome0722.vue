@@ -38,7 +38,7 @@
         <div class="col">
           <div class="row row-cols-4 row-cols-lg-1">
               <div class="col d-flex justify-content-center justify-content-lg-end"
-                  v-for="item in products" :key="item">
+                  v-for="item in productsY" :key="item">
                   <div class="card border-0 my-2">
                   <a href="#" @click.prevent="temp = item">
                     <img :src="item.imageUrl" alt=""
@@ -70,7 +70,7 @@
                 遊戲中數值
               </h3>
               <h4 class="fw-bold text-center text-lg-start lh-lg">
-                Level：{{temp.level}}
+                Level：{{temp.category}}
               </h4>
             </div>
             <ul class="col">
@@ -201,13 +201,39 @@ export default {
         stamina: 5,
         lucky: 5,
         intelligence: 5
-      }
+      },
+      productsX:[],
+      productsY:[],
+      productsZ:[]
     }
   },
   methods: {
+    getProducts () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
+      this.$http.get(url).then((res) => {
+        // 我全都要 
+        this.productsX = res.data.products
+
+        // 手動挑出想展示的商品
+        this.productsY.push(res.data.products[11])
+        this.productsY.push(res.data.products[10])
+        this.productsY.push(res.data.products[8])
+        this.productsY.push(res.data.products[5])
+
+        // 重複的商品只挑一個
+        const set = new Set();
+        const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false);
+        console.log(1,productsZ); 
+        this.isLoading = false
+      })
+    },
     goProducts () {
       this.$router.push('/user/products')
     }
+  },
+  created () {
+    this.getProducts()
   }
 }
 </script>
