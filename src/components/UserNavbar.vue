@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand test" href="#">
+      <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2 text-center">MetaHorse</span>
         <img src="https://i.imgur.com/61qkafr.jpg" alt="" width="50" class="logo">
       </a>
@@ -231,12 +231,23 @@ export default {
   right: 1px;
   top: 60px;
 }
+
 @media (max-width: 768px) {
   .nav{
     z-index: 1;
   }
   .cart-box{
     min-width: 340px;
+  }
+  .logo {
+   position: absolute;
+   left: 150px;
+  }
+}
+@media (max-width: 576px) {
+  .logo {
+   position: absolute;
+   left: 140px;
   }
 }
 </style>

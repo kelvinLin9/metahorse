@@ -10,11 +10,11 @@
   <table class="table mt-4">
     <thead>
       <tr>
-        <th width="30">分類</th>
+        <th width="100">分類</th>
         <th width="50">產品名稱</th>
         <th width="50">圖片</th>
         <th width="80">產品描述</th>
-        <th width="80">說明</th>
+        <th width="150">說明</th>
         <th width="120">原價</th>
         <th width="120">售價</th>
         <th width="100">是否啟用</th>

@@ -281,6 +281,9 @@ export default {
   background-size: cover;
   background-position:center ;
 }
+.bg-attachment{
+  background-attachment: fixed;
+}
 .fav-icon {
   width: 50px;
   height: 50px;

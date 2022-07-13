@@ -1,5 +1,5 @@
 <template>
-
+  <Loading :active="isLoading"></Loading>
   <UserNavbar/>
   <Banner/>
 
@@ -52,7 +52,7 @@
         <div class="col mb-5 mt-3 d-flex justify-content-between flex-column ">
           <div class="border-0 mb-5 d-flex justify-content-center">
             <img :src="temp.imageUrl" alt=""
-            class="upper-shot rounded-circle img-thumbnail bg-primary">
+            class="round-icon rounded-circle img-thumbnail bg-primary">
           </div>
           <div class="d-flex justify-content-center">
             <button type="submit"
@@ -249,7 +249,7 @@ export default {
   top:10px;
   left: 165px;
 }
-.upper-shot{
+.round-icon{
   width:350px;
   height:350px;
   /* position:absolute; */
