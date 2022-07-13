@@ -1,5 +1,5 @@
 <template>
-  <div class="gotop d-none">
+  <div class="goTop d-none">
     <a href="#" @click.prevent="top">
       <i class="bi bi-arrow-up-square-fill"></i>
     </a>
@@ -18,14 +18,14 @@ export default {
     window.onscroll = function (event) {
       // console.log(event.target.scrollingElement.scrollTop)
       if (event.target.scrollingElement.scrollTop > 350) {
-        const el = document.querySelector('.gotop')
+        const el = document.querySelector('.goTop')
         if (el !== null) {
-          el.className = 'gotop d-block'
+          el.className = 'goTop d-block'
         }
       } else {
-        const el = document.querySelector('.gotop')
+        const el = document.querySelector('.goTop')
         if (el !== null) {
-          el.className = 'gotop d-none'
+          el.className = 'goTop d-none'
         }
       }
     }
@@ -34,22 +34,22 @@ export default {
 </script>
 
 <style scoped>
-.gotop{
+.goTop{
   position: fixed;
   right: 20px;
   bottom: 10px;
   z-index: 99;
 }
-.gotop a {
+.goTop a {
   color: #000;
   font-size: 40px;
 }
 @media (max-width: 768px) {
-  .gotop{
+  .goTop{
     right: 10px;
     bottom: 5px;
   }
-  .gotop a{
+  .goTop a{
     font-size: 35px;
   }
 }

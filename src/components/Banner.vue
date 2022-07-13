@@ -17,7 +17,7 @@
     <swiper-slide>
       <div class="header-bg d-flex justify-content-center"
       style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
-      <h1 class="fw-bold align-self-center header-text f-kalam">
+      <h1 class="fw-bold align-self-center header-text f-kalam slogan">
         DIGITAL
         <br class="d-md-none">
         EQUATES
@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .f-kalam {
   font-family: 'Kalam', cursive;
 }
@@ -85,4 +85,10 @@ export default {
     font-size: 70px;
   }
 
+.slogan{
+      width: 18em;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 2s steps(18), Wcaret 2s steps(1);
+    }
 </style>

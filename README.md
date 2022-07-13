@@ -28,6 +28,7 @@ UserHome0712.vue
 改將數值放入後台
 改用進度條方法試試(在單一商品試了)
 background-attachment: fixed;
+css動畫效果
 
 AdminNavbar1.vue
 配合用戶端使用一樣的Navbar

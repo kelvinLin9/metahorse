@@ -238,30 +238,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 /* 載入字體 */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
-
-.logo{
-  width:50px;
-  /* height:50px; */
-  position:absolute;
-  top:10px;
-  left: 165px;
+.f-kalam {
+  font-family: 'Kalam', cursive;
+}
+.test {
+  outline: 3px solid red;
 }
 .round-icon{
   width:350px;
   height:350px;
   /* position:absolute; */
-  /* top:-0px; */
+  /* top:0px; */
   /* left: 10px; */
-}
-.test {
-  outline: 3px solid red;
-}
-
-.f-kalam {
-  font-family: 'Kalam', cursive;
 }
 
 </style>
