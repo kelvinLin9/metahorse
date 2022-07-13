@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <span class="text-warning f-kalam fs-2">MetaHorse</span>
+      <a class="navbar-brand test" href="#">
+        <span class="text-warning f-kalam fs-2 text-center">MetaHorse</span>
         <img src="https://i.imgur.com/61qkafr.jpg" alt="" width="50" class="logo">
       </a>
       <!-- 漢堡選單按鈕 -->
@@ -39,7 +39,7 @@
             :class="{ 'text-warning':  routeName === 'favorite' }">我的最愛</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/user/cart" class="nav-link fs-5"
+            <router-link to="/login" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === '/login' }">使用者介面</router-link>
           </li>
         </ul>
@@ -232,6 +232,9 @@ export default {
   top: 60px;
 }
 @media (max-width: 768px) {
+  .nav{
+    z-index: 1;
+  }
   .cart-box{
     min-width: 340px;
   }

@@ -221,7 +221,7 @@ export default {
         this.productsY.push(res.data.products[5])
         this.temp = this.productsY[0]
 
-        // 重複的商品只挑一個
+        // 重複的商品只挑一個 還沒解決會挑到道具的問題
         const set = new Set()
         const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false)
         console.log(1, productsZ)
