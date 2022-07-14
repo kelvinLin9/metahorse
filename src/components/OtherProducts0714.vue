@@ -13,8 +13,6 @@
         "576": {
           "slidesPerView": 2,
           "spaceBetween": "30",
-          "loop":"true",
-          "pagination":"pagination"
         },
         "768": {
           "slidesPerView": 3,
@@ -23,14 +21,6 @@
         "992": {
           "slidesPerView": 4,
           "spaceBetween": "30",
-          "loop":"true",
-          "pagination":"pagination"
-        },
-          "993": {
-          "slidesPerView": 4,
-          "spaceBetween": "30",
-          "loop":"true",
-          "pagination":"pagination"
         },
       }'
     >
