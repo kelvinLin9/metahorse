@@ -3,6 +3,13 @@ import { createApp } from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+
+import "@/methods/fontawsome";
+
+
+
+
+
 import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -17,6 +24,17 @@ import App from './App.vue'
 import router from './router'
 import { currency, date } from './methods/filters'
 import $httpMessageState from './methods/pushMessageState'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' // 自己出現的?
+
+
+
+
+
+
+
+
+
+
 
 const app = createApp(App)
 app.config.globalProperties.$filters = {
@@ -44,4 +62,7 @@ app.component('Loading', Loading)
 app.component('Form', Form)
 app.component('Field', Field)
 app.component('ErrorMessage', ErrorMessage)
+
+// fontawesome
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount('#app')

@@ -2,6 +2,13 @@
   <Loading :active="isLoading"></Loading>
   <UserNavbar/>
   <Banner/>
+<font-awesome-icon icon="fa-solid fa-user-secret" size="lg"/>
+<font-awesome-icon icon="fa-solid fa-coffee" rotation="90" />
+<font-awesome-icon icon="fa-brands fa-twitter" />
+<font-awesome-icon icon="fa-brands fa-twitch" />
+<font-awesome-icon icon="fa-brands fa-twitch"  />
+<font-awesome-icon icon="fa-brands fa-twitter" />
+
 
   <section class="my-5">
     <div class="container">
