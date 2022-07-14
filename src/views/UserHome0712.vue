@@ -8,7 +8,6 @@
 <font-awesome-icon icon="fa-brands fa-twitch"  />
 <font-awesome-icon icon="fa-brands fa-twitter" />
 
-
   <section class="my-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
@@ -149,8 +148,8 @@
 <script>
 // @ is an alias to /src
 import UserNavbar from '../components/UserNavbar.vue'
-import Banner from '@/components/Banner.vue'
-import OtherProducts from '@/components/OtherProducts.vue'
+import Banner from '@/components/UserHomeBanner.vue'
+import OtherProducts from '@/components/OtherProducts0714.vue'
 import Footer from '@/components/Footer.vue'
 import GoTop from '@/components/GoTop.vue'
 // import UserCoupon from '@/components/UserCoupon.vue'
@@ -220,10 +219,10 @@ export default {
   /* top:0px; */
   /* left: 10px; */
 }
-.slogan{
-      width: 18em;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 2s steps(18), Wcaret 2s steps(1);
-    }
+// .slogan{
+//       width: 18em;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       animation: typing 2s steps(18), Wcaret 2s steps(1);
+//     }
 </style>

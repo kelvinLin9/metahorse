@@ -33,3 +33,6 @@ css動畫效果
 AdminNavbar1.vue
 配合用戶端使用一樣的Navbar
 
+OtherProducts0714.vue
+練習更多swiper寫法
+

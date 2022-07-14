@@ -3,15 +3,36 @@
   <h3 class="text-center mt-5 mb-3 fs-1 fw-bolder">熱銷商品</h3>
   <div class="row g-4 pb-5">
     <swiper
-      :loop="true"
-      :slidesPerView="3"
-      :spaceBetween="30"
-      :freeMode="true"
-      :pagination="{
-        clickable: true,
-      }"
-      :modules="modules"
       class="mySwiper"
+      :loop="true"
+      :slidesPerView="1"
+      :freeMode="true"
+      :pagination="pagination"
+      :modules="modules"
+      :breakpoints='{
+        "576": {
+          "slidesPerView": 2,
+          "spaceBetween": "30",
+          "loop":"true",
+          "pagination":"pagination"
+        },
+        "768": {
+          "slidesPerView": 3,
+          "spaceBetween": "30"
+        },
+        "992": {
+          "slidesPerView": 4,
+          "spaceBetween": "30",
+          "loop":"true",
+          "pagination":"pagination"
+        },
+          "993": {
+          "slidesPerView": 4,
+          "spaceBetween": "30",
+          "loop":"true",
+          "pagination":"pagination"
+        },
+      }'
     >
       <swiper-slide
       class="col-md-6 col-lg-4 col-xl-3"
@@ -63,6 +84,7 @@ import 'swiper/css'
 
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
+
 
 // import './style.css'
 
