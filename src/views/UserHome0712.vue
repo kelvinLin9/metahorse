@@ -166,48 +166,8 @@ export default {
   },
   data () {
     return {
-      products: [
-        {
-          level: 'S',
-          imageUrl: 'https://imgur.com/kdTurd4.jpg',
-          speed: 5,
-          stamina: 5,
-          lucky: 5,
-          intelligence: 5
-        },
-        {
-          level: 'A',
-          imageUrl: 'https://imgur.com/Bj7I9T4.jpg',
-          speed: 4,
-          stamina: 4,
-          lucky: 3,
-          intelligence: 5
-        },
-        {
-          level: 'B',
-          imageUrl: 'https://imgur.com/BextSIV.jpg',
-          speed: 3,
-          stamina: 3,
-          lucky: 1,
-          intelligence: 3
-        },
-        {
-          level: 'C',
-          imageUrl: 'https://imgur.com/5PsDE2E.jpg',
-          speed: 2,
-          stamina: 1,
-          lucky: 2,
-          intelligence: 1
-        }
-      ],
-      temp: {
-        level: 'S',
-        imageUrl: 'https://imgur.com/kdTurd4.jpg',
-        speed: 5,
-        stamina: 5,
-        lucky: 5,
-        intelligence: 5
-      },
+      products: [],
+      temp: {}, // 暫存點擊到的賽馬資訊
       productsX: [], // 放後端全部資料
       productsY: [], // 手動選的資料
       productsZ: [] // 試著用函式寫看看
@@ -228,7 +188,7 @@ export default {
         this.productsY.push(res.data.products[5])
         this.temp = this.productsY[0]
 
-        // 重複的商品只挑一個 還沒解決會挑到道具的問題
+        // 重複的商品只挑一個 還沒解決會挑到道具的問題 用兩次filter看看
         const set = new Set()
         const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false)
         console.log(1, productsZ)
