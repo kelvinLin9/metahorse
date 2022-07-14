@@ -5,7 +5,9 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item fs-5">
-          <router-link to="/user/products">產品列表</router-link>
+          <router-link to="/user/products" class="fw-bold bg-dark">
+            產品列表
+          </router-link>
         </li>
         <li class="breadcrumb-item active fs-5" aria-current="page">
           {{ product.title }}
@@ -65,7 +67,12 @@
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>
         <hr>
         <button type="button" class="btn btn-outline-primary text-dark fw-bold fs-5"
-                @click="addToCart(product.id)">
+                :disabled="this.status.loadingItem === product.id"
+                @click="addCart(product.id)">
+          <div v-if="this.status.loadingItem === product.id"
+                class="spinner-grow text-danger spinner-grow-sm" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
           加到購物車
         </button>
       </div>
@@ -122,33 +129,41 @@ export default {
       product: {},
       favorite: [],
       favoriteIds: [],
-      id: ''
+      id: '',
+      isLoading: false,
+      status: {
+        loadingItem: ''
+      }
     }
   },
   methods: {
     getProduct () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
       this.isLoading = true
-      this.$http.get(api).then((response) => {
-        console.log(response.data)
+      this.$http.get(api).then((res) => {
+        console.log(res.data)
         this.isLoading = false
-        if (response.data.success) {
-          this.product = response.data.product
+        if (res.data.success) {
+          this.product = res.data.product
         }
       })
     },
-    addToCart (id, qty = 1) {
+    addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
+      this.status.loadingItem = id
       const cart = {
         product_id: id,
-        qty
+        qty: 1
       }
-      this.isLoading = true
-      this.$http.post(url, { data: cart }).then((response) => {
-        this.isLoading = false
-        this.$httpMessageState(response, '加入購物車')
-        emitter.emit('update-cart')
-      })
+      this.$http.post(url, { data: cart })
+        .then((res) => {
+          // 等到ajax成功之後，再把id清空
+          this.status.loadingItem = ''
+          console.log(res)
+          // this.getCart() // 重新取得購物車資料(單一頁面不需要)
+          this.$httpMessageState(res, '加入購物車')
+          emitter.emit('update-cart')// 通知Navbar元件也執行getCart()
+        })
     },
     getFavorite () {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []

@@ -78,7 +78,9 @@ export default {
 </script>
 
 <style scoped>
-
+.f-kalam {
+  font-family: 'Kalam', cursive;
+}
 .num{
   width:20px;
   top: 5px;
@@ -97,9 +99,27 @@ export default {
   right: 1px;
   top: 60px;
 }
+.logo {
+  position: absolute;
+  left: 165px;
+  top: 10px;
+}
 @media (max-width: 768px) {
+  .nav{
+    z-index: 1;
+  }
   .cart-box{
     min-width: 340px;
+  }
+  .logo {
+   position: absolute;
+   left: 145px;
+  }
+}
+@media (max-width: 576px) {
+  .logo {
+   position: absolute;
+   left: 140px;
   }
 }
 </style>

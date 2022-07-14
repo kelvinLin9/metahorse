@@ -121,14 +121,21 @@ export default {
   },
   inject: ['emitter'],
   methods: {
-    getProducts (page = 1) {
+    getProducts () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+      // const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/?page=${page}`
       this.isLoading = true
       this.$http.get(url).then((res) => {
         this.products = res.data.products
-        console.log('products:', res)
+        // console.log('products:', res)
         this.isLoading = false
       })
+      // 兩種順序不同 先留著之後再改
+      // this.$http.get(api).then((res) => {
+      //   this.products = res.data.products
+      //   this.pagination = res.data.pagination
+      //   this.isLoading = false
+      // })
     },
     pagination (nowPage) { // 製作分頁(分頁元件會回傳點擊到的頁面  )
       this.page.currentPage = nowPage

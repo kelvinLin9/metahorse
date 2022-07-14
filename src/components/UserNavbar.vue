@@ -129,9 +129,11 @@ import 'bootstrap/js/dist/collapse'
 export default {
   data () {
     return {
+      // isCollapse: false, // 用不到
+      routeName: '',
       favoriteNum: 0,
       cartNum: 0,
-      cart: {}, // 
+      cart: {},
       status: {
         // 對應品項 id 當loadingItem為一個特定品項的時候
         // 我們就會把這個按鈕轉為disabled
@@ -185,6 +187,9 @@ export default {
     this.getFavorite()
   },
   mounted () {
+    this.routeName = this.$route.name // 點擊後圖標變色
+    // console.log('this.routeName', this.routeName)
+    // console.log('this.status', this.status)
     // 接收資料
     emitter.on('update-cart', () => {
       this.getCart()
@@ -193,15 +198,13 @@ export default {
       this.getFavorite()
     })
   }
-  // updated () {
-  //   this.routeName = this.$route.name // 點擊後圖標變色
-  //   console.log(98, this.routeName)
-  // }
 }
 </script>
 
 <style scoped>
-
+.f-kalam {
+  font-family: 'Kalam', cursive;
+}
 .num{
   width:20px;
   top: 5px;
@@ -222,7 +225,7 @@ export default {
 }
 .logo {
   position: absolute;
-  left: 180px;
+  left: 165px;
   top: 10px;
 }
 @media (max-width: 768px) {
@@ -234,7 +237,7 @@ export default {
   }
   .logo {
    position: absolute;
-   left: 150px;
+   left: 145px;
   }
 }
 @media (max-width: 576px) {

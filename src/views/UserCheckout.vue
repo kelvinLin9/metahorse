@@ -1,8 +1,9 @@
 <template>
+  <Loading :active="isLoading"></Loading>
   <div class="container">
     <div class="my-5 row justify-content-center">
       <Form class="col-md-6" v-slot="{ errors }"
-              @submit="createOrder">
+              @submit="goPay">
         <div class="d-flex justify-content-center">
           <h1 class="fs-2 text-center fw-bold">收件人資訊</h1>
         </div>
@@ -134,7 +135,7 @@ export default {
         }
       })
     },
-    createOrder () {
+    goPay () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const order = this.form
       this.$http.post(url, { data: order })
