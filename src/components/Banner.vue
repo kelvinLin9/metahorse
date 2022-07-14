@@ -85,10 +85,4 @@ export default {
     font-size: 70px;
   }
 
-.slogan{
-      width: 18em;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 2s steps(18), Wcaret 2s steps(1);
-    }
 </style>
