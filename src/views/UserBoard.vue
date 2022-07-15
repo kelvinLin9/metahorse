@@ -1,5 +1,5 @@
 <template>
-  <UserNavbar :key="$route.path"/>
+  <UserNavbar/>
   <div class="position-relative">
     <ToastMessages></ToastMessages>
     <router-view/>
