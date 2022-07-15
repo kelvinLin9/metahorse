@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .goTop{
   position: fixed;
   right: 20px;

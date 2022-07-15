@@ -7,7 +7,7 @@
 <font-awesome-icon icon="fa-brands fa-twitch" />
 <font-awesome-icon icon="fa-brands fa-twitch"  />
 <font-awesome-icon icon="fa-brands fa-twitter" />
-
+<font-awesome-icon icon="fa-solid fa-basket-shopping" />
   <section class="my-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">

@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .f-kalam {
   font-family: 'Kalam', cursive;
 }

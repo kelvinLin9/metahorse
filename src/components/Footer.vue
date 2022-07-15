@@ -41,7 +41,7 @@
   </footer>
 </template>
 
-<style scope>
+<style lang="scss" scoped>
 .footer {
   position: sticky;
   top: 100%;

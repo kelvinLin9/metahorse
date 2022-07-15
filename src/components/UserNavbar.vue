@@ -92,10 +92,12 @@
               <button type="button" class="btn btn-dark btn-hover rounded-0"
               @click="goCart"
               v-if="cartNum > 0">
+                <font-awesome-icon icon="fa-solid fa-cash-register" />
                 <i class="fas fa-shopping-cart"></i> 結帳去
               </button>
               <button type="button" class="btn btn-dark btn-hover rounded-0" @click="goProducts" v-else>
-                <i class="fas fa-shopping-basket"></i> 選購去
+                
+                <font-awesome-icon icon="fa-solid fa-basket-shopping" /> 選購去
               </button>
             </div>
           </div>
@@ -201,7 +203,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .f-kalam {
   font-family: 'Kalam', cursive;
 }
