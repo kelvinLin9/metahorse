@@ -56,7 +56,7 @@
                 </button>
                   <!-- <a href="#"> -->
                 <img class="rounded-3 img-fit"
-                         :src="item.imageUrl" alt="">
+                      :src="item.imageUrl" alt="">
                   <!-- </a> -->
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
                       :class="{'favorite': isFavorite(item.id)}"
@@ -183,7 +183,7 @@ export default {
       console.log('2.點到的是第幾筆資料', this.favorite.indexOf(item))
       const id = item.id
       console.log('3.點擊到的id', id)
-      const hasFavorite = this.favorite.some((item) => item.id === id) //v-on 所以只判斷點擊的那一次
+      const hasFavorite = this.favorite.some((item) => item.id === id) // v-on 所以只判斷點擊的那一次
       console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
       if (!hasFavorite) {
         this.favorite.push(item)
@@ -193,7 +193,7 @@ export default {
           return item.id === id
         })
         console.log('5.(刪除時)點到的是第幾筆資料', this.favorite.indexOf(item))
-        this.favorite.splice(this.favorite.indexOf(delItem), 1)  // 直接放item會刪最後一個?
+        this.favorite.splice(this.favorite.indexOf(delItem), 1) // 直接放item會刪最後一個?
         localStorage.setItem('favorite', JSON.stringify(this.favorite))
       }
       this.getFavorite()
@@ -281,6 +281,10 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
+  .bg-dark{
+  z-index: 1;
+  opacity: 1;
+  }
 }
 .bg-attachment{
   background-attachment: fixed;
@@ -296,7 +300,7 @@ export default {
 .img-fit{
   width: 100%;
   object-fit: cover;
-  transition: .5s;
+  transition: 0.5s;
 }
 // 圖片放大
 .cursorPointer{
@@ -311,7 +315,7 @@ export default {
   }
 }
 
-.btn.bg-dark{
+.bg-dark{
   z-index: 1; // 往上拉才點的到，不然會點到a標籤
   opacity: 0;
   transition: 0.5s;

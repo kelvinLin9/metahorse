@@ -238,7 +238,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cartBanner {
   height: 300px;
   background-image: url(https://i.imgur.com/6ix9eOm.jpg);

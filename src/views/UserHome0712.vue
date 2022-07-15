@@ -149,7 +149,7 @@
 // @ is an alias to /src
 import UserNavbar from '../components/UserNavbar.vue'
 import Banner from '@/components/UserHomeBanner.vue'
-import OtherProducts from '@/components/OtherProducts0714.vue'
+import OtherProducts from '@/components/OtherProducts.vue'
 import Footer from '@/components/Footer.vue'
 import GoTop from '@/components/GoTop.vue'
 // import UserCoupon from '@/components/UserCoupon.vue'

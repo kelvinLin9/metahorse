@@ -1,7 +1,7 @@
 <template>
   <div class="bg-light">
     <div class="container-fluid"
-    v-if="favorite.length === 0">
+        v-if="favorite.length === 0">
       <div class="d-flex flex-column justify-content-center align-items-center">
         <h1 class="fs-2 text-center fw-bold mb-5">目前沒有收藏任何商品</h1>
         <RouterLink to="products" type="button" class="btn btn-outline-primary text-dark fw-bold fs-5">回產品列表</RouterLink>
@@ -13,21 +13,28 @@
         <div class="d-flex justify-content-center">
           <h1 class="fs-2 text-center fw-bold">我的最愛</h1>
         </div>
+
         <div class="col-md-6 col-lg-4 mb-3"
-            v-for="item in favorite" :key="item.id"
-            @click.prevent="getProduct(item.id)">
+            v-for="item in favorite" :key="item.id">
           <div class="bg-white border cursorPointer">
             <div class="overflow-hidden position-relative">
-              <button class="btn fs-4 position-absolute text-white w-100 h-100 bg-dark bg-opacity-75" type="button">查看更多</button>
-              <img class="img-fit" :src="item.imageUrl">
+              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
+              @click.prevent="getProduct(item.id)">
+                查看更多
+              </button>
+              <img class="rounded-3 img-fit"
+                  :src="item.imageUrl" alt="">
             </div>
 
-          <div class="d-flex flex-column text-center pt-4 px-4 fw-bold">
-            <span class="fs-5 mb-1">{{ item.title }}</span>
-            <span class="fs-5">NT ${{ item.price }}
-              <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
-            </span>
-        </div>
+            <div class="d-flex flex-column text-center pt-4 px-4 fw-bold">
+              <span class="fs-5 mb-1">
+                {{ item.title }}
+                <span class="fs-6 text-muted">（{{ item.category }}）</span>
+              </span>
+                <span class="fs-5">NT ${{ item.price }}
+                <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
+              </span>
+            </div>
 
             <div class="d-flex p-4">
               <button type="button" class="btn btn-outline-secondary fw-bold w-50 me-2"
@@ -135,7 +142,11 @@ export default {
     img{
       transform: scale(1.15);
     }
-    box-shadow:0 0 8px rgb(128, 209, 214, .2);
   }
+}
+.bg-dark{
+  z-index: 1; // 往上拉才點的到，不然會點到a標籤
+  opacity: 0;
+  transition: 0.5s;
 }
 </style>

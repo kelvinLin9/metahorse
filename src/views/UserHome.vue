@@ -163,7 +163,6 @@ export default {
         {
           level: 'S',
           imageUrl: 'https://imgur.com/kdTurd4.jpg',
-          // imageUrl: 'https://i.imgur.com/lx57Zsk.jpg',
           speed: 5,
           stamina: 5,
           lucky: 5,
@@ -210,9 +209,9 @@ export default {
     }
   }
 }
-</script>
+</script >
 
-<style>
+<style lang="scss" scoped>
 /* 載入字體 */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 

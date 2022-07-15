@@ -214,7 +214,7 @@ export default {
     this.getFavorite()
   }
 }
-</script>
+</script >
 <style lang="scss" scoped>
 .productBanner {
   height: 300px;
