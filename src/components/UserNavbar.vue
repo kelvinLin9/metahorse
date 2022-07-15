@@ -47,7 +47,7 @@
         <!-- 購物車、最愛、使用者介面改成靠右圖示 -->
         <ul class="d-none d-lg-flex navbar-nav ms-auto me-2">
           <li class="nav-item position-relative">
-            <RouterLink to="" class="nav-link px-3"
+            <router-link to="" class="nav-link px-3"
             :class="{ 'text-warning':  routeName === 'cart' }"
             @click.prevent="cartBoxToggle">
               <i class="bi bi-cart3 fs-4 cart" data-bs-toggle="tooltip" data-bs-placement="top" title="購物車"></i>
@@ -55,10 +55,10 @@
                     v-if="cartNum !== 0">
                 {{ cartNum }}
               </div>
-            </RouterLink>
+            </router-link>
           </li>
           <!-- 購物車小視窗 -->
-          <div class="dropdown-menu dropdown-menu-end cart-box p-3"
+          <div class="dropdown-menu cart-box p-3"
               :class="{ 'show': cartBoxState }">
             <h5 class="fw-bold" v-if="cartNum>0">已選購商品</h5>
             <div class="table-responsive-md">
