@@ -76,23 +76,12 @@ export default {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
     },
     removeFavorite (item) {
+      console.log('我的最愛列表', this.favorite)
+      console.log('點到的是第幾筆資料', this.favorite.indexOf(item))
       this.favorite.splice(this.favorite.indexOf(item), 1)
       localStorage.setItem('favorite', JSON.stringify(this.favorite))
       this.getFavorite()
       emitter.emit('update-favorite') // 傳送到UserNavbar
-    },
-    addToCart (id, qty = 1) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      const cart = {
-        product_id: id,
-        qty
-      }
-      this.isLoading = true
-      this.$http.post(url, { data: cart }).then((response) => {
-        this.isLoading = false
-        emitter.emit('update-cart') // 傳到navbar同步更新
-        // this.$router.push('/user/cart')
-      })
     },
     addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -126,7 +115,7 @@ export default {
     }
   },
   created () {
-    this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
+    this.getFavorite()
   }
 }
 </script>

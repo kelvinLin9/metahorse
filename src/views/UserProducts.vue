@@ -169,18 +169,22 @@ export default {
       this.favorite.forEach((item) => {
         this.favoriteIds.push(item.id)
       })
-      console.log('this.favoriteIds', this.favoriteIds)
+      // console.log('this.favoriteIds', this.favoriteIds)
     },
     // viewProduct (id) {
     //   this.$router.push(`/product/${id}`)
     // },
     isFavorite (id) {
-      console.log(this.favoriteIds.some((item) => item === id))
+      // console.log(this.favoriteIds.some((item) => item === id)) // v-bind 所以配合v-for執行n次
       return this.favoriteIds.some((item) => item === id)
     },
     toggleFavorite (item) {
+      console.log('1.我的最愛列表', this.favorite)
+      console.log('2.點到的是第幾筆資料', this.favorite.indexOf(item))
       const id = item.id
-      const hasFavorite = this.favorite.some((item) => item.id === id)
+      console.log('3.點擊到的id', id)
+      const hasFavorite = this.favorite.some((item) => item.id === id) //v-on 所以只判斷點擊的那一次
+      console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
       if (!hasFavorite) {
         this.favorite.push(item)
         localStorage.setItem('favorite', JSON.stringify(this.favorite))
@@ -188,10 +192,12 @@ export default {
         const delItem = this.favorite.find((item) => {
           return item.id === id
         })
-        this.favorite.splice(this.favorite.indexOf(delItem), 1)
+        console.log('5.(刪除時)點到的是第幾筆資料', this.favorite.indexOf(item))
+        this.favorite.splice(this.favorite.indexOf(delItem), 1)  // 直接放item會刪最後一個?
         localStorage.setItem('favorite', JSON.stringify(this.favorite))
       }
       this.getFavorite()
+      console.log('更新後的我的最愛列表id', this.favoriteIds)
       emitter.emit('update-favorite')
     }
   },
