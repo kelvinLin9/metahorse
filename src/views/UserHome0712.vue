@@ -38,7 +38,7 @@
           <div class="row row-cols-4 row-cols-lg-1">
               <div class="col d-flex justify-content-center justify-content-lg-end"
                   v-for="item in productsY" :key="item">
-                  <div class="card border-0 my-2">
+                  <div class=" border-0 my-2">
                   <a href="#" @click.prevent="temp = item">
                     <img :src="item.imageUrl" alt=""
                     class="shadow rounded img-thumbnail" width="150"
@@ -62,9 +62,9 @@
           </div>
         </div>
         <div class="col">
-          <div class="row d-flex flex-column justify-content-between">
+          <div class="row d-flex flex-column">
             <hr>
-            <div class="col">
+            <div class="col mt-3">
               <h3 class="fw-bold text-center text-lg-start lh-lg">
                 遊戲中數值
               </h3>
@@ -73,63 +73,57 @@
               </h4>
             </div>
             <ul class="col">
-              <li class="d-flex row">
-                <div class="col-4">
-                  <h4>速度 <i class="bi bi-lightning-fill mx-1"></i>：</h4>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in temp.speed" :key="key">
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  速度<i class="bi bi-mortarboard-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.speed" :key="key">
                   <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in (5 - temp.speed)" :key="key">
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.speed)" :key="key">
                   <i class="bi bi-star"></i>
-                </div>
+                </span>
               </li>
-              <li class="d-flex row">
-                <div class="col-4">
-                  <h4>耐力 <i class="bi bi-clock-fill mx-1"></i>：</h4>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in temp.stamina" :key="key">
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  耐力<i class="bi bi-mortarboard-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.stamina" :key="key">
                   <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in (5 - temp.stamina)" :key="key">
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.stamina)" :key="key">
                   <i class="bi bi-star"></i>
-                </div>
+                </span>
               </li>
-              <li class="d-flex row">
-                <div class="col-4">
-                  <h4>幸運 <i class="bi bi-dice-6-fill mx-1"></i>：</h4>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in temp.lucky" :key="key">
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  幸運<i class="bi bi-mortarboard-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.lucky" :key="key">
                   <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in (5 - temp.lucky)" :key="key">
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.lucky)" :key="key">
                   <i class="bi bi-star"></i>
-                </div>
+                </span>
               </li>
-              <li class="d-flex row test">
-                <div class="d-flex">
-                  <h4 class="test d-flex">
-                    智慧        
-                    <span>
-                      <i class="bi bi-mortarboard-fill mx-1"></i>：
-                    </span>
-                  </h4>
-                  <span class="mx-1"
-                        v-for="(item, key) in temp.intelligence" :key="key">
-                    <i class="bi bi-star-fill"></i>
-                  </span>
-                  <span class="mx-1"
-                        v-for="(item, key) in (5 - temp.intelligence)" :key="key">
-                    <i class="bi bi-star"></i>
-                  </span>
-                </div>
-
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  智慧<i class="bi bi-mortarboard-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.intelligence" :key="key">
+                  <i class="bi bi-star-fill"></i>
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.intelligence)" :key="key">
+                  <i class="bi bi-star"></i>
+                </span>
               </li>
             </ul>
           </div>

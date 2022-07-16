@@ -13,7 +13,7 @@
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide v-for="(item) in products" :key="item.id"      
+      <swiper-slide v-for="(item) in productsHot" :key="item.id"
                     @click="viewProduct(item.id)" >
              <div class="card rounded-3 cursorPointer">
               <div class="card-img overflow-hidden position-relative">
@@ -110,7 +110,7 @@ export default {
       this.isLoading = true
       this.$http.get(url).then((res) => {
         this.products = res.data.products
-        this.productsF = res.data.products.splice(12, 5)
+        this.productsHot = res.data.products.splice(12, 5)
         this.isLoading = false
       })
     },
@@ -150,7 +150,7 @@ export default {
     goProducts () {
       this.$router.push('/user/products')
     },
-        getFavorite () {
+    getFavorite () {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
       this.favoriteIds = []
       this.favorite.forEach((item) => {
@@ -188,7 +188,7 @@ export default {
       emitter.emit('update-favorite')
     }
   },
-    computed: {
+  computed: {
     favState () {
       // console.log('123')
       // 閉包傳送參數 https://segmentfault.com/q/1010000009648670

@@ -96,7 +96,7 @@
                 <i class="fas fa-shopping-cart"></i> 結帳去
               </button>
               <button type="button" class="btn btn-dark btn-hover rounded-0" @click="goProducts" v-else>
-                
+
                 <font-awesome-icon icon="fa-solid fa-basket-shopping" /> 選購去
               </button>
             </div>
