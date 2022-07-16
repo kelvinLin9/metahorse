@@ -63,30 +63,30 @@
                       @click.stop="toggleFavorite(item)">
                   <i :class="favState(item.id)"></i>
                 </span>
-                </div>
-                <div class="card-body d-flex flex-column text-center fw-bold">
-                  <span class="fs-4">
+              </div>
+              <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
+                <span class="fs-4">
                     {{ item.title }}
-                    <span class="fs-6 text-muted">（{{ item.category }}）</span>
-                  </span>
-                  <span class="fs-5">
-                    NT ${{ item.price }}
-                    <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
-                  </span>
-                </div>
-                <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
-                <div class="d-flex justify-content-center pb-2 fw-bold">
-                  <button type="button"
-                          class="btn btn-outline-primary text-dark fw-bold fs-5 px-5"
-                          :disabled="this.status.loadingItem === item.id"
-                          @click="addCart(item.id)">
-                    <div v-if="this.status.loadingItem === item.id"
+                  <span class="fs-6 text-muted">（{{ item.category }}）</span>
+                </span>
+                <span class="fs-5">
+                  NT ${{ item.price }}
+                  <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
+                </span>
+                <button type="button"
+                        class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
+                        :disabled="this.status.loadingItem === item.id"
+                        @click="addCart(item.id)">
+                  <div v-if="this.status.loadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
                     加到購物車
-                  </button>
-                </div>
+                </button>
+              </div>
+                <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
+              <div class="d-flex justify-content-center pb-2 fw-bold">
+              </div>
             </div>
           </div>
         </div>
