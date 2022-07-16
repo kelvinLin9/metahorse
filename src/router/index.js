@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: '/user',
-    component: () => import('../views/UserBoard.vue'),
+    component: () => import('../views/UserDashboard.vue'),
     children: [
       {
         path: 'products',

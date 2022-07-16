@@ -37,4 +37,4 @@ OtherProducts0714.vue
 練習更多swiper寫法
 
 OtherProducts0716.vue
-重新寫過卡片
+重新寫過卡片，加上響應式(最終版)

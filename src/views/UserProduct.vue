@@ -38,25 +38,25 @@
           <span>速度<i class="bi bi-lightning-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.speed*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-              {{product.speed}}
+              {{product.speed}} / 5
             </div>
           </div>
           <span>耐力<i class="bi bi-clock-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.stamina*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-              {{product.stamina}}
+              {{product.stamina}} / 5
             </div>
           </div>
           <span>幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.lucky*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-              {{product.lucky}}
+              {{product.lucky}} / 5
             </div>
           </div>
           <span>智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.intelligence*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-              {{product.intelligence}}
+              {{product.intelligence}} / 5
             </div>
           </div>
           <hr>
@@ -159,7 +159,7 @@ export default {
         .then((res) => {
           // 等到ajax成功之後，再把id清空
           this.status.loadingItem = ''
-          console.log(res)
+          console.log('加入購物車的res', res)
           // this.getCart() // 重新取得購物車資料(單一頁面不需要)
           this.$httpMessageState(res, '加入購物車')
           emitter.emit('update-cart')// 通知Navbar元件也執行getCart()

@@ -15,8 +15,8 @@
         </div>
         <div class="col-md-6 col-lg-4 col-12"
             v-for="item in favorite" :key="item.id">
-          <div class="card rounded-3 cursorPointer">
-            <div class="card-img overflow-hidden position-relative">
+          <div class="card rounded-3">
+            <div class="card-img overflow-hidden position-relative cursorPointer">
               <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
               @click.prevent="getProduct(item.id)">
                 查看更多
@@ -35,8 +35,8 @@
                 <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
               </span>
               <div class="px-3 py-2 d-flex justify-content-between">
-                <button type="button" 
-                        class="btn btn-outline-secondary fw-bold fs-5 px-3" 
+                <button type="button"
+                        class="btn btn-outline-secondary fw-bold fs-5 px-3"
                         @click.stop="removeFavorite(item)">
                   移除收藏
                 </button>
@@ -52,7 +52,6 @@
               </button>
               </div>
             </div>
-
 
           </div>
         </div>
@@ -141,7 +140,6 @@ export default {
   transition: .5s;
 }
 .cursorPointer{
-  cursor: pointer;
   &:hover{
     .btn{
       opacity: 1;

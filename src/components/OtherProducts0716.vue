@@ -25,8 +25,8 @@
     >
       <swiper-slide v-for="(item) in products" :key="item.id"
                     @click="viewProduct(item.id)" >
-             <div class="card rounded-3 cursorPointer mb-5 mx-2 mx-sm-0">
-              <div class="card-img overflow-hidden position-relative">
+             <div class="card rounded-3 mb-5 mx-2 mx-sm-0">
+              <div class="card-img overflow-hidden position-relative cursorPointer">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.prevent="getProduct(item.id)">
                   詳細資訊
@@ -239,7 +239,6 @@ export default {
 }
 // 圖片放大
 .cursorPointer{
-  cursor: pointer;
   &:hover{
     .btn{
       opacity: 1;

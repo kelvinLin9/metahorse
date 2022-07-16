@@ -48,8 +48,8 @@
         <div class="row g-4">
           <div class="col-lg-4 col-md-6 col-12"
               v-for="item in filterProducts" :key="item.id">
-            <div class="card rounded-3 cursorPointer">
-              <div class="card-img overflow-hidden position-relative">
+            <div class="card rounded-3">
+              <div class="card-img overflow-hidden position-relative  cursorPointer">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.prevent="getProduct(item.id)">
                   詳細資訊
@@ -305,7 +305,6 @@ export default {
 }
 // 圖片放大
 .cursorPointer{
-  cursor: pointer;
   &:hover{
     .btn{
       opacity: 1;

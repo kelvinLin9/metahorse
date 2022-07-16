@@ -144,6 +144,7 @@ export default {
       cartBoxState: false // 控制購物車小視窗開關
     }
   },
+  inject: ['emitter'],
   methods: {
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
