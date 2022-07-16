@@ -36,3 +36,5 @@ AdminNavbar1.vue
 OtherProducts0714.vue
 練習更多swiper寫法
 
+OtherProducts0716.vue
+重新寫過卡片

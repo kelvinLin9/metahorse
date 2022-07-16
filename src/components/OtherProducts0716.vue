@@ -1,54 +1,21 @@
 <template>
-  <Loading :active="isLoading"></Loading>
-      <!-- 外層放背景，內層放黑底 -->
-  <div class="productsBanner mb-5">
-    <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
-      <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
-        <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>
-        <span class="fs-3 text-primary align-self-end">/ All Products</span>
-      </h1>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3">
-        <h2 class="fw-bold text-center f-kalam bg-primary">賽馬( Level )</h2>
-        <div class="fw-bold list-group flex-row flex-lg-column ">
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'all' ,'fs-4' : category == 'all'}"
-              @click.prevent="category = 'all'">- All</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'S' ,'fs-4' : category == 'S'}"
-              @click.prevent="category = 'S'">- S</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'A' ,'fs-4' : category == 'A'}"
-              @click.prevent="category = 'A'">- A</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'B' ,'fs-4' : category == 'B'}"
-              @click.prevent="category = 'B'">- B</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'C' ,'fs-4' : category == 'C'}"
-              @click.prevent="category = 'C'">- C</a>
-        </div>
-        <hr>
-        <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
-          <div class="fw-bold list-group flex-row flex-lg-column ">
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == '馬鞍' ,'fs-4' : category == '馬鞍'}"
-              @click.prevent="category = '馬鞍'">- 馬鞍</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == '馬蹄鐵' ,'fs-4' : category == '馬蹄鐵'}"
-              @click.prevent="category = '馬蹄鐵'">- 馬蹄鐵</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == '馬飼料' ,'fs-4' : category == '馬飼料'}"
-              @click.prevent="category = '馬飼料'">- 馬飼料</a>
-        </div>
-      </div>
-      <div class="col-lg-9">
-        <div class="row g-4">
-          <div class="col-lg-4 col-md-6 col-12"
-              v-for="item in filterProducts" :key="item.id">
-            <div class="card rounded-3 cursorPointer">
+<div class="container">
+  <h3 class="text-center mt-5 mb-3 fs-1 fw-bolder">熱銷商品</h3>
+  <div class="row g-4 pb-5">
+    <swiper
+      :loop="true"
+      :slidesPerView="3"
+      :spaceBetween="30"
+      :freeMode="true"
+      :pagination="{
+        clickable: true,
+      }"
+      :modules="modules"
+      class="mySwiper"
+    >
+      <swiper-slide v-for="(item) in products" :key="item.id"      
+                    @click="viewProduct(item.id)" >
+             <div class="card rounded-3 cursorPointer">
               <div class="card-img overflow-hidden position-relative">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.prevent="getProduct(item.id)">
@@ -88,50 +55,66 @@
               <div class="d-flex justify-content-center pb-2 fw-bold">
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      </swiper-slide>
+    </swiper>
   </div>
-  <Footer/>
+</div>
+
 </template>
 
 <script>
-// import Pagination from '@/components/Pagination.vue'
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/css'
+
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
+
+// import './style.css'
+
+// import required modules
+import { FreeMode, Pagination } from 'swiper'
 import emitter from '@/methods/emitter'
-import Footer from '@/components/Footer.vue'
 export default {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  setup () {
+    return {
+      modules: [FreeMode, Pagination]
+    }
+  },
   data () {
     return {
       products: [],
-      pagination: {}, // 分頁資訊
+      productsHot: [], // 熱門商品 可以考慮寫在後台
       favorite: [],
       favoriteIds: [],
       category: 'all',
       isLoading: false,
-      // 對應品項 id 當loadingItem為一個特定品項的時候
-      // 我們就會把這個按鈕轉為disabled(配合v-if做提示效果)
       status: {
+        // 對應品項 id 當loadingItem為一個特定品項的時候
+        // 我們就會把這個按鈕轉為disabled(配合v-if做提示效果)
         loadingItem: ''
-      }
+      },
+      loadingItem: ''
     }
   },
-  components: {
-    Footer
-  },
-  inject: ['emitter'],
+  // inject: ['emitter'],
   methods: {
     getProducts () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       this.isLoading = true
       this.$http.get(url).then((res) => {
         this.products = res.data.products
-        // console.log('products:', res)
+        this.productsF = res.data.products.splice(12, 5)
         this.isLoading = false
       })
     },
     getProduct (id) {
-      console.log(id)
       // 使用this.$router進入特定頁面
       // 進入單一頁面之後，重新取的遠端資料
       this.$router.push(`/user/product/${id}`)
@@ -156,14 +139,18 @@ export default {
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
-      this.$http.get(url).then((res) => {
-        console.log(res)
-        // 包含所有商品carts、總金額
-        this.cart = res.data.data
+      this.$http.get(url).then((response) => {
+        console.log(response)
+        // 包含陣列列表、總金額
+        this.cart = response.data.data
+        console.log(this.cart)
         this.isLoading = false
       })
     },
-    getFavorite () {
+    goProducts () {
+      this.$router.push('/user/products')
+    },
+        getFavorite () {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
       this.favoriteIds = []
       this.favorite.forEach((item) => {
@@ -201,7 +188,7 @@ export default {
       emitter.emit('update-favorite')
     }
   },
-  computed: {
+    computed: {
     favState () {
       // console.log('123')
       // 閉包傳送參數 https://segmentfault.com/q/1010000009648670
@@ -213,52 +200,6 @@ export default {
           return 'bi bi-heart'
         }
       }
-    },
-    filterProducts () {
-      let filterProducts
-      switch (this.category) {
-        case 'all':
-          filterProducts = this.products.filter((item) => {
-            return item
-          })
-          break
-        case 'S':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'S'
-          })
-          break
-        case 'A':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'A'
-          })
-          break
-        case 'B':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'B'
-          })
-          break
-        case 'C':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'C'
-          })
-          break
-        case '馬鞍':
-          filterProducts = this.products.filter((item) => {
-            return item.description === '馬鞍'
-          })
-          break
-        case '馬蹄鐵':
-          filterProducts = this.products.filter((item) => {
-            return item.description === '馬蹄鐵'
-          })
-          break
-        case '馬飼料':
-          filterProducts = this.products.filter((item) => {
-            return item.description === '馬飼料'
-          })
-          break
-      }
-      return filterProducts
     }
   },
   created () {
@@ -269,27 +210,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.f-kalam {
-  font-family: 'Kalam', cursive;
-}
-.test {
-  outline: 3px solid red;
-}
-.productsBanner {
-  height: 300px;
-  background-image: url(https://i.imgur.com/4vGqi7D.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position:center ;
-  .bg-dark{
-  z-index: 1;
-  opacity: 1;
-  }
-}
-// 先留著 找地方用
-.bg-attachment{
-  background-attachment: fixed;
-}
 .fav-icon {
   width: 50px;
   height: 50px;

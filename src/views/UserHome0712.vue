@@ -2,12 +2,6 @@
   <Loading :active="isLoading"></Loading>
   <UserNavbar/>
   <Banner/>
-<font-awesome-icon icon="fa-solid fa-user-secret" size="lg"/>
-<font-awesome-icon icon="fa-brands fa-twitter" />
-<font-awesome-icon icon="fa-brands fa-twitch" />
-<font-awesome-icon icon="fa-brands fa-twitch"  />
-<font-awesome-icon icon="fa-brands fa-twitter" />
-<font-awesome-icon icon="fa-solid fa-basket-shopping" />
   <section class="my-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
@@ -118,18 +112,24 @@
                   <i class="bi bi-star"></i>
                 </div>
               </li>
-              <li class="d-flex row">
-                <div class="col-4 ">
-                  <h4>智慧 <i class="bi bi-mortarboard-fill mx-1"></i>：</h4>
+              <li class="d-flex row test">
+                <div class="d-flex">
+                  <h4 class="test d-flex">
+                    智慧        
+                    <span>
+                      <i class="bi bi-mortarboard-fill mx-1"></i>：
+                    </span>
+                  </h4>
+                  <span class="mx-1"
+                        v-for="(item, key) in temp.intelligence" :key="key">
+                    <i class="bi bi-star-fill"></i>
+                  </span>
+                  <span class="mx-1"
+                        v-for="(item, key) in (5 - temp.intelligence)" :key="key">
+                    <i class="bi bi-star"></i>
+                  </span>
                 </div>
-                <div class="col-1 "
-                    v-for="(item, key) in temp.intelligence" :key="key">
-                  <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1 "
-                    v-for="(item, key) in (5 - temp.intelligence)" :key="key">
-                  <i class="bi bi-star"></i>
-                </div>
+
               </li>
             </ul>
           </div>
@@ -149,7 +149,7 @@
 // @ is an alias to /src
 import UserNavbar from '../components/UserNavbar.vue'
 import Banner from '@/components/UserHomeBanner.vue'
-import OtherProducts from '@/components/OtherProducts.vue'
+import OtherProducts from '@/components/OtherProducts0716.vue'
 import Footer from '@/components/Footer.vue'
 import GoTop from '@/components/GoTop.vue'
 // import UserCoupon from '@/components/UserCoupon.vue'

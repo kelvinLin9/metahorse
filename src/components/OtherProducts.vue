@@ -14,7 +14,7 @@
       class="mySwiper"
     >
       <swiper-slide
-      class="col-md-6 col-lg-4 col-xl-3"
+      class="col-lg-4 col-md-6 col-12"
       v-for="(item, index) in products" :key="item.id"
       :class="{'d-none d-xl-block': index === 3, 'd-none d-lg-block': index === 0}"
       @click="viewProduct(item.id)" >
