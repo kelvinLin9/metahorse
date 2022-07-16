@@ -4,18 +4,28 @@
   <div class="row g-4 pb-5">
     <swiper
       :loop="true"
-      :slidesPerView="3"
-      :spaceBetween="30"
+      :slidesPerView="1"
+      :spaceBetween="20"
       :freeMode="true"
-      :pagination="{
-        clickable: true,
-      }"
+      :pagination="{clickable: true}"
       :modules="modules"
+      navigation
+      :scrollbar="{ draggable: true }"
+      :breakpoints="{
+      '768': {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      '992': {
+        slidesPerView: 3,
+        spaceBetween: 20,
+      },
+    }"
       class="mySwiper"
     >
-      <swiper-slide v-for="(item) in productsHot" :key="item.id"
+      <swiper-slide v-for="(item) in products" :key="item.id"
                     @click="viewProduct(item.id)" >
-             <div class="card rounded-3 cursorPointer">
+             <div class="card rounded-3 cursorPointer mb-5 mx-2 mx-sm-0">
               <div class="card-img overflow-hidden position-relative">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.prevent="getProduct(item.id)">
@@ -71,11 +81,12 @@ import 'swiper/css'
 
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
 // import './style.css'
 
 // import required modules
-import { FreeMode, Pagination } from 'swiper'
+import { Navigation, FreeMode, Pagination, Scrollbar } from 'swiper'
 import emitter from '@/methods/emitter'
 export default {
   components: {
@@ -84,7 +95,7 @@ export default {
   },
   setup () {
     return {
-      modules: [FreeMode, Pagination]
+      modules: [Navigation, FreeMode, Pagination, Scrollbar]
     }
   },
   data () {
@@ -210,6 +221,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.test {
+  outline: 3px solid red;
+}
 .fav-icon {
   width: 50px;
   height: 50px;
