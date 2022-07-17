@@ -66,6 +66,16 @@
         <del class="h6" v-if="product.price">原價 {{ product.origin_price }} 元</del>
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>
         <hr>
+
+        <div class="input-group input-group-sm">
+          <input type="number" class="form-control"
+                min="1"
+                :disabled="product.id === status.loadingItem"
+                @change="updateCart(product)"
+                v-model.number="product.qty">
+        </div>
+
+
         <button type="button" class="btn btn-outline-primary text-dark fw-bold fs-5"
                 :disabled="this.status.loadingItem === product.id"
                 @click="addCart(product.id)">
@@ -148,7 +158,7 @@ export default {
         }
       })
     },
-    addCart (id) {
+    addCart (id, qty = 1) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.status.loadingItem = id
       const cart = {
