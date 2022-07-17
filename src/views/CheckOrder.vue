@@ -11,17 +11,17 @@
           <span class="text-success" v-if="statusGet">*取得此訂單</span>
           <span class="text-danger" v-if="statusNotGet">*查無此訂單</span>
           <div v-if="order.total">
-            <h2 class="fs-3 text-center fw-bold mt-5">運送狀況</h2>
+            <h2 class="fs-2 text-center fw-bold mt-5">運送狀況</h2>
             <div class="d-flex justify-content-center align-items-center mt-5">
-              <h5 class="fw-bold mb-0 text-black-50">訂單成立</h5>
-              <i class="fas fa-arrow-right fs-5 mx-2"></i>
+              <h5 class="fw-bold mb-0 text-warning">訂單成立</h5>
+              <font-awesome-icon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
               <h5 class="fw-bold mb-0 text-black-50 active">訂單處理中</h5>
-              <i class="fas fa-arrow-right fs-5 mx-2"></i>
+              <font-awesome-icon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
               <h5 class="text-black-50 fw-bold mb-0">出貨中</h5>
-              <i class="fas fa-arrow-right fs-5 mx-2"></i>
+              <font-awesome-icon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
               <h5 class="text-black-50 fw-bold mb-0 ">完成出貨(2~3天)</h5>
             </div>
-            <h2 class="fs-3 text-center fw-bold mt-5">寄送明細</h2>
+            <h2 class="fs-2 text-center fw-bold mt-5">寄送明細</h2>
             <div class="table-responsive-md">
               <table class="table lh-lg">
                 <tbody>
@@ -56,7 +56,7 @@
                 </tbody>
               </table>
             </div>
-            <h2 class="fs-3 text-center fw-bold mt-5">商品明細</h2>
+            <h2 class="fs-2 text-center fw-bold mt-5">商品明細</h2>
             <div class="table-responsive-md mt-4">
               <table class="table lh-lg">
                 <thead class="table-dark text-center">

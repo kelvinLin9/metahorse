@@ -9,10 +9,20 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faBasketShopping } from '@fortawesome/free-solid-svg-icons'
 import { faCashRegister } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+
+
 /* add some free styles */
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faTwitch } from '@fortawesome/free-brands-svg-icons'
 
 // fontawesome
 /* add icons to the library */
-library.add(faTwitter, faUserSecret, faTwitch, faBasketShopping, faCashRegister)
+library.add(
+  faTwitter, 
+  faUserSecret, 
+  faTwitch, 
+  faBasketShopping, 
+  faCashRegister,
+  faArrowRight
+  )
