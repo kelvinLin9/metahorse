@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2">MetaHorse</span>
-        <img src="https://i.imgur.com/61qkafr.jpg" alt="" width="50" class="logo">
+        <img src="https://i.imgur.com/61qkafr.jpg" alt="logo" width="50" class="logo">
       </a>
       <!-- 漢堡選單按鈕 -->
       <button

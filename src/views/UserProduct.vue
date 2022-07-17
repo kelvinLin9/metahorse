@@ -17,7 +17,7 @@
     <div class="row justify-content-center ">
 
       <div class="col-md-6 position-relative">
-        <img :src="product.imageUrl" alt="" class="img-fluid mb-3 rounded">
+        <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded">
 
         <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
             :class="{'favorite': isFavorite(id)}"
@@ -72,12 +72,10 @@
             <input type="number" class="form-control"
                   min="1"
                   :disabled="product.id === status.loadingItem"
-                  @change="updateCart(product)"
                   v-model.number="qty">
           </div>
-  
 
-          <button type="button" 
+          <button type="button"
                   class="col-9 btn btn-outline-primary text-dark fw-bold fs-5"
                   :disabled="this.status.loadingItem === product.id"
                   @click="addCart(product.id, qty)">

@@ -33,7 +33,7 @@
                 </button>
                   <!-- <a href="#"> -->
                 <img class="rounded-3 img-fit"
-                      :src="item.imageUrl" alt="">
+                      :src="item.imageUrl" alt="商品照片">
                   <!-- </a> -->
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
                       :class="{'favorite': isFavorite(item.id)}"

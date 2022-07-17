@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2 text-center">MetaHorse</span>
-        <img src="https://i.imgur.com/61qkafr.jpg" alt="" width="50" class="logo">
+        <img src="https://i.imgur.com/61qkafr.jpg" alt="logo" width="50" class="logo">
       </a>
       <!-- 漢堡選單按鈕 -->
       <button
@@ -144,7 +144,6 @@ export default {
       cartBoxState: false // 控制購物車小視窗開關
     }
   },
-  inject: ['emitter'],
   methods: {
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -183,7 +182,7 @@ export default {
     },
     cartBoxToggle () {
       this.cartBoxState = !this.cartBoxState
-      emitter.emit('cartBoxState', this.cartBoxState);
+      emitter.emit('cartBoxState', this.cartBoxState)
     }
   },
   created () {

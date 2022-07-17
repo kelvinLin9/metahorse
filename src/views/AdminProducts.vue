@@ -26,7 +26,7 @@
         <td>{{ item.category }}</td>
         <td>{{ item.title }}</td>
         <td>
-          <img :src="item.imageUrl" alt="" width="100" height="100">
+          <img :src="item.imageUrl" alt="商品照片" width="100" height="100">
         </td>
         <td>{{ item.description }}</td>
         <td>{{ item.content }}</td>
@@ -63,9 +63,9 @@
     @update-product="updateProduct">
   </ProductModal>
 
-  <DelModal 
-    :item="tempProduct" 
-    ref="delModal" 
+  <DelModal
+    :item="tempProduct"
+    ref="delModal"
     @del-item="delProduct"/>
   </template>
 

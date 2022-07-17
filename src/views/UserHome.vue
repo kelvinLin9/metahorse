@@ -1,8 +1,7 @@
 <template>
-
+  <Loading :active="isLoading"></Loading>
   <UserNavbar/>
   <Banner/>
-
   <section class="my-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
@@ -20,7 +19,7 @@
           </p>
         </div>
         <div class="col-lg-6">
-          <img src="../image/003.jpg" alt="" class="w-100">
+          <img src="../image/003.jpg" alt="裝飾圖" class="w-100">
         </div>
       </div>
     </div>
@@ -38,12 +37,12 @@
         <div class="col">
           <div class="row row-cols-4 row-cols-lg-1">
               <div class="col d-flex justify-content-center justify-content-lg-end"
-                  v-for="item in products" :key="item">
-                  <div class="card border-0 my-2">
+                  v-for="item in productsY" :key="item">
+                  <div class=" border-0 my-2">
                   <a href="#" @click.prevent="temp = item">
-                    <img :src="item.imageUrl" alt=""
+                    <img :src="item.imageUrl" alt="遊戲參考圖"
                     class="shadow rounded img-thumbnail" width="150"
-                    :class="{'bg-primary':  item.level === temp.level}">
+                    :class="{'bg-primary':  item.category === temp.category}">
                   </a>
                   </div>
               </div>
@@ -51,8 +50,8 @@
         </div>
         <div class="col mb-5 mt-3 d-flex justify-content-between flex-column ">
           <div class="border-0 mb-5 d-flex justify-content-center">
-            <img :src="temp.imageUrl" alt=""
-            class="upper-shot rounded-circle img-thumbnail bg-primary">
+            <img :src="temp.imageUrl" alt="遊戲參考圖放大"
+            class="round-icon rounded-circle img-thumbnail bg-primary">
           </div>
           <div class="d-flex justify-content-center">
             <button type="submit"
@@ -63,73 +62,72 @@
           </div>
         </div>
         <div class="col">
-          <div class="row d-flex flex-column justify-content-between">
+          <div class="row d-flex flex-column">
             <hr>
-            <div class="col">
+            <div class="col mt-3">
               <h3 class="fw-bold text-center text-lg-start lh-lg">
                 遊戲中數值
               </h3>
               <h4 class="fw-bold text-center text-lg-start lh-lg">
-                Level：{{temp.level}}
+                Level：{{temp.category}}
               </h4>
             </div>
             <ul class="col">
-              <li class="d-flex row">
-                <div class="col-4">
-                  <h4>速度 <i class="bi bi-lightning-fill mx-1"></i>：</h4>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in temp.speed" :key="key">
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  速度 <i class="bi bi-lightning-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.speed" :key="key">
                   <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in (5 - temp.speed)" :key="key">
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.speed)" :key="key">
                   <i class="bi bi-star"></i>
-                </div>
+                </span>
               </li>
-              <li class="d-flex row">
-                <div class="col-4">
-                  <h4>耐力 <i class="bi bi-clock-fill mx-1"></i>：</h4>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in temp.stamina" :key="key">
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  耐力 <i class="bi bi-clock-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.stamina" :key="key">
                   <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in (5 - temp.stamina)" :key="key">
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.stamina)" :key="key">
                   <i class="bi bi-star"></i>
-                </div>
+                </span>
               </li>
-              <li class="d-flex row">
-                <div class="col-4">
-                  <h4>幸運 <i class="bi bi-dice-6-fill mx-1"></i>：</h4>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in temp.lucky" :key="key">
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  幸運 <i class="bi bi-dice-6-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.lucky" :key="key">
                   <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1"
-                    v-for="(item, key) in (5 - temp.lucky)" :key="key">
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.lucky)" :key="key">
                   <i class="bi bi-star"></i>
-                </div>
+                </span>
               </li>
-              <li class="d-flex row">
-                <div class="col-4 ">
-                  <h4>智慧 <i class="bi bi-mortarboard-fill mx-1"></i>：</h4>
-                </div>
-                <div class="col-1 "
-                    v-for="(item, key) in temp.intelligence" :key="key">
+              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
+                <h4>
+                  智慧 <i class="bi bi-mortarboard-fill mx-1"></i>：
+                </h4>
+                <span class="mx-1"
+                      v-for="key in temp.intelligence" :key="key">
                   <i class="bi bi-star-fill"></i>
-                </div>
-                <div class="col-1 "
-                    v-for="(item, key) in (5 - temp.intelligence)" :key="key">
+                </span>
+                <span class="mx-1"
+                      v-for="key in (5 - temp.intelligence)" :key="key">
                   <i class="bi bi-star"></i>
-                </div>
+                </span>
               </li>
             </ul>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -144,10 +142,9 @@
 // @ is an alias to /src
 import UserNavbar from '../components/UserNavbar.vue'
 import Banner from '@/components/UserHomeBanner.vue'
-import OtherProducts from '@/components/OtherProducts.vue'
+import OtherProducts from '@/components/ProductsHot.vue'
 import Footer from '@/components/Footer.vue'
 import GoTop from '@/components/GoTop.vue'
-// import UserCoupon from '@/components/UserCoupon.vue'
 export default {
   name: 'HomeView',
   components: {
@@ -159,82 +156,65 @@ export default {
   },
   data () {
     return {
-      products: [
-        {
-          level: 'S',
-          imageUrl: 'https://imgur.com/kdTurd4.jpg',
-          speed: 5,
-          stamina: 5,
-          lucky: 5,
-          intelligence: 5
-        },
-        {
-          level: 'A',
-          imageUrl: 'https://imgur.com/Bj7I9T4.jpg',
-          speed: 4,
-          stamina: 4,
-          lucky: 3,
-          intelligence: 5
-        },
-        {
-          level: 'B',
-          imageUrl: 'https://imgur.com/BextSIV.jpg',
-          speed: 3,
-          stamina: 3,
-          lucky: 1,
-          intelligence: 3
-        },
-        {
-          level: 'C',
-          imageUrl: 'https://imgur.com/5PsDE2E.jpg',
-          speed: 2,
-          stamina: 1,
-          lucky: 2,
-          intelligence: 1
-        }
-      ],
-      temp: {
-        level: 'S',
-        imageUrl: 'https://imgur.com/kdTurd4.jpg',
-        speed: 5,
-        stamina: 5,
-        lucky: 5,
-        intelligence: 5
-      }
+      products: [],
+      temp: {}, // 暫存點擊到的賽馬資訊
+      productsX: [], // 放後端全部資料
+      productsY: [], // 手動選的資料
+      productsZ: [] // 試著用函式寫看看
     }
   },
   methods: {
+    getProducts () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
+      this.$http.get(url).then((res) => {
+        // 我全都要
+        this.productsX = res.data.products
+
+        // 手動挑出想展示的商品
+        this.productsY.push(res.data.products[11])
+        this.productsY.push(res.data.products[10])
+        this.productsY.push(res.data.products[8])
+        this.productsY.push(res.data.products[5])
+        this.temp = this.productsY[0]
+
+        // 重複的商品只挑一個 還沒解決會挑到道具的問題 用兩次filter看看
+        const set = new Set()
+        const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false)
+        console.log(1, productsZ)
+        this.isLoading = false
+      })
+    },
     goProducts () {
       this.$router.push('/user/products')
     }
+  },
+  created () {
+    this.getProducts()
   }
 }
-</script >
+</script>
 
 <style lang="scss" scoped>
 /* 載入字體 */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
-
-.logo{
-  width:50px;
-  /* height:50px; */
-  position:absolute;
-  top:10px;
-  left: 165px;
-}
-.upper-shot{
-  width:350px;
-  height:350px;
-  /* position:absolute; */
-  /* top:-0px; */
-  /* left: 10px; */
+.f-kalam {
+  font-family: 'Kalam', cursive;
 }
 .test {
   outline: 3px solid red;
 }
-
-.f-kalam {
-  font-family: 'Kalam', cursive;
+.round-icon{
+  width:350px;
+  height:350px;
+  /* position:absolute; */
+  /* top:0px; */
+  /* left: 10px; */
 }
-
+// .slogan{
+//       width: 18em;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       animation: typing 2s steps(18), Wcaret 2s steps(1);
+//     }
 </style>

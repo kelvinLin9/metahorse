@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/UserHome0712.vue'
+import HomeView from '../views/UserHome.vue'
 
 const routes = [
   {
@@ -80,10 +80,10 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
   // linkActiveClass:'active'
-  linkActiveClass:'text-warning',
+  linkActiveClass: 'text-warning',
   scrollBehavior (to, from, savedPosition) {
     // return 期望滚动到哪个的位置
-    console.log(to, from, savedPosition)
+    // console.log(to, from, savedPosition)
   }
 })
 

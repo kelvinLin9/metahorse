@@ -23,7 +23,7 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-UserHome0712.vue
+UserHome.vue 712更新
 修改賽馬素質呈現方式
 改將數值放入後台
 改用進度條方法試試(在單一商品試了)

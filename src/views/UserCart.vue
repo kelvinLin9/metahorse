@@ -44,7 +44,7 @@
                </div>
              </td>
              <td>
-               <img :src="item.product.imageUrl" alt="" width="50">
+               <img :src="item.product.imageUrl" alt="商品照片" width="50">
              </td>
              <td>
                NT$ {{item.product.price}}
@@ -107,11 +107,11 @@
        <!-- 另外寫函式處理 -->
         <div class="d-flex justify-content-between mt-5"
              v-if="cart.total !== 0">
-          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"  
+          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
                 @click="goProducts">
             <i class="bi bi-caret-left-fill"></i>商品列表
           </button>
-          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg" 
+          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
                   @click="goCheckout">
             填寫資料<i class="bi bi-caret-right-fill"></i>
           </button>
@@ -119,7 +119,7 @@
         <div class="text-center pt-4"
              v-if="cart.total === 0">
           <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
-          <button type="button" class="btn btn-dark btn-hover rounded-0 mt-5" 
+          <button type="button" class="btn btn-dark btn-hover rounded-0 mt-5"
                   @click="goProducts">
             查看產品 Go
           </button>

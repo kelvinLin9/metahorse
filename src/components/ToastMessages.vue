@@ -23,7 +23,7 @@ export default {
       this.messages.push({ style, title, content })
     })
     this.emitter.on('cartBoxState', (i) => {
-      this.cartBoxState = i;
+      this.cartBoxState = i
     })
   }
 }

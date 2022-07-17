@@ -47,7 +47,7 @@
                   @change="uploadFile"
                 />
               </div>
-              <img class="img-fluid" :src="tempProduct.imageUrl" alt="" />
+              <img class="img-fluid" :src="tempProduct.imageUrl" alt="商品照片" />
               <!-- 延伸技巧，多圖 -->
               <div class="mt-5" v-if="tempProduct.images">
                 <div v-for="(image, key) in tempProduct.images" class="mb-3 input-group" :key="key">
@@ -191,7 +191,7 @@
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
             取消
           </button>
-          <button 
+          <button
             type="button"
             class="btn btn-primary"
             @click="$emit('update-product', tempProduct)"

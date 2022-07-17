@@ -1,7 +1,8 @@
 <template>
   <UserNavbar/>
+  <FloatCart/>
+  <ToastMessages/>
   <div class="position-relative">
-    <ToastMessages></ToastMessages>
     <router-view/>
   </div>
 </template>
@@ -10,10 +11,12 @@
 import emitter from '@/methods/emitter'
 import ToastMessages from '@/components/ToastMessages.vue'
 import UserNavbar from '../components/UserNavbar.vue'
+import FloatCart from '@/components/FloatCart.vue'
 export default {
   components: {
     ToastMessages,
-    UserNavbar
+    UserNavbar,
+    FloatCart
   },
   provide () {
     return {
