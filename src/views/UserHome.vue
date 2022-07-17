@@ -1,5 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
+  <UserNavbar/>
   <Banner/>
   <section class="my-5">
     <div class="container">
@@ -139,12 +140,15 @@
 
 <script>
 // @ is an alias to /src
+import UserNavbar from '../components/UserNavbar.vue'
 import Banner from '@/components/UserHomeBanner.vue'
 import OtherProducts from '@/components/ProductsHot.vue'
 import Footer from '@/components/Footer.vue'
 import GoTop from '@/components/GoTop.vue'
 export default {
+  name: 'HomeView',
   components: {
+    UserNavbar,
     Banner,
     OtherProducts,
     Footer,

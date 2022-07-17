@@ -5,7 +5,7 @@
       <span class="text-primary align-self-end">/ 404 Not Found</span>
     </h1>
     <p class="mb-5">Oops！您要找的頁面不存在</p>
-    <RouterLink to="/user/home" class="btn btn-outline-primary btn-lg fw-bold px-4 py-3">回首頁</RouterLink>
+    <RouterLink to="/" class="btn btn-outline-primary btn-lg fw-bold px-4 py-3">回首頁</RouterLink>
   </div>
 </template>
 
