@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/user/home">
         <span class="text-warning f-kalam fs-2 text-center">MetaHorse</span>
         <img src="https://i.imgur.com/61qkafr.jpg" alt="logo" width="50" class="logo">
       </a>
@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item">
-           <RouterLink to="/" class="nav-link fs-5"
+           <RouterLink to="/user/home" class="nav-link fs-5"
            :class="{ 'text-warning':  routeName === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
