@@ -53,16 +53,21 @@
   </table>
   <!-- @emit-pages="getProducts" emit-pages觸發後執行getProducts -->
   <Pagination
-  :pages="pagination"
-  @emit-pages="getProducts"></Pagination>
+    :pages="pagination"
+    @emit-pages="getProducts">
+  </Pagination>
 
   <ProductModal
-  ref="productModal"
-  :product="tempProduct"
-  @update-product="updateProduct"></ProductModal>
+    ref="productModal"
+    :product="tempProduct"
+    @update-product="updateProduct">
+  </ProductModal>
 
-  <DelModal :item="tempProduct" ref="delModal" @del-item="delProduct"/>
-</template>
+  <DelModal 
+    :item="tempProduct" 
+    ref="delModal" 
+    @del-item="delProduct"/>
+  </template>
 
 <script>
 import ProductModal from '@/components/ProductModal.vue'

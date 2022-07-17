@@ -183,6 +183,7 @@ export default {
     },
     cartBoxToggle () {
       this.cartBoxState = !this.cartBoxState
+      emitter.emit('cartBoxState', this.cartBoxState);
     }
   },
   created () {

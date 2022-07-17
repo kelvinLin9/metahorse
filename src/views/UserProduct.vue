@@ -67,24 +67,27 @@
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>
         <hr>
 
-        <div class="input-group input-group-sm">
-          <input type="number" class="form-control"
-                min="1"
-                :disabled="product.id === status.loadingItem"
-                @change="updateCart(product)"
-                v-model.number="product.qty">
-        </div>
-
-
-        <button type="button" class="btn btn-outline-primary text-dark fw-bold fs-5"
-                :disabled="this.status.loadingItem === product.id"
-                @click="addCart(product.id)">
-          <div v-if="this.status.loadingItem === product.id"
-                class="spinner-grow text-danger spinner-grow-sm" role="status">
-            <span class="visually-hidden">Loading...</span>
+        <div class="row">
+          <div class="input-group input-group-sm col">
+            <input type="number" class="form-control"
+                  min="1"
+                  :disabled="product.id === status.loadingItem"
+                  @change="updateCart(product)"
+                  v-model.number="qty">
           </div>
-          加到購物車
-        </button>
+  
+
+          <button type="button" 
+                  class="col-9 btn btn-outline-primary text-dark fw-bold fs-5"
+                  :disabled="this.status.loadingItem === product.id"
+                  @click="addCart(product.id, qty)">
+            <div v-if="this.status.loadingItem === product.id"
+                  class="spinner-grow text-danger spinner-grow-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            加到購物車
+          </button>
+        </div>
       </div>
     </div>
     <div class="my-5">
@@ -137,6 +140,7 @@ export default {
   data () {
     return {
       product: {},
+      qty: 1,
       favorite: [],
       favoriteIds: [],
       id: '',
@@ -163,7 +167,7 @@ export default {
       this.status.loadingItem = id
       const cart = {
         product_id: id,
-        qty: 1
+        qty
       }
       this.$http.post(url, { data: cart })
         .then((res) => {

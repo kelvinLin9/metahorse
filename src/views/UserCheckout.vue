@@ -99,6 +99,7 @@
 </template>
 
 <script>
+import emitter from '@/methods/emitter'
 import Footer from '@/components/Footer'
 export default {
   // name: 'Checkout',
@@ -142,6 +143,7 @@ export default {
         .then((res) => {
           console.log(res)
           this.$router.push(`/user/checkoutPay/${res.data.orderId}`)
+          emitter.emit('update-cart')
         })
     },
     goCart () {
