@@ -23,7 +23,7 @@
     }"
       class="mySwiper"
     >
-      <swiper-slide v-for="(item) in products" :key="item.id"
+      <swiper-slide v-for="(item) in productsHot" :key="item.id"
                     @click="viewProduct(item.id)" >
              <div class="card rounded-3 mb-5 mx-2 mx-sm-0">
               <div class="card-img overflow-hidden position-relative cursorPointer">
@@ -38,7 +38,7 @@
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
                       :class="{'favorite': isFavorite(item.id)}"
                       @click.stop="toggleFavorite(item)">
-                  <i :class="favState(item.id)"></i>
+                  <i :class="favState(item.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="加入 / 移除我的最愛"></i>
                 </span>
               </div>
               <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">

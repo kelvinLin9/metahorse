@@ -61,7 +61,7 @@
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
                       :class="{'favorite': isFavorite(item.id)}"
                       @click.stop="toggleFavorite(item)">
-                  <i :class="favState(item.id)"></i>
+                  <i :class="favState(item.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="加入 / 移除我的最愛"></i>
                 </span>
               </div>
               <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
