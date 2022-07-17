@@ -68,7 +68,8 @@
       </table>
       <div class="text-center">
         <button class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
-        @click="goHome">
+        @click="showAlert"
+        >
           確認付款
         </button>
       </div>
@@ -93,6 +94,14 @@ export default {
     }
   },
   methods: {
+    showAlert() {
+      this.$swal.fire(
+        '感謝您的支持',
+        '產品將會在3個工作天內寄出',
+        'success'
+      )
+    this.goHome ()
+    },
     getOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
       this.$http.get(url)

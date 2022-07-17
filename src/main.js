@@ -3,7 +3,21 @@ import { createApp } from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+
 import '@/methods/fontawsome'
+// 自己出現的?
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' 
+
+
+
+import '@/methods/sweetalart2'
+import VueSweetalert2 from 'vue-sweetalert2'
+
+const options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674',
+};
+
 
 import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
@@ -19,7 +33,7 @@ import App from './App.vue'
 import router from './router'
 import { currency, date } from './methods/filters'
 import $httpMessageState from './methods/pushMessageState'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' // 自己出現的?
+
 
 const app = createApp(App)
 app.config.globalProperties.$filters = {
@@ -42,6 +56,8 @@ app.config.globalProperties.$httpMessageState = $httpMessageState
 
 app.use(VueAxios, axios)
 app.use(router)
+app.use(VueSweetalert2, options);
+
 
 app.component('Loading', Loading)
 app.component('Form', Form)
@@ -50,4 +66,7 @@ app.component('ErrorMessage', ErrorMessage)
 
 // fontawesome
 app.component('font-awesome-icon', FontAwesomeIcon)
+
+
+
 app.mount('#app')
