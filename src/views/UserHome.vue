@@ -27,7 +27,7 @@
 <br>
 <hr>
 <br>
-  <section class="my-5">
+  <!-- <section class="my-5">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg">
         NFT除了可以擁有真實的馬，還可以在我們創造的原宇宙裡進行遊戲。
@@ -71,7 +71,7 @@
                 Level：{{temp.category}}
               </h4>
             </div>
-            <!-- <ul class="col">
+            <ul class="col">
               <li class="d-flex my-2 justify-content-center justify-content-lg-start">
                 <h4>
                   速度 <i class="bi bi-lightning-fill mx-1"></i>：
@@ -124,12 +124,12 @@
                   <i class="bi bi-star"></i>
                 </span>
               </li>
-            </ul> -->
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <hr>
   <OtherProducts/>
   <hr>
