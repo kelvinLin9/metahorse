@@ -18,8 +18,8 @@
           <div class="card rounded-3">
             <div class="card-img overflow-hidden position-relative cursorPointer">
               <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-              @click.prevent="getProduct(item.id)">
-                查看更多
+              @click.prevent="goProduct(item.id)">
+                詳細資訊
               </button>
               <img class="rounded-3 img-fit"
                   :src="item.imageUrl" alt="商品照片">
@@ -118,8 +118,7 @@ export default {
         this.isLoading = false
       })
     },
-    getProduct (id) {
-      console.log(id)
+    goProduct (id) {
       this.$router.push(`/product/${id}`)
     }
   },

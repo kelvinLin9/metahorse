@@ -42,9 +42,9 @@
 </template>
 
 <style lang="scss" scoped>
-.footer {
-  position: fixed;
-  width: 100%;
-  top: 100;
-}
+// .footer {
+  // position: fixed;
+  // width: 100%;
+  // top: 100;
+// }
 </style>

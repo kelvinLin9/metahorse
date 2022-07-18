@@ -60,7 +60,7 @@
             </button>
           </div>
         </div>
-        <div class="col">
+        <!-- <div class="col">
           <div class="row d-flex flex-column">
             <hr>
             <div class="col mt-3">
@@ -126,7 +126,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

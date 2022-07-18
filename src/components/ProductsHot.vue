@@ -28,7 +28,7 @@
              <div class="card rounded-3 mb-5 mx-2 mx-sm-0">
               <div class="card-img overflow-hidden position-relative cursorPointer">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-                        @click.prevent="getProduct(item.id)">
+                        @click.prevent="goProduct(item.id)">
                   詳細資訊
                 </button>
                   <!-- <a href="#"> -->
@@ -125,9 +125,7 @@ export default {
         this.isLoading = false
       })
     },
-    getProduct (id) {
-      // 使用this.$router進入特定頁面
-      // 進入單一頁面之後，重新取的遠端資料
+    goProduct (id) {
       this.$router.push(`/product/${id}`)
     },
     addCart (id) {
