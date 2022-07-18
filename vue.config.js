@@ -5,5 +5,9 @@ module.exports = defineConfig({
   // 修正檔案命名問題
   lintOnSave: false,
 
-  publicPath: '/0524_vuecli_test/dist/'
+  publicPath: '/metahorse/'
 })
+
+// module.exports = {
+//   publicPath: process.env.NODE_ENV === 'production' ? '/metahorse/' : '/'
+// }
