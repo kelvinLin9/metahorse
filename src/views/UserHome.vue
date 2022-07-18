@@ -77,7 +77,7 @@
             </button>
           </div>
         </div>
-        <div class="col"
+        <!-- <div class="col"
             data-aos="fade-down-right"
             data-aos-duration="2000">
           <div class="row d-flex flex-column">
@@ -145,7 +145,7 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
