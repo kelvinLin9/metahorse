@@ -23,19 +23,19 @@
            :class="{ 'text-warning':  routeName === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/user/products" class="nav-link fs-5"
+            <router-link to="/products" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/user/checkOrder" class="nav-link fs-5"
+            <router-link to="/checkOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'CheckOrder' }">訂單查詢</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/user/cart" class="nav-link fs-5"
+            <router-link to="/cart" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'cart' }">購物車</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/user/Favorite" class="nav-link fs-5"
+            <router-link to="/Favorite" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'favorite' }">我的最愛</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">

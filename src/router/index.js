@@ -1,39 +1,22 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/UserHome.vue'
+// import HomeView from '../views/UserHome.vue'
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'home',
+  //   component: HomeView
+  // },
   {
     path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginView.vue')
-  },
-  {
-    path: '/dashboard',
-    component: () => import('../views/AdminDashboard.vue'),
-    children: [
-      {
-        path: 'products',
-        component: () => import('../views/AdminProducts.vue')
-      },
-      {
-        path: 'orders',
-        component: () => import('../views/AdminOrders.vue')
-      },
-      {
-        path: 'coupons',
-        component: () => import('../views/AdminCoupons.vue')
-      }
-    ]
-  },
-  {
-    path: '/user',
+    name: 'index',
     component: () => import('../views/UserDashboard.vue'),
     children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('../views/UserHome.vue')
+      },
       {
         path: 'products',
         name: 'products',
@@ -66,6 +49,29 @@ const routes = [
       {
         path: 'checkoutPay/:orderId',
         component: () => import('../views/CheckoutPay.vue')
+      }
+    ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue')
+  },
+  {
+    path: '/dashboard',
+    component: () => import('../views/AdminDashboard.vue'),
+    children: [
+      {
+        path: 'products',
+        component: () => import('../views/AdminProducts.vue')
+      },
+      {
+        path: 'orders',
+        component: () => import('../views/AdminOrders.vue')
+      },
+      {
+        path: 'coupons',
+        component: () => import('../views/AdminCoupons.vue')
       }
     ]
   },
