@@ -77,7 +77,9 @@
             </button>
           </div>
         </div>
-        <!-- <div class="col">
+        <div class="col"
+            data-aos="fade-down-right"
+            data-aos-duration="2000">
           <div class="row d-flex flex-column">
             <hr>
             <div class="col mt-3">
@@ -95,11 +97,11 @@
                 </h4>
                 <span class="mx-1"
                       v-for="key in temp.speed" :key="key">
-                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
                 </span>
                 <span class="mx-1"
                       v-for="key in (5 - temp.speed)" :key="key">
-                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star" data-aos="zoom-in"></i>
                 </span>
               </li>
               <li class="d-flex my-2 justify-content-center justify-content-lg-start">
@@ -108,11 +110,11 @@
                 </h4>
                 <span class="mx-1"
                       v-for="key in temp.stamina" :key="key">
-                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
                 </span>
                 <span class="mx-1"
                       v-for="key in (5 - temp.stamina)" :key="key">
-                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star" data-aos="zoom-in"></i>
                 </span>
               </li>
               <li class="d-flex my-2 justify-content-center justify-content-lg-start">
@@ -121,11 +123,11 @@
                 </h4>
                 <span class="mx-1"
                       v-for="key in temp.lucky" :key="key">
-                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
                 </span>
                 <span class="mx-1"
                       v-for="key in (5 - temp.lucky)" :key="key">
-                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star" data-aos="zoom-in"></i>
                 </span>
               </li>
               <li class="d-flex my-2 justify-content-center justify-content-lg-start">
@@ -134,16 +136,16 @@
                 </h4>
                 <span class="mx-1"
                       v-for="key in temp.intelligence" :key="key">
-                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
                 </span>
                 <span class="mx-1"
                       v-for="key in (5 - temp.intelligence)" :key="key">
-                  <i class="bi bi-star"></i>
+                  <i class="bi bi-star" data-aos="zoom-in"></i>
                 </span>
               </li>
             </ul>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </section>

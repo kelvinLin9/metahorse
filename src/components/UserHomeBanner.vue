@@ -77,7 +77,7 @@ export default {
 .header-bg {
   background-size: cover;
   background-position: center center;
-  height: 810px;
+  height: 100vh;
 }
 .header-text {
     color: #000;
