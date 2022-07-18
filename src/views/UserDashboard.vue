@@ -25,9 +25,7 @@ export default {
   },
   created () {
   },
-  mounted() {
-    // this.$router.push('/')
-    console.log('sss')
+  mounted () {
   }
 }
 </script>
