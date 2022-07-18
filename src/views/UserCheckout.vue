@@ -95,16 +95,16 @@
          </div>
     </div>
   </div>
-  <Footer/>
+  <UserFooter/>
 </template>
 
 <script>
 import emitter from '@/methods/emitter'
-import Footer from '@/components/Footer'
+import UserFooter from '@/components/UserFooter.vue'
 export default {
   // name: 'Checkout',
   components: {
-    Footer
+    UserFooter
   },
   data () {
     return {
@@ -142,12 +142,12 @@ export default {
       this.$http.post(url, { data: order })
         .then((res) => {
           console.log(res)
-          this.$router.push(`/user/checkoutPay/${res.data.orderId}`)
+          this.$router.push(`/checkoutPay/${res.data.orderId}`)
           emitter.emit('update-cart')
         })
     },
     goCart () {
-      this.$router.push('/user/cart')
+      this.$router.push('/cart')
     }
   },
   created () {

@@ -23,31 +23,31 @@
            :class="{ 'text-warning':  routeName === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/user/products" class="nav-link fs-5"
+            <router-link to="/products" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/user/checkOrder" class="nav-link fs-5"
+            <router-link to="/checkOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'CheckOrder' }">訂單查詢</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/user/cart" class="nav-link fs-5"
+            <router-link to="/cart" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'cart' }">購物車</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/user/Favorite" class="nav-link fs-5"
+            <router-link to="/favorite" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'favorite' }">我的最愛</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/login" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === '/login' }">使用者介面</router-link>
+            :class="{ 'text-warning':  routeName === 'login' }">管理員登入</router-link>
           </li>
         </ul>
 
         <!-- 購物車、最愛、使用者介面改成靠右圖示 -->
         <ul class="d-none d-lg-flex navbar-nav ms-auto me-2">
           <li class="nav-item position-relative">
-            <router-link to="" class="nav-link px-3"
+            <div class="nav-link px-3"
             :class="{ 'text-warning':  routeName === 'cart' }"
             @click.prevent="cartBoxToggle">
               <i class="bi bi-cart3 fs-4 cart" data-bs-toggle="tooltip" data-bs-placement="top" title="購物車"></i>
@@ -55,7 +55,7 @@
                     v-if="cartNum !== 0">
                 {{ cartNum }}
               </div>
-            </router-link>
+            </div>
           </li>
           <!-- 購物車小視窗 -->
           <div class="dropdown-menu cart-box p-3"
@@ -96,14 +96,13 @@
                 <i class="fas fa-shopping-cart"></i> 結帳去
               </button>
               <button type="button" class="btn btn-dark btn-hover rounded-0" @click="goProducts" v-else>
-
                 <font-awesome-icon icon="fa-solid fa-basket-shopping" /> 選購去
               </button>
             </div>
           </div>
 
           <li class="nav-item position-relative">
-            <RouterLink to="/user/Favorite" class="nav-link px-3"
+            <RouterLink to="/Favorite" class="nav-link px-3"
             :class="{ 'text-warning':  routeName === 'favorite' }">
               <i class="bi bi-search-heart fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="我的最愛"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
@@ -114,7 +113,7 @@
           </li>
           <li class="nav-item">
             <RouterLink to="/login" class="nav-link px-3"
-            :class="{ 'text-warning':  routeName === '/login' }">
+            :class="{ 'text-warning':  routeName === 'login' }">
               <i class="bi bi-person-workspace fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="管理員登入"></i>
             </RouterLink>
           </li>
@@ -160,11 +159,11 @@ export default {
       this.favoriteNum = (JSON.parse(localStorage.getItem('favorite')) || []).length
     },
     goCart () {
-      this.$router.push('/user/cart')
+      this.$router.push('/cart')
       this.cartBoxState = false
     },
     goProducts () {
-      this.$router.push('/user/products')
+      this.$router.push('/products')
       this.cartBoxState = false
     },
     removeCartItem (id) {
@@ -190,7 +189,7 @@ export default {
     this.getFavorite()
   },
   mounted () {
-    // this.routeName = this.$route.name // 點擊後圖標變色
+    this.routeName = this.$route.name // 點擊後圖標變色
     // console.log('this.routeName', this.routeName)
     // console.log('this.status', this.status)
     // 接收資料

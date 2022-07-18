@@ -1,6 +1,8 @@
 <template>
 <div class="container">
-  <h3 class="text-center mt-5 mb-3 fs-1 fw-bolder">熱銷商品</h3>
+  <h3 class="text-center mt-5 mb-3 fs-2 fw-bolder"
+      data-aos="fade-down"
+      data-aos-duration="2000">熱銷商品</h3>
   <div class="row g-4 pb-5">
     <swiper
       :loop="true"
@@ -25,10 +27,12 @@
     >
       <swiper-slide v-for="(item) in productsHot" :key="item.id"
                     @click="viewProduct(item.id)" >
-             <div class="card rounded-3 mb-5 mx-2 mx-sm-0">
+             <div class="card rounded-3 mb-5 mx-2 mx-sm-0"
+                  data-aos="flip-up"
+                  data-aos-duration="2000">
               <div class="card-img overflow-hidden position-relative cursorPointer">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-                        @click.prevent="getProduct(item.id)">
+                        @click.prevent="goProduct(item.id)">
                   詳細資訊
                 </button>
                   <!-- <a href="#"> -->
@@ -125,10 +129,8 @@ export default {
         this.isLoading = false
       })
     },
-    getProduct (id) {
-      // 使用this.$router進入特定頁面
-      // 進入單一頁面之後，重新取的遠端資料
-      this.$router.push(`/user/product/${id}`)
+    goProduct (id) {
+      this.$router.push(`/product/${id}`)
     },
     addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -157,9 +159,6 @@ export default {
         console.log(this.cart)
         this.isLoading = false
       })
-    },
-    goProducts () {
-      this.$router.push('/user/products')
     },
     getFavorite () {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []

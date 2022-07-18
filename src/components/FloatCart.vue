@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     goCart () {
-      this.$router.push('/user/cart')
+      this.$router.push('/cart')
     },
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
