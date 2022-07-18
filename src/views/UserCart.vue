@@ -162,10 +162,10 @@ export default {
   inject: ['emitter'],
   methods: {
     goProducts () {
-      this.$router.push('/user/products')
+      this.$router.push('/products')
     },
     goCheckout () {
-      this.$router.push('/user/checkout')
+      this.$router.push('/checkout')
     },
     addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`

@@ -1,5 +1,5 @@
 <template>
-  <UserNavbar/>
+  <UserNavbar :key="$route.path"/>
   <FloatCart/>
   <ToastMessages/>
   <div class="position-relative">
@@ -27,3 +27,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
+</style>

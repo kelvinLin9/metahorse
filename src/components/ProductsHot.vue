@@ -128,7 +128,7 @@ export default {
     getProduct (id) {
       // 使用this.$router進入特定頁面
       // 進入單一頁面之後，重新取的遠端資料
-      this.$router.push(`/user/product/${id}`)
+      this.$router.push(`/product/${id}`)
     },
     addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -157,9 +157,6 @@ export default {
         console.log(this.cart)
         this.isLoading = false
       })
-    },
-    goProducts () {
-      this.$router.push('/user/products')
     },
     getFavorite () {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []

@@ -35,7 +35,7 @@
             :class="{ 'text-warning':  routeName === 'cart' }">購物車</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/Favorite" class="nav-link fs-5"
+            <router-link to="/favorite" class="nav-link fs-5"
             :class="{ 'text-warning':  routeName === 'favorite' }">我的最愛</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
@@ -103,7 +103,7 @@
           </div>
 
           <li class="nav-item position-relative">
-            <RouterLink to="/user/Favorite" class="nav-link px-3"
+            <RouterLink to="/Favorite" class="nav-link px-3"
             :class="{ 'text-warning':  routeName === 'favorite' }">
               <i class="bi bi-search-heart fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="我的最愛"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
@@ -160,11 +160,11 @@ export default {
       this.favoriteNum = (JSON.parse(localStorage.getItem('favorite')) || []).length
     },
     goCart () {
-      this.$router.push('/user/cart')
+      this.$router.push('/cart')
       this.cartBoxState = false
     },
     goProducts () {
-      this.$router.push('/user/products')
+      this.$router.push('/products')
       this.cartBoxState = false
     },
     removeCartItem (id) {

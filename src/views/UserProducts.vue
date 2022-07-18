@@ -134,7 +134,7 @@ export default {
       console.log(id)
       // 使用this.$router進入特定頁面
       // 進入單一頁面之後，重新取的遠端資料
-      this.$router.push(`/user/product/${id}`)
+      this.$router.push(`/product/${id}`)
     },
     addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`

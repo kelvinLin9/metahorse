@@ -142,12 +142,12 @@ export default {
       this.$http.post(url, { data: order })
         .then((res) => {
           console.log(res)
-          this.$router.push(`/user/checkoutPay/${res.data.orderId}`)
+          this.$router.push(`/checkoutPay/${res.data.orderId}`)
           emitter.emit('update-cart')
         })
     },
     goCart () {
-      this.$router.push('/user/cart')
+      this.$router.push('/cart')
     }
   },
   created () {
