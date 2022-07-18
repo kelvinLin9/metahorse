@@ -5,19 +5,27 @@
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
         <div class="col-lg-6">
-          <h3 class="f-kalam text-center text-lg-start text-primary">
+          <h3 class="f-kalam text-center text-lg-start text-primary"
+              data-aos="fade-up"
+              data-aos-duration="2000">
             About Me
           </h3>
-          <h2 class="fw-bold text-center text-lg-start lh-lg">
+          <h2 class="fw-bold text-center text-lg-start lh-lg"
+              data-aos="fade-up"
+              data-aos-duration="2000">
             全球首個數字馬 NFT
             <br class="d-lg-none">
             幣安智能鏈上的 GAMEFI
           </h2>
-          <p class="lh-lg">
+          <p class="lh-lg"
+              data-aos="fade-up"
+              data-aos-duration="2000">
             世界上第一個數字和創新的馬 NFT，幣安智能鏈上的 GameFi，讓您通過成為 MetaHorse 在數字世界和現實生活中受益並獲得真正的馬。 它使您能夠擁有和交易數字真馬，並得到實體馬匹的支持，並幫助您參加賽馬比賽。
           </p>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6"
+            data-aos="fade-right"
+            data-aos-duration="2000">
           <img src="../image/003.jpg" alt="裝飾圖" class="w-100">
         </div>
       </div>
@@ -29,7 +37,9 @@
 <br>
   <section class="my-5">
     <div class="container">
-      <h2 class="fw-bold text-center text-lg-start lh-lg">
+      <h2 class="fw-bold text-center text-lg-start lh-lg"
+          data-aos="fade-down"
+          data-aos-duration="2000">
         NFT除了可以擁有真實的馬，還可以在我們創造的原宇宙裡進行遊戲。
       </h2>
       <div class="row row-cols-1 row-cols-lg-3 flex-lg-row-reverse">
@@ -37,22 +47,29 @@
           <div class="row row-cols-4 row-cols-lg-1">
               <div class="col d-flex justify-content-center justify-content-lg-end"
                   v-for="item in productsY" :key="item">
-                  <div class=" border-0 my-2">
-                  <a href="#" @click.prevent="temp = item">
-                    <img :src="item.imageUrl" alt="遊戲參考圖"
+                  <div class=" border-0 my-2"
+                      data-aos="flip-left"
+                      data-aos-easing="ease-out-cubic"
+                      data-aos-duration="2000">
+                    <a href="#" @click.prevent="temp = item">
+                      <img :src="item.imageUrl" alt="遊戲參考圖"
                     class="shadow rounded img-thumbnail" width="150"
                     :class="{'bg-primary':  item.category === temp.category}">
-                  </a>
+                    </a>
                   </div>
               </div>
           </div>
         </div>
         <div class="col mb-5 mt-3 d-flex justify-content-between flex-column ">
-          <div class="border-0 mb-5 d-flex justify-content-center">
+          <div class="border-0 mb-5 d-flex justify-content-center"
+              data-aos="zoom-in-up"
+              data-aos-duration="2000">
             <img :src="temp.imageUrl" alt="遊戲參考圖放大"
             class="round-icon rounded-circle img-thumbnail bg-primary">
           </div>
-          <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center"
+              data-aos="zoom-out"
+              data-aos-duration="2000">
             <button type="submit"
                     class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
                     @click.prevent="goProducts">

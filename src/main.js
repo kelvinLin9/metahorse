@@ -3,21 +3,15 @@ import { createApp } from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-
 import '@/methods/fontawsome'
 // 自己出現的?
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' 
-
-
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import '@/methods/sweetalart2'
 import VueSweetalert2 from 'vue-sweetalert2'
-
-const options = {
-  confirmButtonColor: '#41b882',
-  cancelButtonColor: '#ff7674',
-};
-
+// importing AOS css style globally
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
@@ -34,12 +28,20 @@ import router from './router'
 import { currency, date } from './methods/filters'
 import $httpMessageState from './methods/pushMessageState'
 
+// sweetalert2
+const options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674'
+}
 
 const app = createApp(App)
 app.config.globalProperties.$filters = {
   date,
   currency
 }
+
+app.AOS = new AOS.init({ disable: 'phone' })
+app.use(AOS)
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
@@ -56,8 +58,7 @@ app.config.globalProperties.$httpMessageState = $httpMessageState
 
 app.use(VueAxios, axios)
 app.use(router)
-app.use(VueSweetalert2, options);
-
+app.use(VueSweetalert2, options)
 
 app.component('Loading', Loading)
 app.component('Form', Form)
@@ -66,7 +67,5 @@ app.component('ErrorMessage', ErrorMessage)
 
 // fontawesome
 app.component('font-awesome-icon', FontAwesomeIcon)
-
-
 
 app.mount('#app')
