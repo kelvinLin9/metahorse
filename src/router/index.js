@@ -2,11 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // import HomeView from '../views/UserHome.vue'
 
 const routes = [
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: HomeView
-  // },
   {
     path: '/',
     name: 'index',
@@ -43,6 +38,11 @@ const routes = [
         component: () => import('../views/UserFavorite.vue')
       },
       {
+        path: 'login',
+        name: 'login',
+        component: () => import('../views/LoginView.vue')
+      },
+      {
         path: 'product/:productId',
         component: () => import('../views/UserProduct.vue')
       },
@@ -51,11 +51,6 @@ const routes = [
         component: () => import('../views/CheckoutPay.vue')
       }
     ]
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginView.vue')
   },
   {
     path: '/dashboard',
@@ -84,11 +79,11 @@ const routes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
   // linkActiveClass:'active'
   // linkActiveClass: 'text-warning',
   // scrollBehavior (to, from, savedPosition) {
-  // return 期望滚动到哪个的位置
+  // // return 期望滚动到哪个的位置
   // console.log(to, from, savedPosition)
   // }
 })
