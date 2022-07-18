@@ -27,7 +27,7 @@
 <br>
 <hr>
 <br>
-  <!-- <section class="my-5">
+  <section class="my-5">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg">
         NFT除了可以擁有真實的馬，還可以在我們創造的原宇宙裡進行遊戲。
@@ -129,7 +129,7 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   <hr>
   <OtherProducts/>
   <hr>
