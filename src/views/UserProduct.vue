@@ -14,10 +14,10 @@
         </li>
       </ol>
     </nav>
-    <div class="row justify-content-center ">
+    <div class="row justify-content-center">
 
       <div class="col-md-6 position-relative">
-        <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded">
+        <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded h-100">
 
         <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
             :class="{'favorite': isFavorite(id)}"
@@ -26,7 +26,7 @@
         </span>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 d-flex flex-column">
         <h2>{{ product.title }}</h2>
         <div>{{ product.description }}</div>
         <hr>
@@ -67,7 +67,7 @@
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>
         <hr>
 
-        <div class="row test mb-auto">
+        <div class="row mt-auto">
           <div class="input-group input-group-sm col">
             <input type="number" class="form-control"
                   min="1"
