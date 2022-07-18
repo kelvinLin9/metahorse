@@ -33,4 +33,7 @@ export default {
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
+.test {
+  outline: 3px solid red;
+}
 </style>

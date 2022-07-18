@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item fs-5">
-          <router-link to="/user/products" class="fw-bold bg-dark">
+          <router-link to="/products" class="fw-bold bg-dark">
             產品列表
           </router-link>
         </li>
@@ -67,7 +67,7 @@
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>
         <hr>
 
-        <div class="row">
+        <div class="row test mb-auto">
           <div class="input-group input-group-sm col">
             <input type="number" class="form-control"
                   min="1"
@@ -228,6 +228,9 @@ export default {
 }
 </script >
 <style lang="scss" scoped>
+.test {
+  outline: 3px solid red;
+}
 .productBanner {
   height: 300px;
   background-image: url(https://i.imgur.com/4vGqi7D.jpg);
