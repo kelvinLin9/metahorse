@@ -56,11 +56,9 @@
           </div>
         </div>
       </div>
-      <!-- <SectionOnSale /> -->
     </div>
   </div>
-  <!-- <SectionBanner :info="SectionCouponBanner" /> -->
-  <Footer />
+  <Footer/>
 </template>
 
 <script>
