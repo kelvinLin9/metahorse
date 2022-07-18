@@ -15,9 +15,9 @@ export default {
     }
   },
   mounted () {
-    window.onscroll = function (event) {
+    window.onscroll = function (e) {
       // console.log(event.target.scrollingElement.scrollTop)
-      if (event.target.scrollingElement.scrollTop > 350) {
+      if (e.target.scrollingElement.scrollTop > 350) {
         const el = document.querySelector('.goTop')
         if (el !== null) {
           el.className = 'goTop d-block'
