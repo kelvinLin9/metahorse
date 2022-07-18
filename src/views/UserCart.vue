@@ -127,15 +127,15 @@
       </div>
     </div>
   </div>
-  <Footer/>
+  <UserFooter/>
 </template>
 
 <script>
 import emitter from '@/methods/emitter'
-import Footer from '@/components/Footer.vue'
+import UserFooter from '@/components/UserFooter.vue'
 export default {
   components: {
-    Footer
+    UserFooter
   },
   data () {
     return {

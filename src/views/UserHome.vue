@@ -133,7 +133,7 @@
   <hr>
   <OtherProducts/>
   <hr>
-  <Footer/>
+  <UserFooter/>
   <GoTop/>
 </template>
 
@@ -142,7 +142,7 @@
 import UserNavbar from '../components/UserNavbar.vue'
 import Banner from '@/components/UserHomeBanner.vue'
 import OtherProducts from '@/components/ProductsHot.vue'
-import Footer from '@/components/Footer.vue'
+import UserFooter from '@/components/UserFooter.vue'
 import GoTop from '@/components/GoTop.vue'
 export default {
   name: 'HomeView',
@@ -150,7 +150,7 @@ export default {
     UserNavbar,
     Banner,
     OtherProducts,
-    Footer,
+    UserFooter,
     GoTop
   },
   data () {

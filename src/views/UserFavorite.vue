@@ -58,13 +58,14 @@
       </div>
     </div>
   </div>
-  <Footer/>
+  <UserFooter/>
 </template>
 
 <script>
 import emitter from '@/methods/emitter'
-import Footer from '@/components/Footer'
+import UserFooter from '@/components/UserFooter.vue'
 export default {
+  
   data () {
     return {
       favorite: [],
@@ -77,7 +78,7 @@ export default {
     }
   },
   components: {
-    Footer
+    UserFooter
   },
   methods: {
     getFavorite () {

@@ -95,16 +95,16 @@
          </div>
     </div>
   </div>
-  <Footer/>
+  <UserFooter/>
 </template>
 
 <script>
 import emitter from '@/methods/emitter'
-import Footer from '@/components/Footer'
+import UserFooter from '@/components/UserFooter.vue'
 export default {
   // name: 'Checkout',
   components: {
-    Footer
+    UserFooter
   },
   data () {
     return {

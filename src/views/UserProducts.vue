@@ -93,13 +93,13 @@
       </div>
     </div>
   </div>
-  <Footer/>
+  <UserFooter/>
 </template>
 
 <script>
 // import Pagination from '@/components/Pagination.vue'
 import emitter from '@/methods/emitter'
-import Footer from '@/components/Footer.vue'
+import UserFooter from '@/components/UserFooter.vue'
 export default {
   data () {
     return {
@@ -117,7 +117,7 @@ export default {
     }
   },
   components: {
-    Footer
+    UserFooter
   },
   inject: ['emitter'],
   methods: {

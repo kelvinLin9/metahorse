@@ -75,14 +75,14 @@
       </div>
     </form>
   </div>
-  <Footer/>
+  <UserFooter/>
 </template>
 
 <script>
-import Footer from '@/components/Footer'
+import UserFooter from '@/components/UserFooter.vue'
 export default {
   components: {
-    Footer
+    UserFooter
   },
   data () {
     return {

@@ -86,15 +86,15 @@
       </div>
     </div>
 
-  <Footer/>
+  <UserFooter/>
 </template>
 
 <script>
-import Footer from '@/components/Footer.vue'
+import UserFooter from '@/components/UserFooter.vue'
 export default {
   name: 'CheckOrder',
   components: {
-    Footer
+    UserFooter
   },
   data () {
     return {
