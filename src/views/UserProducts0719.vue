@@ -108,6 +108,7 @@ export default {
   data () {
     return {
       products: [],
+      productsIds:[],
       pagination: {}, // 分頁資訊
       favorite: [],
       favoriteIds: [],
@@ -132,6 +133,10 @@ export default {
       this.$http.get(url).then((res) => {
         this.products = res.data.products
         // console.log('products:', res)
+      this.productsIds = []
+      this.products.forEach((item) => {
+        this.productsIds.push(item.id)
+      })
         this.isLoading = false
       })
     },
@@ -172,13 +177,11 @@ export default {
       this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
       this.favoriteIds = []
       this.favorite.forEach((item) => {
+        // console.log(item.id)
         this.favoriteIds.push(item.id)
       })
       // console.log('this.favoriteIds', this.favoriteIds)
     },
-    // viewProduct (id) {
-    //   this.$router.push(`/product/${id}`)
-    // },
     isFavorite (id) {
       // console.log(this.favoriteIds.some((item) => item === id)) // v-bind 所以配合v-for執行n次
       return this.favoriteIds.some((item) => item === id)
@@ -204,7 +207,19 @@ export default {
       this.getFavorite()
       console.log('更新後的我的最愛列表id', this.favoriteIds)
       emitter.emit('update-favorite')
+      // this.setFavIcons()
     },
+    // setFavIcons() {
+    //   this.productsIds.forEach((i) => {
+    //     console.log('1')
+    //     this.favoriteIds.forEach((j) => {
+    //       // if(i === j){
+    //       //   console.log('2')
+    //       // }
+    //       console.log('2')
+    //     })
+    //   })
+    // }
   },
   computed: {
     favState () {
@@ -212,10 +227,8 @@ export default {
       // 因為v-for的關係，有幾個項目就會觸發幾次
       return function (id) {
         if (this.favoriteIds.indexOf(id) > -1) {
-          console.log('2')
           return 'bi bi-heart-fill'
         } else {
-          console.log('3')
           return 'bi bi-heart'
         }
       }
