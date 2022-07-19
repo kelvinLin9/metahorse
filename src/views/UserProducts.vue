@@ -61,9 +61,9 @@
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
                       :class="{'favorite': isFavorite(item.id)}"
                       @click.stop="toggleFavorite(item)">
-                  <i :class="favState(item.id)" 
-                      data-bs-toggle="tooltip" 
-                      data-bs-placement="top" 
+                  <i :class="favState(item.id)"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
                       title="加入 / 移除我的最愛">
                   </i>
                 </span>
@@ -111,7 +111,7 @@ export default {
       pagination: {}, // 分頁資訊
       favorite: [],
       favoriteIds: [],
-      favIcons:[],
+      favIcons: [],
       category: 'all',
       isLoading: false,
       // 對應品項 id 當loadingItem為一個特定品項的時候
@@ -204,18 +204,21 @@ export default {
       this.getFavorite()
       console.log('更新後的我的最愛列表id', this.favoriteIds)
       emitter.emit('update-favorite')
-    },
+    }
   },
   computed: {
     favState () {
       // 閉包傳送參數 https://segmentfault.com/q/1010000009648670
       // 因為v-for的關係，有幾個項目就會觸發幾次
+      console.log(this.favoriteIds)
+      // console.log(typeof (22, id))
       return function (id) {
         if (this.favoriteIds.indexOf(id) > -1) {
-          console.log('2')
+          // console.log('2')
+          console.log(this.favoriteIds.indexOf(id), id, typeof (id))
           return 'bi bi-heart-fill'
         } else {
-          console.log('3')
+          console.log(this.favoriteIds.indexOf(id), id, typeof (id))
           return 'bi bi-heart'
         }
       }
