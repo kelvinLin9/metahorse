@@ -40,3 +40,6 @@ ProductsHot.vue
 UserProducts0719.vue
 indexOF 在build之後出問題
 先嘗試別種寫法
+
+UserHome0720.vue
+改成進度條格式

@@ -77,22 +77,6 @@
             </button>
           </div>
         </div>
-<<<<<<< HEAD
-        <!-- <div class="col"
-            data-aos="fade-down-right"
-            data-aos-duration="2000">
-          <div class="row d-flex flex-column">
-            <hr>
-            <div class="col mt-3">
-              <h3 class="fw-bold text-center text-lg-start lh-lg">
-                遊戲中數值
-              </h3>
-              <h4 class="fw-bold text-center text-lg-start lh-lg">
-                Level：{{temp.category}}
-              </h4>
-            </div>
-            <ul class="col">
-=======
           <div class="col"
               data-aos="fade-down-right"
               data-aos-duration="2000">
@@ -135,7 +119,6 @@
           </div>
           <!-- 星星寫法先保留 -->
             <!-- <ul class="col">
->>>>>>> c4362827f74b1f9ed8eb345fb1d2ed0b43fde225
               <li class="d-flex my-2 justify-content-center justify-content-lg-start">
                 <h4>
                   速度 <i class="bi bi-lightning-fill mx-1"></i>：
@@ -188,15 +171,9 @@
                   <i class="bi bi-star" data-aos="zoom-in"></i>
                 </span>
               </li>
-<<<<<<< HEAD
-            </ul>
-          </div>
-        </div> -->
-=======
             </ul> -->
           </div>
           </div>
->>>>>>> c4362827f74b1f9ed8eb345fb1d2ed0b43fde225
       </div>
     </div>
   </section>
