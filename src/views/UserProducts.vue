@@ -185,7 +185,7 @@ export default {
     },
     toggleFavorite (item) {
       console.log('1.我的最愛列表', this.favorite)
-      console.log('2.點到的是第幾筆資料', this.favorite.indexOf(item))
+      console.log('2.點到的是第幾筆資料', this.filterProducts.indexOf(item))
       const id = item.id
       console.log('3.點擊到的id', id)
       const hasFavorite = this.favorite.some((item) => item.id === id) // v-on 所以只判斷點擊的那一次
@@ -215,10 +215,10 @@ export default {
       return function (id) {
         if (this.favoriteIds.indexOf(id) > -1) {
           // console.log('2')
-          console.log(this.favoriteIds.indexOf(id), id, typeof (id))
+          // console.log(this.favoriteIds.indexOf(id), id, typeof (id))
           return 'bi bi-heart-fill'
         } else {
-          console.log(this.favoriteIds.indexOf(id), id, typeof (id))
+          // console.log(this.favoriteIds.indexOf(id), id, typeof (id))
           return 'bi bi-heart'
         }
       }
