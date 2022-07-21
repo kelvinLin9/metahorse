@@ -200,15 +200,8 @@ export default {
   },
   computed: {
     favState () {
-      // console.log('123')
-      // 閉包傳送參數 https://segmentfault.com/q/1010000009648670
-      // 因為v-for的關係，有幾個項目就會觸發幾次
-      return function (id) {
-        if (this.favoriteIds.indexOf(id) > -1) {
-          return 'bi bi-heart-fill'
-        } else {
-          return 'bi bi-heart'
-        }
+      return (id) => {
+        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
       }
     }
   },
