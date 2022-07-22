@@ -161,8 +161,7 @@ export default {
       })
     },
     getFavorite () {
-      console.log('this.favorite', this.favorite)
-      console.log('this.products', this.products)
+      this.favorite = []
       this.products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
           this.favorite.push(item)
@@ -174,10 +173,10 @@ export default {
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
       console.log(this.favoriteIds)
-      this.getFavorite ()
+      this.getFavorite()
     },
     toggleFavorite (item) {
-      let clickId = item
+      const clickId = item
       console.log('clickId', clickId)
       // console.log('2.點到的是第幾筆資料的id', this.filterProducts.indexOf(item))
       const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次

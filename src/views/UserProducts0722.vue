@@ -100,7 +100,6 @@
 </template>
 
 <script>
-// import Pagination from '@/components/Pagination.vue'
 import emitter from '@/methods/emitter'
 import UserFooter from '@/components/UserFooter.vue'
 export default {
@@ -156,6 +155,7 @@ export default {
           this.getCart() // 重新取得購物車資料
           this.$httpMessageState(res, '加入購物車')
           emitter.emit('update-cart')// 通知Navbar元件也執行getCart()
+          // emitter.emit('updateFavorite', this.favorite)
         })
     },
     getCart () {
@@ -169,23 +169,21 @@ export default {
       })
     },
     getFavorite () {
-      console.log('this.favorite', this.favorite)
-      console.log('this.products', this.products)
+      // console.log('this.products', this.products)
+      this.favorite = []
       this.products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
           this.favorite.push(item)
         }
       })
-      console.log('this.favorite', this.favorite)
-      emitter.emit('update-favorite', '5566')
     },
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
       console.log(this.favoriteIds)
-      this.getFavorite ()
+      this.getFavorite()
     },
     toggleFavorite (item) {
-      let clickId = item
+      const clickId = item
       console.log('clickId', clickId)
       // console.log('2.點到的是第幾筆資料的id', this.filterProducts.indexOf(item))
       const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
@@ -203,7 +201,7 @@ export default {
       }
       this.getFavoriteIds()
       console.log('更新後的我的最愛列表id', this.favoriteIds)
-      emitter.emit('update-favoriteIds') // 嚇死我了 這行不需要??
+      emitter.emit('update-favoriteIds')
     }
   },
   computed: {
@@ -274,7 +272,6 @@ export default {
   },
   created () {
     this.getProducts()
-    // this.getFavoriteIds()
   }
 }
 </script>

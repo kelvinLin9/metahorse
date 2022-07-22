@@ -131,7 +131,7 @@
 </template>
 
 <script>
-// import emitter from '@/methods/emitter'
+import emitter from '@/methods/emitter'
 import UserFooter from '@/components/UserFooter.vue'
 export default {
   components: {

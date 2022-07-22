@@ -37,7 +37,7 @@
               <div class="px-3 py-2 d-flex justify-content-between">
                 <button type="button"
                         class="btn btn-outline-secondary fw-bold fs-5 px-3"
-                        @click.stop="removeFavorite(item)">
+                        @click.stop="removeFavorite(item.id)">
                   移除收藏
                 </button>
                 <button type="button"
@@ -69,6 +69,7 @@ export default {
   data () {
     return {
       favorite: [],
+      favoriteIds: [],
       isLoading: false,
       status: {
         loadingItem: ''
@@ -78,20 +79,39 @@ export default {
   components: {
     UserFooter
   },
+  inject: ['emitter'],
   methods: {
+    getProducts () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
+      this.$http.get(url).then((res) => {
+        this.products = res.data.products
+        // console.log('products:', res)
+        this.isLoading = false
+        this.getFavoriteIds()
+      })
+    },
     getFavorite () {
-      emitter.on('update-favorite', (msg) => {
-        console.log(msg)
-        this.favorite = msg
-    })
+      // console.log('this.products', this.products)
+      this.favorite = []
+      this.products.forEach((item) => {
+        if (this.favoriteIds.indexOf(item.id) > -1) {
+          this.favorite.push(item)
+        }
+      })
+      emitter.emit('updateFavorite', this.favorite)
+      console.log('this.favorite', this.favorite)
+    },
+    getFavoriteIds () {
+      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
+      console.log(this.favoriteIds)
+      this.getFavorite()
     },
     removeFavorite (item) {
-      console.log('我的最愛列表', this.favorite)
-      console.log('點到的是第幾筆資料', this.favorite.indexOf(item))
-      this.favorite.splice(this.favorite.indexOf(item), 1)
-      localStorage.setItem('favorite', JSON.stringify(this.favorite))
-      this.getFavorite()
-      emitter.emit('update-favorite') // 傳送到UserNavbar
+      this.favoriteIds.splice(this.favoriteIds.indexOf(item), 1)
+      localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
+      this.getFavoriteIds()
+      emitter.emit('update-favoriteIds') // 傳送到UserNavbar
     },
     addCart (id) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -124,7 +144,7 @@ export default {
     }
   },
   created () {
-    this.getFavorite()
+    this.getProducts()
   }
 }
 </script>

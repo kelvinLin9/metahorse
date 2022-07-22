@@ -130,6 +130,7 @@ import 'bootstrap/js/dist/collapse'
 export default {
   data () {
     return {
+      favorite: [],
       routeName: '',
       favoriteNum: 0,
       cartNum: 0,
@@ -175,11 +176,11 @@ export default {
         this.status.loadingItem = ''
         this.getCart()
         this.isLoading = false
-        emitter.emit('update-cart')
       })
     },
     cartBoxToggle () {
       this.cartBoxState = !this.cartBoxState
+      // 傳到ToastMessages 讓提示能移開避免擋到
       emitter.emit('cartBoxState', this.cartBoxState)
     }
   },
@@ -189,8 +190,6 @@ export default {
   },
   mounted () {
     this.routeName = this.$route.name // 點擊後圖標變色
-    // console.log('this.routeName', this.routeName)
-    // console.log('this.status', this.status)
     // 接收資料
     emitter.on('update-cart', () => {
       this.getCart()

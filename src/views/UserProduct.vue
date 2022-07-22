@@ -20,8 +20,7 @@
         <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded h-100">
 
         <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
-            :class="{'favorite': isFavorite(id)}"
-            @click.stop="toggleFavorite(product)">
+            @click.stop="toggleFavorite(product.id)">
           <i :class="favState(id)"></i>
         </span>
       </div>
@@ -137,6 +136,7 @@ import emitter from '@/methods/emitter'
 export default {
   data () {
     return {
+      products: [],
       product: {},
       qty: 1,
       favorite: [],
@@ -149,11 +149,20 @@ export default {
     }
   },
   methods: {
+    getProducts () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
+      this.isLoading = true
+      this.$http.get(url).then((res) => {
+        this.products = res.data.products
+        this.isLoading = false
+        this.getFavoriteIds()
+      })
+    },
     getProduct () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
       this.isLoading = true
       this.$http.get(api).then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         this.isLoading = false
         if (res.data.success) {
           this.product = res.data.product
@@ -178,52 +187,53 @@ export default {
         })
     },
     getFavorite () {
-      this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
-      this.favoriteIds = []
-      this.favorite.forEach((item) => {
-        this.favoriteIds.push(item.id)
+      this.favorite = []
+      this.products.forEach((item) => {
+        if (this.favoriteIds.indexOf(item.id) > -1) {
+          this.favorite.push(item)
+        }
       })
-      // console.log(this.favoriteIds)
+      console.log('this.favorite', this.favorite)
+      // emitter.emit('update-favorite', '5566')
     },
-    viewProduct (id) {
-      this.$router.push(`/product/${id}`)
-    },
-    isFavorite (id) {
-      return this.favoriteIds.some((item) => item === id)
+    getFavoriteIds () {
+      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
+      console.log(this.favoriteIds)
+      this.getFavorite()
     },
     toggleFavorite (item) {
-      const id = item.id
-      const hasFavorite = this.favorite.some((item) => item.id === id)
+      const clickId = item
+      console.log('clickId', clickId)
+      // console.log('2.點到的是第幾筆資料的id', this.filterProducts.indexOf(item))
+      const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
+      console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
       if (!hasFavorite) {
-        this.favorite.push(item)
-        localStorage.setItem('favorite', JSON.stringify(this.favorite))
+        this.favoriteIds.push(item)
+        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       } else {
-        const delItem = this.favorite.find((item) => {
-          return item.id === id
+        const delItem = this.favoriteIds.find((item) => {
+          return item === clickId
         })
-        this.favorite.splice(this.favorite.indexOf(delItem), 1)
-        localStorage.setItem('favorite', JSON.stringify(this.favorite))
+        // console.log('5.(刪除時)點到的是第幾筆資料', this.favoriteIds.indexOf(item))
+        this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
+        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       }
-      this.getFavorite()
-      emitter.emit('update-favorite')
+      this.getFavoriteIds()
+      console.log('更新後的我的最愛列表id', this.favoriteIds)
+      emitter.emit('update-favoriteIds') // 嚇死我了 這行不需要??
     }
   },
   computed: {
-    favState () { // 閉包傳送參數 https://segmentfault.com/q/1010000009648670
-      // 因為v-for的關係，有幾個項目就會觸發幾次
-      return function (id) {
-        if (this.favoriteIds.indexOf(id) > -1) {
-          return 'bi bi-heart-fill'
-        } else {
-          return 'bi bi-heart'
-        }
+    favState () {
+      return (id) => {
+        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
       }
     }
   },
   created () {
     this.id = this.$route.params.productId
     this.getProduct()
-    this.getFavorite()
+    this.getProducts()
   }
 }
 </script >
