@@ -71,8 +71,6 @@ export default {
       favorite: [],
       isLoading: false,
       status: {
-        // 對應品項 id 當loadingItem為一個特定品項的時候
-        // 我們就會把這個按鈕轉為disabled(配合v-if做提示效果)
         loadingItem: ''
       }
     }
@@ -82,7 +80,10 @@ export default {
   },
   methods: {
     getFavorite () {
-      this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
+      emitter.on('update-favorite', (msg) => {
+        console.log(msg)
+        this.favorite = msg
+    })
     },
     removeFavorite (item) {
       console.log('我的最愛列表', this.favorite)

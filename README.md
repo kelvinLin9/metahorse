@@ -43,3 +43,8 @@ indexOF 在build之後出問題
 
 UserHome0720.vue
 改成進度條格式
+
+UserProducts0722.vue
+favState () 修正
+favorite再修正 點擊時傳item 改成傳item.id
+localstorage 只存id看看

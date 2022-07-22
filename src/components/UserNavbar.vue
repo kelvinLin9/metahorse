@@ -130,7 +130,6 @@ import 'bootstrap/js/dist/collapse'
 export default {
   data () {
     return {
-      // isCollapse: false, // 用不到
       routeName: '',
       favoriteNum: 0,
       cartNum: 0,
@@ -155,8 +154,8 @@ export default {
       })
     },
     // 取得我的最愛筆數
-    getFavorite () {
-      this.favoriteNum = (JSON.parse(localStorage.getItem('favorite')) || []).length
+    getFavoriteNum () {
+      this.favoriteNum = (JSON.parse(localStorage.getItem('favoriteIds')) || []).length
     },
     goCart () {
       this.$router.push('/cart')
@@ -186,7 +185,7 @@ export default {
   },
   created () {
     this.getCart()
-    this.getFavorite()
+    this.getFavoriteNum()
   },
   mounted () {
     this.routeName = this.$route.name // 點擊後圖標變色
@@ -196,8 +195,8 @@ export default {
     emitter.on('update-cart', () => {
       this.getCart()
     })
-    emitter.on('update-favorite', () => {
-      this.getFavorite()
+    emitter.on('update-favoriteIds', () => {
+      this.getFavoriteNum()
     })
   }
 }
