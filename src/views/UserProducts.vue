@@ -59,8 +59,7 @@
                       :src="item.imageUrl" alt="商品照片">
                   <!-- </a> -->
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
-                      :class="{'favorite': isFavorite(item.id)}"
-                      @click.stop="toggleFavorite(item)">
+                      @click.stop="toggleFavorite(item.id)">
                   <i :class="favState(item.id)"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
@@ -101,7 +100,6 @@
 </template>
 
 <script>
-// import Pagination from '@/components/Pagination.vue'
 import emitter from '@/methods/emitter'
 import UserFooter from '@/components/UserFooter.vue'
 export default {
@@ -133,6 +131,7 @@ export default {
         this.products = res.data.products
         // console.log('products:', res)
         this.isLoading = false
+        this.getFavoriteIds()
       })
     },
     goProduct (id) {
@@ -156,6 +155,7 @@ export default {
           this.getCart() // 重新取得購物車資料
           this.$httpMessageState(res, '加入購物車')
           emitter.emit('update-cart')// 通知Navbar元件也執行getCart()
+          // emitter.emit('updateFavorite', this.favorite)
         })
     },
     getCart () {
@@ -169,41 +169,39 @@ export default {
       })
     },
     getFavorite () {
-      this.favorite = JSON.parse(localStorage.getItem('favorite')) || []
-      this.favoriteIds = []
-      this.favorite.forEach((item) => {
-        this.favoriteIds.push(item.id)
+      // console.log('this.products', this.products)
+      this.favorite = []
+      this.products.forEach((item) => {
+        if (this.favoriteIds.indexOf(item.id) > -1) {
+          this.favorite.push(item)
+        }
       })
-      // console.log('this.favoriteIds', this.favoriteIds)
     },
-    // viewProduct (id) {
-    //   this.$router.push(`/product/${id}`)
-    // },
-    isFavorite (id) {
-      // console.log(this.favoriteIds.some((item) => item === id)) // v-bind 所以配合v-for執行n次
-      return this.favoriteIds.some((item) => item === id)
+    getFavoriteIds () {
+      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
+      console.log(this.favoriteIds)
+      this.getFavorite()
     },
     toggleFavorite (item) {
-      console.log('1.我的最愛列表', this.favorite)
-      console.log('2.點到的是第幾筆資料', this.filterProducts.indexOf(item))
-      const id = item.id
-      console.log('3.點擊到的id', id)
-      const hasFavorite = this.favorite.some((item) => item.id === id) // v-on 所以只判斷點擊的那一次
+      const clickId = item
+      console.log('clickId', clickId)
+      // console.log('2.點到的是第幾筆資料的id', this.filterProducts.indexOf(item))
+      const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
       console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
       if (!hasFavorite) {
-        this.favorite.push(item)
-        localStorage.setItem('favorite', JSON.stringify(this.favorite))
+        this.favoriteIds.push(item)
+        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       } else {
-        const delItem = this.favorite.find((item) => {
-          return item.id === id
+        const delItem = this.favoriteIds.find((item) => {
+          return item === clickId
         })
-        console.log('5.(刪除時)點到的是第幾筆資料', this.favorite.indexOf(item))
-        this.favorite.splice(this.favorite.indexOf(delItem), 1) // 直接放item會刪最後一個?
-        localStorage.setItem('favorite', JSON.stringify(this.favorite))
+        // console.log('5.(刪除時)點到的是第幾筆資料', this.favoriteIds.indexOf(item))
+        this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
+        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       }
-      this.getFavorite()
+      this.getFavoriteIds()
       console.log('更新後的我的最愛列表id', this.favoriteIds)
-      emitter.emit('update-favorite')
+      emitter.emit('update-favoriteIds')
     }
   },
   computed: {
@@ -274,7 +272,6 @@ export default {
   },
   created () {
     this.getProducts()
-    this.getFavorite()
   }
 }
 </script>
