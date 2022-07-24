@@ -152,6 +152,8 @@ export default {
         this.cartNum = res.data.data.carts.length
         this.cart = res.data.data
         this.isLoading = false
+        // 傳一份給floatCart
+        emitter.emit('cartNum', this.cartNum)
       })
     },
     // 取得我的最愛筆數

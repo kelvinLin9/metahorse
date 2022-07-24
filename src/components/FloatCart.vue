@@ -19,25 +19,17 @@ export default {
       cartNum: 0
     }
   },
+  inject: ['emitter'],
   methods: {
     goCart () {
       this.$router.push('/cart')
     },
-    getCart () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        this.cartNum = res.data.data.carts.length
-        this.isLoading = false
-      })
-    }
-  },
-  created () {
-    this.getCart()
   },
   mounted () {
-    emitter.on('update-cart', () => {
-      this.getCart()
+    // 接收資料
+    emitter.on('cartNum', (msg) => {
+      console.log(msg)
+      this.cartNum = msg
     })
   }
 }

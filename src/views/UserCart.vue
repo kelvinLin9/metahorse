@@ -19,11 +19,11 @@
          <thead class="table-primary">
            <tr>
              <th style="width: 50px">刪除</th>
-             <th style="width: 200px">品名</th>
-             <th style="width: 200px">圖片</th>
+             <th style="width: 150px">品名</th>
+             <th style="width: 100px">圖片</th>
              <th style="width: 80px">單價</th>
              <th style="width: 80px">數量</th>
-             <th style="width: 250px" class="text-end">總價</th>
+             <th style="width: 200px" class="text-end">總價</th>
            </tr>
          </thead>
          <tbody>
@@ -59,10 +59,10 @@
                </div>
              </td>
              <td class="text-end">
-               <div v-if="item.final_total === item.total" class="fs-3">
+               <div v-if="item.final_total === item.total" class="fs-5">
                    NT$ {{ $filters.currency(item.final_total) }}
                </div>
-               <div v-if="item.final_total !== item.total" class="fs-3">
+               <div v-if="item.final_total !== item.total" class="fs-5">
                  <small class="text-secondary fs-6">
                  優惠券折扣價：
                  </small>
@@ -185,9 +185,9 @@ export default {
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       this.isLoading = true
-      this.$http.get(url).then((response) => {
-        console.log(response)
-        this.cart = response.data.data
+      this.$http.get(url).then((res) => {
+        console.log(res)
+        this.cart = res.data.data
         this.isLoading = false
       })
     },
