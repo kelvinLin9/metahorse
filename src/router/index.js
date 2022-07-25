@@ -54,19 +54,19 @@ const routes = [
   },
   {
     path: '/dashboard',
-    component: () => import('../views/AdminDashboard.vue'),
+    component: () => import('../views/admin/AdminDashboard.vue'),
     children: [
       {
         path: 'products',
-        component: () => import('../views/AdminProducts.vue')
+        component: () => import('../views/admin/AdminProducts.vue')
       },
       {
         path: 'orders',
-        component: () => import('../views/AdminOrders.vue')
+        component: () => import('../views/admin/AdminOrders.vue')
       },
       {
         path: 'coupons',
-        component: () => import('../views/AdminCoupons.vue')
+        component: () => import('../views/admin/AdminCoupons.vue')
       }
     ]
   },

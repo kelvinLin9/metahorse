@@ -55,11 +55,11 @@ export default {
       }
     }
   },
-  watch: {
-    $route (to) {
-      console.log('$route', to)
-    }
-  },
+  // watch: {
+  //   $route (to) {
+  //     console.log('$route', to)
+  //   }
+  // },
   methods: {
     logout () {
       const api = `${process.env.VUE_APP_API}logout`

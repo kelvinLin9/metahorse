@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import '@/methods/sweetalart2'
 import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 // importing AOS css style globally
 import AOS from 'aos'
 import 'aos/dist/aos.css'
