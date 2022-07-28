@@ -23,7 +23,7 @@ export default {
   methods: {
     goCart () {
       this.$router.push('/cart')
-    },
+    }
   },
   mounted () {
     // 接收資料

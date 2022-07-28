@@ -16,7 +16,7 @@
         <div class="col-md-6 col-lg-4 col-12"
             v-for="item in favorite" :key="item.id">
           <div class="card rounded-3">
-            <div class="card-img overflow-hidden position-relative cursorPointer">
+            <div class="card-img overflow-hidden position-relative scale">
               <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
               @click.prevent="goProduct(item.id)">
                 詳細資訊
@@ -91,7 +91,6 @@ export default {
       })
     },
     getFavorite () {
-      // console.log('this.products', this.products)
       this.favorite = []
       this.products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
@@ -149,15 +148,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.test {
-  outline: 3px solid red;
-}
 .img-fit{
   width: 100%;
   object-fit: cover;
   transition: .5s;
 }
-.cursorPointer{
+.scale{
   &:hover{
     .btn{
       opacity: 1;

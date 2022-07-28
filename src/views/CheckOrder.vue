@@ -94,7 +94,6 @@
 import UserFooter from '@/components/UserFooter.vue'
 
 export default {
-  name: 'CheckOrder',
   components: {
     UserFooter
   },
@@ -127,8 +126,6 @@ export default {
         }
       })
     }
-  },
-  created () {
   }
 }
 </script>

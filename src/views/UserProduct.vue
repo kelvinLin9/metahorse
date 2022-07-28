@@ -1,5 +1,4 @@
 <template>
-  <br>
   <Loading :active="isLoading"></Loading>
   <div class="container my-5">
     <nav aria-label="breadcrumb">
@@ -36,25 +35,25 @@
           <h5>遊戲中素質：</h5>
           <span>速度<i class="bi bi-lightning-fill mx-1"></i></span>
           <div class="progress mb-3">
-            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.speed*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.speed*20}%`}">
               {{product.speed}} / 5
             </div>
           </div>
           <span>耐力<i class="bi bi-clock-fill mx-1"></i></span>
           <div class="progress mb-3">
-            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.stamina*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.stamina*20}%`}">
               {{product.stamina}} / 5
             </div>
           </div>
           <span>幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
           <div class="progress mb-3">
-            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.lucky*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.lucky*20}%`}">
               {{product.lucky}} / 5
             </div>
           </div>
           <span>智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
           <div class="progress mb-3">
-            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.intelligence*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.intelligence*20}%`}">
               {{product.intelligence}} / 5
             </div>
           </div>
@@ -193,20 +192,14 @@ export default {
           this.favorite.push(item)
         }
       })
-      console.log('this.favorite', this.favorite)
-      // emitter.emit('update-favorite', '5566')
     },
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log(this.favoriteIds)
       this.getFavorite()
     },
     toggleFavorite (item) {
       const clickId = item
-      console.log('clickId', clickId)
-      // console.log('2.點到的是第幾筆資料的id', this.filterProducts.indexOf(item))
-      const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
-      console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
+      const hasFavorite = this.favoriteIds.some((item) => item === clickId) 
       if (!hasFavorite) {
         this.favoriteIds.push(item)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
@@ -214,13 +207,11 @@ export default {
         const delItem = this.favoriteIds.find((item) => {
           return item === clickId
         })
-        // console.log('5.(刪除時)點到的是第幾筆資料', this.favoriteIds.indexOf(item))
         this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       }
       this.getFavoriteIds()
-      console.log('更新後的我的最愛列表id', this.favoriteIds)
-      emitter.emit('update-favoriteIds') // 嚇死我了 這行不需要??
+      emitter.emit('update-favoriteIds')
     }
   },
   computed: {
@@ -238,16 +229,6 @@ export default {
 }
 </script >
 <style lang="scss" scoped>
-.test {
-  outline: 3px solid red;
-}
-.productBanner {
-  height: 300px;
-  background-image: url(https://i.imgur.com/4vGqi7D.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position:center ;
-}
 .fav-icon {
   width: 50px;
   height: 50px;
@@ -256,5 +237,4 @@ export default {
   right: 15px;
   z-index: 2;
 }
-
 </style>

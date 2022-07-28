@@ -15,68 +15,68 @@
     <div class="row mt-4">
       <!-- 購物車列表 -->
       <div class="col">
-       <table class="table align-middle">
-         <thead class="table-primary">
-           <tr>
-             <th style="width: 50px">刪除</th>
-             <th style="width: 150px">品名</th>
-             <th style="width: 100px">圖片</th>
-             <th style="width: 80px">單價</th>
-             <th style="width: 80px">數量</th>
-             <th style="width: 200px" class="text-end">總價</th>
-           </tr>
-         </thead>
-         <tbody>
-         <template v-if="cart.carts">
-           <tr v-for="item in cart.carts" :key="item.id">
-             <td>
-               <button type="button" class="btn btn-outline-primary btn-sm"
+        <table class="table align-middle">
+          <thead class="table-primary">
+            <tr>
+              <th style="width: 50px">刪除</th>
+              <th style="width: 150px">品名</th>
+              <th style="width: 100px">圖片</th>
+              <th style="width: 80px">單價</th>
+              <th style="width: 80px">數量</th>
+              <th style="width: 200px" class="text-end">總價</th>
+            </tr>
+          </thead>
+          <tbody>
+          <template v-if="cart.carts">
+            <tr v-for="item in cart.carts" :key="item.id">
+              <td>
+                <button type="button" class="btn btn-outline-primary btn-sm"
                        :disabled="status.loadingItem === item.id"
                        @click="removeCartItem(item.id)">
-                 <i class="bi bi-x"></i>
-               </button>
-             </td>
-             <td>
-               {{ item.product.title }}  /  {{item.product.description }}
-               <div class="text-secondary fw-bold" v-if="item.coupon">
-                 已套用優惠券 ({{item.final_total / item.total * 100 }}% OFF)<br>
-                 代碼：{{item.coupon.code}}
-               </div>
-             </td>
-             <td>
-               <img :src="item.product.imageUrl" alt="商品照片" width="50">
-             </td>
-             <td>
-               NT$ {{item.product.price}}
-             </td>
-             <td>
-               <div class="input-group input-group-sm">
-                 <input type="number" class="form-control"
+                  <i class="bi bi-x"></i>
+                </button>
+              </td>
+              <td>
+                {{ item.product.title }}  /  {{item.product.description }}
+                <div class="text-secondary fw-bold" v-if="item.coupon">
+                  已套用優惠券 ({{item.final_total / item.total * 100 }}% OFF)<br>
+                  代碼：{{item.coupon.code}}
+                </div>
+              </td>
+              <td>
+                <img :src="item.product.imageUrl" alt="商品照片" width="50">
+              </td>
+              <td>
+                NT$ {{item.product.price}}
+              </td>
+              <td>
+                <div class="input-group input-group-sm">
+                  <input type="number" class="form-control"
                        min="1"
                        :disabled="item.id === status.loadingItem"
                        @change="updateCart(item)"
                        v-model.number="item.qty">
-               </div>
-             </td>
-             <td class="text-end">
-               <div v-if="item.final_total === item.total" class="fs-5">
+                </div>
+              </td>
+              <td class="text-end">
+                <div v-if="item.final_total === item.total" class="fs-5">
                    NT$ {{ $filters.currency(item.final_total) }}
-               </div>
-               <div v-if="item.final_total !== item.total" class="fs-5">
-                 <small class="text-secondary fs-6">
-                 優惠券折扣價：
-                 </small>
-                 NT$ {{ $filters.currency(item.final_total) }}
-               </div>
-             </td>
-           </tr>
-         </template>
-         </tbody>
-         <tfoot>
-         <tr v-if="cart.final_total == cart.total">
-           <td colspan="7" class="text-end fs-1">
-             總計：NT$ {{ $filters.currency(cart.total) }}
-           </td>
+                </div>
+                <div v-if="item.final_total !== item.total" class="fs-5">
+                  <small class="text-secondary fs-6">
+                  優惠券折扣價：
+                  </small>
+                  NT$ {{ $filters.currency(item.final_total) }}
+                </div>
+              </td>
+            </tr>
+          </template>
+          </tbody>
+          <tfoot>
+          <tr v-if="cart.final_total == cart.total">
+            <td colspan="7" class="text-end fs-1">
+              總計：NT$ {{ $filters.currency(cart.total) }}
+            </td>
          </tr>
          <tr v-if="cart.final_total !== cart.total">
            <td colspan="7" class="text-end fs-3">
@@ -89,23 +89,18 @@
            </td>
          </tr>
          </tfoot>
-       </table>
+        </table>
 
-       <div class="input-group mb-3 input-group-sm"
+        <div class="input-group mb-3 input-group-sm"
              v-if="cart.total !== 0">
-         <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
-         <div class="input-group-append">
-           <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" @click="addCouponCode">
-             套用優惠碼
-           </button>
-         </div>
-       </div>
-       <!-- 另外寫函式處理 -->
-       <!-- <div v-for="item in cart.carts" :key="item.id">
-           已使用優惠碼：{{item.coupon.code}}
-       </div> -->
-       <!-- 另外寫函式處理 -->
-        <div class="d-flex justify-content-between mt-5"
+          <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" @click="addCouponCode">
+              套用優惠碼
+            </button>
+          </div>
+        </div>
+      <div class="d-flex justify-content-between mt-5"
              v-if="cart.total !== 0">
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
                 @click="goProducts">
@@ -142,18 +137,7 @@ export default {
       products: [],
       product: {},
       status: {
-        // 對應品項 id 當loadingItem為一個特定品項的時候
-        // 我們就會把這個按鈕轉為disabled
         loadingItem: ''
-      },
-      form: {
-        user: {
-          name: '',
-          email: '',
-          tel: '',
-          address: ''
-        },
-        message: ''
       },
       cart: {},
       coupon_code: ''
@@ -166,21 +150,6 @@ export default {
     },
     goCheckout () {
       this.$router.push('/checkout')
-    },
-    addCart (id) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.status.loadingItem = id
-      const cart = {
-        product_id: id,
-        qty: 1
-      }
-      this.$http.post(url, { data: cart })
-        .then((res) => {
-          // 等到ajax成功之後，再把id清空
-          this.status.loadingItem = ''
-          console.log(res)
-          this.getCart()
-        })
     },
     getCart () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -204,6 +173,7 @@ export default {
         console.log(res)
         this.status.loadingItem = ''
         this.getCart()
+        emitter.emit('update-cart')
       })
     },
     removeCartItem (id) {
@@ -231,14 +201,6 @@ export default {
         this.isLoading = false
         this.coupon_code = ''
       })
-    },
-    createOrder () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
-      const order = this.form
-      this.$http.post(url, { data: order })
-        .then((res) => {
-          console.log(res)
-        })
     }
   },
   created () {

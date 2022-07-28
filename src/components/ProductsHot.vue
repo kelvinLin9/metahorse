@@ -30,7 +30,7 @@
              <div class="card rounded-3 mb-5 mx-2 mx-sm-0"
                   data-aos="flip-up"
                   data-aos-duration="2000">
-              <div class="card-img overflow-hidden position-relative cursorPointer">
+              <div class="card-img overflow-hidden position-relative scale">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.prevent="goProduct(item.id)">
                   詳細資訊
@@ -81,7 +81,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 
 // Import Swiper styles
 import 'swiper/css'
-
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
@@ -110,8 +109,6 @@ export default {
       category: 'all',
       isLoading: false,
       status: {
-        // 對應品項 id 當loadingItem為一個特定品項的時候
-        // 我們就會把這個按鈕轉為disabled(配合v-if做提示效果)
         loadingItem: ''
       },
       loadingItem: ''
@@ -124,7 +121,7 @@ export default {
       this.isLoading = true
       this.$http.get(url).then((res) => {
         this.products = res.data.products
-        this.productsHot = res.data.products.splice(12, 5)
+        this.productsHot = res.data.products.splice(12, 5) // 先取幾個來試用
         this.isLoading = false
         this.getFavoriteIds()
       })
@@ -167,8 +164,6 @@ export default {
           this.favorite.push(item)
         }
       })
-      console.log('this.favorite', this.favorite)
-      emitter.emit('update-favorite', '5566')
     },
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
@@ -178,7 +173,6 @@ export default {
     toggleFavorite (item) {
       const clickId = item
       console.log('clickId', clickId)
-      // console.log('2.點到的是第幾筆資料的id', this.filterProducts.indexOf(item))
       const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
       console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
       if (!hasFavorite) {
@@ -188,13 +182,12 @@ export default {
         const delItem = this.favoriteIds.find((item) => {
           return item === clickId
         })
-        // console.log('5.(刪除時)點到的是第幾筆資料', this.favoriteIds.indexOf(item))
         this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       }
       this.getFavoriteIds()
       console.log('更新後的我的最愛列表id', this.favoriteIds)
-      emitter.emit('update-favoriteIds') // 嚇死我了 這行不需要??
+      emitter.emit('update-favoriteIds')
     }
   },
   computed: {
@@ -206,15 +199,11 @@ export default {
   },
   created () {
     this.getProducts()
-    // this.getFavorite()
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.test {
-  outline: 3px solid red;
-}
 .fav-icon {
   width: 50px;
   height: 50px;
@@ -229,7 +218,7 @@ export default {
   transition: 0.5s;
 }
 // 圖片放大
-.cursorPointer{
+.scale{
   &:hover{
     .btn{
       opacity: 1;
@@ -239,7 +228,6 @@ export default {
     }
   }
 }
-
 .bg-dark{
   z-index: 1; // 往上拉才點的到，不然會點到a標籤
   opacity: 0;

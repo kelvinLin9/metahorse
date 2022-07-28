@@ -93,25 +93,25 @@
             <div class="w-75">
             <span class="fw-bold fs-5">速度<i class="bi bi-lightning-fill mx-1"></i></span>
             <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.speed*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.speed*20}%`}">
                 {{temp.speed}} / 5
               </div>
             </div>
             <span class="fw-bold fs-5">耐力<i class="bi bi-clock-fill mx-1"></i></span>
             <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.stamina*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.stamina*20}%`}">
                 {{temp.stamina}} / 5
               </div>
             </div>
             <span class="fw-bold fs-5">幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
             <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.lucky*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.lucky*20}%`}">
                 {{temp.lucky}} / 5
               </div>
             </div>
             <span class="fw-bold fs-5">智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
             <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.intelligence*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.intelligence*20}%`}">
                 {{temp.intelligence}} / 5
               </div>
             </div>

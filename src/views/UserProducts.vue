@@ -49,7 +49,7 @@
           <div class="col-lg-4 col-md-6 col-12"
               v-for="item in filterProducts" :key="item.id">
             <div class="card rounded-3">
-              <div class="card-img overflow-hidden position-relative cursorPointer">
+              <div class="card-img overflow-hidden position-relative scale">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.prevent="goProduct(item.id)">
                   詳細資訊
@@ -135,9 +135,6 @@ export default {
       })
     },
     goProduct (id) {
-      console.log(id)
-      // 使用this.$router進入特定頁面
-      // 進入單一頁面之後，重新取的遠端資料
       this.$router.push(`/product/${id}`)
     },
     addCart (id) {
@@ -154,8 +151,7 @@ export default {
           console.log(res)
           this.getCart() // 重新取得購物車資料
           this.$httpMessageState(res, '加入購物車')
-          emitter.emit('update-cart')// 通知Navbar元件也執行getCart()
-          // emitter.emit('updateFavorite', this.favorite)
+          emitter.emit('update-cart')// 通知UserNavbar元件也執行getCart()
         })
     },
     getCart () {
@@ -185,9 +181,8 @@ export default {
     toggleFavorite (item) {
       const clickId = item
       console.log('clickId', clickId)
-      // console.log('2.點到的是第幾筆資料的id', this.filterProducts.indexOf(item))
       const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
-      console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
+      // console.log('點擊到的id是否在我的最愛列表', hasFavorite)
       if (!hasFavorite) {
         this.favoriteIds.push(item)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
@@ -200,24 +195,11 @@ export default {
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       }
       this.getFavoriteIds()
-      console.log('更新後的我的最愛列表id', this.favoriteIds)
+      // console.log('更新後的我的最愛列表id', this.favoriteIds)
       emitter.emit('update-favoriteIds')
     }
   },
   computed: {
-    // favState () {
-    //   // 閉包傳送參數 https://segmentfault.com/q/1010000009648670
-    //   // 因為v-for的關係，有幾個項目就會觸發幾次
-    //   console.log(this.favoriteIds)
-    //   // console.log(typeof (22, id))
-    //   return function (id) {
-    //     if (this.favoriteIds.indexOf(id) > -1) {
-    //       return 'bi bi-heart-fill'
-    //     } else {
-    //       return 'bi bi-heart'
-    //     }
-    //   }
-    // },
     favState () {
       return (id) => {
         return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
@@ -280,9 +262,6 @@ export default {
 .f-kalam {
   font-family: 'Kalam', cursive;
 }
-.test {
-  outline: 3px solid red;
-}
 .productsBanner {
   height: 300px;
   background-image: url(https://i.imgur.com/4vGqi7D.jpg);
@@ -293,10 +272,6 @@ export default {
   z-index: 1;
   opacity: 1;
   }
-}
-// 先留著 找地方用
-.bg-attachment{
-  background-attachment: fixed;
 }
 .fav-icon {
   width: 50px;
@@ -311,8 +286,8 @@ export default {
   object-fit: cover;
   transition: 0.5s;
 }
-// 圖片放大
-.cursorPointer{
+// 圖片放大，配合overflow-hidden
+.scale{
   &:hover{
     .btn{
       opacity: 1;
@@ -322,7 +297,6 @@ export default {
     }
   }
 }
-
 .bg-dark{
   z-index: 1; // 往上拉才點的到，不然會點到a標籤
   opacity: 0;

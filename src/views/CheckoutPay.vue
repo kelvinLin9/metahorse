@@ -1,6 +1,4 @@
 <template>
-  <br>
-  <br>
   <Loading :active="isLoading"></Loading>
   <div class="my-5 row justify-content-center">
     <div class="d-flex justify-content-center">
