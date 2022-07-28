@@ -77,20 +77,48 @@
             </button>
           </div>
         </div>
-        <!-- <div class="col"
-            data-aos="fade-down-right"
-            data-aos-duration="2000">
-          <div class="row d-flex flex-column">
-            <hr>
-            <div class="col mt-3">
-              <h3 class="fw-bold text-center text-lg-start lh-lg">
-                遊戲中數值
-              </h3>
-              <h4 class="fw-bold text-center text-lg-start lh-lg">
-                Level：{{temp.category}}
-              </h4>
+          <div class="col"
+              data-aos="fade-down-right"
+              data-aos-duration="2000">
+            <div class="row d-flex flex-column">
+              <hr>
+              <div class="col mt-3">
+                <h3 class="fw-bold text-center text-lg-start lh-lg">
+                  遊戲中數值
+                </h3>
+                <h4 class="fw-bold text-center text-lg-start lh-lg">
+                  Level：{{temp.category}}
+                </h4>
+              </div>
+            <div class="w-75">
+            <span class="fw-bold fs-5">速度<i class="bi bi-lightning-fill mx-1"></i></span>
+            <div class="progress mb-3">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.speed*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                {{temp.speed}} / 5
+              </div>
             </div>
-            <ul class="col">
+            <span class="fw-bold fs-5">耐力<i class="bi bi-clock-fill mx-1"></i></span>
+            <div class="progress mb-3">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.stamina*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                {{temp.stamina}} / 5
+              </div>
+            </div>
+            <span class="fw-bold fs-5">幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
+            <div class="progress mb-3">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.lucky*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                {{temp.lucky}} / 5
+              </div>
+            </div>
+            <span class="fw-bold fs-5">智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
+            <div class="progress mb-3">
+              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.intelligence*20}%`}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                {{temp.intelligence}} / 5
+              </div>
+            </div>
+            <hr>
+          </div>
+          <!-- 星星寫法先保留 -->
+            <!-- <ul class="col">
               <li class="d-flex my-2 justify-content-center justify-content-lg-start">
                 <h4>
                   速度 <i class="bi bi-lightning-fill mx-1"></i>：
@@ -143,9 +171,9 @@
                   <i class="bi bi-star" data-aos="zoom-in"></i>
                 </span>
               </li>
-            </ul>
+            </ul> -->
           </div>
-        </div> -->
+          </div>
       </div>
     </div>
   </section>
