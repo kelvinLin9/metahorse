@@ -13,14 +13,14 @@
           <h2 class="fw-bold text-center text-lg-start lh-lg"
               data-aos="fade-up"
               data-aos-duration="2000">
-            全球首個數字馬 NFT
+            全球首個數位賽馬NFT
             <br class="d-lg-none">
-            幣安智能鏈上的 GAMEFI
+            幣安智能鏈上的GameFi
           </h2>
           <p class="lh-lg"
               data-aos="fade-up"
               data-aos-duration="2000">
-            世界上第一個數字和創新的馬 NFT，幣安智能鏈上的 GameFi，讓您通過成為 MetaHorse 在數字世界和現實生活中受益並獲得真正的馬。 它使您能夠擁有和交易數字真馬，並得到實體馬匹的支持，並幫助您參加賽馬比賽。
+            世界上第一個數位和創新的賽馬NFT，幣安智能鏈上的GameFi，讓您通過成為 MetaHorse 在數位世界遊戲和現實生活中獲得真正的馬。它使您能夠擁有和交易賽馬NFT，並得到實體馬匹的支持，幫助您參加賽馬比賽。
           </p>
         </div>
         <div class="col-lg-6"
