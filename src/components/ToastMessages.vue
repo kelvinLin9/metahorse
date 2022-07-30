@@ -8,16 +8,33 @@
 
 <script>
 import Toast from '@/components/Toast.vue'
+import { mapState, storeToRefs } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import cartStore from '@/stores/cartStore'
+
 export default {
   components: { Toast },
+  // Composition API寫法
+  setup () {
+    const status = statusStore()
+    const { messages } = storeToRefs(status)
+
+    return {
+      messages
+    }
+  },
+  computed: {
+    ...mapState(cartStore, ['cartBoxState'])
+  },
   data () {
     return {
-      messages: [],
-      cartBoxState: false
+      // messages: [],
+      // cartBoxState: false
     }
   },
   inject: ['emitter'],
   mounted () {
+    // 晚點拿掉
     this.emitter.on('push-message', (message) => {
       const { style = 'success', title, content } = message
       this.messages.push({ style, title, content })

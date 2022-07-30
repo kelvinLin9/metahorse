@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 
+import { createPinia } from 'pinia'
+
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -29,6 +31,8 @@ import router from './router'
 import { currency, date } from './methods/filters'
 import $httpMessageState from './methods/pushMessageState'
 
+const pinia = createPinia()
+
 // sweetalert2
 const options = {
   confirmButtonColor: '#41b882',
@@ -56,6 +60,8 @@ configure({
 setLocale('zh_TW')
 // 此函式的用途是整合 Ajax 的錯誤事件，統一整理發送給予 Toast 處理
 app.config.globalProperties.$httpMessageState = $httpMessageState
+
+app.use(pinia)
 
 app.use(VueAxios, axios)
 app.use(router)

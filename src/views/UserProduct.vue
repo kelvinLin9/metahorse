@@ -181,7 +181,7 @@ export default {
           this.status.loadingItem = ''
           console.log('加入購物車的res', res)
           // this.getCart() // 重新取得購物車資料(單一頁面不需要)
-          this.$httpMessageState(res, '加入購物車')
+          this.$httpMessageState(res, '加入購物車...')
           emitter.emit('update-cart')// 通知Navbar元件也執行getCart()
         })
     },

@@ -28,7 +28,7 @@ export default {
   mounted () {
     // 接收資料
     emitter.on('cartNum', (msg) => {
-      console.log(msg)
+      // console.log(msg)
       this.cartNum = msg
     })
   }
