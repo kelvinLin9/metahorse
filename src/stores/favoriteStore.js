@@ -25,7 +25,7 @@ export default defineStore('favoriteStore', {
     },
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log(this.favoriteIds)
+      console.log(123, this.favoriteIds)
       this.getFavorite()
     },
     toggleFavorite (item) {

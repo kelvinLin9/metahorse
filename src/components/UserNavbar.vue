@@ -147,7 +147,7 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'removeCartItem', 'cartBoxToggle']),
-    ...mapActions(favoriteStore, ['getFavorite']),
+    ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds']),
     goCart () {
       this.$router.push('/cart')
       this.cartBoxState = false
