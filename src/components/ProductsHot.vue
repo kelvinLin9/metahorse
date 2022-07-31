@@ -55,9 +55,9 @@
                 </span>
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
-                        :disabled="this.status.loadingItem === item.id"
+                        :disabled="cartLoadingItem === item.id"
                         @click="addCart(item.id)">
-                  <div v-if="this.status.loadingItem === item.id"
+                  <div v-if="cartLoadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
@@ -105,101 +105,23 @@ export default {
       modules: [Navigation, FreeMode, Pagination, Scrollbar]
     }
   },
-  data () {
-    return {
-      productsHot: [], // 熱門商品 可以考慮寫在後台
-      category: 'all',
-      // isLoading: false,
-      // status: {
-      //   loadingItem: ''
-      // },
-      // loadingItem: ''
-    }
-  },
   methods: {
-    getProducts () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        this.products = res.data.products
-        this.productsHot = res.data.products.splice(12, 5) // 先取幾個來試用
-        this.isLoading = false
-        this.getFavoriteIds()
-      })
-    },
-    goProduct (id) {
-      this.$router.push(`/product/${id}`)
-    },
-    addCart (id) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.status.loadingItem = id
-      const cart = {
-        product_id: id,
-        qty: 1
-      }
-      this.$http.post(url, { data: cart })
-        .then((res) => {
-          // 等到ajax成功之後，再把id清空
-          this.status.loadingItem = ''
-          console.log(res)
-          this.getCart() // 重新取得購物車資料
-          this.$httpMessageState(res, '加入購物車')
-          emitter.emit('update-cart')// 通知Navbar元件也執行getCart()
-        })
-    },
-    getCart () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(url).then((response) => {
-        console.log(response)
-        // 包含陣列列表、總金額
-        this.cart = response.data.data
-        console.log(this.cart)
-        this.isLoading = false
-      })
-    },
-    getFavorite () {
-      this.favorite = []
-      this.products.forEach((item) => {
-        if (this.favoriteIds.indexOf(item.id) > -1) {
-          this.favorite.push(item)
-        }
-      })
-    },
-    getFavoriteIds () {
-      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log(this.favoriteIds)
-      this.getFavorite()
-    },
-    toggleFavorite (item) {
-      const clickId = item
-      console.log('clickId', clickId)
-      const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
-      console.log('4.點擊到的id是否在我的最愛列表', hasFavorite)
-      if (!hasFavorite) {
-        this.favoriteIds.push(item)
-        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      } else {
-        const delItem = this.favoriteIds.find((item) => {
-          return item === clickId
-        })
-        this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
-        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      }
-      this.getFavoriteIds()
-      console.log('更新後的我的最愛列表id', this.favoriteIds)
-      emitter.emit('update-favoriteIds')
-    }
+    ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
+    ...mapActions(productsStore, ['getProducts']),
+    ...mapActions(cartStore, ['getCart', 'addCart']),
+    ...mapActions(goStore, ['goProduct']),
+    // goProduct (id) {
+    //   this.$router.push(`/product/${id}`)
+    // },
   },
   computed: {
-    favState () {
-      return (id) => {
-        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
-      }
-    }
+    ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
+    ...mapState(productsStore, ['products', 'productsHot']),
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
   },
   created () {
     this.getProducts()
+    this.getFavoriteIds()
   }
 }
 </script>

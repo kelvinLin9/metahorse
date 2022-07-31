@@ -12,25 +12,31 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
+// import emitter from '@/methods/emitter'
+import { mapState, mapActions } from 'pinia'
+import cartStore from '@/stores/cartStore'
+import goStore from '@/stores/goStore'
 export default {
   data () {
     return {
-      cartNum: 0
+      // cartNum: 0
     }
   },
-  inject: ['emitter'],
+  // inject: ['emitter'],
+  computed: {
+    ...mapState(cartStore, ['cartNum'])
+  },
   methods: {
-    goCart () {
-      this.$router.push('/cart')
-    }
+    // goCart () {
+    //   this.$router.push('/cart')
+    // }
   },
   mounted () {
-    // 接收資料
-    emitter.on('cartNum', (msg) => {
-      // console.log(msg)
-      this.cartNum = msg
-    })
+    // // 接收資料
+    // emitter.on('cartNum', (msg) => {
+    //   // console.log(msg)
+    //   this.cartNum = msg
+    // })
   }
 }
 </script>

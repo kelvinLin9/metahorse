@@ -10,7 +10,8 @@ const status = statusStore()
 export default defineStore('productStore', {
   state: () => ({
     products: [],
-    product: {}
+    product: {},
+    productsHot:[]
   }),
   actions: {
     getProducts () {
@@ -18,6 +19,7 @@ export default defineStore('productStore', {
       status.isLoading = true
       axios.get(url).then((res) => {
         this.products = res.data.products
+        this.productsHot = res.data.products.splice(12, 5) // 先取幾個來試用
         // console.log('products:', res)
         status.isLoading = false
         // this.getFavoriteIds()

@@ -135,8 +135,6 @@ import goStore from '@/stores/goStore'
 export default {
   data () {
     return {
-      // favorite: [],
-      // favoriteNum: 0
       routeName: ''
     }
   },
