@@ -132,6 +132,7 @@ import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
+// import productStore from '@/stores/productStore'// 必要時硬解
 export default {
   data () {
     return {
@@ -141,7 +142,8 @@ export default {
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
     ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState']),
-    ...mapState(favoriteStore, ['favoriteNum'])
+    ...mapState(favoriteStore, ['favoriteNum']),
+    // ...mapState(productStore, ['favoriteNum']) // 必要時硬解
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'removeCartItem', 'cartBoxToggle']),
@@ -158,7 +160,6 @@ export default {
   },
   created () {
     this.getCart()
-    // this.getFavoriteIds()
   },
   mounted () {
     this.routeName = this.$route.name // 點擊後圖標變色

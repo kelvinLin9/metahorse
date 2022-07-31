@@ -12,6 +12,8 @@ export default defineStore('productStore', {
     products: [],
     product: {},
     productsHot: [],
+    // favorite: [], // 必要時硬解
+    // favoriteNum: 0 // 必要時硬解
     // category: 'all'
   }),
   actions: {
@@ -23,9 +25,21 @@ export default defineStore('productStore', {
         this.productsHot = this.products.filter((item, index) => index > 14) // 先取幾個來試用
         // console.log('products:', res)
         status.isLoading = false
-        // favorite123.getFavoriteIds()
+        // this.getFavorite() // 必要時硬解
       })
     },
+    // 必要時硬解
+    // getFavorite () {
+    //   this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
+    //   this.favorite = []
+    //   this.products.forEach((item) => {
+    //     if (this.favoriteIds.indexOf(item.id) > -1) {
+    //       this.favorite.push(item)
+    //     }
+    //   })
+    //   this.favoriteNum = this.favorite.length
+    //   console.log('this.favoriteNum', this.favoriteNum)
+    // },
     getProduct (id) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`
       status.isLoading = true
