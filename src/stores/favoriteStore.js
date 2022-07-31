@@ -12,7 +12,7 @@ export default defineStore('favoriteStore', {
   actions: {
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log(123, this.favoriteIds)
+      console.log('this.favoriteIds', this.favoriteIds)
       this.getFavorite()
     },
     getFavorite () {
@@ -23,7 +23,7 @@ export default defineStore('favoriteStore', {
         }
       })
       this.favoriteNum = this.favorite.length
-      console.log(this.favoriteNum)
+      console.log('this.favoriteNum', this.favoriteNum)
     },
     toggleFavorite (item) {
       const clickId = item

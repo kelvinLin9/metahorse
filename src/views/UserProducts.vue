@@ -178,8 +178,11 @@ export default {
   },
   created () {
     this.getProducts()
+  },
+  mounted () {
     this.getFavoriteIds()
   }
+
 }
 </script>
 
