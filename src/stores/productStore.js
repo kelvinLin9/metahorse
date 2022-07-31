@@ -9,7 +9,8 @@ const status = statusStore()
 
 export default defineStore('productStore', {
   state: () => ({
-    products: []
+    products: [],
+    product: {}
   }),
   actions: {
     getProducts () {
@@ -21,6 +22,17 @@ export default defineStore('productStore', {
         status.isLoading = false
         // this.getFavoriteIds()
       })
-    }
+    },
+    getProduct (id) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`
+      status.isLoading = true
+      axios.get(api).then((res) => {
+        // console.log(res.data)
+        status.isLoading = false
+        if (res.data.success) {
+          this.product = res.data.product
+        }
+      })
+    },
   }
 })

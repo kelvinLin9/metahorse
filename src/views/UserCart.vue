@@ -131,6 +131,7 @@ import UserFooter from '@/components/UserFooter.vue'
 import { mapState, mapActions } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
+import goStore from '@/stores/goStore'
 export default {
   components: {
     UserFooter
@@ -142,53 +143,11 @@ export default {
   },
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
-    ...mapState(cartStore, ['cart'])
+    ...mapState(cartStore, ['cart']),
   },
   methods: {
-    goProducts () {
-      this.$router.push('/products')
-    },
-    goCheckout () {
-      this.$router.push('/checkout')
-    },
     ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),
-    // getCart () {
-    //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-    //   this.isLoading = true
-    //   this.$http.get(url).then((res) => {
-    //     console.log(res)
-    //     this.cart = res.data.data
-    //     this.isLoading = false
-    //   })
-    // },
-    // // 更改購物車商品數量
-    // updateCart (item) {
-    //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
-    //   this.isLoading = true
-    //   this.status.loadingItem = item.id
-    //   const cart = {
-    //     product_id: item.product_id,
-    //     qty: item.qty
-    //   }
-    //   this.$http.put(url, { data: cart }).then((res) => {
-    //     console.log(res)
-    //     this.status.loadingItem = ''
-    //     this.getCart()
-    //     emitter.emit('update-cart')
-    //   })
-    // },
-    // removeCartItem (id) {
-    //   this.status.loadingItem = id
-    //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-    //   this.isLoading = true
-    //   this.$http.delete(url).then((response) => {
-    //     this.$httpMessageState(response, '移除購物車品項')
-    //     this.status.loadingItem = ''
-    //     this.getCart()
-    //     this.isLoading = false
-    //     emitter.emit('update-cart')
-    //   })
-    // },
+    ...mapActions(goStore, ['goProducts', 'goCheckout']),
     addCouponCode () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
       const coupon = {

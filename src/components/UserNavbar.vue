@@ -124,7 +124,6 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
 // 響應式行為會使用到折疊的 JavaScript 插件
 import 'bootstrap/js/dist/collapse'
 
@@ -132,6 +131,7 @@ import { mapState, mapActions } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import favoriteStore from '@/stores/favoriteStore'
+import goStore from '@/stores/goStore'
 export default {
   data () {
     return {
@@ -148,18 +148,19 @@ export default {
   methods: {
     ...mapActions(cartStore, ['getCart', 'removeCartItem', 'cartBoxToggle']),
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds']),
-    goCart () {
-      this.$router.push('/cart')
-      this.cartBoxState = false
-    },
-    goProducts () {
-      this.$router.push('/products')
-      this.cartBoxState = false
-    }
+    ...mapActions(goStore, ['goCart', 'goProducts']),
+    // goCart () {
+    //   this.$router.push('/cart')
+    //   this.cartBoxState = false
+    // },
+    // goProducts () {
+    //   this.$router.push('/products')
+    //   this.cartBoxState = false
+    // }
   },
   created () {
     this.getCart()
-    this.getFavorite()
+    this.getFavoriteIds()
   },
   mounted () {
     this.routeName = this.$route.name // 點擊後圖標變色

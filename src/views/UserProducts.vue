@@ -100,20 +100,16 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
 import UserFooter from '@/components/UserFooter.vue'
 import { mapState, mapActions } from 'pinia'
 import productsStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
-
+import goStore from '@/stores/goStore'
 export default {
   data () {
     return {
-      // favorite: [],
-      // favoriteIds: [],
-      // favIcons: [],
       category: 'all'
     }
   },
@@ -124,54 +120,15 @@ export default {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
     ...mapActions(productsStore, ['getProducts']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
-
-    goProduct (id) {
-      this.$router.push(`/product/${id}`)
-    },
-    // getFavorite () {
-    //   // console.log('this.products', this.products)
-    //   this.favorite = []
-    //   this.products.forEach((item) => {
-    //     if (this.favoriteIds.indexOf(item.id) > -1) {
-    //       this.favorite.push(item)
-    //     }
-    //   })
+    ...mapActions(goStore, ['goProduct']),
+    // goProduct (id) {
+    //   this.$router.push(`/product/${id}`)
     // },
-    // getFavoriteIds () {
-    //   this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-    //   console.log(this.favoriteIds)
-    //   this.getFavorite()
-    // },
-    // toggleFavorite (item) {
-    //   const clickId = item
-    //   console.log('clickId', clickId)
-    //   const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
-    //   // console.log('點擊到的id是否在我的最愛列表', hasFavorite)
-    //   if (!hasFavorite) {
-    //     this.favoriteIds.push(item)
-    //     localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-    //   } else {
-    //     const delItem = this.favoriteIds.find((item) => {
-    //       return item === clickId
-    //     })
-    //     // console.log('5.(刪除時)點到的是第幾筆資料', this.favoriteIds.indexOf(item))
-    //     this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
-    //     localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-    //   }
-    //   this.getFavoriteIds()
-    //   // console.log('更新後的我的最愛列表id', this.favoriteIds)
-    //   emitter.emit('update-favoriteIds')
-    // }
   },
   computed: {
-    ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons']),
+    ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
     ...mapState(productsStore, ['products']),
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
-    favState () {
-      return (id) => {
-        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
-      }
-    },
     filterProducts () {
       let filterProducts
       switch (this.category) {

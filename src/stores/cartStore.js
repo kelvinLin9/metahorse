@@ -10,7 +10,8 @@ export default defineStore('cartStore', {
   state: () => ({
     cart: {},
     cartNum: 0,
-    cartBoxState: false
+    cartBoxState: false,
+    // qty: 1
   }),
   actions: {
     getCart () {
@@ -28,6 +29,7 @@ export default defineStore('cartStore', {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
       status.isLoading = true
       status.cartLoadingItem = item.id
+      // this.qty = item.qty
       const cart = {
         product_id: item.product_id,
         qty: item.qty
@@ -50,12 +52,12 @@ export default defineStore('cartStore', {
         status.isLoading = false
       })
     },
-    addCart (id) {
+    addCart (id, qty = 1) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
       status.cartLoadingItem = id
       const cart = {
         product_id: id,
-        qty: 1
+        qty
       }
       axios.post(url, { data: cart })
         .then((res) => {

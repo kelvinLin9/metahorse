@@ -14,19 +14,19 @@ export default defineStore('favoriteStore', {
     favoriteNum: 0
   }),
   actions: {
+    getFavoriteIds () {
+      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
+      console.log(123, this.favoriteIds)
+      this.getFavorite()
+    },
     getFavorite () {
-      // this.favorite = [] // 要嗎
+      this.favorite = [] // 要嗎
       products.products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
           this.favorite.push(item)
         }
       })
       this.favoriteNum = this.favorite.length
-    },
-    getFavoriteIds () {
-      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log(123, this.favoriteIds)
-      this.getFavorite()
     },
     toggleFavorite (item) {
       const clickId = item
@@ -48,5 +48,12 @@ export default defineStore('favoriteStore', {
       // console.log('更新後的我的最愛列表id', this.favoriteIds)
       // emitter.emit('update-favoriteIds')
     }
-  }
+  },
+  getters: {
+    favState () {
+      return (id) => {
+        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
+      }
+    },
+  },
 })
