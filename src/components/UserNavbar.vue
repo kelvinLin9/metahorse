@@ -147,7 +147,7 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'removeCartItem', 'cartBoxToggle']),
-    ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds']),
+    // ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds']),
     ...mapActions(goStore, ['goCart', 'goProducts']),
     // goCart () {
     //   this.$router.push('/cart')
@@ -160,7 +160,7 @@ export default {
   },
   created () {
     this.getCart()
-    this.getFavoriteIds()
+    // this.getFavoriteIds()
   },
   mounted () {
     this.routeName = this.$route.name // 點擊後圖標變色

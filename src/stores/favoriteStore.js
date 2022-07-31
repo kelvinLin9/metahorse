@@ -1,10 +1,6 @@
-// import axios from 'axios'
 import { defineStore } from 'pinia'// 起手式
-// import statusStore from './statusStore'
 import productStore from './productStore'
-// 所有資料帶出來存到status
-// 把原本this改成status
-// const status = statusStore()
+
 const products = productStore()
 export default defineStore('favoriteStore', {
   state: () => ({
@@ -20,13 +16,14 @@ export default defineStore('favoriteStore', {
       this.getFavorite()
     },
     getFavorite () {
-      this.favorite = [] // 要嗎
+      this.favorite = [] 
       products.products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
           this.favorite.push(item)
         }
       })
       this.favoriteNum = this.favorite.length
+      console.log(this.favoriteNum)
     },
     toggleFavorite (item) {
       const clickId = item
@@ -47,7 +44,12 @@ export default defineStore('favoriteStore', {
       this.getFavoriteIds()
       // console.log('更新後的我的最愛列表id', this.favoriteIds)
       // emitter.emit('update-favoriteIds')
-    }
+    },
+    removeFavorite (item) {
+      this.favoriteIds.splice(this.favoriteIds.indexOf(item), 1)
+      localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
+      this.getFavoriteIds()
+    },
   },
   getters: {
     favState () {

@@ -178,6 +178,7 @@ export default {
   },
   created () {
     this.getProducts()
+    this.getFavoriteIds()
   }
 }
 </script>

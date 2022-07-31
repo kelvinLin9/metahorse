@@ -89,7 +89,12 @@ import 'swiper/css/navigation'
 
 // import required modules
 import { Navigation, FreeMode, Pagination, Scrollbar } from 'swiper'
-import emitter from '@/methods/emitter'
+import { mapState, mapActions } from 'pinia'
+import productsStore from '@/stores/productStore'
+import cartStore from '@/stores/cartStore'
+import statusStore from '@/stores/statusStore'
+import favoriteStore from '@/stores/favoriteStore'
+import goStore from '@/stores/goStore'
 export default {
   components: {
     Swiper,
@@ -102,19 +107,15 @@ export default {
   },
   data () {
     return {
-      products: [],
       productsHot: [], // 熱門商品 可以考慮寫在後台
-      favorite: [],
-      favoriteIds: [],
       category: 'all',
-      isLoading: false,
-      status: {
-        loadingItem: ''
-      },
-      loadingItem: ''
+      // isLoading: false,
+      // status: {
+      //   loadingItem: ''
+      // },
+      // loadingItem: ''
     }
   },
-  // inject: ['emitter'],
   methods: {
     getProducts () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`

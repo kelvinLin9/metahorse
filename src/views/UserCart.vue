@@ -95,7 +95,7 @@
              v-if="cart.total !== 0">
           <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" @click="addCouponCode">
+            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" @click="addCouponCode(coupon_code)">
               套用優惠碼
             </button>
           </div>
@@ -132,6 +132,7 @@ import { mapState, mapActions } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
+import couponStore from '@/stores/couponStore'
 export default {
   components: {
     UserFooter
@@ -144,24 +145,12 @@ export default {
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
     ...mapState(cartStore, ['cart']),
+    // ...mapState(couponStore ['coupon_code']), 為什麼會有問題
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),
     ...mapActions(goStore, ['goProducts', 'goCheckout']),
-    addCouponCode () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
-      const coupon = {
-        code: this.coupon_code
-      }
-      this.isLoading = true
-      this.$http.post(url, { data: coupon }).then((response) => {
-        console.log(response.data.message)
-        this.$httpMessageState(response, '加入優惠券')
-        this.getCart()
-        this.isLoading = false
-        this.coupon_code = ''
-      })
-    }
+    ...mapActions(couponStore, ['addCouponCode']),
   },
   created () {
     this.getCart()
