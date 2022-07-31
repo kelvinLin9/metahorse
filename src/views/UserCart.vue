@@ -144,13 +144,13 @@ export default {
   },
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
-    ...mapState(cartStore, ['cart']),
+    ...mapState(cartStore, ['cart'])
     // ...mapState(couponStore ['coupon_code']), 為什麼會有問題
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),
     ...mapActions(goStore, ['goProducts', 'goCheckout']),
-    ...mapActions(couponStore, ['addCouponCode']),
+    ...mapActions(couponStore, ['addCouponCode'])
   },
   created () {
     this.getCart()

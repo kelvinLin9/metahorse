@@ -120,14 +120,11 @@ export default {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
     ...mapActions(productsStore, ['getProducts']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
-    ...mapActions(goStore, ['goProduct']),
-    // goProduct (id) {
-    //   this.$router.push(`/product/${id}`)
-    // },
+    ...mapActions(goStore, ['goProduct'])
   },
   computed: {
-    ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
-    ...mapState(productsStore, ['products']),
+    ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favState']),
+    ...mapState(productsStore, ['products', 'filterProducts']),
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
     filterProducts () {
       let filterProducts

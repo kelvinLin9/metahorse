@@ -6,7 +6,7 @@ export default defineStore('favoriteStore', {
   state: () => ({
     favorite: [],
     favoriteIds: [],
-    favIcons: [],
+    // favIcons: [],
     favoriteNum: 0
   }),
   actions: {
@@ -16,7 +16,7 @@ export default defineStore('favoriteStore', {
       this.getFavorite()
     },
     getFavorite () {
-      this.favorite = [] 
+      this.favorite = []
       products.products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
           this.favorite.push(item)
@@ -49,13 +49,14 @@ export default defineStore('favoriteStore', {
       this.favoriteIds.splice(this.favoriteIds.indexOf(item), 1)
       localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       this.getFavoriteIds()
-    },
+    }
   },
   getters: {
     favState () {
       return (id) => {
+        // console.log(id)
         return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
       }
-    },
-  },
+    }
+  }
 })
