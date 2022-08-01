@@ -14,7 +14,7 @@ export default defineStore('productStore', {
     productsHot: [],
     // favorite: [], // 必要時硬解
     // favoriteNum: 0 // 必要時硬解
-    // category: 'all'
+    category: 'all'
   }),
   actions: {
     getProducts () {

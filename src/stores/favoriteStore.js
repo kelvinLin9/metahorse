@@ -55,8 +55,10 @@ export default defineStore('favoriteStore', {
     favState () {
       return (id) => {
         // console.log(id)
+        // console.log(this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart')
         return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
       }
+      
     }
   }
 })
