@@ -125,53 +125,7 @@ export default {
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favState']),
     ...mapState(productsStore, ['products', 'filterProducts', 'category']),
-    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
-    // filterProducts () {
-    //   let filterProducts
-    //   switch (this.category) {
-    //     case 'all':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item
-    //       })
-    //       break
-    //     case 'S':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item.category === 'S'
-    //       })
-    //       break
-    //     case 'A':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item.category === 'A'
-    //       })
-    //       break
-    //     case 'B':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item.category === 'B'
-    //       })
-    //       break
-    //     case 'C':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item.category === 'C'
-    //       })
-    //       break
-    //     case '馬鞍':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item.description === '馬鞍'
-    //       })
-    //       break
-    //     case '馬蹄鐵':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item.description === '馬蹄鐵'
-    //       })
-    //       break
-    //     case '馬飼料':
-    //       filterProducts = this.products.filter((item) => {
-    //         return item.description === '馬飼料'
-    //       })
-    //       break
-    //   }
-    //   return filterProducts
-    // }
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
   },
   created () {
     this.getProducts()
