@@ -16,32 +16,32 @@
         <div class="fw-bold list-group flex-row flex-lg-column ">
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'all' ,'fs-4' : category == 'all'}"
-              @click.prevent="category = 'all'">- All</a>
+              @click.prevent="setCategory('all')">- All</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'S' ,'fs-4' : category == 'S'}"
-              @click.prevent="category = 'S'">- S</a>
+              @click.prevent="setCategory('S')">- S</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'A' ,'fs-4' : category == 'A'}"
-              @click.prevent="category = 'A'">- A</a>
+              @click.prevent="setCategory('A')">- A</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'B' ,'fs-4' : category == 'B'}"
-              @click.prevent="category = 'B'">- B</a>
+              @click.prevent="setCategory('B')">- B</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'C' ,'fs-4' : category == 'C'}"
-              @click.prevent="category = 'C'">- C</a>
+              @click.prevent="setCategory('C')">- C</a>
         </div>
         <hr>
         <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
           <div class="fw-bold list-group flex-row flex-lg-column ">
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == '馬鞍' ,'fs-4' : category == '馬鞍'}"
-              @click.prevent="category = '馬鞍'">- 馬鞍</a>
+              @click.prevent="setCategory('馬鞍')">- 馬鞍</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == '馬蹄鐵' ,'fs-4' : category == '馬蹄鐵'}"
-              @click.prevent="category = '馬蹄鐵'">- 馬蹄鐵</a>
+              @click.prevent="setCategory('馬蹄鐵')">- 馬蹄鐵</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == '馬飼料' ,'fs-4' : category == '馬飼料'}"
-              @click.prevent="category = '馬飼料'">- 馬飼料</a>
+              @click.prevent="setCategory('馬飼料')">- 馬飼料</a>
         </div>
       </div>
       <div class="col-lg-9">
@@ -118,7 +118,7 @@ export default {
   },
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
-    ...mapActions(productsStore, ['getProducts']),
+    ...mapActions(productsStore, ['getProducts', 'setCategory']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
     ...mapActions(goStore, ['goProduct'])
   },

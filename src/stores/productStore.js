@@ -50,6 +50,10 @@ export default defineStore('productStore', {
           this.product = res.data.product
         }
       })
+    },
+    setCategory(i) {
+      // console.log(i)
+      this.category = i
     }
   },
   getters: {
