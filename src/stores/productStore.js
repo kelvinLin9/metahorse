@@ -51,7 +51,7 @@ export default defineStore('productStore', {
         }
       })
     },
-    setCategory(i) {
+    setCategory (i) {
       // console.log(i)
       this.category = i
     }

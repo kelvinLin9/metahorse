@@ -11,7 +11,7 @@ export default defineStore('cartStore', {
     cart: {},
     cartNum: 0,
     cartBoxState: false
-    // qty: 1
+    // qty: 1 // 不需要 傳到後端就好
   }),
   actions: {
     getCart () {
@@ -44,9 +44,9 @@ export default defineStore('cartStore', {
       status.cartLoadingItem = id
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
       status.isLoading = true
-      axios.delete(url).then((response) => {
-        // this.$httpMessageState(response, '移除購物車品項')
-        status.PushManager({ title: '移除購物車品項' })
+      axios.delete(url).then((res) => {
+        console.log(res)
+        status.PushManager(res, '移除購物車品項')
         status.cartLoadingItem = ''
         this.getCart()
         status.isLoading = false
@@ -63,10 +63,9 @@ export default defineStore('cartStore', {
         .then((res) => {
           // 等到ajax成功之後，再把id清空
           status.cartLoadingItem = ''
-          console.log(res)
+          // console.log(res)
           this.getCart() // 重新取得購物車資料
-          status.PushManager({ title: '加到購物車' })
-          // this.$httpMessageState(res, '加入購物車')
+          status.PushManager(res, '加入購物車')
         })
     },
     cartBoxToggle () {

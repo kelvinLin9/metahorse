@@ -25,22 +25,6 @@ export default {
   },
   computed: {
     ...mapState(cartStore, ['cartBoxState'])
-  },
-  data () {
-    return {
-      // messages: [],
-      // cartBoxState: false
-    }
-  },
-  mounted () {
-    // 晚點拿掉
-    // this.emitter.on('push-message', (message) => {
-    //   const { style = 'success', title, content } = message
-    //   this.messages.push({ style, title, content })
-    // })
-    // this.emitter.on('cartBoxState', (i) => {
-    //   this.cartBoxState = i
-    // })
   }
 }
 </script>
