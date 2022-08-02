@@ -29,7 +29,6 @@ export default defineStore('cartStore', {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
       status.isLoading = true
       status.cartLoadingItem = item.id
-      // this.qty = item.qty
       const cart = {
         product_id: item.product_id,
         qty: item.qty
