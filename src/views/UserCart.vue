@@ -128,7 +128,7 @@
 <script>
 import UserFooter from '@/components/UserFooter.vue'
 
-import { mapState, mapActions } from 'pinia'
+import { mapState, mapActions, mapWritableState } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
@@ -139,13 +139,13 @@ export default {
   },
   data () {
     return {
-      coupon_code: ''
+      // coupon_code: ''
     }
   },
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
-    ...mapState(cartStore, ['cart'])
-    // ...mapState(couponStore ['coupon_code']), 為什麼會有問題
+    ...mapState(cartStore, ['cart']),
+    ...mapWritableState(couponStore, ['coupon_code']) // 為什麼會有問題
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),

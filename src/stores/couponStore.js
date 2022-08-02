@@ -8,11 +8,12 @@ const cart = cartStore()
 
 export default defineStore('couponStore', {
   state: () => ({
-    // coupon_code: ''
+    coupon_code: ''
   }),
   actions: {
     addCouponCode (i) {
-      console.log(i)
+      // console.log(i)
+      this.coupon_code = i
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
       const coupon = {
         code: `${i}`
@@ -23,6 +24,7 @@ export default defineStore('couponStore', {
         status.PushManager(res, '加入優惠券')
         cart.getCart()
         status.isLoading = false
+        this.coupon_code = ''
       })
     }
   }
