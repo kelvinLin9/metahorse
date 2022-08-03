@@ -31,7 +31,7 @@
             <tr v-for="item in cart.carts" :key="item.id">
               <td>
                 <button type="button" class="btn btn-outline-primary btn-sm"
-                       :disabled="status.loadingItem === item.id"
+                       :disabled="cartLoadingItem === item.id"
                        @click="removeCartItem(item.id)">
                   <i class="bi bi-x"></i>
                 </button>
@@ -53,7 +53,7 @@
                 <div class="input-group input-group-sm">
                   <input type="number" class="form-control"
                        min="1"
-                       :disabled="item.id === status.loadingItem"
+                       :disabled="item.id === cartLoadingItem"
                        @change="updateCart(item)"
                        v-model.number="item.qty">
                 </div>
@@ -93,9 +93,11 @@
 
         <div class="input-group mb-3 input-group-sm"
              v-if="cart.total !== 0">
-          <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+          <input type="text" class="form-control" placeholder="請輸入優惠碼"
+          v-model="coupon_code">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" @click="addCouponCode">
+            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" 
+            @click="addCouponCode(coupon_code)">
               套用優惠碼
             </button>
           </div>
@@ -122,86 +124,29 @@
       </div>
     </div>
   </div>
-  <UserFooter/>
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
-import UserFooter from '@/components/UserFooter.vue'
+import { mapState, mapActions, mapWritableState } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import cartStore from '@/stores/cartStore'
+import goStore from '@/stores/goStore'
+import couponStore from '@/stores/couponStore'
 export default {
-  components: {
-    UserFooter
-  },
   data () {
     return {
-      products: [],
-      product: {},
-      status: {
-        loadingItem: ''
-      },
-      cart: {},
-      coupon_code: ''
+      // coupon_code: ''
     }
   },
-  inject: ['emitter'],
+  computed: {
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
+    ...mapState(cartStore, ['cart']),
+    ...mapWritableState(couponStore, ['coupon_code']) // 為什麼會有問題
+  },
   methods: {
-    goProducts () {
-      this.$router.push('/products')
-    },
-    goCheckout () {
-      this.$router.push('/checkout')
-    },
-    getCart () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        console.log(res)
-        this.cart = res.data.data
-        this.isLoading = false
-      })
-    },
-    // 更改購物車商品數量
-    updateCart (item) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
-      this.isLoading = true
-      this.status.loadingItem = item.id
-      const cart = {
-        product_id: item.product_id,
-        qty: item.qty
-      }
-      this.$http.put(url, { data: cart }).then((res) => {
-        console.log(res)
-        this.status.loadingItem = ''
-        this.getCart()
-        emitter.emit('update-cart')
-      })
-    },
-    removeCartItem (id) {
-      this.status.loadingItem = id
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-      this.isLoading = true
-      this.$http.delete(url).then((response) => {
-        this.$httpMessageState(response, '移除購物車品項')
-        this.status.loadingItem = ''
-        this.getCart()
-        this.isLoading = false
-        emitter.emit('update-cart')
-      })
-    },
-    addCouponCode () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
-      const coupon = {
-        code: this.coupon_code
-      }
-      this.isLoading = true
-      this.$http.post(url, { data: coupon }).then((response) => {
-        console.log(response.data.message)
-        this.$httpMessageState(response, '加入優惠券')
-        this.getCart()
-        this.isLoading = false
-        this.coupon_code = ''
-      })
-    }
+    ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),
+    ...mapActions(goStore, ['goProducts', 'goCheckout']),
+    ...mapActions(couponStore, ['addCouponCode'])
   },
   created () {
     this.getCart()

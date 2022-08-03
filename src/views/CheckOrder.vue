@@ -85,18 +85,10 @@
         </div>
       </div>
     </div>
-
-  <UserFooter/>
 </template>
 
 <script>
-
-import UserFooter from '@/components/UserFooter.vue'
-
 export default {
-  components: {
-    UserFooter
-  },
   data () {
     return {
       isLoading: false,
