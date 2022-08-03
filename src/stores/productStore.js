@@ -51,7 +51,7 @@ export default defineStore('productStore', {
         }
       })
     },
-    // 無法雙向綁定的暫時解法
+    // 無法雙向綁定的另種解法
     // 創一個新的函數傳遞category
     setCategory (i) {
       // console.log(i)

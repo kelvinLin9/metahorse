@@ -70,13 +70,14 @@
             <input type="number" class="form-control"
                   min="1"
                   :disabled="product.id === cartLoadingItem"
-                  v-model.number="qty">
+                  v-model.number="product.qty"
+                  @input="product.qty = Number($event.target.value.replace(/\D+/, ''))">
           </div>
 
           <button type="button"
                   class="col-9 btn btn-outline-primary text-dark fw-bold fs-5"
                   :disabled="cartLoadingItem === product.id"
-                  @click="addCart(product.id, qty)">
+                  @click="addCart(product.id, product.qty)">
             <div v-if="cartLoadingItem === product.id"
                   class="spinner-grow text-danger spinner-grow-sm" role="status">
               <span class="visually-hidden">Loading...</span>
@@ -131,7 +132,6 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
 import { mapState, mapActions } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import productStore from '@/stores/productStore'
@@ -141,12 +141,11 @@ import favoriteStore from '@/stores/favoriteStore'
 export default {
   data () {
     return {
-      qty: 1,
       id: '',
     }
   },
   computed: {
-    // ...mapState(cartStore, ['qty']), // 用不到嗎?
+    // ...mapWritableState(cartStore, ['qty']),
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
     ...mapState(productStore, ['products', 'product']),
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
@@ -155,7 +154,6 @@ export default {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
     ...mapActions(productStore,['getProducts','getProduct']),
     ...mapActions(cartStore,['addCart']),
-    // ...mapActions(productStore,['']),
   },
   created () {
     this.id = this.$route.params.productId

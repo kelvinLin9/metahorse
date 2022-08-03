@@ -96,11 +96,9 @@
       </div>
     </div>
   </div>
-  <UserFooter/>
 </template>
 
 <script>
-import UserFooter from '@/components/UserFooter.vue'
 import { mapState, mapActions } from 'pinia'
 import productsStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
@@ -112,9 +110,6 @@ export default {
     return {
       // category: 'all'
     }
-  },
-  components: {
-    UserFooter
   },
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),

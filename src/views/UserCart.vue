@@ -93,9 +93,11 @@
 
         <div class="input-group mb-3 input-group-sm"
              v-if="cart.total !== 0">
-          <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+          <input type="text" class="form-control" placeholder="請輸入優惠碼"
+          v-model="coupon_code">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" @click="addCouponCode(coupon_code)">
+            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" 
+            @click="addCouponCode(coupon_code)">
               套用優惠碼
             </button>
           </div>
@@ -122,21 +124,15 @@
       </div>
     </div>
   </div>
-  <UserFooter/>
 </template>
 
 <script>
-import UserFooter from '@/components/UserFooter.vue'
-
 import { mapState, mapActions, mapWritableState } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
 import couponStore from '@/stores/couponStore'
 export default {
-  components: {
-    UserFooter
-  },
   data () {
     return {
       // coupon_code: ''

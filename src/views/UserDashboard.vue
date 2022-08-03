@@ -5,10 +5,12 @@
   <div class="position-relative">
     <router-view/>
   </div>
+  <UserFooter/>
 </template>
 
 <script>
 import emitter from '@/methods/emitter'
+import UserFooter from '@/components/UserFooter.vue'
 import ToastMessages from '@/components/ToastMessages.vue'
 import UserNavbar from '../components/UserNavbar.vue'
 import FloatCart from '@/components/FloatCart.vue'
@@ -16,7 +18,8 @@ export default {
   components: {
     ToastMessages,
     UserNavbar,
-    FloatCart
+    FloatCart,
+    UserFooter
   },
   provide () {
     return {

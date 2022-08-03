@@ -31,10 +31,10 @@
       </div>
     </div>
   </section>
-<br>
-<br>
-<hr>
-<br>
+  <br>
+  <br>
+  <hr>
+  <br>
   <section class="my-5">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg"
@@ -180,7 +180,6 @@
   <hr>
   <OtherProducts/>
   <hr>
-  <UserFooter/>
   <GoTop/>
 </template>
 
@@ -189,14 +188,12 @@
 // import UserNavbar from '../components/UserNavbar.vue'
 import Banner from '@/components/UserHomeBanner.vue'
 import OtherProducts from '@/components/ProductsHot.vue'
-import UserFooter from '@/components/UserFooter.vue'
 import GoTop from '@/components/GoTop.vue'
 export default {
   name: 'HomeView',
   components: {
     Banner,
     OtherProducts,
-    UserFooter,
     GoTop
   },
   data () {

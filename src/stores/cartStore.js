@@ -10,7 +10,7 @@ export default defineStore('cartStore', {
   state: () => ({
     cart: {},
     cartNum: 0,
-    cartBoxState: false
+    cartBoxState: false,
     // qty: 1 // 不需要 傳到後端就好
   }),
   actions: {
