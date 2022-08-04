@@ -1,5 +1,5 @@
 <template>
-<div class="mb-5">
+<div class="">
   <swiper
     :spaceBetween="30"
     :centeredSlides="true"
@@ -82,7 +82,7 @@ export default {
 .header-text {
     color: #000;
     -webkit-text-stroke: 2px rgb(241, 229, 59);
-    font-size: 70px;
+    font-size: 60px;
   }
 
 </style>

@@ -4,7 +4,7 @@
        @click.prevent="goCart">
       <font-awesome-icon icon="fa-solid fa-cart-shopping" class="text-dark fs-1" />
       <div class="bg-danger text-white rounded-circle text-center position-absolute num"
-          v-if="cartNum !== 0">
+          v-if="cartNum !== 0 || routeName === 'cart'">
         {{ cartNum }}
       </div>
     </a>
@@ -12,31 +12,15 @@
 </template>
 
 <script>
-// import emitter from '@/methods/emitter'
 import { mapState, mapActions } from 'pinia'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
 export default {
-  data () {
-    return {
-      // cartNum: 0
-    }
-  },
-  // inject: ['emitter'],
   computed: {
     ...mapState(cartStore, ['cartNum'])
   },
   methods: {
-    // goCart () {
-    //   this.$router.push('/cart')
-    // }
-  },
-  mounted () {
-    // // 接收資料
-    // emitter.on('cartNum', (msg) => {
-    //   // console.log(msg)
-    //   this.cartNum = msg
-    // })
+    ...mapActions(goStore, ['goCart'])
   }
 }
 </script>

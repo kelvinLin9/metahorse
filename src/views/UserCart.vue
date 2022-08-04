@@ -8,22 +8,22 @@
     </div>
   </div>
   <Loading :active="isLoading"></Loading>
-  <div class="container my-5">
+  <div class="container my-5 test">
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物清單</h1>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-4 test">
       <!-- 購物車列表 -->
-      <div class="col">
-        <table class="table align-middle">
+      <div class="col test">
+        <table class="table align-middle test">
           <thead class="table-primary">
             <tr>
-              <th style="width: 50px">刪除</th>
-              <th style="width: 150px">品名</th>
-              <th style="width: 100px">圖片</th>
-              <th style="width: 80px">單價</th>
+              <th>刪除</th>
+              <th>品名</th>
+              <th></th>
+              <th>單價</th>
               <th style="width: 80px">數量</th>
-              <th style="width: 200px" class="text-end">總價</th>
+              <th>總價</th>
             </tr>
           </thead>
           <tbody>
@@ -37,11 +37,11 @@
                 </button>
               </td>
               <td>
-                {{ item.product.title }}  /  {{item.product.description }}
-                <div class="text-secondary fw-bold" v-if="item.coupon">
-                  已套用優惠券 ({{item.final_total / item.total * 100 }}% OFF)<br>
+                {{ item.product.title }}<br>
+                <small class="text-secondary fw-bold" v-if="item.coupon">
+                  已套用優惠券<br> ({{item.final_total / item.total * 100 }}% OFF)<br>
                   代碼：{{item.coupon.code}}
-                </div>
+                </small>
               </td>
               <td>
                 <img :src="item.product.imageUrl" alt="商品照片" width="50">
@@ -59,14 +59,14 @@
                        @input="item.qty = Number($event.target.value.replace(/\D+/, ''))">
                 </div>
               </td>
-              <td class="text-end">
-                <div v-if="item.final_total === item.total" class="fs-5">
+              <td>
+                <div v-if="item.final_total === item.total" class="fs-6">
                    NT$ {{ $filters.currency(item.final_total) }}
                 </div>
-                <div v-if="item.final_total !== item.total" class="fs-5">
-                  <small class="text-secondary fs-6">
-                  優惠券折扣價：
-                  </small>
+                <div v-if="item.final_total !== item.total" class="fs-6">
+                  <!-- <small class="text-secondary fs-6">
+                  折扣價：
+                  </small><br class="d-lg-none"> -->
                   NT$ {{ $filters.currency(item.final_total) }}
                 </div>
               </td>
@@ -75,17 +75,17 @@
           </tbody>
           <tfoot>
           <tr v-if="cart.final_total == cart.total">
-            <td colspan="7" class="text-end fs-1">
+            <td colspan="7" class="text-end fs-3">
               總計：NT$ {{ $filters.currency(cart.total) }}
             </td>
          </tr>
          <tr v-if="cart.final_total !== cart.total">
-           <td colspan="7" class="text-end fs-3">
+           <td colspan="7" class="text-end fs-4">
              <del>總計：NT$ {{ $filters.currency(cart.total) }}</del>
            </td>
          </tr>
          <tr v-if="cart.final_total !== cart.total">
-           <td colspan="7" class="text-end text-secondary fw-bold fs-1">
+           <td colspan="7" class="text-end text-secondary fw-bold fs-3">
              折扣價：NT$ {{ $filters.currency(cart.final_total) }}
            </td>
          </tr>

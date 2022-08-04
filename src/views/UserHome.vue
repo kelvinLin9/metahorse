@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <Banner/>
+  <UserHomeBanner/>
   <section class="my-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
@@ -68,7 +68,7 @@
             class="round-icon rounded-circle img-thumbnail bg-primary">
           </div>
           <div class="d-flex justify-content-center"
-              data-aos="zoom-out"
+              data-aos=""
               data-aos-duration="2000">
             <button type="submit"
                     class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
@@ -178,7 +178,7 @@
     </div>
   </section>
   <hr>
-  <OtherProducts/>
+  <ProductsHot/>
   <hr>
   <GoTop/>
 </template>
@@ -186,14 +186,14 @@
 <script>
 // @ is an alias to /src
 // import UserNavbar from '../components/UserNavbar.vue'
-import Banner from '@/components/UserHomeBanner.vue'
-import OtherProducts from '@/components/ProductsHot.vue'
+import UserHomeBanner from '@/components/UserHomeBanner.vue'
+import ProductsHot from '@/components/ProductsHot.vue'
 import GoTop from '@/components/GoTop.vue'
 export default {
   name: 'HomeView',
   components: {
-    Banner,
-    OtherProducts,
+    UserHomeBanner,
+    ProductsHot,
     GoTop
   },
   data () {
