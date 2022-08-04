@@ -7,9 +7,6 @@ const cart = cartStore()
 // 把原本this改成cart
 
 export default defineStore('goStore', {
-  state: () => ({
-    
-  }),
   actions: {
     goCart () {
       router.push('/cart')
@@ -24,6 +21,6 @@ export default defineStore('goStore', {
     },
     goCheckout () {
       router.push('/checkout')
-    },
-  },
+    }
+  }
 })

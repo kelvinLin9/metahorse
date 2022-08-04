@@ -4,7 +4,7 @@
        @click.prevent="goCart">
       <font-awesome-icon icon="fa-solid fa-cart-shopping" class="text-dark fs-1" />
       <div class="bg-danger text-white rounded-circle text-center position-absolute num"
-          v-if="cartNum !== 0 || routeName === 'cart'">
+          v-if="cartNum !== 0">
         {{ cartNum }}
       </div>
     </a>
