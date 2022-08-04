@@ -1,5 +1,6 @@
 <template>
-  <div class="rounded-circle bg-white border border-3 border-warning d-flex justify-content-center align-items-center float-cart">
+  <div class="rounded-circle bg-white border border-3 border-warning d-flex justify-content-center align-items-center float-cart"
+      v-if="cartNum !== 0">
     <a href="#"
        @click.prevent="goCart">
       <font-awesome-icon icon="fa-solid fa-cart-shopping" class="text-dark fs-1" />
