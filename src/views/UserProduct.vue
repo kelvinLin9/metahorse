@@ -71,7 +71,7 @@
                   min="1"
                   :disabled="product.id === cartLoadingItem"
                   v-model.number="product.qty"
-                  @input="product.qty = Number($event.target.value.replace(/\D+/, ''))">
+                  @input="product.qty = Number($event.target.value.replace(/^0\D+/, ''))">
           </div>
 
           <button type="button"
