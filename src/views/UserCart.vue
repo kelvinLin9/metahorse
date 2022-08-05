@@ -8,14 +8,14 @@
     </div>
   </div>
   <Loading :active="isLoading"></Loading>
-  <div class="container my-5 test">
+  <div class="container my-5">
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物清單</h1>
     </div>
-    <div class="row mt-4 test">
+    <div class="row mt-4">
       <!-- 購物車列表 -->
-      <div class="col test">
-        <table class="table align-middle test">
+      <div class="col">
+        <table class="table align-middle">
           <thead class="table-primary">
             <tr>
               <th>刪除</th>

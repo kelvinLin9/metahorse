@@ -1,23 +1,22 @@
 import { defineStore } from 'pinia'// 起手式
-import productStore from './productStore'
 
-const products = productStore()
+
+
 export default defineStore('favoriteStore', {
   state: () => ({
     favorite: [],
     favoriteIds: [],
-    // favIcons: [],
     favoriteNum: 0
   }),
   actions: {
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
       console.log('this.favoriteIds', this.favoriteIds)
-      this.getFavorite()
     },
-    getFavorite () {
+    getFavorite (products) {
+      this.getFavoriteIds()
       this.favorite = []
-      products.products.forEach((item) => {
+      products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
           this.favorite.push(item)
         }

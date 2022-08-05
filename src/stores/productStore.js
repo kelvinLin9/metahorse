@@ -2,44 +2,33 @@ import axios from 'axios'
 // 起手式
 import { defineStore } from 'pinia'
 import statusStore from './statusStore'
+import favoriteStore from './favoriteStore'
 
 // 所有資料帶出來存到status
 // 把原本this改成status
 const status = statusStore()
+const favorite = favoriteStore()
 
 export default defineStore('productStore', {
   state: () => ({
     products: [],
     product: {},
     productsHot: [],
-    // favorite: [], // 必要時硬解
-    // favoriteNum: 0 // 必要時硬解
     category: 'all'
   }),
   actions: {
     getProducts () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
       status.isLoading = true
-      axios.get(url).then((res) => {
-        this.products = res.data.products
-        this.productsHot = this.products.filter((item, index) => index > 14) // 先取幾個來試用
-        // console.log('products:', res)
-        status.isLoading = false
-        // this.getFavorite() // 必要時硬解
-      })
+      axios.get(url)
+        .then((res) => {
+          this.products = res.data.products
+          this.productsHot = this.products.filter((item, index) => index > 14) // 先取幾個來試用
+          favorite.getFavorite(this.products)
+          status.isLoading = false
+        })
+        .catch((err) => console.error(err))
     },
-    // 必要時硬解
-    // getFavorite () {
-    //   this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-    //   this.favorite = []
-    //   this.products.forEach((item) => {
-    //     if (this.favoriteIds.indexOf(item.id) > -1) {
-    //       this.favorite.push(item)
-    //     }
-    //   })
-    //   this.favoriteNum = this.favorite.length
-    //   console.log('this.favoriteNum', this.favoriteNum)
-    // },
     getProduct (id) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`
       status.isLoading = true
