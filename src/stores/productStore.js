@@ -33,11 +33,10 @@ export default defineStore('productStore', {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`
       status.isLoading = true
       axios.get(api).then((res) => {
-        // console.log(res.data)
         status.isLoading = false
         if (res.data.success) {
           this.product = res.data.product
-          // 自己補上預設值
+          // 自己補上後端沒有的預設值
           this.product.qty = 1
         }
       })
@@ -45,7 +44,6 @@ export default defineStore('productStore', {
     // 無法雙向綁定的另種解法
     // 創一個新的函數傳遞category
     setCategory (i) {
-      // console.log(i)
       this.category = i
     }
   },

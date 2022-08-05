@@ -1,7 +1,5 @@
 import { defineStore } from 'pinia'// 起手式
 
-
-
 export default defineStore('favoriteStore', {
   state: () => ({
     favorite: [],
@@ -11,7 +9,6 @@ export default defineStore('favoriteStore', {
   actions: {
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log('this.favoriteIds', this.favoriteIds)
     },
     getFavorite (products) {
       this.getFavoriteIds()
@@ -22,13 +19,10 @@ export default defineStore('favoriteStore', {
         }
       })
       this.favoriteNum = this.favorite.length
-      console.log('this.favoriteNum', this.favoriteNum)
     },
     toggleFavorite (item) {
       const clickId = item
-      console.log('clickId', clickId)
       const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
-      // console.log('點擊到的id是否在我的最愛列表', hasFavorite)
       if (!hasFavorite) {
         this.favoriteIds.push(item)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
@@ -36,13 +30,10 @@ export default defineStore('favoriteStore', {
         const delItem = this.favoriteIds.find((item) => {
           return item === clickId
         })
-        // console.log('5.(刪除時)點到的是第幾筆資料', this.favoriteIds.indexOf(item))
         this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       }
       this.getFavoriteIds()
-      // console.log('更新後的我的最愛列表id', this.favoriteIds)
-      // emitter.emit('update-favoriteIds')
     },
     removeFavorite (item) {
       this.favoriteIds.splice(this.favoriteIds.indexOf(item), 1)
@@ -53,11 +44,8 @@ export default defineStore('favoriteStore', {
   getters: {
     favState () {
       return (id) => {
-        // console.log(id)
-        // console.log(this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart')
         return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
       }
-      
     }
   }
 })

@@ -3,7 +3,7 @@
   <div class="container">
     <div class="my-5 row justify-content-center">
       <Form class="col-md-6" v-slot="{ errors }"
-              @submit="goPay">
+              @submit="gotoPay">
         <div class="d-flex justify-content-center">
           <h1 class="fs-2 text-center fw-bold">收件人資訊</h1>
         </div>
@@ -99,7 +99,6 @@
 
 <script>
 import emitter from '@/methods/emitter'
-import UserFooter from '@/components/UserFooter.vue'
 export default {
   data () {
     return {
@@ -131,7 +130,7 @@ export default {
         }
       })
     },
-    goPay () {
+    gotoPay () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const order = this.form
       this.$http.post(url, { data: order })

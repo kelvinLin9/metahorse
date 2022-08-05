@@ -22,9 +22,6 @@ export default {
   },
   methods: {
     ...mapActions(goStore, ['goCart'])
-  },
-  mounted () {
-    console.log(this.$route.path)
   }
 }
 </script>
