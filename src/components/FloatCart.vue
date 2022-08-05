@@ -1,6 +1,6 @@
 <template>
   <div class="rounded-circle bg-white border border-3 border-warning d-flex justify-content-center align-items-center float-cart"
-      v-if="cartNum !== 0">
+      v-if="this.$route.path !== '/cart'">
     <a href="#"
        @click.prevent="goCart">
       <font-awesome-icon icon="fa-solid fa-cart-shopping" class="text-dark fs-1" />
@@ -22,6 +22,9 @@ export default {
   },
   methods: {
     ...mapActions(goStore, ['goCart'])
+  },
+  mounted () {
+    console.log(this.$route.path)
   }
 }
 </script>

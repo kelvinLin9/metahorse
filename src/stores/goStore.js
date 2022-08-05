@@ -9,7 +9,6 @@ const cart = cartStore()
 export default defineStore('goStore', {
   actions: {
     goCart () {
-      console.log(router)
       router.push('/cart')
       cart.cartBoxState = false
     },

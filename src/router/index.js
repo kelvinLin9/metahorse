@@ -78,7 +78,9 @@ const routes = [
 ]
 
 const router = createRouter({
+  // 網址路徑模式 使用網址hash形式 代表是由前端所模擬的 
   history: createWebHashHistory(),
+  // `routes: routes` 的缩写
   routes
   // linkActiveClass:'active'
   // linkActiveClass: 'text-warning',
