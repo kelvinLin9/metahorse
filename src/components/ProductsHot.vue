@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-  <h3 class="text-center mt-5 mb-3 fs-2 fw-bolder"
+  <h3 class="text-center my-3 fs-2 fw-bolder"
       data-aos="fade-down"
       data-aos-duration="2000">熱銷商品</h3>
   <div class="row g-4 pb-5">

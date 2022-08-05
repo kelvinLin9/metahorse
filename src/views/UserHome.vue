@@ -179,7 +179,6 @@
   </section>
   <hr>
   <ProductsHot/>
-  <hr>
   <GoTop/>
 </template>
 
@@ -238,8 +237,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* 載入字體 */
-// @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 .f-kalam {
   font-family: 'Kalam', cursive;
 }
@@ -249,14 +246,5 @@ export default {
 .round-icon{
   width:350px;
   height:350px;
-  /* position:absolute; */
-  /* top:0px; */
-  /* left: 10px; */
 }
-// .slogan{
-//       width: 18em;
-//       white-space: nowrap;
-//       overflow: hidden;
-//       animation: typing 2s steps(18), Wcaret 2s steps(1);
-//     }
 </style>
