@@ -20,9 +20,9 @@
             <tr>
               <th>刪除</th>
               <th>品名</th>
-              <th></th>
+              <th class="d-none d-sm-block">圖片</th>
               <th>單價</th>
-              <th style="width: 80px">數量</th>
+              <th>數量</th>
               <th>總價</th>
             </tr>
           </thead>
@@ -36,18 +36,19 @@
                   <i class="bi bi-x"></i>
                 </button>
               </td>
-              <td>
+              <td class="font-sm">
                 {{ item.product.title }}<br>
                 <small class="text-secondary fw-bold" v-if="item.coupon">
                   已套用優惠券<br> ({{item.final_total / item.total * 100 }}% OFF)<br>
                   代碼：{{item.coupon.code}}
                 </small>
               </td>
-              <td>
+              <td class="d-none d-sm-block">
                 <img :src="item.product.imageUrl" alt="商品照片" width="50">
               </td>
-              <td>
-                NT$ {{item.product.price}}
+              <td class="font-sm">
+                NT$<br class="d-md-none"> 
+                {{item.product.price}}
               </td>
               <td>
                 <div class="input-group input-group-sm">
@@ -59,14 +60,14 @@
                        @input="item.qty = Number($event.target.value.replace(/\D+/, ''))">
                 </div>
               </td>
-              <td>
-                <div v-if="item.final_total === item.total" class="fs-6">
+              <td class="font-sm">
+                <div v-if="item.final_total === item.total">
                    NT$ {{ $filters.currency(item.final_total) }}
                 </div>
-                <div v-if="item.final_total !== item.total" class="fs-6">
-                  <!-- <small class="text-secondary fs-6">
+                <div v-if="item.final_total !== item.total">
+                  <small class="text-secondary">
                   折扣價：
-                  </small><br class="d-lg-none"> -->
+                  </small><br class="d-lg-none">
                   NT$ {{ $filters.currency(item.final_total) }}
                 </div>
               </td>
@@ -142,7 +143,7 @@ export default {
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
     ...mapState(cartStore, ['cart']),
-    ...mapWritableState(couponStore, ['coupon_code']) // 為什麼會有問題
+    ...mapWritableState(couponStore, ['coupon_code'])
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),
@@ -162,5 +163,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
+}
+
+@media (max-width: 576px) {
+  .font-sm{
+    font-size: 12px;
+  }
 }
 </style>
