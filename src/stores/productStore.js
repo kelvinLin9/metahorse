@@ -48,6 +48,8 @@ export default defineStore('productStore', {
         status.isLoading = false
         if (res.data.success) {
           this.product = res.data.product
+          // 自己補上預設值
+          this.product.qty = 1
         }
       })
     },

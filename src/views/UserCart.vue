@@ -57,7 +57,7 @@
                        :disabled="item.id === cartLoadingItem"
                        @change="updateCart(item)"
                        v-model.number="item.qty"
-                       @input="item.qty = Number($event.target.value.replace(/\D+/, ''))">
+                       @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
                 </div>
               </td>
               <td class="font-sm">
