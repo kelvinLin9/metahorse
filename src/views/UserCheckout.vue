@@ -118,20 +118,23 @@ export default {
   },
   computed: {
     ...mapState(statusStore, ['isLoading']),
-    ...mapState(cartStore, ['cart']),
+    ...mapState(cartStore, ['cart', 'cartNum']),
   },
   methods: {
     ...mapActions(cartStore, ['getCart']),
     ...mapActions(goStore, ['goCart', 'gotoPay']),
+    ...mapActions(cartStore, ['getCart']),
     gotoPay () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const order = this.form
       this.$http.post(url, { data: order })
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.$router.push(`/checkoutPay/${res.data.orderId}`)
         })
         .catch((err) => console.error(err))
+      console.log('this.cartNum', this.cartNum)
+      this.getCart()
     },
   }
 }

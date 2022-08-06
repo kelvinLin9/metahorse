@@ -21,6 +21,7 @@ export default defineStore('cartStore', {
         .then((res) => {
           console.log("GETC!!!!!!!!!!!!!!!!")
           this.cartNum = res.data.data.carts.length
+          console.log('this.cartNum', this.cartNum)
           this.cart = res.data.data
           status.isLoading = false
         })
