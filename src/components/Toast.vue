@@ -23,7 +23,6 @@ export default {
     const toast = new Toast(toastEl, {
       delay: 6000
     })
-    console.log(toast)
     toast.show()
   }
 }

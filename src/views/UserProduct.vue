@@ -157,7 +157,6 @@ export default {
   created () {
     this.id = this.$route.params.productId
     this.getProduct(this.id)
-    this.getProducts()
   }
 }
 </script >

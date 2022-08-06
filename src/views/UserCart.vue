@@ -135,11 +135,6 @@ import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
 import couponStore from '@/stores/couponStore'
 export default {
-  data () {
-    return {
-      // coupon_code: ''
-    }
-  },
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
     ...mapState(cartStore, ['cart']),
@@ -149,9 +144,6 @@ export default {
     ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),
     ...mapActions(goStore, ['goProducts', 'goCheckout']),
     ...mapActions(couponStore, ['addCouponCode'])
-  },
-  created () {
-    this.getCart()
   }
 }
 </script>

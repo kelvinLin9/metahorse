@@ -9,7 +9,6 @@ export default defineStore('statusStore', {
   actions: {
     // 傳到ToastMessages.vue
     PushManager (res, title = '更新') {
-      console.log(res)
       if (res.data.success) {
         const obj = {
           style: 'success',

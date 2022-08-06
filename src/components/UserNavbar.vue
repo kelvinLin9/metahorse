@@ -150,9 +150,6 @@ export default {
     // ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds']),
     ...mapActions(goStore, ['goCart', 'goProducts'])
   },
-  created () {
-    this.getCart()
-  },
   mounted () {
     this.routeName = this.$route.name // 點擊後圖標變色
   }

@@ -73,7 +73,7 @@
                 </tr>
               </thead>
               <tbody class="text-center">
-                <tr class="table-nowrap text-start" v-for="item in carts" :key="item.id">
+                <tr class="table-nowrap text-start" v-for="item in cart.carts" :key="item.id">
                   <td>{{ item.product.title }}</td>
                   <td>{{ item.qty }}</td>
                   <td class="text-end">
@@ -86,7 +86,7 @@
                <tfoot class="text-center table-primary">
                  <tr>
                   <td colspan="3" class="text-end fs-4">
-                    總計 :NT$ {{ $filters.currency(final_total) }} 元
+                    總計 :NT$ {{ $filters.currency(cart.final_total) }} 元
                   </td>
                  </tr>
                  </tfoot>
@@ -98,14 +98,13 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
+import { mapState, mapActions } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import cartStore from '@/stores/cartStore'
+import goStore from '@/stores/goStore'
 export default {
   data () {
     return {
-      isLoading: false,
-      carts: [],
-      total: 0,
-      final_total: 0,
       form: {
         user: {
           name: '',
@@ -117,19 +116,13 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapState(statusStore, ['isLoading']),
+    ...mapState(cartStore, ['cart']),
+  },
   methods: {
-    getCart () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(api).then((response) => {
-        if (response.data.success) {
-          this.carts = response.data.data.carts
-          this.total = response.data.data.total
-          this.final_total = response.data.data.final_total
-          this.isLoading = false
-        }
-      })
-    },
+    ...mapActions(cartStore, ['getCart']),
+    ...mapActions(goStore, ['goCart', 'gotoPay']),
     gotoPay () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
       const order = this.form
@@ -137,15 +130,9 @@ export default {
         .then((res) => {
           console.log(res)
           this.$router.push(`/checkoutPay/${res.data.orderId}`)
-          emitter.emit('update-cart')
         })
+        .catch((err) => console.error(err))
     },
-    goCart () {
-      this.$router.push('/cart')
-    }
-  },
-  created () {
-    this.getCart()
   }
 }
 </script>

@@ -110,18 +110,11 @@ export default {
     ...mapActions(productsStore, ['getProducts']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
     ...mapActions(goStore, ['goProduct']),
-    // goProduct (id) {
-    //   this.$router.push(`/product/${id}`)
-    // },
   },
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
     ...mapState(productsStore, ['products', 'productsHot']),
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
-  },
-  created () {
-    this.getProducts()
-    this.getFavoriteIds()
   }
 }
 </script>

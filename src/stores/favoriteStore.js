@@ -4,22 +4,26 @@ export default defineStore('favoriteStore', {
   state: () => ({
     favorite: [],
     favoriteIds: [],
-    favoriteNum: 0
+    favoriteNum: 0,
+    products: []
   }),
   actions: {
+    productsBus(products){
+      this.products = products
+      this.getFavorite ()
+    },
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
     },
-    getFavorite (products) {
+    getFavorite () {
       this.getFavoriteIds()
       this.favorite = []
-      products.forEach((item) => {
+      this.products.forEach((item) => {
         if (this.favoriteIds.indexOf(item.id) > -1) {
           this.favorite.push(item)
         }
       })
       this.favoriteNum = this.favorite.length
-      console.log(this.favorite)
     },
     toggleFavorite (item) {
       const clickId = item
@@ -34,12 +38,12 @@ export default defineStore('favoriteStore', {
         this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
       }
-      this.getFavoriteIds()
+      this.getFavorite()
     },
     removeFavorite (item) {
       this.favoriteIds.splice(this.favoriteIds.indexOf(item), 1)
       localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      this.getFavoriteIds()
+      this.getFavorite()
     }
   },
   getters: {

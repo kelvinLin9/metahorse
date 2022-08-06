@@ -83,9 +83,6 @@ export default {
     ...mapActions(cartStore, ['getCart', 'addCart']),
     ...mapActions(goStore, ['goProduct']),
   },
-  created () {
-    this.getProducts()
-  }
 }
 </script>
 

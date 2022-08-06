@@ -24,9 +24,10 @@ export default defineStore('productStore', {
       status.isLoading = true
       axios.get(url)
         .then((res) => {
+          console.log("GETP!!!!!!!!!!!!!!!!")
           this.products = res.data.products
           this.productsHot = this.products.filter((item, index) => index > 14) // 先取幾個來試用
-          favorite.getFavorite(this.products)
+          favorite.productsBus(this.products)
           // 手動挑出想展示的商品(首頁用)
           this.productsGame = []
           this.productsGame.push(res.data.products[11])

@@ -104,6 +104,7 @@ export default {
             console.log(this.order)
           }
         })
+        .catch((err) => console.error(err))
     },
     payOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
@@ -114,6 +115,7 @@ export default {
             this.getOrder()
           }
         })
+        .catch((err) => console.error(err))
     },
     goHome () {
       this.$router.push('/')

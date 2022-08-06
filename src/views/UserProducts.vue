@@ -118,12 +118,8 @@ export default {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
   },
   created () {
-    this.getProducts()
+    // this.getProducts()
   },
-  mounted () {
-    // this.getFavoriteIds()
-  }
-
 }
 </script>
 
