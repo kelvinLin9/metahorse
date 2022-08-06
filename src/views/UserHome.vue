@@ -46,7 +46,7 @@
         <div class="col">
           <div class="row row-cols-4 row-cols-lg-1">
               <div class="col d-flex justify-content-center justify-content-lg-end"
-                  v-for="item in productsY" :key="item">
+                  v-for="item in productsGame" :key="item">
                   <div class=" border-0 my-2"
                       data-aos="flip-left"
                       data-aos-easing="ease-out-cubic"
@@ -73,7 +73,7 @@
             <button type="submit"
                     class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
                     @click.prevent="goProducts">
-            馬上購買
+              馬上購買
             </button>
           </div>
         </div>
@@ -184,55 +184,30 @@
 
 <script>
 // @ is an alias to /src
-// import UserNavbar from '../components/UserNavbar.vue'
 import UserHomeBanner from '@/components/UserHomeBanner.vue'
 import ProductsHot from '@/components/ProductsHot.vue'
 import GoTop from '@/components/GoTop.vue'
+import { mapState, mapActions, mapWritableState } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import productStore from '@/stores/productStore'
+import goStore from '@/stores/goStore'
 export default {
-  name: 'HomeView',
   components: {
     UserHomeBanner,
     ProductsHot,
     GoTop
   },
-  data () {
-    return {
-      products: [],
-      temp: {}, // 暫存點擊到的賽馬資訊
-      productsX: [], // 放後端全部資料
-      productsY: [], // 手動選的資料
-      productsZ: [] // 試著用函式寫看看
-    }
+  computed: {
+    ...mapState(statusStore, ['isLoading']),
+    ...mapState(productStore, ['productsGame']),
+    ...mapWritableState(productStore, ['temp']),
   },
   methods: {
-    getProducts () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        // 我全都要
-        this.productsX = res.data.products
-
-        // 手動挑出想展示的商品
-        this.productsY.push(res.data.products[11])
-        this.productsY.push(res.data.products[10])
-        this.productsY.push(res.data.products[8])
-        this.productsY.push(res.data.products[5])
-        this.temp = this.productsY[0]
-
-        // 重複的商品只挑一個 還沒解決會挑到道具的問題 用兩次filter看看
-        const set = new Set()
-        const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false)
-        console.log(1, productsZ)
-        this.isLoading = false
-      })
-    },
-    goProducts () {
-      this.$router.push('/products')
-    }
+    ...mapActions(goStore, ['goProducts']),
   },
-  created () {
-    this.getProducts()
-  }
+  // created () {
+  //   // this.getProducts()
+  // }
 }
 </script>
 

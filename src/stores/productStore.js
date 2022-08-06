@@ -14,6 +14,8 @@ export default defineStore('productStore', {
     products: [],
     product: {},
     productsHot: [],
+    productsGame: [],
+    temp: {}, // 暫存點擊到的賽馬資訊
     category: 'all'
   }),
   actions: {
@@ -25,6 +27,13 @@ export default defineStore('productStore', {
           this.products = res.data.products
           this.productsHot = this.products.filter((item, index) => index > 14) // 先取幾個來試用
           favorite.getFavorite(this.products)
+          // 手動挑出想展示的商品(首頁用)
+          this.productsGame = []
+          this.productsGame.push(res.data.products[11])
+          this.productsGame.push(res.data.products[10])
+          this.productsGame.push(res.data.products[8])
+          this.productsGame.push(res.data.products[5])
+          this.temp = this.productsGame[0]
           status.isLoading = false
         })
         .catch((err) => console.error(err))

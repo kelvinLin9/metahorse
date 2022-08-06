@@ -100,20 +100,15 @@
 
 <script>
 import { mapState, mapActions } from 'pinia'
-import productsStore from '@/stores/productStore'
+import productStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
 export default {
-  data () {
-    return {
-      // category: 'all'
-    }
-  },
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
-    ...mapActions(productsStore, ['getProducts', 'setCategory']),
+    ...mapActions(productStore, ['getProducts', 'setCategory']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
     ...mapActions(goStore, ['goProduct'])
   },

@@ -145,7 +145,6 @@ export default {
     }
   },
   computed: {
-    // ...mapWritableState(cartStore, ['qty']),
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
     ...mapState(productStore, ['products', 'product']),
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
@@ -159,7 +158,6 @@ export default {
     this.id = this.$route.params.productId
     this.getProduct(this.id)
     this.getProducts()
-    // this.getFavoriteIds()
   }
 }
 </script >

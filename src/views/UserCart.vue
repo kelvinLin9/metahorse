@@ -22,7 +22,7 @@
               <th>品名</th>
               <th class="d-none d-sm-block">圖片</th>
               <th>單價</th>
-              <th>數量</th>
+              <th style="width:80px">數量</th>
               <th>總價</th>
             </tr>
           </thead>
