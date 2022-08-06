@@ -20,27 +20,27 @@
         <ul class="navbar-nav">
           <li class="nav-item">
            <RouterLink to="/" class="nav-link fs-5"
-           :class="{ 'text-warning':  routeName === 'home' }">首頁</RouterLink>
+           :class="{ 'text-warning':  this.$route.name === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
             <router-link to="/products" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'products' }">產品列表</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/UserSearchOrder" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'UserSearchOrder' }">訂單查詢</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'cart' }">購物車</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'cart' }">購物車</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/favorite" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'favorite' }">我的最愛</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'favorite' }">我的最愛</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/login" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'login' }">管理員登入</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'login' }">管理員登入</router-link>
           </li>
         </ul>
 
@@ -48,7 +48,7 @@
         <ul class="d-none d-lg-flex navbar-nav ms-auto me-2">
           <li class="nav-item position-relative">
             <div class="nav-link px-3"
-            :class="{ 'text-warning':  routeName === 'cart' }"
+            :class="{ 'text-warning':  this.$route.name === 'cart' }"
             @click.prevent="cartBoxToggle">
               <i class="bi bi-cart3 fs-4 cart" data-bs-toggle="tooltip" data-bs-placement="top" title="購物車"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
@@ -103,7 +103,7 @@
 
           <li class="nav-item position-relative">
             <RouterLink to="/Favorite" class="nav-link px-3"
-            :class="{ 'text-warning':  routeName === 'favorite' }">
+            :class="{ 'text-warning':  this.$route.name === 'favorite' }">
               <i class="bi bi-search-heart fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="我的最愛"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
                     v-if="favoriteNum != 0">
@@ -113,7 +113,7 @@
           </li>
           <li class="nav-item">
             <RouterLink to="/login" class="nav-link px-3"
-            :class="{ 'text-warning':  routeName === 'login' }">
+            :class="{ 'text-warning':  this.$route.name === 'login' }">
               <i class="bi bi-person-workspace fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="管理員登入"></i>
             </RouterLink>
           </li>
@@ -132,26 +132,15 @@ import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
-// import productStore from '@/stores/productStore'// 必要時硬解
 export default {
-  data () {
-    return {
-      routeName: ''
-    }
-  },
   computed: {
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
     ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState']),
-    ...mapState(favoriteStore, ['favoriteNum']),
-    // ...mapState(productStore, ['favoriteNum']) // 必要時硬解
+    ...mapState(favoriteStore, ['favoriteNum'])
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'removeCartItem', 'cartBoxToggle']),
-    // ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds']),
     ...mapActions(goStore, ['goCart', 'goProducts'])
-  },
-  mounted () {
-    this.routeName = this.$route.name // 點擊後圖標變色
   }
 }
 </script>
