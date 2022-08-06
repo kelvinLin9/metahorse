@@ -1,7 +1,7 @@
 <template>
     <Loading v-model:active="isLoading"/>
     <div class="container my-5">
-      <h1 class="fs-2 text-center fw-bold">訂單查詢</h1>
+      <h1 class="fs-2 text-center fw-bold">訂單查詢/Search By Order ID</h1>
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
           <div class="input-group mt-5 mb-1">

@@ -114,14 +114,14 @@ export default {
   },
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favState']),
-    ...mapState(productsStore, ['products', 'filterProducts', 'category']),
+    ...mapState(productStore, ['products', 'filterProducts', 'category']),
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
   },
   created () {
     this.getProducts()
   },
   mounted () {
-    this.getFavoriteIds()
+    // this.getFavoriteIds()
   }
 
 }

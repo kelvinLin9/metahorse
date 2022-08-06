@@ -19,6 +19,7 @@ export default defineStore('favoriteStore', {
         }
       })
       this.favoriteNum = this.favorite.length
+      console.log(this.favorite)
     },
     toggleFavorite (item) {
       const clickId = item

@@ -206,7 +206,7 @@ export default {
     ...mapActions(goStore, ['goProducts']),
   },
   // created () {
-  //   // this.getProducts()
+  //   this.getProducts()
   // }
 }
 </script>

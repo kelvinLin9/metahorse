@@ -28,9 +28,9 @@ const routes = [
         component: () => import('../views/UserCart.vue')
       },
       {
-        path: 'CheckOrder',
-        name: 'CheckOrder',
-        component: () => import('../views/CheckOrder.vue')
+        path: 'UserSearchOrder',
+        name: 'UserSearchOrder',
+        component: () => import('../views/UserSearchOrder.vue')
       },
       {
         path: 'favorite',

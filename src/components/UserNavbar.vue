@@ -27,8 +27,8 @@
             :class="{ 'text-warning':  routeName === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/checkOrder" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'CheckOrder' }">訂單查詢</router-link>
+            <router-link to="/UserSearchOrder" class="nav-link fs-5"
+            :class="{ 'text-warning':  routeName === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
