@@ -1,6 +1,6 @@
 <template>
   <div class="bg-light">
-    <div class="container-fluid"
+    <div class="container-fluid pt-5"
         v-if="favorite.length === 0">
       <div class="d-flex flex-column justify-content-center align-items-center">
         <h1 class="fs-2 text-center fw-bold mb-5">目前沒有收藏任何商品</h1>
@@ -42,9 +42,9 @@
                 </button>
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-5 px-3"
-                        :disabled="this.status.loadingItem === item.id"
+                        :disabled="cartLoadingItem === item.id"
                         @click.stop="addCart(item.id)">
-                  <div v-if="this.status.loadingItem === item.id"
+                  <div v-if="cartLoadingItem === item.id"
                         class="spinner-grow text-danger spinner-grow-sm" role="status">
                   <span class="visually-hidden">Loading...</span>
                   </div>
@@ -57,93 +57,32 @@
       </div>
     </div>
   </div>
-  <UserFooter/>
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
-import UserFooter from '@/components/UserFooter.vue'
+import { mapState, mapActions } from 'pinia'
+import productsStore from '@/stores/productStore'
+import cartStore from '@/stores/cartStore'
+import statusStore from '@/stores/statusStore'
+import favoriteStore from '@/stores/favoriteStore'
+import goStore from '@/stores/goStore'
 export default {
 
   data () {
     return {
-      favorite: [],
-      favoriteIds: [],
-      isLoading: false,
-      status: {
-        loadingItem: ''
-      }
     }
   },
-  components: {
-    UserFooter
+  computed: {
+    ...mapState(favoriteStore, ['favorite', 'favoriteIds']),
+    ...mapState(productsStore, ['products']),
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
   },
-  inject: ['emitter'],
   methods: {
-    getProducts () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        this.products = res.data.products
-        // console.log('products:', res)
-        this.isLoading = false
-        this.getFavoriteIds()
-      })
-    },
-    getFavorite () {
-      this.favorite = []
-      this.products.forEach((item) => {
-        if (this.favoriteIds.indexOf(item.id) > -1) {
-          this.favorite.push(item)
-        }
-      })
-      emitter.emit('updateFavorite', this.favorite)
-      console.log('this.favorite', this.favorite)
-    },
-    getFavoriteIds () {
-      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log(this.favoriteIds)
-      this.getFavorite()
-    },
-    removeFavorite (item) {
-      this.favoriteIds.splice(this.favoriteIds.indexOf(item), 1)
-      localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      this.getFavoriteIds()
-      emitter.emit('update-favoriteIds') // 傳送到UserNavbar
-    },
-    addCart (id) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.status.loadingItem = id
-      const cart = {
-        product_id: id,
-        qty: 1 // 產品數量
-      }
-      this.$http.post(url, { data: cart })
-        .then((res) => {
-          // 等到ajax成功之後，再把id清空
-          this.status.loadingItem = ''
-          console.log('加入購物車後回傳的訊息', res)
-          this.getCart()
-          emitter.emit('update-cart')
-        })
-    },
-    getCart () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        console.log('重新取得購物車訊息', res)
-        // 包含陣列列表、總金額
-        this.cart = res.data.data
-        this.isLoading = false
-      })
-    },
-    goProduct (id) {
-      this.$router.push(`/product/${id}`)
-    }
+    ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'removeFavorite']),
+    ...mapActions(productsStore, ['getProducts']),
+    ...mapActions(cartStore, ['getCart', 'addCart']),
+    ...mapActions(goStore, ['goProduct']),
   },
-  created () {
-    this.getProducts()
-  }
 }
 </script>
 

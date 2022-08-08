@@ -1,7 +1,14 @@
 <template>
-    <Loading v-model:active="isLoading"/>
-    <div class="container my-5">
-      <h1 class="fs-2 text-center fw-bold">訂單查詢</h1>
+  <div class="searchBanner ">
+    <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
+      <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
+        <span class="me-2 fs-1 fw-bolder text-white">訂單查詢</span>
+        <span class="fs-3 text-primary align-self-end">/ 請輸入訂單ID</span>
+      </h1>
+    </div>
+  </div>
+  <Loading v-model:active="isLoading"/>
+    <div class="container my-5 ">
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
           <div class="input-group mt-5 mb-1">
@@ -85,18 +92,10 @@
         </div>
       </div>
     </div>
-
-  <UserFooter/>
 </template>
 
 <script>
-
-import UserFooter from '@/components/UserFooter.vue'
-
 export default {
-  components: {
-    UserFooter
-  },
   data () {
     return {
       isLoading: false,
@@ -129,3 +128,12 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.searchBanner {
+  height: 300px;
+  background-image: url(https://i.imgur.com/6ix9eOm.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center ;
+}
+</style>

@@ -41,7 +41,7 @@ export default {
   z-index: 99;
 }
 .goTop a {
-  color: #000;
+  color: purple;
   font-size: 40px;
 }
 @media (max-width: 768px) {

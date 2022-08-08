@@ -1,6 +1,6 @@
 <template>
   <Loading :active="isLoading"></Loading>
-  <Banner/>
+  <UserHomeBanner/>
   <section class="my-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
@@ -31,10 +31,10 @@
       </div>
     </div>
   </section>
-<br>
-<br>
-<hr>
-<br>
+  <br>
+  <br>
+  <hr>
+  <br>
   <section class="my-5">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg"
@@ -46,7 +46,7 @@
         <div class="col">
           <div class="row row-cols-4 row-cols-lg-1">
               <div class="col d-flex justify-content-center justify-content-lg-end"
-                  v-for="item in productsY" :key="item">
+                  v-for="item in productsGame" :key="item">
                   <div class=" border-0 my-2"
                       data-aos="flip-left"
                       data-aos-easing="ease-out-cubic"
@@ -68,12 +68,12 @@
             class="round-icon rounded-circle img-thumbnail bg-primary">
           </div>
           <div class="d-flex justify-content-center"
-              data-aos="zoom-out"
+              data-aos=""
               data-aos-duration="2000">
             <button type="submit"
                     class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
                     @click.prevent="goProducts">
-            馬上購買
+              馬上購買
             </button>
           </div>
         </div>
@@ -178,71 +178,40 @@
     </div>
   </section>
   <hr>
-  <OtherProducts/>
-  <hr>
-  <UserFooter/>
+  <ProductsHot/>
   <GoTop/>
 </template>
 
 <script>
 // @ is an alias to /src
-// import UserNavbar from '../components/UserNavbar.vue'
-import Banner from '@/components/UserHomeBanner.vue'
-import OtherProducts from '@/components/ProductsHot.vue'
-import UserFooter from '@/components/UserFooter.vue'
+import UserHomeBanner from '@/components/UserHomeBanner.vue'
+import ProductsHot from '@/components/ProductsHot.vue'
 import GoTop from '@/components/GoTop.vue'
+import { mapState, mapActions, mapWritableState } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import productStore from '@/stores/productStore'
+import goStore from '@/stores/goStore'
 export default {
-  name: 'HomeView',
   components: {
-    Banner,
-    OtherProducts,
-    UserFooter,
+    UserHomeBanner,
+    ProductsHot,
     GoTop
   },
-  data () {
-    return {
-      products: [],
-      temp: {}, // 暫存點擊到的賽馬資訊
-      productsX: [], // 放後端全部資料
-      productsY: [], // 手動選的資料
-      productsZ: [] // 試著用函式寫看看
-    }
+  computed: {
+    ...mapState(statusStore, ['isLoading']),
+    ...mapState(productStore, ['productsGame']),
+    ...mapWritableState(productStore, ['temp']),
   },
   methods: {
-    getProducts () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        // 我全都要
-        this.productsX = res.data.products
-
-        // 手動挑出想展示的商品
-        this.productsY.push(res.data.products[11])
-        this.productsY.push(res.data.products[10])
-        this.productsY.push(res.data.products[8])
-        this.productsY.push(res.data.products[5])
-        this.temp = this.productsY[0]
-
-        // 重複的商品只挑一個 還沒解決會挑到道具的問題 用兩次filter看看
-        const set = new Set()
-        const productsZ = res.data.products.filter(item => !set.has(item.category) ? set.add(item.category) : false)
-        console.log(1, productsZ)
-        this.isLoading = false
-      })
-    },
-    goProducts () {
-      this.$router.push('/products')
-    }
+    ...mapActions(goStore, ['goProducts']),
   },
-  created () {
-    this.getProducts()
-  }
+  // created () {
+  //   this.getProducts()
+  // }
 }
 </script>
 
 <style lang="scss" scoped>
-/* 載入字體 */
-// @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 .f-kalam {
   font-family: 'Kalam', cursive;
 }
@@ -252,14 +221,5 @@ export default {
 .round-icon{
   width:350px;
   height:350px;
-  /* position:absolute; */
-  /* top:0px; */
-  /* left: 10px; */
 }
-// .slogan{
-//       width: 18em;
-//       white-space: nowrap;
-//       overflow: hidden;
-//       animation: typing 2s steps(18), Wcaret 2s steps(1);
-//     }
 </style>

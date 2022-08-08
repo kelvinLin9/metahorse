@@ -16,32 +16,32 @@
         <div class="fw-bold list-group flex-row flex-lg-column ">
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'all' ,'fs-4' : category == 'all'}"
-              @click.prevent="category = 'all'">- All</a>
+              @click.prevent="setCategory('all')">- All</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'S' ,'fs-4' : category == 'S'}"
-              @click.prevent="category = 'S'">- S</a>
+              @click.prevent="setCategory('S')">- S</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'A' ,'fs-4' : category == 'A'}"
-              @click.prevent="category = 'A'">- A</a>
+              @click.prevent="setCategory('A')">- A</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'B' ,'fs-4' : category == 'B'}"
-              @click.prevent="category = 'B'">- B</a>
+              @click.prevent="setCategory('B')">- B</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == 'C' ,'fs-4' : category == 'C'}"
-              @click.prevent="category = 'C'">- C</a>
+              @click.prevent="setCategory('C')">- C</a>
         </div>
         <hr>
         <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
           <div class="fw-bold list-group flex-row flex-lg-column ">
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == '馬鞍' ,'fs-4' : category == '馬鞍'}"
-              @click.prevent="category = '馬鞍'">- 馬鞍</a>
+              @click.prevent="setCategory('馬鞍')">- 馬鞍</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == '馬蹄鐵' ,'fs-4' : category == '馬蹄鐵'}"
-              @click.prevent="category = '馬蹄鐵'">- 馬蹄鐵</a>
+              @click.prevent="setCategory('馬蹄鐵')">- 馬蹄鐵</a>
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == '馬飼料' ,'fs-4' : category == '馬飼料'}"
-              @click.prevent="category = '馬飼料'">- 馬飼料</a>
+              @click.prevent="setCategory('馬飼料')">- 馬飼料</a>
         </div>
       </div>
       <div class="col-lg-9">
@@ -78,9 +78,9 @@
                 </span>
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
-                        :disabled="this.status.loadingItem === item.id"
+                        :disabled="cartLoadingItem === item.id"
                         @click="addCart(item.id)">
-                  <div v-if="this.status.loadingItem === item.id"
+                  <div v-if="cartLoadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
@@ -96,165 +96,30 @@
       </div>
     </div>
   </div>
-  <UserFooter/>
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
-import UserFooter from '@/components/UserFooter.vue'
+import { mapState, mapActions } from 'pinia'
+import productStore from '@/stores/productStore'
+import cartStore from '@/stores/cartStore'
+import statusStore from '@/stores/statusStore'
+import favoriteStore from '@/stores/favoriteStore'
+import goStore from '@/stores/goStore'
 export default {
-  data () {
-    return {
-      products: [],
-      pagination: {}, // 分頁資訊
-      favorite: [],
-      favoriteIds: [],
-      favIcons: [],
-      category: 'all',
-      isLoading: false,
-      // 對應品項 id 當loadingItem為一個特定品項的時候
-      // 我們就會把這個按鈕轉為disabled(配合v-if做提示效果)
-      status: {
-        loadingItem: ''
-      }
-    }
-  },
-  components: {
-    UserFooter
-  },
-  inject: ['emitter'],
   methods: {
-    getProducts () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        this.products = res.data.products
-        // console.log('products:', res)
-        this.isLoading = false
-        this.getFavoriteIds()
-      })
-    },
-    goProduct (id) {
-      this.$router.push(`/product/${id}`)
-    },
-    addCart (id) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.status.loadingItem = id
-      const cart = {
-        product_id: id,
-        qty: 1
-      }
-      this.$http.post(url, { data: cart })
-        .then((res) => {
-          // 等到ajax成功之後，再把id清空
-          this.status.loadingItem = ''
-          console.log(res)
-          this.getCart() // 重新取得購物車資料
-          this.$httpMessageState(res, '加入購物車')
-          emitter.emit('update-cart')// 通知UserNavbar元件也執行getCart()
-        })
-    },
-    getCart () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        console.log(res)
-        // 包含所有商品carts、總金額
-        this.cart = res.data.data
-        this.isLoading = false
-      })
-    },
-    getFavorite () {
-      // console.log('this.products', this.products)
-      this.favorite = []
-      this.products.forEach((item) => {
-        if (this.favoriteIds.indexOf(item.id) > -1) {
-          this.favorite.push(item)
-        }
-      })
-    },
-    getFavoriteIds () {
-      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      console.log(this.favoriteIds)
-      this.getFavorite()
-    },
-    toggleFavorite (item) {
-      const clickId = item
-      console.log('clickId', clickId)
-      const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
-      // console.log('點擊到的id是否在我的最愛列表', hasFavorite)
-      if (!hasFavorite) {
-        this.favoriteIds.push(item)
-        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      } else {
-        const delItem = this.favoriteIds.find((item) => {
-          return item === clickId
-        })
-        // console.log('5.(刪除時)點到的是第幾筆資料', this.favoriteIds.indexOf(item))
-        this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
-        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      }
-      this.getFavoriteIds()
-      // console.log('更新後的我的最愛列表id', this.favoriteIds)
-      emitter.emit('update-favoriteIds')
-    }
+    ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
+    ...mapActions(productStore, ['getProducts', 'setCategory']),
+    ...mapActions(cartStore, ['getCart', 'addCart']),
+    ...mapActions(goStore, ['goProduct'])
   },
   computed: {
-    favState () {
-      return (id) => {
-        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
-      }
-    },
-    filterProducts () {
-      let filterProducts
-      switch (this.category) {
-        case 'all':
-          filterProducts = this.products.filter((item) => {
-            return item
-          })
-          break
-        case 'S':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'S'
-          })
-          break
-        case 'A':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'A'
-          })
-          break
-        case 'B':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'B'
-          })
-          break
-        case 'C':
-          filterProducts = this.products.filter((item) => {
-            return item.category === 'C'
-          })
-          break
-        case '馬鞍':
-          filterProducts = this.products.filter((item) => {
-            return item.description === '馬鞍'
-          })
-          break
-        case '馬蹄鐵':
-          filterProducts = this.products.filter((item) => {
-            return item.description === '馬蹄鐵'
-          })
-          break
-        case '馬飼料':
-          filterProducts = this.products.filter((item) => {
-            return item.description === '馬飼料'
-          })
-          break
-      }
-      return filterProducts
-    }
+    ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favState']),
+    ...mapState(productStore, ['products', 'filterProducts', 'category']),
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
   },
   created () {
-    this.getProducts()
-  }
+    // this.getProducts()
+  },
 }
 </script>
 

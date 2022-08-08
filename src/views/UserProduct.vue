@@ -69,15 +69,16 @@
           <div class="input-group input-group-sm col">
             <input type="number" class="form-control"
                   min="1"
-                  :disabled="product.id === status.loadingItem"
-                  v-model.number="qty">
+                  :disabled="product.id === cartLoadingItem"
+                  v-model.number="product.qty"
+                  @input="product.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
           </div>
 
           <button type="button"
                   class="col-9 btn btn-outline-primary text-dark fw-bold fs-5"
-                  :disabled="this.status.loadingItem === product.id"
-                  @click="addCart(product.id, qty)">
-            <div v-if="this.status.loadingItem === product.id"
+                  :disabled="cartLoadingItem === product.id"
+                  @click="addCart(product.id, product.qty)">
+            <div v-if="cartLoadingItem === product.id"
                   class="spinner-grow text-danger spinner-grow-sm" role="status">
               <span class="visually-hidden">Loading...</span>
             </div>
@@ -131,100 +132,31 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
+import { mapState, mapActions } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import productStore from '@/stores/productStore'
+import cartStore from '@/stores/cartStore'
+import favoriteStore from '@/stores/favoriteStore'
+
 export default {
   data () {
     return {
-      products: [],
-      product: {},
-      qty: 1,
-      favorite: [],
-      favoriteIds: [],
       id: '',
-      isLoading: false,
-      status: {
-        loadingItem: ''
-      }
-    }
-  },
-  methods: {
-    getProducts () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/products/all`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        this.products = res.data.products
-        this.isLoading = false
-        this.getFavoriteIds()
-      })
-    },
-    getProduct () {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${this.id}`
-      this.isLoading = true
-      this.$http.get(api).then((res) => {
-        // console.log(res.data)
-        this.isLoading = false
-        if (res.data.success) {
-          this.product = res.data.product
-        }
-      })
-    },
-    addCart (id, qty = 1) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.status.loadingItem = id
-      const cart = {
-        product_id: id,
-        qty
-      }
-      this.$http.post(url, { data: cart })
-        .then((res) => {
-          // 等到ajax成功之後，再把id清空
-          this.status.loadingItem = ''
-          console.log('加入購物車的res', res)
-          // this.getCart() // 重新取得購物車資料(單一頁面不需要)
-          this.$httpMessageState(res, '加入購物車')
-          emitter.emit('update-cart')// 通知Navbar元件也執行getCart()
-        })
-    },
-    getFavorite () {
-      this.favorite = []
-      this.products.forEach((item) => {
-        if (this.favoriteIds.indexOf(item.id) > -1) {
-          this.favorite.push(item)
-        }
-      })
-    },
-    getFavoriteIds () {
-      this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
-      this.getFavorite()
-    },
-    toggleFavorite (item) {
-      const clickId = item
-      const hasFavorite = this.favoriteIds.some((item) => item === clickId) 
-      if (!hasFavorite) {
-        this.favoriteIds.push(item)
-        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      } else {
-        const delItem = this.favoriteIds.find((item) => {
-          return item === clickId
-        })
-        this.favoriteIds.splice(this.favoriteIds.indexOf(delItem), 1)
-        localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))
-      }
-      this.getFavoriteIds()
-      emitter.emit('update-favoriteIds')
     }
   },
   computed: {
-    favState () {
-      return (id) => {
-        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
-      }
-    }
+    ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
+    ...mapState(productStore, ['products', 'product']),
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
+  },
+  methods: {
+    ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
+    ...mapActions(productStore,['getProducts','getProduct']),
+    ...mapActions(cartStore,['addCart']),
   },
   created () {
     this.id = this.$route.params.productId
-    this.getProduct()
-    this.getProducts()
+    this.getProduct(this.id)
   }
 }
 </script >

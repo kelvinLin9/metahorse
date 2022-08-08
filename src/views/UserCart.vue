@@ -18,12 +18,12 @@
         <table class="table align-middle">
           <thead class="table-primary">
             <tr>
-              <th style="width: 50px">刪除</th>
-              <th style="width: 150px">品名</th>
-              <th style="width: 100px">圖片</th>
-              <th style="width: 80px">單價</th>
-              <th style="width: 80px">數量</th>
-              <th style="width: 200px" class="text-end">總價</th>
+              <th>刪除</th>
+              <th>品名</th>
+              <th class="d-none d-sm-block">圖片</th>
+              <th>單價</th>
+              <th style="width:80px">數量</th>
+              <th>總價</th>
             </tr>
           </thead>
           <tbody>
@@ -31,41 +31,43 @@
             <tr v-for="item in cart.carts" :key="item.id">
               <td>
                 <button type="button" class="btn btn-outline-primary btn-sm"
-                       :disabled="status.loadingItem === item.id"
+                       :disabled="cartLoadingItem === item.id"
                        @click="removeCartItem(item.id)">
                   <i class="bi bi-x"></i>
                 </button>
               </td>
-              <td>
-                {{ item.product.title }}  /  {{item.product.description }}
-                <div class="text-secondary fw-bold" v-if="item.coupon">
-                  已套用優惠券 ({{item.final_total / item.total * 100 }}% OFF)<br>
+              <td class="font-sm">
+                {{ item.product.title }}<br>
+                <small class="text-secondary fw-bold" v-if="item.coupon">
+                  已套用優惠券<br> ({{item.final_total / item.total * 100 }}% OFF)<br>
                   代碼：{{item.coupon.code}}
-                </div>
+                </small>
               </td>
-              <td>
+              <td class="d-none d-sm-block">
                 <img :src="item.product.imageUrl" alt="商品照片" width="50">
               </td>
-              <td>
-                NT$ {{item.product.price}}
+              <td class="font-sm">
+                NT$<br class="d-md-none"> 
+                {{item.product.price}}
               </td>
               <td>
                 <div class="input-group input-group-sm">
                   <input type="number" class="form-control"
                        min="1"
-                       :disabled="item.id === status.loadingItem"
+                       :disabled="item.id === cartLoadingItem"
                        @change="updateCart(item)"
-                       v-model.number="item.qty">
+                       v-model.number="item.qty"
+                       @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
                 </div>
               </td>
-              <td class="text-end">
-                <div v-if="item.final_total === item.total" class="fs-5">
+              <td class="font-sm">
+                <div v-if="item.final_total === item.total">
                    NT$ {{ $filters.currency(item.final_total) }}
                 </div>
-                <div v-if="item.final_total !== item.total" class="fs-5">
-                  <small class="text-secondary fs-6">
-                  優惠券折扣價：
-                  </small>
+                <div v-if="item.final_total !== item.total">
+                  <small class="text-secondary">
+                  折扣價：
+                  </small><br class="d-lg-none">
                   NT$ {{ $filters.currency(item.final_total) }}
                 </div>
               </td>
@@ -74,17 +76,17 @@
           </tbody>
           <tfoot>
           <tr v-if="cart.final_total == cart.total">
-            <td colspan="7" class="text-end fs-1">
+            <td colspan="7" class="text-end fs-3">
               總計：NT$ {{ $filters.currency(cart.total) }}
             </td>
          </tr>
          <tr v-if="cart.final_total !== cart.total">
-           <td colspan="7" class="text-end fs-3">
+           <td colspan="7" class="text-end fs-4">
              <del>總計：NT$ {{ $filters.currency(cart.total) }}</del>
            </td>
          </tr>
          <tr v-if="cart.final_total !== cart.total">
-           <td colspan="7" class="text-end text-secondary fw-bold fs-1">
+           <td colspan="7" class="text-end text-secondary fw-bold fs-3">
              折扣價：NT$ {{ $filters.currency(cart.final_total) }}
            </td>
          </tr>
@@ -93,9 +95,11 @@
 
         <div class="input-group mb-3 input-group-sm"
              v-if="cart.total !== 0">
-          <input type="text" class="form-control" v-model="coupon_code" placeholder="請輸入優惠碼">
+          <input type="text" class="form-control" placeholder="請輸入優惠碼"
+          v-model="coupon_code">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" @click="addCouponCode">
+            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" 
+            @click="addCouponCode(coupon_code)">
               套用優惠碼
             </button>
           </div>
@@ -122,89 +126,24 @@
       </div>
     </div>
   </div>
-  <UserFooter/>
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
-import UserFooter from '@/components/UserFooter.vue'
+import { mapState, mapActions, mapWritableState } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import cartStore from '@/stores/cartStore'
+import goStore from '@/stores/goStore'
+import couponStore from '@/stores/couponStore'
 export default {
-  components: {
-    UserFooter
+  computed: {
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
+    ...mapState(cartStore, ['cart']),
+    ...mapWritableState(couponStore, ['coupon_code'])
   },
-  data () {
-    return {
-      products: [],
-      product: {},
-      status: {
-        loadingItem: ''
-      },
-      cart: {},
-      coupon_code: ''
-    }
-  },
-  inject: ['emitter'],
   methods: {
-    goProducts () {
-      this.$router.push('/products')
-    },
-    goCheckout () {
-      this.$router.push('/checkout')
-    },
-    getCart () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        console.log(res)
-        this.cart = res.data.data
-        this.isLoading = false
-      })
-    },
-    // 更改購物車商品數量
-    updateCart (item) {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
-      this.isLoading = true
-      this.status.loadingItem = item.id
-      const cart = {
-        product_id: item.product_id,
-        qty: item.qty
-      }
-      this.$http.put(url, { data: cart }).then((res) => {
-        console.log(res)
-        this.status.loadingItem = ''
-        this.getCart()
-        emitter.emit('update-cart')
-      })
-    },
-    removeCartItem (id) {
-      this.status.loadingItem = id
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-      this.isLoading = true
-      this.$http.delete(url).then((response) => {
-        this.$httpMessageState(response, '移除購物車品項')
-        this.status.loadingItem = ''
-        this.getCart()
-        this.isLoading = false
-        emitter.emit('update-cart')
-      })
-    },
-    addCouponCode () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/coupon`
-      const coupon = {
-        code: this.coupon_code
-      }
-      this.isLoading = true
-      this.$http.post(url, { data: coupon }).then((response) => {
-        console.log(response.data.message)
-        this.$httpMessageState(response, '加入優惠券')
-        this.getCart()
-        this.isLoading = false
-        this.coupon_code = ''
-      })
-    }
-  },
-  created () {
-    this.getCart()
+    ...mapActions(cartStore, ['getCart', 'updateCart', 'removeCartItem']),
+    ...mapActions(goStore, ['goProducts', 'goCheckout']),
+    ...mapActions(couponStore, ['addCouponCode'])
   }
 }
 </script>
@@ -216,5 +155,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
+}
+
+@media (max-width: 576px) {
+  .font-sm{
+    font-size: 12px;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="footer bg-dark mt-3 py-4 mt-md-5">
+  <div class="footer bg-dark mt-3 mt-md-5 py-3">
     <div class="container-fluid">
       <ul class="list-inline text-center">
         <li class="list-inline-item text-light">
@@ -42,9 +42,7 @@
 </template>
 
 <style lang="scss" scoped>
-// .footer {
-  // position: fixed;
-  // width: 100%;
-  // top: 100;
-// }
+.footer {
+z-index: 1000;
+}
 </style>

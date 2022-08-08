@@ -20,27 +20,27 @@
         <ul class="navbar-nav">
           <li class="nav-item">
            <RouterLink to="/" class="nav-link fs-5"
-           :class="{ 'text-warning':  routeName === 'home' }">首頁</RouterLink>
+           :class="{ 'text-warning':  this.$route.name === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
             <router-link to="/products" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'products' }">產品列表</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/checkOrder" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'CheckOrder' }">訂單查詢</router-link>
+            <router-link to="/UserSearchOrder" class="nav-link fs-5"
+            :class="{ 'text-warning':  this.$route.name === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'cart' }">購物車</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'cart' }">購物車</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/favorite" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'favorite' }">我的最愛</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'favorite' }">我的最愛</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/login" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === 'login' }">管理員登入</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'login' }">管理員登入</router-link>
           </li>
         </ul>
 
@@ -48,7 +48,7 @@
         <ul class="d-none d-lg-flex navbar-nav ms-auto me-2">
           <li class="nav-item position-relative">
             <div class="nav-link px-3"
-            :class="{ 'text-warning':  routeName === 'cart' }"
+            :class="{ 'text-warning':  this.$route.name === 'cart' }"
             @click.prevent="cartBoxToggle">
               <i class="bi bi-cart3 fs-4 cart" data-bs-toggle="tooltip" data-bs-placement="top" title="購物車"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
@@ -78,7 +78,7 @@
                     <td class="text-end">NT$ {{ $filters.currency(item.total) }}</td>
                     <td class="text-center">
                       <button type="button" class="btn btn-outline-primary btn-sm"
-                          :disabled="status.loadingItem === item.id"
+                          :disabled="cartLoadingItem === item.id"
                           @click="removeCartItem(item.id)">
                         <i class="bi bi-x"></i>
                       </button>
@@ -103,7 +103,7 @@
 
           <li class="nav-item position-relative">
             <RouterLink to="/Favorite" class="nav-link px-3"
-            :class="{ 'text-warning':  routeName === 'favorite' }">
+            :class="{ 'text-warning':  this.$route.name === 'favorite' }">
               <i class="bi bi-search-heart fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="我的最愛"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
                     v-if="favoriteNum != 0">
@@ -113,7 +113,7 @@
           </li>
           <li class="nav-item">
             <RouterLink to="/login" class="nav-link px-3"
-            :class="{ 'text-warning':  routeName === 'login' }">
+            :class="{ 'text-warning':  this.$route.name === 'login' }">
               <i class="bi bi-person-workspace fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="管理員登入"></i>
             </RouterLink>
           </li>
@@ -124,81 +124,23 @@
 </template>
 
 <script>
-import emitter from '@/methods/emitter'
 // 響應式行為會使用到折疊的 JavaScript 插件
 import 'bootstrap/js/dist/collapse'
+
+import { mapState, mapActions } from 'pinia'
+import statusStore from '@/stores/statusStore'
+import cartStore from '@/stores/cartStore'
+import favoriteStore from '@/stores/favoriteStore'
+import goStore from '@/stores/goStore'
 export default {
-  data () {
-    return {
-      favorite: [],
-      routeName: '',
-      favoriteNum: 0,
-      cartNum: 0,
-      cart: {},
-      status: {
-        // 對應品項 id 當loadingItem為一個特定品項的時候
-        // 我們就會把這個按鈕轉為disabled
-        loadingItem: ''
-      },
-      cartBoxState: false // 控制購物車小視窗開關
-    }
+  computed: {
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
+    ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState']),
+    ...mapState(favoriteStore, ['favoriteNum'])
   },
   methods: {
-    getCart () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
-      this.isLoading = true
-      this.$http.get(url).then((res) => {
-        // console.log('getCart(res)', res)
-        this.cartNum = res.data.data.carts.length
-        this.cart = res.data.data
-        this.isLoading = false
-        // 傳一份給floatCart
-        emitter.emit('cartNum', this.cartNum)
-      })
-    },
-    // 取得我的最愛筆數
-    getFavoriteNum () {
-      this.favoriteNum = (JSON.parse(localStorage.getItem('favoriteIds')) || []).length
-    },
-    goCart () {
-      this.$router.push('/cart')
-      this.cartBoxState = false
-    },
-    goProducts () {
-      this.$router.push('/products')
-      this.cartBoxState = false
-    },
-    removeCartItem (id) {
-      console.log(id)
-      this.status.loadingItem = id
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${id}`
-      this.isLoading = true
-      this.$http.delete(url).then((response) => {
-        this.$httpMessageState(response, '移除購物車品項')
-        this.status.loadingItem = ''
-        this.getCart()
-        this.isLoading = false
-      })
-    },
-    cartBoxToggle () {
-      this.cartBoxState = !this.cartBoxState
-      // 傳到ToastMessages 讓提示能移開避免擋到
-      emitter.emit('cartBoxState', this.cartBoxState)
-    }
-  },
-  created () {
-    this.getCart()
-    this.getFavoriteNum()
-  },
-  mounted () {
-    this.routeName = this.$route.name // 點擊後圖標變色
-    // 接收資料
-    emitter.on('update-cart', () => {
-      this.getCart()
-    })
-    emitter.on('update-favoriteIds', () => {
-      this.getFavoriteNum()
-    })
+    ...mapActions(cartStore, ['getCart', 'removeCartItem', 'cartBoxToggle']),
+    ...mapActions(goStore, ['goCart', 'goProducts'])
   }
 }
 </script>
