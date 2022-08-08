@@ -5,7 +5,7 @@
   <div class="position-relative">
     <router-view/>
   </div>
-  <UserFooter/>
+  <UserFooter class="top-0 w-100"></UserFooter>
 </template>
 
 <script>

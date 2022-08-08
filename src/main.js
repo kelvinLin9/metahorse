@@ -6,7 +6,6 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import '@/methods/fontawsome'
-// 自己出現的?
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import '@/methods/sweetalart2'
@@ -30,13 +29,9 @@ import App from './App.vue'
 import router from './router'
 import { currency, date } from './methods/filters'
 
-const pinia = createPinia()
 
-// sweetalert2
-const options = {
-  confirmButtonColor: '#41b882',
-  cancelButtonColor: '#ff7674'
-}
+
+
 
 const app = createApp(App)
 app.config.globalProperties.$filters = {
@@ -44,8 +39,11 @@ app.config.globalProperties.$filters = {
   currency
 }
 
-app.AOS = new AOS.init({ disable: 'phone' })
-app.use(AOS)
+// sweetalert2
+const options = {
+  confirmButtonColor: '#41b882',
+  cancelButtonColor: '#ff7674'
+}
 
 Object.keys(AllRules).forEach((rule) => {
   defineRule(rule, AllRules[rule])
@@ -58,18 +56,19 @@ configure({
 // 設定預設語系
 setLocale('zh_TW')
 
-app.use(pinia)
 
-app.use(VueAxios, axios)
-app.use(router)
-app.use(VueSweetalert2, options)
+const pinia = createPinia()
+app.AOS = new AOS.init({ disable: 'phone' })
+app.use(AOS)
+
 
 app.component('Loading', Loading)
 app.component('VForm', Form)
 app.component('VField', Field)
 app.component('ErrorMessage', ErrorMessage)
-
-// fontawesome
 app.component('font-awesome-icon', FontAwesomeIcon)
-
+app.use(VueSweetalert2, options)
+app.use(pinia)
+app.use(VueAxios, axios)
+app.use(router)
 app.mount('#app')
