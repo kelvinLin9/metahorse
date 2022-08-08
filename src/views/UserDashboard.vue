@@ -5,7 +5,7 @@
   <div class="position-relative">
     <router-view/>
   </div>
-  <UserFooter class="top-0 w-100"></UserFooter>
+  <UserFooter :class="{'fixed-bottom' : this.$route.name === ('UserSearchOrder' || 'Login')}" ></UserFooter>
 </template>
 
 <script>

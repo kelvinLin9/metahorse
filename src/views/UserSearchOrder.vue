@@ -1,5 +1,5 @@
 <template>
-  <div class="searchBanner">
+  <div class="searchBanner ">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
         <span class="me-2 fs-1 fw-bolder text-white">訂單查詢</span>
@@ -8,7 +8,7 @@
     </div>
   </div>
   <Loading v-model:active="isLoading"/>
-    <div class="container my-5">
+    <div class="container my-5 ">
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
           <div class="input-group mt-5 mb-1">
