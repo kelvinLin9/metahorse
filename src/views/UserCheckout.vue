@@ -129,12 +129,10 @@ export default {
       const order = this.form
       this.$http.post(url, { data: order })
         .then((res) => {
-          // console.log(res)
           this.$router.push(`/checkoutPay/${res.data.orderId}`)
+          this.getCart()
         })
         .catch((err) => console.error(err))
-      console.log('this.cartNum', this.cartNum)
-      this.getCart()
     },
   }
 }
