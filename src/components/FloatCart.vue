@@ -33,15 +33,15 @@ export default {
 .num{
   width:30px;
   height: 30px;
-  top: -5px;
-  right: -5px;
+  top: -10px;
+  right: -10px;
   font-size: 18px;
 }
 .float-cart{
   position: fixed;
   display: none !important;
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  height: 65px;
   right: 30px;
   top: 300px;
   z-index: 99;

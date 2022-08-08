@@ -1,14 +1,27 @@
 <template>
   <Loading :active="isLoading"></Loading>
   <div class="container">
+    <div class="row test">
+      <div class="col test justify-content-center">
+        1.輸入訂單資料
+      </div>
+      <div class="col test">
+        2.付款
+      </div>
+      <div class="col test">
+        3.退貨
+      </div>
+    </div>
+  </div>
+  <div class="container">
     <div class="my-5 row justify-content-center">
       <v-form class="col-md-6" v-slot="{ errors }"
               @submit="gotoPay">
         <div class="d-flex justify-content-center">
-          <h1 class="fs-2 text-center fw-bold">收件人資訊</h1>
+          <h1 class="fs-2 fw-bold">收件人資訊</h1>
         </div>
         <div class="mb-3">
-          <label for="email" class="form-label fw-bold fs-5 ">Email</label>
+          <label for="email" class="form-label fw-bold fs-5 ">Email：</label>
           <v-field id="email" name="email" type="email" class="form-control"
                 :class="{ 'is-invalid': errors['email'] }"
                 placeholder="請輸入 Email" rules="email|required"
@@ -17,7 +30,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="name" class="form-label fw-bold fs-5">收件人姓名</label>
+          <label for="name" class="form-label fw-bold fs-5">收件人姓名：</label>
           <v-field id="name" name="姓名" type="text" class="form-control"
                    :class="{ 'is-invalid': errors['姓名'] }"
                    placeholder="請輸入姓名" rules="required"
@@ -26,7 +39,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="tel" class="form-label fw-bold fs-5">收件人電話</label>
+          <label for="tel" class="form-label fw-bold fs-5">收件人電話：</label>
           <v-field id="tel" name="電話" type="tel" class="form-control"
                    :class="{ 'is-invalid': errors['電話'] }"
                    placeholder="請輸入電話" rules="required"
@@ -35,7 +48,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="address" class="form-label fw-bold fs-5">收件人地址</label>
+          <label for="address" class="form-label fw-bold fs-5">收件人地址：</label>
           <v-field id="address" name="地址" type="text" class="form-control"
                    :class="{ 'is-invalid': errors['地址'] }"
                    placeholder="請輸入地址" rules="required"
@@ -45,7 +58,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="message" class="form-label fw-bold fs-5">留言</label>
+          <label for="message" class="form-label fw-bold fs-5">留言：</label>
           <textarea name="" id="message" class="form-control" cols="30" rows="10"
                     v-model="form.message"></textarea>
         </div>
