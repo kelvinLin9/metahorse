@@ -1,4 +1,4 @@
-# hw0622
+# MetaHorse
 
 ## Project setup
 ```
