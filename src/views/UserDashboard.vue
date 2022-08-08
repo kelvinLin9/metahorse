@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     ...mapActions(productStore, ['getProducts']),
-    ...mapActions(cartStore, ['getCart']),
+    ...mapActions(cartStore, ['getCart'])
   },
   created () {
     this.getProducts()

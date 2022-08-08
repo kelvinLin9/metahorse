@@ -1,7 +1,7 @@
 <template>
   <div class="searchBanner ">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
-      <h1 class="w-100 d-flex align-items-center justify-content-center mb-0 mt-5">
+      <h1 class="w-100 d-flex align-items-center justify-content-center">
         <span class="me-2 fs-1 fw-bolder text-white">訂單查詢</span>
         <span class="fs-3 text-primary align-self-end">/ 請輸入訂單ID</span>
       </h1>
@@ -131,7 +131,7 @@ export default {
 <style lang="scss" scoped>
 .searchBanner {
   height: 300px;
-  background-image: url(https://i.imgur.com/6ix9eOm.jpg);
+  background-image: url(https://imgur.com/53K117A.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
