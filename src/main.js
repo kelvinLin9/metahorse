@@ -65,8 +65,8 @@ app.use(router)
 app.use(VueSweetalert2, options)
 
 app.component('Loading', Loading)
-app.component('Form', Form)
-app.component('Field', Field)
+app.component('VForm', Form)
+app.component('VField', Field)
 app.component('ErrorMessage', ErrorMessage)
 
 // fontawesome

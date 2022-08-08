@@ -2,7 +2,7 @@
   <Loading :active="isLoading"></Loading>
   <div class="container">
     <div class="my-5 row justify-content-center">
-      <Form class="col-md-6" v-slot="{ errors }"
+      <v-form class="col-md-6" v-slot="{ errors }"
               @submit="gotoPay">
         <div class="d-flex justify-content-center">
           <h1 class="fs-2 text-center fw-bold">收件人資訊</h1>
@@ -36,10 +36,11 @@
 
         <div class="mb-3">
           <label for="address" class="form-label fw-bold fs-5">收件人地址</label>
-          <Field id="address" name="地址" type="text" class="form-control"
+          <v-field id="address" name="地址" type="text" class="form-control"
                    :class="{ 'is-invalid': errors['地址'] }"
                    placeholder="請輸入地址" rules="required"
-                   v-model="form.user.address"></Field>
+                   v-model="form.user.address">
+          </v-field>
           <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
         </div>
 
@@ -57,7 +58,7 @@
             付款去<i class="bi bi-caret-right-fill"></i>
           </button>
         </div>
-      </Form>
+      </v-form>
       <!-- 商品明細 -->
       <div class="col-md-6 mt-5 mt-md-0">
         <div class="d-flex justify-content-center">
