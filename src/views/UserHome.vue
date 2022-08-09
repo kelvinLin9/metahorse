@@ -60,8 +60,8 @@
               </div>
           </div>
         </div>
-        <div class="col mb-5 mt-3 d-flex justify-content-between flex-column ">
-          <div class="border-0 mb-5 d-flex justify-content-center"
+        <div class="col mb-3 mt-3 d-flex justify-content-between flex-column ">
+          <div class="border-0 mb-0 mb-sm-5 d-flex justify-content-center"
               data-aos="zoom-in-up"
               data-aos-duration="2000">
             <img :src="temp.imageUrl" alt="遊戲參考圖放大"
@@ -82,7 +82,7 @@
               data-aos-duration="2000">
             <div class="row d-flex flex-column">
               <hr>
-              <div class="col mt-3">
+              <div class="col mt-0 mt-sm-3">
                 <h3 class="fw-bold text-center text-lg-start lh-lg">
                   遊戲中數值
                 </h3>
