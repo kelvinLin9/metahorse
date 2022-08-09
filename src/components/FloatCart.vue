@@ -43,7 +43,7 @@ export default {
   width: 65px;
   height: 65px;
   right: 30px;
-  top: 300px;
+  bottom: 100px;
   z-index: 99;
 }
 @media (max-width: 992px) {

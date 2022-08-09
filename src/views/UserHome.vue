@@ -65,7 +65,7 @@
               data-aos="zoom-in-up"
               data-aos-duration="2000">
             <img :src="temp.imageUrl" alt="遊戲參考圖放大"
-            class="round-icon rounded-circle img-thumbnail bg-primary">
+              class="round-icon rounded-circle img-thumbnail bg-primary  d-none d-sm-block">
           </div>
           <div class="d-flex justify-content-center"
               data-aos=""
