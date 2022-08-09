@@ -1,8 +1,7 @@
 <template>
 <div class="container">
   <h3 class="text-center my-3 fs-2 fw-bolder"
-      data-aos="fade-down"
-      data-aos-duration="2000">熱銷商品</h3>
+      >熱銷商品</h3>
   <div class="row g-4 pb-5">
     <swiper
       :loop="true"
@@ -28,8 +27,7 @@
       <swiper-slide v-for="(item) in productsHot" :key="item.id"
                     @click="viewProduct(item.id)" >
              <div class="card rounded-3 mb-5 mx-2 mx-sm-0"
-                  data-aos="flip-up"
-                  data-aos-duration="2000">
+                  >
               <div class="card-img overflow-hidden position-relative scale">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.prevent="goProduct(item.id)">
