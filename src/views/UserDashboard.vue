@@ -1,11 +1,13 @@
 <template>
   <UserNavbar :key="$route.path"/>
-  <FloatCart/>
+  <FloatCart
+  :class="{'d-none' : this.$route.name == ('cart' || 'checkout')}"/>
   <ToastMessages/>
   <div class="position-relative">
     <router-view/>
   </div>
-  <UserFooter :class="{'fixed-bottom' : this.$route.name === ('UserSearchOrder' || 'Login')}" ></UserFooter>
+  <UserFooter 
+  :class="{'fixed-bottom' : this.$route.name == ('UserSearchOrder' || 'login')}" />
 </template>
 
 <script>
@@ -30,6 +32,7 @@ export default {
   created () {
     this.getProducts()
     this.getCart()
+    console.log('this.$route.name', this.$route.name)
   }
 }
 </script>

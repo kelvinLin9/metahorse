@@ -44,10 +44,12 @@ const routes = [
       },
       {
         path: 'product/:productId',
+        name: 'product',
         component: () => import('../views/UserProduct.vue')
       },
       {
         path: 'checkoutPay/:orderId',
+        name: 'checkoutPay',
         component: () => import('../views/CheckoutPay.vue')
       }
     ]

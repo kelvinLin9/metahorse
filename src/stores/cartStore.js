@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from '../router'
 import { defineStore } from 'pinia'// 起手式
 import statusStore from './statusStore'
 
@@ -10,7 +11,17 @@ export default defineStore('cartStore', {
   state: () => ({
     cart: {},
     cartNum: 0,
-    cartBoxState: false
+    cartBoxState: false,
+    orderId: '',
+    form: {
+      user: {
+        name: '',
+        email: '',
+        tel: '',
+        address: ''
+      },
+      message: ''
+    }
     // qty: 1 // 不需要 傳到後端就好
   }),
   actions: {
@@ -76,6 +87,26 @@ export default defineStore('cartStore', {
       // 傳到ToastMessages 讓提示能移開避免擋到
       this.cartBoxState = !this.cartBoxState
       
-    }
+    },
+    gotoPay () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
+      const order = this.form
+      axios.post(url, { data: order })
+        .then((res) => {
+          router.push(`/checkoutPay/${res.data.orderId}`)
+          this.form = {
+            user: {
+              name: '',
+              email: '',
+              tel: '',
+              address: ''
+            },
+            message: ''
+          }
+          this.getCart()
+          
+        })
+        .catch((err) => console.error(err))
+    },
   }
 })
