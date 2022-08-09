@@ -5,7 +5,7 @@
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
         <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>
-        <span class="fs-3 text-primary align-self-end">/ All Products</span>
+        <span class="fs-5 text-primary align-self-end">/ ???????</span>
       </h1>
     </div>
   </div>
@@ -116,10 +116,7 @@ export default {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favState']),
     ...mapState(productStore, ['products', 'filterProducts', 'category']),
     ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
-  },
-  created () {
-    // this.getProducts()
-  },
+  }
 }
 </script>
 
@@ -133,6 +130,9 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
+  @media (max-width: 600px) {
+    height: 150px;
+  }
   .bg-dark{
   z-index: 1;
   opacity: 1;

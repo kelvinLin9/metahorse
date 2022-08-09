@@ -49,7 +49,7 @@
                   <span class="visually-hidden">Loading...</span>
                   </div>
                 加到購物車
-              </button>
+                </button>
               </div>
             </div>
           </div>

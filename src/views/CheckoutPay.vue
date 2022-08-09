@@ -66,10 +66,13 @@
           </tr>
           </tbody>
         </table>
-        <div class="text-center">
-          <button class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
-          @click="showAlert"
-          >
+        <div class="px-3 py-2 d-flex justify-content-between">
+          <button class="btn btn-secondary btn-hover rounded-0 fw-bold"
+                  @click.prevent="printWindow">
+            列印此頁
+          </button>
+          <button class="btn btn-primary btn-hover rounded-0 fw-bold"
+                  @click.prevent="showAlert">
             確認付款
           </button>
         </div>
@@ -124,13 +127,16 @@ export default {
         })
         .catch((err) => console.error(err))
     },
+    printWindow () {
+      window.print()
+    },
     goHome () {
       this.$router.push('/')
     }
   },
   created () {
     this.orderId = this.$route.params.orderId
-    console.log(this.orderId)
+    // console.log(this.orderId)
     this.getOrder()
   }
 }

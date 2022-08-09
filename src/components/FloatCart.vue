@@ -48,6 +48,7 @@ export default {
 @media (max-width: 992px) {
   .float-cart{
     display:flex !important;
+    z-index: 200;
   }
 }
 </style>

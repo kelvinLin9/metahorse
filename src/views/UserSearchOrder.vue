@@ -3,7 +3,7 @@
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
         <span class="me-2 fs-1 fw-bolder text-white">訂單查詢</span>
-        <span class="fs-3 text-primary align-self-end">/ 請輸入訂單ID</span>
+        <span class="fs-4 text-primary align-self-end">/ 請輸入訂單ID</span>
       </h1>
     </div>
   </div>
@@ -135,5 +135,8 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
+    @media (max-width: 600px) {
+    height: 150px;
+  }
 }
 </style>

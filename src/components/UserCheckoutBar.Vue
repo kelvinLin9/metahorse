@@ -1,4 +1,4 @@
-<template>  
+<template>
   <div class="container my-5 checkout-bar w-75">
     <div class="row fs-5 fs-md-3 fw-bold ">
       <div class="col d-flex flex-column px-2 py-3 align-items-center rounded-pill"
@@ -19,8 +19,7 @@
     </div>
   </div>
 </template>
-<style scoped>
-.checkout-bar {
-  /* max-width: 768px; */
-}
+
+<style lang="scss" scoped>
+
 </style>

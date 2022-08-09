@@ -1,13 +1,14 @@
 <template>
   <UserNavbar :key="$route.path"/>
   <FloatCart
-  :class="{'d-none' : this.$route.name == ('cart' || 'checkout')}"/>
+  v-if = "!positionCart"
+  />
   <ToastMessages/>
   <div class="position-relative">
     <router-view/>
   </div>
-  <UserFooter 
-  :class="{'fixed-bottom' : this.$route.name == ('UserSearchOrder' || 'login')}" />
+  <UserFooter
+  :class="{'fixed-bottom' : this.$route.name === 'login' || this.$route.name === 'UserSearchOrder'}" />
 </template>
 
 <script>
@@ -28,6 +29,13 @@ export default {
   methods: {
     ...mapActions(productStore, ['getProducts']),
     ...mapActions(cartStore, ['getCart'])
+  },
+  computed: {
+    positionCart () {
+      const name = ['cart', 'checkout', 'checkoutPay']
+      if (name.includes(this.$route.name)) return true
+      return false
+    }
   },
   created () {
     this.getProducts()

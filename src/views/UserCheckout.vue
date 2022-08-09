@@ -2,7 +2,7 @@
   <Loading :active="isLoading"></Loading>
   <UserCheckoutBar/>
   <div class="container">
-    <div class="my-3 row justify-content-center flex-lg-row-reverse">
+    <div class="my-3 row justify-content-center flex-sm-row-reverse">
       <!-- 商品明細 -->
       <div class="col-md-6 mt-5 mt-md-0">
         <div class="d-flex justify-content-center">
@@ -109,31 +109,18 @@ import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
 export default {
-  data () {
-    return {
-      // form: {
-      //   user: {
-      //     name: '',
-      //     email: '',
-      //     tel: '',
-      //     address: ''
-      //   },
-      //   message: ''
-      // }
-    }
-  },
   components: {
     UserCheckoutBar
   },
   computed: {
     ...mapState(statusStore, ['isLoading']),
     ...mapState(cartStore, ['cart', 'cartNum', 'gotoPay']),
-    ...mapWritableState(cartStore, ['form',])
+    ...mapWritableState(cartStore, ['form'])
   },
   methods: {
     ...mapActions(cartStore, ['getCart']),
     ...mapActions(goStore, ['goCart']),
-    ...mapActions(cartStore, ['getCart']),
+    ...mapActions(cartStore, ['getCart'])
   }
 }
 </script>

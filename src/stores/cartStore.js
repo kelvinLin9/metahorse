@@ -12,7 +12,6 @@ export default defineStore('cartStore', {
     cart: {},
     cartNum: 0,
     cartBoxState: false,
-    orderId: '',
     form: {
       user: {
         name: '',
@@ -30,7 +29,7 @@ export default defineStore('cartStore', {
       status.isLoading = true
       axios.get(url)
         .then((res) => {
-          console.log("GETC!!!!!!!!!!!!!!!!")
+          console.log('GETC!!!!!!!!!!!!!!!!')
           this.cartNum = res.data.data.carts.length
           console.log('this.cartNum', this.cartNum)
           this.cart = res.data.data
@@ -86,7 +85,6 @@ export default defineStore('cartStore', {
     cartBoxToggle () {
       // 傳到ToastMessages 讓提示能移開避免擋到
       this.cartBoxState = !this.cartBoxState
-      
     },
     gotoPay () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order`
@@ -104,9 +102,8 @@ export default defineStore('cartStore', {
             message: ''
           }
           this.getCart()
-          
         })
         .catch((err) => console.error(err))
-    },
+    }
   }
 })
