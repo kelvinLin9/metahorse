@@ -146,6 +146,7 @@ export default {
   right: 5px;
   z-index: 2;
 }
+
 .img-fit{
   width: 100%;
   object-fit: cover;

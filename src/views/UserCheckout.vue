@@ -1,20 +1,8 @@
 <template>
   <Loading :active="isLoading"></Loading>
+  <!-- <UserCheckoutBar/> -->
   <div class="container">
-    <div class="row test">
-      <div class="col test justify-content-center">
-        1.輸入訂單資料
-      </div>
-      <div class="col test">
-        2.付款
-      </div>
-      <div class="col test">
-        3.退貨
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="my-5 row justify-content-center">
+    <div class="my-3 row justify-content-center">
       <v-form class="col-md-6" v-slot="{ errors }"
               @submit="gotoPay">
         <div class="d-flex justify-content-center">
@@ -112,6 +100,7 @@
 </template>
 
 <script>
+// import UserCheckoutBar from '@/components/UserCheckoutBar.vue'
 import { mapState, mapActions } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
@@ -130,6 +119,9 @@ export default {
       }
     }
   },
+  // components: {
+  //   UserCheckoutBar
+  // },
   computed: {
     ...mapState(statusStore, ['isLoading']),
     ...mapState(cartStore, ['cart', 'cartNum']),
