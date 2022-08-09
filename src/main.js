@@ -58,7 +58,9 @@ setLocale('zh_TW')
 
 
 const pinia = createPinia()
-app.AOS = new AOS.init({ disable: 'phone' })
+// 手機板不觸發 { disable: 'phone' }
+app.AOS = new AOS.init()
+
 app.use(AOS)
 
 
