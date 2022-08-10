@@ -11,7 +11,7 @@
           <thead class="table-primary">
           <th>品名</th>
           <th>數量</th>
-          <th class="text-end">單價</th>
+          <th class="text-end">小計</th>
           </thead>
           <tbody>
           <tr v-for="item in order.products" :key="item.id">
@@ -31,12 +31,14 @@
           </tfoot>
         </table>
 
+          
+        <div class="d-flex justify-content-center fw-bold fs-2 mt-5 mb-2 border border-primary">
+          訂單編號 : {{ order.id }}
+        </div>
+            
+          
         <table class="table">
           <tbody>
-          <tr>
-            <th width="100" class="fw-bold">訂單編號 :</th>
-            <td>{{ order.id }}</td>
-          </tr>
           <tr>
             <th width="100" class="fw-bold">訂購日期 :</th>
             <td>{{ $filters.date(order.create_at) }}</td>
