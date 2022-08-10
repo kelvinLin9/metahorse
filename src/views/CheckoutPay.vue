@@ -5,7 +5,7 @@
       <div class="d-flex justify-content-center">
         <h1 class="fs-2 text-center fw-bold">購物明細</h1>
       </div>
-      <form class="col-8" @submit.prevent="payOrder">
+      <form class="col-10" @submit.prevent="payOrder">
         <table class="table align-middle">
           <thead class="table-primary">
           <th>品名</th>
@@ -28,14 +28,12 @@
               </td>
             </tr>
           </tfoot>
-        </table>
-
-          
-        <div class="d-flex justify-content-center fw-bold fs-2 mt-5 mb-2 border border-primary">
-          訂單編號 : {{ order.id }}
-        </div>
-            
-          
+        </table>          
+        <div class="d-flex justify-content-center fw-bold fs-2 p-3 mt-5 mb-2 border border-primary">
+          訂單編號 : 
+          <br class="d-block d-sm-none">
+          {{ order.id }}
+        </div>         
         <table class="table">
           <tbody>
           <tr>
