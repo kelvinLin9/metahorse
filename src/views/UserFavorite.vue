@@ -74,14 +74,14 @@ export default {
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds']),
     ...mapState(productsStore, ['products']),
-    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
+    ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
   },
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'removeFavorite']),
     ...mapActions(productsStore, ['getProducts']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
-    ...mapActions(goStore, ['goProduct']),
-  },
+    ...mapActions(goStore, ['goProduct'])
+  }
 }
 </script>
 

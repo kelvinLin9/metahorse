@@ -18,14 +18,19 @@ const routes = [
         component: () => import('../views/UserProducts.vue')
       },
       {
-        path: 'checkout',
-        name: 'checkout',
-        component: () => import('../views/UserCheckout.vue')
+        path: 'UserCoupon',
+        name: 'UserCoupon',
+        component: () => import('../views/UserCoupon.vue')
       },
       {
         path: 'cart',
         name: 'cart',
         component: () => import('../views/UserCart.vue')
+      },
+      {
+        path: 'favorite',
+        name: 'favorite',
+        component: () => import('../views/UserFavorite.vue')
       },
       {
         path: 'UserSearchOrder',

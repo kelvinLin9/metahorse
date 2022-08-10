@@ -1,4 +1,4 @@
-<template> 
+<template>
   <!-- 外層放背景，內層放黑底 -->
   <div class="productsBanner mb-5">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">

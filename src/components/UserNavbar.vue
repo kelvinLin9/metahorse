@@ -27,6 +27,10 @@
             :class="{ 'text-warning':  this.$route.name === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/UserCoupon" class="nav-link fs-5"
+            :class="{ 'text-warning':  this.$route.name === 'UserCoupon' }">優惠活動</router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/UserSearchOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>

@@ -28,12 +28,12 @@
               </td>
             </tr>
           </tfoot>
-        </table>          
+        </table>
         <div class="d-flex justify-content-center fw-bold fs-2 p-3 mt-5 mb-2 border border-primary">
-          訂單編號 : 
+          訂單編號 :
           <br class="d-block d-sm-none">
           {{ order.id }}
-        </div>         
+        </div>
         <table class="table">
           <tbody>
           <tr>
