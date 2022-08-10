@@ -1,14 +1,5 @@
 <template>
-  <!-- <div class="cartBanner">
-    <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
-      <h1 class="w-100 d-flex align-items-center justify-content-center">
-        <span class="me-2 fs-1 fw-bolder text-white">首購享66折</span>
-        <span class="fs-3 text-primary align-self-end">/ 結帳輸入優惠碼：666666</span>
-      </h1>
-    </div>
-  </div> -->
   <UserCheckoutBar/>
-  <Loading :active="isLoading"></Loading>
   <div class="container my-5">
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物清單</h1>

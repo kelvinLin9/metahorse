@@ -1,5 +1,4 @@
 <template>
-  <Loading :active="isLoading"></Loading>
   <UserHomeBanner/>
   <section class="my-5">
     <div class="container">

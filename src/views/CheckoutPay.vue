@@ -1,6 +1,5 @@
 <template>
   <UserCheckoutBar/>
-  <Loading :active="isLoading"></Loading>
   <div class="container">
     <div class="my-5 row justify-content-center">
       <div class="d-flex justify-content-center">

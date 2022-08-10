@@ -24,7 +24,6 @@
               <img class="rounded-3 img-fit"
                   :src="item.imageUrl" alt="商品照片">
             </div>
-
             <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
               <span class="fs-4">
                 {{ item.title }}

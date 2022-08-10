@@ -1,5 +1,4 @@
 <template>
-  <Loading :active="isLoading"></Loading>
   <UserCheckoutBar/>
   <div class="container">
     <div class="my-3 row justify-content-center flex-sm-row-reverse">

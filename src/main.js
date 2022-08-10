@@ -29,7 +29,7 @@ import App from './App.vue'
 import router from './router'
 import { currency, date } from './methods/filters'
 
-
+import UserLoading from '@/components/UserLoading.vue'
 
 
 
@@ -63,7 +63,7 @@ app.AOS = new AOS.init()
 
 app.use(AOS)
 
-
+app.component('UserLoading', UserLoading)
 app.component('Loading', Loading)
 app.component('VForm', Form)
 app.component('VField', Field)

@@ -1,5 +1,4 @@
 <template>
-  <Loading :active="isLoading"></Loading>
   <UserHomeBanner/>
   <section class="my-5">
     <div class="container">
@@ -204,10 +203,7 @@ export default {
   },
   methods: {
     ...mapActions(goStore, ['goProducts']),
-  },
-  // created () {
-  //   this.getProducts()
-  // }
+  }
 }
 </script>
 

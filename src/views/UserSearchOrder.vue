@@ -7,7 +7,6 @@
       </h1>
     </div>
   </div>
-  <Loading v-model:active="isLoading"/>
     <div class="container my-5 ">
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">

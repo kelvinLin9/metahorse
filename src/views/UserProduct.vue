@@ -1,5 +1,4 @@
 <template>
-  <Loading :active="isLoading"></Loading>
   <div class="container my-5">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
