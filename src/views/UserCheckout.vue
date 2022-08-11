@@ -112,7 +112,6 @@ export default {
     UserCheckoutBar
   },
   computed: {
-    ...mapState(statusStore, ['isLoading']),
     ...mapState(cartStore, ['cart', 'cartNum', 'gotoPay']),
     ...mapWritableState(cartStore, ['form'])
   },

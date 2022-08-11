@@ -20,7 +20,7 @@ const routes = [
       {
         path: 'UserCoupon',
         name: 'UserCoupon',
-        component: () => import('../views/UserCoupon.vue')
+        component: () => import('../views/UserCoupon2.vue')
       },
       {
         path: 'cart',

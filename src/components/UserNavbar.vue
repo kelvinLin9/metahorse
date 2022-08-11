@@ -130,15 +130,12 @@
 <script>
 // 響應式行為會使用到折疊的 JavaScript 插件
 import 'bootstrap/js/dist/collapse'
-
 import { mapState, mapActions } from 'pinia'
-import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
 export default {
   computed: {
-    ...mapState(statusStore, ['isLoading', 'cartLoadingItem']),
     ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState']),
     ...mapState(favoriteStore, ['favoriteNum'])
   },

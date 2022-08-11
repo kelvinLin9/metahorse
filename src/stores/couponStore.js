@@ -8,7 +8,29 @@ const cart = cartStore()
 
 export default defineStore('couponStore', {
   state: () => ({
-    coupon_code: ''
+    coupon_code: '',
+    coupons: [
+      {
+        id: 1,
+        img: 'https://imgur.com/DiAWuvX.jpg',
+        discount: '5折',
+        code: 'diamond'
+      },
+      {
+        id: 2,
+        img: 'https://imgur.com/MWLitCH.jpg',
+        discount: '7折',
+        code: 'gold'
+      },
+      {
+        id: 3,
+        img: 'https://imgur.com/nlpr8b8.jpg',
+        discount: '8折',
+        code: 'silver'
+      }
+    ],
+    coupon: {},
+    draw: false
   }),
   actions: {
     addCouponCode (i) {
@@ -26,6 +48,22 @@ export default defineStore('couponStore', {
           this.coupon_code = ''
         })
         .catch((err) => console.error(err))
+    },
+    luckyDraw (min,max) {
+      console.log(min,max)
+      let num = Math.floor(Math.random()*(max-min+1))+min 
+      this.coupon = this.coupons[num]
+      this.draw = true
+    },
+    copyCouponCode () {
+      const couponCode = document.getElementById('couponCode')
+      const selection = window.getSelection()
+      selection.removeAllRanges()
+      const range = document.createRange()
+      range.selectNodeContents(couponCode)
+      selection.addRange(range)
+      // document.execCommand('copy') // ??
+      status.PushManager('抽獎' , '複製折扣碼')
     }
   }
 })

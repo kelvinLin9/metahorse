@@ -8,7 +8,6 @@
 
 <script>
 export default {
-  // name: 'GoTop',
   methods: {
     top () {
       document.documentElement.scrollTop = 0

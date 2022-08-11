@@ -74,7 +74,7 @@ export default {
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds']),
     ...mapState(productsStore, ['products']),
-    ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
+    ...mapState(statusStore, ['cartLoadingItem'])
   },
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'removeFavorite']),

@@ -1,17 +1,20 @@
 <template>
-  <div class="container mt-5">
+  <div class="container mt-5 ">
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">周年慶抽獎</h1>
     </div>
     <div class="row mt-5 py-2">
       <div class="col-sm-4 d-flex justify-content-center pb-3" v-for="card in cards" :key="card.id">
-        <button type="button" class="flip-card btn" @click="chooseCard(card)" :class="{'clickFlip': status.clickID === card.id}" :disabled="status.isFlip">
+        <button type="button" class="flip-card btn" 
+                @click="chooseCard(card)" 
+                :class="{'clickFlip': status.clickID === card.id}" 
+                :disabled="status.isFlip">
           <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img src="" alt="牌背" style="width: 200px; height: 290px;" />
+            <div class="flip-card-front" v-if="!status.isFlip">
+              <img src="https://imgur.com/YS7AfNK.jpg" alt="背面" style="width: 200px; height: 200px;" />
             </div>
-            <div class="flip-card-back">
-              <img :src="card.pic" alt="正面" style="width: 200px; height: 290px;" />
+            <div class="flip-card-back" v-if="status.isFlip">
+              <img :src="card.pic" alt="正面" style="width: 300px; height: 200px;" />
             </div>
           </div>
         </button>
@@ -40,21 +43,21 @@ export default {
       cards: [
         {
           id: 1,
-          pic: '',
+          pic: 'https://imgur.com/DiAWuvX.jpg',
           discount: '5折',
-          code: 'blueEyes'
+          code: 'diamond'
         },
         {
           id: 2,
-          pic: '',
-          discount: '65折',
-          code: 'darkmagic'
+          pic: 'https://imgur.com/MWLitCH.jpg',
+          discount: '7折',
+          code: 'gold'
         },
         {
           id: 3,
-          pic: '',
+          pic: 'https://imgur.com/nlpr8b8.jpg',
           discount: '8折',
-          code: 'redEyes'
+          code: 'silver'
         }
       ],
       yourDiscount: '',
@@ -73,14 +76,6 @@ export default {
       this.yourDiscount = card.discount
       this.yourCode = card.code
       this.status.isFlip = true
-    },
-    shuffleArray (array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        const k = array[i]
-        array[i] = array[j]
-        array[j] = k
-      }
     },
     copyCouponCode () {
       const couponCode = document.getElementById('couponCode')

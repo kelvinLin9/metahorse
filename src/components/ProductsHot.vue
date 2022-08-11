@@ -114,7 +114,7 @@ export default {
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
     ...mapState(productsStore, ['products', 'productsHot']),
-    ...mapState(statusStore, ['isLoading', 'cartLoadingItem'])
+    ...mapState(statusStore, ['cartLoadingItem'])
   }
 }
 </script>

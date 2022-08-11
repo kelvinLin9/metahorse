@@ -1,6 +1,6 @@
 <template>
   <UserHomeBanner/>
-  <section class="my-5">
+  <section class="my-3 my-lg-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
         <div class="col-lg-6">
@@ -30,11 +30,8 @@
       </div>
     </div>
   </section>
-  <br>
-  <br>
   <hr>
-  <br>
-  <section class="my-5">
+  <section class="my-3">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg"
           data-aos="fade-down"
@@ -197,7 +194,6 @@ export default {
     GoTop
   },
   computed: {
-    ...mapState(statusStore, ['isLoading']),
     ...mapState(productStore, ['productsGame']),
     ...mapWritableState(productStore, ['temp']),
   },
