@@ -49,9 +49,9 @@ export default defineStore('couponStore', {
         })
         .catch((err) => console.error(err))
     },
-    luckyDraw (min,max) {
-      console.log(min,max)
-      let num = Math.floor(Math.random()*(max-min+1))+min 
+    luckyDraw (min, max) {
+      console.log(min, max)
+      const num = Math.floor(Math.random() * (max - min + 1)) + min
       this.coupon = this.coupons[num]
       this.draw = true
     },
@@ -62,8 +62,8 @@ export default defineStore('couponStore', {
       const range = document.createRange()
       range.selectNodeContents(couponCode)
       selection.addRange(range)
-      // document.execCommand('copy') // ??
-      status.PushManager('抽獎' , '複製折扣碼')
+      document.execCommand('copy') // ??
+      status.PushManager('抽獎', '複製折扣碼')
     }
   }
 })

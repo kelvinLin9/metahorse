@@ -1,7 +1,7 @@
 <template>
   <UserNavbar :key="$route.path" />
   <UserLoading class="user-loading position-absolute top-50 start-50 translate-middle"
-              v-if="isLoading" />
+                v-if="isLoading" />
   <FloatCart v-if = "!positionCart" />
   <ToastMessages/>
   <div class="position-relative">
@@ -42,7 +42,6 @@ export default {
   created () {
     this.getProducts()
     this.getCart()
-    console.log('this.$route.name', this.$route.name)
   }
 }
 </script>

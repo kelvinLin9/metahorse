@@ -132,12 +132,14 @@
 import 'bootstrap/js/dist/collapse'
 import { mapState, mapActions } from 'pinia'
 import cartStore from '@/stores/cartStore'
+import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
 export default {
   computed: {
     ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState']),
-    ...mapState(favoriteStore, ['favoriteNum'])
+    ...mapState(favoriteStore, ['favoriteNum']),
+    ...mapState(statusStore, ['cartLoadingItem'])
   },
   methods: {
     ...mapActions(cartStore, ['getCart', 'removeCartItem', 'cartBoxToggle']),

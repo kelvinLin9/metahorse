@@ -40,14 +40,14 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapWritableState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import couponStore from '@/stores/couponStore'
 export default {
   computed: {
-    ...mapState(couponStore, ['coupon', 'draw']),
+    ...mapState(couponStore, ['coupon', 'draw'])
   },
   methods: {
-    ...mapActions(couponStore, ['luckyDraw', 'copyCouponCode']),
+    ...mapActions(couponStore, ['luckyDraw', 'copyCouponCode'])
   }
 }
 </script>

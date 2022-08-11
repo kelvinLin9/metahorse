@@ -39,7 +39,7 @@
                 <img :src="item.product.imageUrl" alt="商品照片" width="50">
               </td>
               <td class="font-sm">
-                NT$<br class="d-md-none"> 
+                NT$<br class="d-md-none">
                 {{item.product.price}}
               </td>
               <td>
