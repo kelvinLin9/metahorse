@@ -1,4 +1,12 @@
 <template>
+  <div class="favBanner ">
+    <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
+      <h1 class="w-100 d-flex align-items-center justify-content-center">
+        <span class="me-2 fs-1 fw-bolder text-white">幸運抽獎</span>
+        <span class="fs-4 text-primary align-self-end">/ Lucky Draw</span>
+      </h1>
+    </div>
+  </div>
   <div class="bg-light">
     <div class="container-fluid pt-5"
         v-if="favorite.length === 0">
@@ -10,9 +18,6 @@
     <div class="container pt-5">
       <div class="row g-4 justify-content-center"
           v-if="favorite.length !== 0">
-        <div class="d-flex justify-content-center">
-          <h1 class="fs-2 text-center fw-bold">我的最愛</h1>
-        </div>
         <div class="col-md-6 col-lg-4 col-12"
             v-for="item in favorite" :key="item.id">
           <div class="card rounded-3">
@@ -86,6 +91,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.favBanner {
+  height: 300px;
+  background-image: url(https://i.imgur.com/4vGqi7D.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center ;
+  @media (max-width: 600px) {
+    height: 150px;
+  }
+  .bg-dark{
+  z-index: 1;
+  opacity: 1;
+  }
+}
 .img-fit{
   width: 100%;
   object-fit: cover;

@@ -1,16 +1,17 @@
 <template>
-  <div class="searchBanner ">
+  <div class="searchBanner">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
         <span class="me-2 fs-1 fw-bolder text-white">訂單查詢</span>
-        <span class="fs-4 text-primary align-self-end">/ 請輸入訂單ID</span>
+        <span class="fs-4 text-primary align-self-end">/ Search Order</span>
       </h1>
     </div>
   </div>
-    <div class="container my-5 ">
+    <div class="container my-5">
+      <h1 class="fs-2 text-center fw-bold">請輸入20碼訂單編號</h1>
       <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-          <div class="input-group mt-5 mb-1">
+          <div class="input-group mt-3 mb-1">
             <input type="text" class="form-control" placeholder="輸入訂單編號" v-model="orderId">
             <button class="btn btn-dark btn-hover rounded-0" type="button" @click="getOrder">送出</button>
           </div>

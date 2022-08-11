@@ -2,9 +2,7 @@
   <UserCheckoutBar/>
   <div class="container">
     <div class="my-5 row justify-content-center">
-      <div class="d-flex justify-content-center">
-        <h1 class="fs-2 text-center fw-bold">購物明細</h1>
-      </div>
+      <h1 class="fs-2 text-center fw-bold">購物明細</h1>
       <form class="col-10" @submit.prevent="payOrder">
         <table class="table align-middle">
           <thead class="table-primary">
@@ -29,7 +27,7 @@
             </tr>
           </tfoot>
         </table>
-        <div class="d-flex justify-content-center fw-bold fs-2 p-3 mt-5 mb-2 border border-primary">
+        <div class="d-flex justify-content-center fw-bold fs-5 p-3 mt-5 mb-2 border border-primary">
           訂單編號 :
           <br class="d-block d-sm-none">
           {{ order.id }}
