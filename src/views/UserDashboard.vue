@@ -4,13 +4,12 @@
       v-if="isLoading">
     <UserLoading/>
   </div>
-  <FloatCart v-if = "!positionCart" />
+  <FloatCart v-if = "!hasFloatCart" />
   <ToastMessages/>
-  <div class="position-relative">
+  <div class="position-relative min-height">
     <router-view/>
   </div>
-  <UserFooter
-  :class="{'fixed-bottom' : this.$route.name === 'login' || this.$route.name === 'UserSearchOrder'}" />
+  <UserFooter/>
 </template>
 
 <script>
@@ -35,16 +34,11 @@ export default {
   },
   computed: {
     ...mapState(statusStore, ['isLoading']),
-    positionCart () {
+    hasFloatCart () {
       const name = ['cart', 'checkout', 'checkoutPay']
       if (name.includes(this.$route.name)) return true
       return false
     },
-    positionFooter () {
-      const name = ['cart', 'checkout', 'checkoutPay']
-      if (name.includes(this.$route.name)) return true
-      return false
-    }
   },
   created () {
     this.getProducts()
@@ -56,5 +50,8 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 .user-loading {
   z-index: 1000;
+}
+.min-height {
+   min-height: calc(100vh - 60px - 130px);
 }
 </style>

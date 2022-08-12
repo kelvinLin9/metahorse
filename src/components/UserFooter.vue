@@ -43,6 +43,7 @@
 
 <style lang="scss" scoped>
 .footer {
-z-index: 100;
+  z-index: 100;
+  height: 130px;
 }
 </style>

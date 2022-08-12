@@ -94,6 +94,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   // `routes: routes` 的缩写
   routes
+  
   // linkActiveClass:'active'
   // linkActiveClass: 'text-warning',
   // scrollBehavior (to, from, savedPosition) {

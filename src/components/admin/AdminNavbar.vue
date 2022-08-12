@@ -78,9 +78,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.f-kalam {
-  font-family: 'Kalam', cursive;
-}
 .num{
   width:20px;
   top: 5px;
