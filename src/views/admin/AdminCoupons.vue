@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import CouponModal from '@/components/CouponModal.vue'
-import DelModal from '@/components/DelModal.vue'
+import CouponModal from '@/components/admin/CouponModal.vue'
+import DelModal from '@/components/admin/DelModal.vue'
 export default {
   components: {
     // Navbar

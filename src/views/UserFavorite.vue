@@ -2,8 +2,8 @@
   <div class="favBanner ">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
-        <span class="me-2 fs-1 fw-bolder text-white">幸運抽獎</span>
-        <span class="fs-4 text-primary align-self-end">/ Lucky Draw</span>
+        <span class="me-2 fs-1 fw-bolder text-white">我的最愛</span>
+        <span class="fs-5 text-primary align-self-end">/ My Favorite</span>
       </h1>
     </div>
   </div>
@@ -108,7 +108,7 @@ export default {
 .img-fit{
   width: 100%;
   object-fit: cover;
-  transition: .5s;
+  transition: 0.5s;
 }
 .scale{
   &:hover{

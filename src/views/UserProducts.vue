@@ -57,7 +57,7 @@
                 <img class="rounded-3 img-fit"
                       :src="item.imageUrl" alt="商品照片">
                   <!-- </a> -->
-                <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
+                <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center "
                       @click.stop="toggleFavorite(item.id)">
                   <i :class="favState(item.id)"
                       data-bs-toggle="tooltip"
@@ -66,7 +66,7 @@
                   </i>
                 </span>
               </div>
-              <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
+              <div class="card-body d-flex flex-column text-center fw-bold">
                 <span class="fs-4">
                     {{ item.title }}
                   <span class="fs-6 text-muted">（{{ item.category }}）</span>
@@ -144,6 +144,10 @@ export default {
   top: 5px;
   right: 5px;
   z-index: 2;
+  i {
+    // position: absolute;
+    // top:10px;
+  }
 }
 
 .img-fit{

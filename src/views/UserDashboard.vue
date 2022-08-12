@@ -1,7 +1,9 @@
 <template>
   <UserNavbar :key="$route.path" />
-  <UserLoading class="user-loading position-absolute top-50 start-50 translate-middle"
-                v-if="isLoading" />
+  <div class="user-loading position-absolute top-50 start-50 translate-middle" 
+      v-if="isLoading">
+    <UserLoading/>
+  </div>
   <FloatCart v-if = "!positionCart" />
   <ToastMessages/>
   <div class="position-relative">
@@ -34,6 +36,11 @@ export default {
   computed: {
     ...mapState(statusStore, ['isLoading']),
     positionCart () {
+      const name = ['cart', 'checkout', 'checkoutPay']
+      if (name.includes(this.$route.name)) return true
+      return false
+    },
+    positionFooter () {
       const name = ['cart', 'checkout', 'checkoutPay']
       if (name.includes(this.$route.name)) return true
       return false
