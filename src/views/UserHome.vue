@@ -66,7 +66,7 @@
           <div class="d-flex justify-content-center"
               data-aos=""
               data-aos-duration="2000">
-            <button type="submit"
+            <button type="button"
                     class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
                     @click.prevent="goProducts">
               馬上購買
@@ -173,7 +173,7 @@
       </div>
     </div>
   </section>
-  <hr>
+  <UserHomeCoupon/>
   <ProductsHot/>
   <GoTop/>
 </template>
@@ -184,21 +184,22 @@ import UserHomeBanner from '@/components/UserHomeBanner.vue'
 import ProductsHot from '@/components/ProductsHot.vue'
 import GoTop from '@/components/GoTop.vue'
 import { mapState, mapActions, mapWritableState } from 'pinia'
-import statusStore from '@/stores/statusStore'
 import productStore from '@/stores/productStore'
 import goStore from '@/stores/goStore'
+import UserHomeCoupon from '../components/UserHomeCoupon.vue'
 export default {
   components: {
     UserHomeBanner,
     ProductsHot,
-    GoTop
-  },
+    GoTop,
+    UserHomeCoupon
+},
   computed: {
     ...mapState(productStore, ['productsGame']),
-    ...mapWritableState(productStore, ['temp']),
+    ...mapWritableState(productStore, ['temp'])
   },
   methods: {
-    ...mapActions(goStore, ['goProducts']),
+    ...mapActions(goStore, ['goProducts'])
   }
 }
 </script>

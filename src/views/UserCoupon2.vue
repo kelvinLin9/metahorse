@@ -54,7 +54,7 @@ export default {
 
 <style scoped lang="scss">
 .couponBanner {
-  height: 300px;
+  height: 250px;
   background-image: url(https://imgur.com/53K117A.jpg);
   background-repeat: no-repeat;
   background-size: cover;

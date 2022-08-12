@@ -124,7 +124,7 @@ export default {
   font-family: 'Kalam', cursive;
 }
 .productsBanner {
-  height: 300px;
+  height: 250px;
   background-image: url(https://i.imgur.com/4vGqi7D.jpg);
   background-repeat: no-repeat;
   background-size: cover;

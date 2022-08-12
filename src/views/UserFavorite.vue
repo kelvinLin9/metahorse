@@ -92,8 +92,8 @@ export default {
 
 <style lang="scss" scoped>
 .favBanner {
-  height: 300px;
-  background-image: url(https://i.imgur.com/4vGqi7D.jpg);
+  height: 250px;
+  background-image: url(https://imgur.com/ItH7aoO.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;

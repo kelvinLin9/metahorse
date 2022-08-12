@@ -130,8 +130,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .searchBanner {
-  height: 300px;
-  background-image: url(https://imgur.com/53K117A.jpg);
+  height: 250px;
+  background-image: url(https://imgur.com/DyXZwoE.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
