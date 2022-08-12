@@ -42,11 +42,6 @@
 </template>
 
 <style lang="scss" scoped>
-/*!
- * Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/)
- * Copyright 2015 Daniel Cardoso <@DanielCardoso>
- * Licensed under MIT
- */
 .la-ball-climbing-dot,
 .la-ball-climbing-dot > div {
     position: relative;
@@ -123,42 +118,6 @@
        -moz-animation-delay: -1200ms;
          -o-animation-delay: -1200ms;
             animation-delay: -1200ms;
-}
-.la-ball-climbing-dot.la-sm {
-    width: 20px;
-    height: 16px;
-}
-.la-ball-climbing-dot.la-sm > div:nth-child(1) {
-    width: 6px;
-    height: 6px;
-}
-.la-ball-climbing-dot.la-sm > div:not(:nth-child(1)) {
-    width: 6px;
-    height: 1px;
-}
-.la-ball-climbing-dot.la-2x {
-    width: 84px;
-    height: 64px;
-}
-.la-ball-climbing-dot.la-2x > div:nth-child(1) {
-    width: 28px;
-    height: 28px;
-}
-.la-ball-climbing-dot.la-2x > div:not(:nth-child(1)) {
-    width: 28px;
-    height: 4px;
-}
-.la-ball-climbing-dot.la-3x {
-    width: 126px;
-    height: 96px;
-}
-.la-ball-climbing-dot.la-3x > div:nth-child(1) {
-    width: 42px;
-    height: 42px;
-}
-.la-ball-climbing-dot.la-3x > div:not(:nth-child(1)) {
-    width: 42px;
-    height: 6px;
 }
 /*
  * Animations
