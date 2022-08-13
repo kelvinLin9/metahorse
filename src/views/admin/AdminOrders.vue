@@ -59,7 +59,7 @@
 <script>
 import DelModal from '@/components/admin/DelModal.vue'
 import OrderModal from '@/components/orderModal.vue'
-import Pagination from '@/components/Pagination.vue'
+import Pagination from '@/components/admin/Pagination.vue'
 export default {
   data () {
     return {
