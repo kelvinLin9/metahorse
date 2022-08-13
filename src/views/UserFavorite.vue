@@ -71,11 +71,6 @@ import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
 export default {
-
-  data () {
-    return {
-    }
-  },
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds']),
     ...mapState(productsStore, ['products']),
