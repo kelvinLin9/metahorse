@@ -4,7 +4,6 @@
     v-for="item in horses" :key="item.id"
     @click.prevent="[selectedHorse(item), play()]"
     class="horse test d-flex"
-    id = "dddddd"
     :class="[item.color, item.speed, `top-${item.id}`, { 'animation-start': isPlay }]">
       <div class="fs-6">
         {{ item.id }} <br>
