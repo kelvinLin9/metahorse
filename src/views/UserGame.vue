@@ -2,20 +2,23 @@
   <div class="container-fluid">
     <div 
     v-for="item in horses" :key="item.id"
-    @click.prevent="selectedHorse(item)"
-    :class="[item.color, item.speed, { 'paused': isPlay }]">
-      {{ item.id }}
-      <font-awesome-icon icon="fa-solid fa-horse" />
-      <span class="fs-5">
-        {{ item.speed }}
-      </span>
-    </div>
+    @click.prevent="[selectedHorse(item), play()]"
+    class="horse test d-flex"
+    id = "dddddd"
+    :class="[item.color, item.speed, `top-${item.id}`, { 'animation-start': isPlay }]">
+      <div class="fs-6">
+        {{ item.id }} <br>
+        <!-- {{ item.speed }} -->
+      </div>
+      <div>
+        <font-awesome-icon icon="fa-solid fa-horse"/>
+      </div>
+      {{ horsesPosition }} / {{ window }}
 
-    <!-- <div class="Q1">cubic-bezier</div> -->
-    <!-- <div class="Q2">cubic-bezier</div> -->
+    </div>
     <span class="line"></span>
-    <bottom type="button"
-            class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
+    <!-- <bottom type="button"
+            class="btn btn-primary rounded-0 fw-bold btn-lg fs-3"
             @click.prevent="play">
 
     <span>
@@ -24,7 +27,7 @@
     <span>
       你選擇了 {{ horse.id }} 號
     </span>
-    </bottom>
+    </bottom> -->
 
   </div>
 </template>
@@ -37,12 +40,12 @@ export default {
         {
           color: 'text-primary',
           speed: 'linear',
-          id: 1
+          id: 1,
         },
         {
           color: 'text-secondary',
           speed: 'ease',
-          id: 2
+          id: 2,
         },
         {
           color: 'text-success',
@@ -62,8 +65,19 @@ export default {
       ],
       horse: [],
       horsesX: {},
-      isPlay: false
+      isPlay: false,
+      horsesPosition: 0,
+      window: 0,
     }
+  },
+  watch: {
+    horsesPosition (n, o) {
+      console.log(n, o)
+    },
+    window (n, o) {
+      console.log(n, o)
+    }
+
   },
   methods: {
     shuffleArray (inputArray) {
@@ -82,57 +96,68 @@ export default {
       // })
       // console.log(this.horses)
       this.isPlay = true
+      const apple = document.querySelector('.linear')
+      console.log(apple.offsetLeft)
+      console.log(window.innerWidth)
+      // console.log(apple.getBoundingClientRect().left)
     }
   },
   created () {
     let array = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
     this.shuffleArray(array)
-    console.log(array)
+    // console.log(array)
     this.horses.forEach((item, index) => {
       item.speed = array[index]
     })
-    console.log(this.horses)
+    // console.log(this.horses)
+  },
+  mounted () {
+    const apple = document.querySelector('.linear')
+    this.horsesPosition = apple.offsetLeft
+    this.window = window.innerWidth
+    window.onscroll = function (e) {
+      // console.log(e.target.scrollingElement.scrollTop)
+      console.log(e.target.scrollingElement.scrollLeft)
+    }
+    console.log(window.innerWidth)
+    // document.querySelector('.ease').onmousemove = (e) => {
+    // console.log(e.offsetWidth)
+    // }
+    // const apple = document.querySelector('.linear')
+    // console.log(apple.offsetWidth)
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
-div{
-  display:flex;
-  // justify-content:center;
-  align-items:center;
+.horse{
   position:absolute;
   font-size:50px;
-  text-align:center;
 }
-.paused{
+.animation-start{
   animation:move 10s ;
 }
 .linear{
-  top:30px;
   animation-timing-function: linear;
   animation-fill-mode : forwards;  
 }
 .ease{
-  top:100px;
   // animation:move 10s ease ;
   animation-timing-function: ease;
   animation-fill-mode : forwards;
 }
 .ease-in{
-  top:170px;
   // animation:move 10s ease-in ;
   animation-timing-function: ease-in;
   animation-fill-mode : forwards;
 }
 .ease-out{
-  top:240px;
   // animation:move 10s ease-out ;
   animation-timing-function: ease-out;
   animation-fill-mode : forwards;
 }
 .ease-in-out{
-  top:310px;
   // animation:move 10s ease-in-out ;
   animation-timing-function: ease-in-out;
   animation-fill-mode : forwards;
@@ -160,10 +185,25 @@ div{
   // display:block;
   z-index:10;
   position:absolute;
-  top: 450px;
+  top: 550px;
     &:hover {
-      color: #333;
+      color: rgb(42, 172, 85);
       animation-play-state: running;
     }
+}
+.top-1{
+  top:30px
+}
+.top-2{
+  top:130px
+}
+.top-3{
+  top:230px
+}
+.top-4{
+  top:330px
+}
+.top-5{
+  top:430px
 }
 </style>
