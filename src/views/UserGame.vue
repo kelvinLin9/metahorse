@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div 
+    <div
     v-for="item in horses" :key="item.id"
     @click.prevent="[selectedHorse(item), play()]"
     class="horse test d-flex"
@@ -16,17 +16,17 @@
 
     </div>
     <span class="line"></span>
-    <!-- <bottom type="button"
+    <button type="button"
             class="btn btn-primary rounded-0 fw-bold btn-lg fs-3"
             @click.prevent="play">
 
-    <span>
-      開始
-    </span> 
-    <span>
-      你選擇了 {{ horse.id }} 號
-    </span>
-    </bottom> -->
+      <span>
+        開始
+      </span>
+      <span>
+        你選擇了 {{ horse.id }} 號
+      </span>
+    </button>
 
   </div>
 </template>
@@ -39,12 +39,12 @@ export default {
         {
           color: 'text-primary',
           speed: 'linear',
-          id: 1,
+          id: 1
         },
         {
           color: 'text-secondary',
           speed: 'ease',
-          id: 2,
+          id: 2
         },
         {
           color: 'text-success',
@@ -66,7 +66,7 @@ export default {
       horsesX: {},
       isPlay: false,
       horsesPosition: 0,
-      window: 0,
+      window: 0
     }
   },
   watch: {
@@ -76,14 +76,13 @@ export default {
     window (n, o) {
       console.log(n, o)
     }
-
   },
   methods: {
     shuffleArray (inputArray) {
       inputArray.sort(() => Math.random() - 0.5)
     },
-    selectedHorse(item) {
-      this.horse = { ...item}
+    selectedHorse (item) {
+      this.horse = { ...item }
     },
     play () {
       // const array = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
@@ -102,7 +101,7 @@ export default {
     }
   },
   created () {
-    let array = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
+    const array = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
     this.shuffleArray(array)
     // console.log(array)
     this.horses.forEach((item, index) => {
@@ -124,7 +123,6 @@ export default {
     // }
     // const apple = document.querySelector('.linear')
     // console.log(apple.offsetWidth)
-
   }
 }
 </script>
@@ -139,7 +137,7 @@ export default {
 }
 .linear{
   animation-timing-function: linear;
-  animation-fill-mode : forwards;  
+  animation-fill-mode : forwards;
 }
 .ease{
   // animation:move 10s ease ;
@@ -160,7 +158,7 @@ export default {
   // animation:move 10s ease-in-out ;
   animation-timing-function: ease-in-out;
   animation-fill-mode : forwards;
-  
+
 }
 @keyframes move{
     0%{
