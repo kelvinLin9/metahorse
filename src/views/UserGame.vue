@@ -3,31 +3,26 @@
     <div
     v-for="item in horses" :key="item.id"
     @click.prevent="[selectedHorse(item), play()]"
-    class="horse test d-flex"
-    :class="[item.color, item.speed, `top-${item.id}`, { 'animation-start': isPlay }]">
+    class="horse d-flex"
+    :class="[item.color, item.speed, `top-${item.id}`, { 'animation-start': isPlay }, {'test' : horse.id === item.id}]">
       <div class="fs-6">
-        {{ item.id }} <br>
-        <!-- {{ item.speed }} -->
+        {{ item.id }}
       </div>
       <div>
         <font-awesome-icon icon="fa-solid fa-horse"/>
       </div>
-      {{ horsesPosition }} / {{ window }}
-
+      <div class="fs-6">
+        {{ horsesPosition }} / {{ window }} <br> {{ item.speed }}
+      </div>
     </div>
     <span class="line"></span>
     <button type="button"
             class="btn btn-primary rounded-0 fw-bold btn-lg fs-3"
-            @click.prevent="play">
-
+            >
       <span>
-        開始
-      </span>
-      <span>
-        你選擇了 {{ horse.id }} 號
+        請點選喜歡的馬開始遊戲
       </span>
     </button>
-
   </div>
 </template>
 
@@ -58,12 +53,13 @@ export default {
         },
         {
           color: '',
-          speed: 'ease-in-out',
+          speed: 'super',
           id: 5
         }
       ],
-      horse: [],
-      horsesX: {},
+      horse: {},
+      rank: ['super', 'ease', 'ease-out', 'linear', 'ease-in'],
+      yourRank: 0,
       isPlay: false,
       horsesPosition: 0,
       window: 0
@@ -84,50 +80,35 @@ export default {
     selectedHorse (item) {
       this.horse = { ...item }
     },
+    getRank () {
+      console.log(this.horse.speed)
+      this.$swal.fire(
+        `恭喜獲得第${this.yourRank}名`,
+        '獎品將會在和商品一併寄出',
+        'success'
+      )
+      // this.$router.push('/')
+    },
     play () {
-      // const array = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
-      // // let array = [1, 2, 3, 4, 5]
-      // this.shuffleArray(array)
-      // console.log(array)
-      // this.horses.forEach((item, index) => {
-      //   item.speed = array[index]
-      // })
-      // console.log(this.horses)
       this.isPlay = true
-      const apple = document.querySelector('.linear')
-      console.log(apple.offsetLeft)
-      console.log(window.innerWidth)
-      // console.log(apple.getBoundingClientRect().left)
+      this.yourRank = this.rank.indexOf(this.horse.speed) + 1
+      setTimeout(this.getRank, 10000)
     }
   },
   created () {
-    const array = ['linear', 'ease', 'ease-in', 'ease-out', 'ease-in-out']
-    this.shuffleArray(array)
-    // console.log(array)
+    const newArray = [...this.rank]
+    this.shuffleArray(newArray)
     this.horses.forEach((item, index) => {
-      item.speed = array[index]
+      item.speed = newArray[index]
     })
-    // console.log(this.horses)
-  },
-  mounted () {
-    const apple = document.querySelector('.linear')
-    this.horsesPosition = apple.offsetLeft
-    this.window = window.innerWidth
-    window.onscroll = function (e) {
-      // console.log(e.target.scrollingElement.scrollTop)
-      console.log(e.target.scrollingElement.scrollLeft)
-    }
-    console.log(window.innerWidth)
-    // document.querySelector('.ease').onmousemove = (e) => {
-    // console.log(e.offsetWidth)
-    // }
-    // const apple = document.querySelector('.linear')
-    // console.log(apple.offsetWidth)
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.ttt{
+  font-size:70px !important
+}
 .horse{
   position:absolute;
   font-size:50px;
@@ -158,14 +139,18 @@ export default {
   // animation:move 10s ease-in-out ;
   animation-timing-function: ease-in-out;
   animation-fill-mode : forwards;
-
+}
+.super{
+  animation-timing-function: cubic-bezier(1,0,0.28,10);
+  // animation-timing-function: cubic-bezier(0.75,0.35,1,0);
+  animation-fill-mode : forwards;
 }
 @keyframes move{
     0%{
-      left:calc(5vw );
+      left:5vw ;
     }
     100%{
-      left:calc(80vw);
+      left:100vw;
     }
 }
 .line{
