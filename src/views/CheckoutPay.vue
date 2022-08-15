@@ -76,10 +76,12 @@
       </form>
     </div>
   </div>
+  <GameModal ref="GameModal" />
 </template>
 
 <script>
 import UserCheckoutBar from '@/components/UserCheckoutBar.vue'
+import GameModal from '@/components/GameModal.vue'
 export default {
   data () {
     return {
@@ -91,16 +93,19 @@ export default {
     }
   },
   components: {
-    UserCheckoutBar
+    UserCheckoutBar,
+    GameModal
   },
   methods: {
     showAlert () {
-      this.$swal.fire(
-        '感謝您的支持',
-        '產品將會在3個工作天內寄出',
-        'success'
-      )
-      this.goHome()
+      this.$swal.fire({
+        title: '感謝您的支持',
+        text: '產品將會在3個工作天內寄出',
+        icon: 'success',
+        confirmButtonText: '開始遊戲',
+      }).then((result) => {
+        this.$refs.GameModal.showModal()
+      })
     },
     getOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`

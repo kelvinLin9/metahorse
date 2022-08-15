@@ -1,32 +1,65 @@
 <template>
-  <div class="container-fluid">
-    <div>
-      請點選賽馬開始遊戲
-    </div>
-    <div
-    v-for="item in horses" :key="item.id"
-    @click.prevent="[selectedHorse(item), play()]"
-    class="horse d-flex"
-    :class="[item.color, item.speed, `top-${item.id}`, { 'animation-start': isPlay }, {'test' : horse.id === item.id}]">
-      <div class="fs-6">
-        {{ item.id }}
-      </div>
-      <div>
-        <font-awesome-icon icon="fa-solid fa-horse"/>
-      </div>
-      <div class="fs-6">
-        {{ horsesPosition }} / {{ window }} <br> {{ item.speed }}
-      </div>
-    </div>
-    <span class="start"></span>
-    <span class="end"></span>
-  </div>
-</template>
 
+
+
+  <!-- Modal -->
+<div class="modal fade" 
+      id="exampleModal" 
+      tabindex="-1" 
+      aria-labelledby="exampleModalLabel" 
+      aria-hidden="true"
+      ref="modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+
+        <div class="container-fluid">
+          <div>
+            請點選賽馬開始遊戲
+          </div>
+          <div
+          v-for="item in horses" :key="item.id"
+          @click.prevent="[selectedHorse(item), play()]"
+          class="horse d-flex"
+          :class="[item.color, item.speed, `top-${item.id}`, {'animation-start': isPlay }, {'test' : horse.id === item.id}]">
+            <div class="fs-6">
+              {{ item.id }}
+            </div>
+            <div>
+              <font-awesome-icon icon="fa-solid fa-horse"/>
+            </div>
+            <div class="fs-6">
+              {{ horsesPosition }} / {{ window }} <br> {{ item.speed }}
+            </div>
+          </div>
+          <span class="start"></span>
+          <span class="end"></span>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</template>
 <script>
+import modalMixin from '@/mixins/modalMixin'
 export default {
   data () {
     return {
+      modal: {},
       horses: [
         {
           color: 'text-primary',
@@ -62,6 +95,7 @@ export default {
       window: 0
     }
   },
+  mixins: [modalMixin],
   watch: {
     horsesPosition (n, o) {
       console.log(n, o)
@@ -103,8 +137,10 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
+.modal-body{
+  height: 500px;
+}
 .horse{
   position:absolute;
   font-size:50px;
