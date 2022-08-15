@@ -1,5 +1,5 @@
 <template>
-  <div class="couponBanner ">
+  <div class="couponBanner">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
         <span class="me-2 fs-1 fw-bolder text-white">幸運抽獎</span>
@@ -7,7 +7,7 @@
       </h1>
     </div>
   </div>
-  <div class="container my-5 d-flex flex-column align-items-center">
+  <div class="container my-5 d-flex flex-column align-items-center test">
     <div class="la-square-jelly-box my-5"
           v-if="!draw">
       <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱">
