@@ -69,7 +69,7 @@
             列印此頁
           </button>
           <button class="btn btn-primary btn-hover rounded-0 fw-bold"
-                  @click.prevent="showAlert( $filters.currency(order.total))">
+                  @click.prevent="showAlert()">
             確認付款
           </button>
         </div>
@@ -97,28 +97,27 @@ export default {
     GameModal
   },
   methods: {
-    showAlert (total) {
-      console.log(total)
-      if(total > 10000){
+    showAlert () {
+      console.log(this.order.total)
+      if (this.order.total > 30000) {
         this.$swal.fire({
-        title: '感謝您的支持',
-        text: '產品將會在3個工作天內寄出',
-        icon: 'success',
-        confirmButtonText: '開始滿額小遊戲',
-      }).then((result) => {
-        this.$refs.GameModal.showModal()
-      })
-      }else {
+          title: '感謝您的支持',
+          text: '產品將會在3個工作天內寄出',
+          icon: 'success',
+          confirmButtonText: '開始滿額小遊戲'
+        }).then((result) => {
+          this.$refs.GameModal.showModal()
+        })
+      } else {
         this.$swal.fire({
-        title: '感謝您的支持',
-        text: '產品將會在3個工作天內寄出',
-        icon: 'success',
-        confirmButtonText: '回首頁',
-      }).then((result) => {
-        this.$router.push('/')
-      })
+          title: '感謝您的支持',
+          text: '產品將會在3個工作天內寄出',
+          icon: 'success',
+          confirmButtonText: '回首頁'
+        }).then((result) => {
+          this.$router.push('/')
+        })
       }
-
     },
     getOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
@@ -126,7 +125,7 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.order = res.data.order
-            console.log(this.order)
+            // console.log(this.order)
           }
         })
         .catch((err) => console.error(err))

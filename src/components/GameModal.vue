@@ -1,30 +1,28 @@
 <template>
 
-
-
   <!-- Modal -->
-<div class="modal fade" 
-      id="exampleModal" 
-      tabindex="-1" 
-      aria-labelledby="exampleModalLabel" 
+<div class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
       aria-hidden="true"
       ref="modal">
-  <div class="modal-dialog modal-dialog-centered test">
-    <div class="modal-content test">
+  <div class="modal-dialog modal-dialog-centered modal-fullscreen test">
+    <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">選賽馬開始遊戲</h5>
+        <h5 class="modal-title" id="exampleModalLabel">點選賽馬開始遊戲 /
+          <span v-if="horse.id">您選擇的是 {{ horse.id }} 號</span>
+        </h5>
       </div>
       <div class="modal-body">
-
-
-
 
         <div class="container-fluid">
           <div
           v-for="item in horses" :key="item.id"
-          @click.prevent="[selectedHorse(item), play()]"
+          @click.once="[selectedHorse(item), play()]"
           class="horse d-flex"
-          :class="[item.color, item.speed, `top-${item.id}`, {'animation-start': isPlay }, {'test' : horse.id === item.id}]">
+          :class="[item.color, item.speed, `top-${item.id}`, {'animation-start': isPlay }, {'test' : horse.id === item.id}]"
+          :disabled="true">
             <div class="fs-6">
               {{ item.id }}
             </div>
@@ -33,22 +31,17 @@
             </div>
             <div class="fs-6">
               <!-- {{ horsesPosition }} / {{ window }} <br> -->
-               {{ item.speed }}
+               <!-- {{ item.speed }} -->
             </div>
           </div>
           <span class="start"></span>
           <span class="end"></span>
         </div>
 
-
-
-
       </div>
     </div>
   </div>
 </div>
-
-
 
 </template>
 <script>
@@ -114,7 +107,7 @@ export default {
         title: `恭喜獲得第${this.yourRank}名`,
         text: '獎品將會在和商品一併寄出',
         icon: 'success',
-        confirmButtonText: '回首頁',
+        confirmButtonText: '回首頁'
       }).then((result) => {
         // this.$router.push('/')
       })
@@ -181,17 +174,12 @@ export default {
     }
 }
 .modal-content{
-  // width: 90vw ;
   height: 600px;
-  // position: relative;
-}
-.modal-body{
-  // position: relative;
 }
 .start{
   display:block;
   position:absolute;
-  left: 36px;
+  left: 80px;
   height:480px;
   border-left:2px solid red;
 }

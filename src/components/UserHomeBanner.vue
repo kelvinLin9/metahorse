@@ -16,7 +16,7 @@
   >
     <swiper-slide>
       <div class="header-bg d-flex justify-content-center"
-      style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
+          style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
       <h1 class="fw-bold align-self-center header-text f-kalam slogan">
         DIGITAL
         <br class="d-md-none">
@@ -27,8 +27,8 @@
       </div>
     </swiper-slide>
     <swiper-slide>
-      <div class="header-bg d-flex justify-content-center"
-      style="background-image: url('https://imgur.com/QA3pXeQ.jpg');">
+      <div class="header-bg2 d-flex justify-content-center"
+          style="background-image: url('https://imgur.com/YTmc4UB.jpg');">
       <h1 class="fw-bold align-self-center header-text f-kalam">
         DIGITAL
         <br class="d-md-none">
@@ -77,6 +77,11 @@ export default {
 .header-bg {
   background-size: cover;
   background-position: center center;
+  height: 100vh;
+}
+.header-bg2 {
+  background-size: cover;
+  background-position: center left;
   height: 100vh;
 }
 .header-text {
