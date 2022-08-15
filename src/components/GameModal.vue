@@ -9,11 +9,10 @@
       aria-labelledby="exampleModalLabel" 
       aria-hidden="true"
       ref="modal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+  <div class="modal-dialog modal-dialog-centered test">
+    <div class="modal-content test">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">選賽馬開始遊戲</h5>
       </div>
       <div class="modal-body">
 
@@ -21,9 +20,6 @@
 
 
         <div class="container-fluid">
-          <div>
-            請點選賽馬開始遊戲
-          </div>
           <div
           v-for="item in horses" :key="item.id"
           @click.prevent="[selectedHorse(item), play()]"
@@ -36,7 +32,8 @@
               <font-awesome-icon icon="fa-solid fa-horse"/>
             </div>
             <div class="fs-6">
-              {{ horsesPosition }} / {{ window }} <br> {{ item.speed }}
+              <!-- {{ horsesPosition }} / {{ window }} <br> -->
+               {{ item.speed }}
             </div>
           </div>
           <span class="start"></span>
@@ -138,9 +135,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.modal-body{
-  height: 500px;
-}
 .horse{
   position:absolute;
   font-size:50px;
@@ -186,14 +180,27 @@ export default {
       left:100vw;
     }
 }
+.modal-content{
+  // width: 90vw ;
+  height: 600px;
+  // position: relative;
+}
+.modal-body{
+  // position: relative;
+}
 .start{
   display:block;
   position:absolute;
-  left: 16vw;
-  width: 68vw;
+  left: 36px;
   height:480px;
   border-left:2px solid red;
-  border-right:2px solid red;
+}
+.end{
+  display:block;
+  position:absolute;
+  right: 36px;
+  height:480px;
+  border-left:2px solid red;
 }
 .top-1{
   top:30px
