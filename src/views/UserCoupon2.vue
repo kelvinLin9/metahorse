@@ -7,7 +7,7 @@
       </h1>
     </div>
   </div>
-  <div class="container my-5 d-flex flex-column align-items-center test">
+  <div class="container my-5 d-flex flex-column align-items-center">
     <div class="la-square-jelly-box my-5"
           v-if="!draw">
       <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱">

@@ -1,12 +1,12 @@
 <template>
   <UserNavbar :key="$route.path" />
-  <div class="user-loading position-absolute top-50 start-50 translate-middle" 
+  <div class="user-loading position-absolute top-50 start-50 translate-middle"
       v-if="isLoading">
     <UserLoading/>
   </div>
   <FloatCart v-if = "!hasFloatCart" />
   <ToastMessages/>
-  <div class="position-relative min-height">
+  <div class="position-relative min-height bg-dark">
     <router-view/>
   </div>
   <UserFooter/>
@@ -38,7 +38,7 @@ export default {
       const name = ['cart', 'checkout', 'checkoutPay']
       if (name.includes(this.$route.name)) return true
       return false
-    },
+    }
   },
   created () {
     this.getProducts()
