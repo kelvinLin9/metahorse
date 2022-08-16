@@ -55,7 +55,7 @@ const routes = [
       {
         path: 'UserGame',
         name: 'UserGame',
-        component: () => import('../views/UserGame.vue')
+        component: () => import('../views/UserGameTest.vue')
       },
       {
         path: 'product/:productId',

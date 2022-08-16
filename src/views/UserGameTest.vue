@@ -1,5 +1,5 @@
 <template>
-  <div class="text-end mt-3">
+  <div class="text-end">
     <button class="btn btn-primary" type="button"
     @click="this.$refs.GameModal.showModal()">
       點我試玩
