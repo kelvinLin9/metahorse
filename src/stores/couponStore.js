@@ -12,22 +12,19 @@ export default defineStore('couponStore', {
     coupons: [
       {
         id: 1,
-        img: 'https://imgur.com/DiAWuvX.jpg',
-        // img: 'https://imgur.com/haIZk0J.jpg',
+        img: 'https://imgur.com/v2HbjI5.jpg',
         discount: '5折',
         code: 'diamond'
       },
       {
         id: 2,
-        img: 'https://imgur.com/MWLitCH.jpg',
-        // img: 'https://imgur.com/igjVIZ9.jpg',
+        img: 'https://imgur.com/qLKGUWI.jpg',
         discount: '7折',
         code: 'gold'
       },
       {
         id: 3,
-        img: 'https://imgur.com/nlpr8b8.jpg',
-        // img: 'https://imgur.com/MIXhpKv.jpg',
+        img: 'https://imgur.com/LBDTuiP.jpg',
         discount: '8折',
         code: 'silver'
       }

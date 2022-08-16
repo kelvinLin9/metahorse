@@ -31,7 +31,7 @@
     </div>
   </section>
   <hr>
-  <section class="my-3">
+  <section class="py-3 ">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg"
           data-aos="fade-down"
@@ -179,7 +179,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import UserHomeBanner from '@/components/UserHomeBanner.vue'
 import ProductsHot from '@/components/ProductsHot.vue'
 import GoTop from '@/components/GoTop.vue'

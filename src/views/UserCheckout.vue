@@ -3,7 +3,7 @@
   <div class="container">
     <div class="my-3 row justify-content-center flex-sm-row-reverse">
       <!-- 商品明細 -->
-      <div class="col-md-6 mt-5 mt-md-0">
+      <div class="col-md-6">
         <div class="d-flex justify-content-center">
           <h1 class="fs-2 text-center fw-bold">購物清單</h1>
         </div>
