@@ -31,8 +31,6 @@ import { currency, date } from './methods/filters'
 
 import UserLoading from '@/components/UserLoading.vue'
 
-
-
 const app = createApp(App)
 app.config.globalProperties.$filters = {
   date,
@@ -56,9 +54,9 @@ configure({
 // 設定預設語系
 setLocale('zh_TW')
 
-
 const pinia = createPinia()
 // 手機板不觸發 { disable: 'phone' }
+
 app.AOS = new AOS.init()
 
 app.use(AOS)
