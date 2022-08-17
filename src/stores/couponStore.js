@@ -50,7 +50,7 @@ export default defineStore('couponStore', {
         .catch((err) => console.error(err))
     },
     luckyDraw (min, max) {
-      console.log(min, max)
+      // console.log(min, max)
       const num = Math.floor(Math.random() * (max - min + 1)) + min
       this.coupon = this.coupons[num]
       this.draw = true

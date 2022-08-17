@@ -184,8 +184,9 @@ import ProductsHot from '@/components/ProductsHot.vue'
 import GoTop from '@/components/GoTop.vue'
 import { mapState, mapActions, mapWritableState } from 'pinia'
 import productStore from '@/stores/productStore'
-import goStore from '@/stores/goStore'
 import UserHomeCoupon from '../components/UserHomeCoupon.vue'
+import goStore from '@/stores/goStore'
+import couponStore from '@/stores/couponStore'
 export default {
   components: {
     UserHomeBanner,
@@ -198,7 +199,23 @@ export default {
     ...mapWritableState(productStore, ['temp'])
   },
   methods: {
-    ...mapActions(goStore, ['goProducts'])
+    ...mapActions(goStore, ['goProducts']),
+    ...mapActions(couponStore, ['homeAlert'])
+  },
+  mounted () {
+    this.$swal.fire({
+      title: '<strong>限時優惠</strong>',
+      icon: 'info',
+      text: '消費滿30000即可參加抽獎',
+      showCloseButton: true,
+      focusConfirm: false,
+      confirmButtonText: '立即搶購'
+      })
+      .then((result) => {
+        if (result.isConfirmed){
+          this.$router.push('/products')
+        }
+})
   }
 }
 </script>

@@ -115,7 +115,7 @@ export default {
           icon: 'success',
           confirmButtonText: '回首頁'
         }).then((result) => {
-          this.$router.push('/')
+          this.$router.push('/') 
         })
       }
     },

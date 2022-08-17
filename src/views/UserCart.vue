@@ -1,6 +1,7 @@
 <template>
   <UserCheckoutBar/>
-  <div class="container my-5">
+  <div class="container my-3"
+      v-if="cart.total !== 0">
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物清單</h1>
     </div>
@@ -67,7 +68,7 @@
           </template>
           </tbody>
           <tfoot>
-          <tr v-if="cart.final_total == cart.total">
+          <tr v-if="cart.final_total === cart.total">
             <td colspan="7" class="text-end fs-3">
               總計：NT$ {{ $filters.currency(cart.total) }}
             </td>
@@ -96,7 +97,19 @@
             </button>
           </div>
         </div>
-      <div class="d-flex justify-content-between mt-5"
+        <div class="text-end"
+            v-if= "( cart.total < 30000 && cart.final_total === cart.total)">
+            還差 
+            <span class="fs-3">{{ `${30000 - cart.total}` }}</span>
+            元即可參加抽獎
+        </div>
+                <div class="text-end"
+            v-if= "( cart.total < 30000 && cart.final_total !== cart.total)">
+            還差 
+            <span class="fs-3">{{ `${30000 - cart.final_total}` }}</span>
+            元即可參加抽獎
+        </div>
+      <div class="d-flex justify-content-between mt-3"
              v-if="cart.total !== 0">
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
                 @click="goProducts">
@@ -107,16 +120,18 @@
             填寫資料<i class="bi bi-caret-right-fill"></i>
           </button>
         </div>
-        <div class="text-center pt-4"
-             v-if="cart.total === 0">
-          <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
-          <button type="button" class="btn btn-dark btn-hover rounded-0 mt-5"
-                  @click="goProducts">
-            查看產品 Go
-          </button>
-        </div>
       </div>
     </div>
+  </div>
+  <div class="container my-3"
+      v-if="cart.total === 0">
+    <div class="text-center pt-4">
+      <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
+      <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg mt-5"
+                  @click="goProducts">
+            商品列表
+      </button>
+      </div>
   </div>
 </template>
 

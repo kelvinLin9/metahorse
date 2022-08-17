@@ -11,7 +11,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">點選賽馬開始遊戲 /
-          <span v-if="horse.id">您選擇的是 {{ horse.id }} 號</span>
+          <span v-if="horse.id">
+            您選擇的是 
+            <span class="fs-1">
+              {{ horse.id }}
+            </span> 
+            號
+          </span>
         </h5>
       </div>
       <div class="modal-body">
@@ -21,7 +27,7 @@
           v-for="item in horses" :key="item.id"
           @click.once="[selectedHorse(item), play()]"
           class="horse d-flex"
-          :class="[item.color, item.speed, `top-${item.id}`, {'animation-start': isPlay }, {'test' : horse.id === item.id}]"
+          :class="[item.color, item.speed, `top-${item.id}`, {'animation-start': isPlay }, {'selected-horse': horse.id === item.id}]"
           :disabled="true">
             <div class="fs-6">
               {{ item.id }}
@@ -80,6 +86,7 @@ export default {
       horse: {},
       rank: ['super', 'ease', 'ease-out', 'linear', 'ease-in'],
       yourRank: 0,
+      gift: ['S級賽馬', 'A級賽馬', 'B級賽馬', 'C級賽馬', '馬鞍'],
       isPlay: false,
       horsesPosition: 0,
       window: 0
@@ -104,18 +111,19 @@ export default {
     getRank () {
       console.log(this.horse.speed)
       this.$swal.fire({
-        title: `恭喜獲得第${this.yourRank}名`,
+        title: `恭喜獲得第${this.yourRank}名 <br>` +
+                `${this.gift[this.yourRank - 1]} x 1`,
         text: '獎品將會在和商品一併寄出',
         icon: 'success',
         confirmButtonText: '回首頁'
       }).then((result) => {
-        // this.$router.push('/')
+        // this.$router.push('/') // 先拿掉 方便測試遊戲
       })
     },
     play () {
       this.isPlay = true
       this.yourRank = this.rank.indexOf(this.horse.speed) + 1
-      setTimeout(this.getRank, 10000)
+      setTimeout(this.getRank, 3000)
     }
   },
   created () {
@@ -133,8 +141,11 @@ export default {
   font-size:50px;
   z-index: 1;
 }
+.selected-horse{
+  border-bottom: 5px dotted; 
+}
 .animation-start{
-  animation:move 10s ;
+  animation:move 3s ;
 }
 .linear{
   animation-timing-function: linear;
@@ -205,4 +216,63 @@ export default {
 .top-5{
   top:430px
 }
+
+
+// 邊框
+@keyframes rotate {
+	100% {
+		transform: rotate(1turn);
+	}
+}
+
+.rainbow {
+	position: relative;
+	z-index: 0;
+	width: 400px;
+	height: 300px;
+	border-radius: 10px;
+	overflow: hidden;
+	padding: 2rem;
+	
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: -2;
+		left: -50%;
+		top: -50%;
+		width: 200%;
+		height: 200%;
+		background-color: #399953;
+		background-repeat: no-repeat;
+		background-size: 50% 50%, 50% 50%;
+		background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+		background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+		animation: rotate 4s linear infinite;
+	}
+	
+	&::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		left: 6px;
+		top: 6px;
+		width: calc(100% - 12px);
+		height: calc(100% - 12px);
+		background: white;
+		border-radius: 5px;
+		animation: opacityChange 3s infinite alternate;
+	}
+}
+
+@keyframes opacityChange {
+	50% {
+		opacity:1;
+	}
+	100% {
+		opacity: .5;
+	}
+}
 </style>
+
+
+
