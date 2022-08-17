@@ -36,7 +36,7 @@
           </li>
           <li class="nav-item">
             <router-link to="/UserGame" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'UserGame' }">試玩</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'UserGame' }">試玩(測試用)</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"

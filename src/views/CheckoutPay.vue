@@ -1,7 +1,7 @@
 <template>
   <UserCheckoutBar/>
   <div class="container">
-    <div class="my-5 row justify-content-center">
+    <div class="py-5 row justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物明細</h1>
       <form class="col-10" @submit.prevent="payOrder">
         <table class="table align-middle">
@@ -104,6 +104,7 @@ export default {
           title: '感謝您的支持',
           text: '產品將會在3個工作天內寄出',
           icon: 'success',
+          allowOutsideClick: false,
           confirmButtonText: '開始滿額小遊戲'
         }).then((result) => {
           this.$refs.GameModal.showModal()
@@ -115,7 +116,7 @@ export default {
           icon: 'success',
           confirmButtonText: '回首頁'
         }).then((result) => {
-          this.$router.push('/') 
+          this.$router.push('/')
         })
       }
     },
