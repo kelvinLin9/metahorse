@@ -7,7 +7,7 @@
       </h1>
     </div>
   </div>
-  <div class="bg-light">
+  <div class="pb-5">
     <div class="container-fluid pt-5"
         v-if="favorite.length === 0">
       <div class="d-flex flex-column justify-content-center align-items-center">

@@ -6,7 +6,7 @@
   </div>
   <FloatCart v-if = "!hasFloatCart" />
   <ToastMessages/>
-  <div class="position-relative min-height bg-light">
+  <div class="position-relative min-height milkyWay">
     <router-view/>
   </div>
   <UserFooter/>

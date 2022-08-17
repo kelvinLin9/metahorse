@@ -30,7 +30,7 @@
       </div>
     </div>
   </section>
-  <hr>
+  <UserHomeCoupon/>
   <section class="py-3 ">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg"
@@ -173,7 +173,6 @@
       </div>
     </div>
   </section>
-  <UserHomeCoupon/>
   <ProductsHot/>
   <GoTop/>
 </template>
@@ -223,9 +222,6 @@ export default {
 <style lang="scss" scoped>
 .f-kalam {
   font-family: 'Kalam', cursive;
-}
-.test {
-  outline: 3px solid red;
 }
 .round-icon{
   width:350px;
