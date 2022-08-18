@@ -31,6 +31,13 @@
           訂單編號 :
           <br class="d-block d-sm-none">
           {{ order.id }}
+          <span>
+            <button type="button"
+                    class="btn btn-outline-primary text-dark fw-bold fs-6 ms-5"
+                    @click="copyCode(order.id)">
+              複製
+            </button>
+          </span>
         </div>
         <table class="table">
           <tbody>
@@ -82,6 +89,8 @@
 <script>
 import UserCheckoutBar from '@/components/UserCheckoutBar.vue'
 import GameModal from '@/components/GameModal.vue'
+import { mapState, mapActions } from 'pinia'
+import copyStore from '@/stores/copyStore'
 export default {
   data () {
     return {
@@ -96,9 +105,11 @@ export default {
     UserCheckoutBar,
     GameModal
   },
+  
   methods: {
+    ...mapActions(copyStore, ['copyCode']),
     showAlert () {
-      console.log(this.order.total)
+      // console.log(this.order.total)
       if (this.order.total > 30000) {
         this.$swal.fire({
           title: '感謝您的支持',

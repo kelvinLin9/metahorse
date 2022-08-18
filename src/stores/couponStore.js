@@ -76,9 +76,6 @@ export default defineStore('couponStore', {
       navigator.clipboard.writeText(couponCode.textContent)
 
       // console.log(selection)
-
-      // 這個也不要這樣寫比較好 沒成功也不知道
-      status.PushManager('抽獎', '複製折扣碼')
     }
   }
 })

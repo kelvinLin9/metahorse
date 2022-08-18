@@ -70,7 +70,7 @@
   </template>
 
 <script>
-import ProductModal from '@/components/ProductModal.vue'
+import ProductModal from '@/components/admin/ProductModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
 
