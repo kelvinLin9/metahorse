@@ -173,6 +173,7 @@
       </div>
     </div>
   </section>
+  <hr>
   <ProductsHot/>
   <GoTop/>
 </template>
@@ -192,7 +193,7 @@ export default {
     ProductsHot,
     GoTop,
     UserHomeCoupon
-},
+  },
   computed: {
     ...mapState(productStore, ['productsGame']),
     ...mapWritableState(productStore, ['temp'])
@@ -205,16 +206,16 @@ export default {
     this.$swal.fire({
       title: '<strong>限時優惠</strong>',
       icon: 'info',
-      text: '消費滿30000即可參加抽獎',
+      text: '消費滿30000元即可參加抽獎',
       showCloseButton: true,
       focusConfirm: false,
       confirmButtonText: '立即搶購'
-      })
+    })
       .then((result) => {
-        if (result.isConfirmed){
+        if (result.isConfirmed) {
           this.$router.push('/products')
         }
-    })
+      })
   }
 }
 </script>

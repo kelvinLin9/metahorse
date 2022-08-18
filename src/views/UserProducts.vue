@@ -67,7 +67,7 @@
                 </span>
               </div>
               <div class="card-body d-flex flex-column text-center fw-bold">
-                <span class="fs-4">
+                <span class="fs-5">
                     {{ item.title }}
                   <span class="fs-6 text-muted">（{{ item.category }}）</span>
                 </span>
