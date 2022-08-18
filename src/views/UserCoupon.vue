@@ -1,99 +1,245 @@
 <template>
-  <div class="container mt-5 ">
-    <div class="d-flex justify-content-center">
-      <h1 class="fs-2 text-center fw-bold">周年慶抽獎</h1>
+  <div class="couponBanner">
+    <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
+      <h1 class="w-100 d-flex align-items-center justify-content-center">
+        <span class="me-2 fs-1 fw-bolder text-white">幸運抽獎</span>
+        <span class="fs-4 text-primary align-self-end">/ Lucky Draw</span>
+      </h1>
     </div>
-    <div class="row mt-5 py-2">
-      <div class="col-sm-4 d-flex justify-content-center pb-3" v-for="card in cards" :key="card.id">
-        <button type="button" class="flip-card btn" 
-                @click="chooseCard(card)" 
-                :class="{'clickFlip': status.clickID === card.id}" 
-                :disabled="status.isFlip">
-          <div class="flip-card-inner">
-            <div class="flip-card-front" v-if="!status.isFlip">
-              <img src="https://imgur.com/YS7AfNK.jpg" alt="背面" style="width: 200px; height: 200px;" />
-            </div>
-            <div class="flip-card-back" v-if="status.isFlip">
-              <img :src="card.pic" alt="正面" style="width: 300px; height: 200px;" />
-            </div>
-          </div>
-        </button>
+  </div>
+  <div class="container py-5 d-flex flex-column align-items-center">
+    <div class="la-square-jelly-box my-5"
+          v-if="!draw">
+      <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱">
+      <img src="https://imgur.com/YS7AfNK.jpg" alt="陰影">
+    </div>
+    <div class="mt-1"
+          v-if="draw">
+      <img :src="coupon.img" class="img-fluid" alt="獎品">
+    </div>
+    <button type="button"
+            class="btn btn-outline-primary text-dark fw-bold fs-5 mt-5"
+            @click="luckyDraw(0, 2)"
+            v-if="!draw">
+      抽獎
+    </button>
+
+    <div class="d-flex flex-column align-items-center"
+          v-if="draw">
+      <div class="fs-5 text-center fw-bold">
+        恭喜獲得 <span class="fs-1">{{ coupon.discount }}</span> 優惠<br/>
+        折扣碼: <span id="couponCode">{{ coupon.code }}</span>
       </div>
-      <div class="d-flex flex-column align-items-center">
-        <div class="fs-5 text-center fw-bold">
-          恭喜獲得 {{ yourDiscount }} 優惠<br />
-          折扣碼: <span id="couponCode">{{ yourCode }}</span>
-        </div>
-        <button type="button"
-                class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3 w-25"
-                @click="copyCouponCode">
-          複製折扣碼
-        </button>
-      </div>
-      <div class="h2 text-primary text-center p-4 mt-3" v-if="status.clickID !== ''">
-      </div>
+      <button type="button"
+              class="btn btn-outline-primary text-dark fw-bold fs-6 mt-3"
+              @click="copyCode(coupon.code)">
+        複製折扣碼
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'pinia'
+import couponStore from '@/stores/couponStore'
+import copyStore from '@/stores/copyStore';
 export default {
-  data () {
-    return {
-      cards: [
-        {
-          id: 1,
-          pic: 'https://imgur.com/DiAWuvX.jpg',
-          discount: '5折',
-          code: 'diamond'
-        },
-        {
-          id: 2,
-          pic: 'https://imgur.com/MWLitCH.jpg',
-          discount: '7折',
-          code: 'gold'
-        },
-        {
-          id: 3,
-          pic: 'https://imgur.com/nlpr8b8.jpg',
-          discount: '8折',
-          code: 'silver'
-        }
-      ],
-      yourDiscount: '',
-      yourCode: '',
-      status: {
-        clickID: '',
-        isFlip: false
-      }
-    }
-  },
   computed: {
+    ...mapState(couponStore, ['coupon', 'draw'])
   },
   methods: {
-    chooseCard (card) {
-      this.status.clickID = card.id
-      this.yourDiscount = card.discount
-      this.yourCode = card.code
-      this.status.isFlip = true
-    },
-    copyCouponCode () {
-      const couponCode = document.getElementById('couponCode')
-      const selection = window.getSelection()
-      selection.removeAllRanges()
-      const range = document.createRange()
-      range.selectNodeContents(couponCode)
-      selection.addRange(range)
-      document.execCommand('copy')
-      this.$store.dispatch('receiveMessage', {
-        style: 'success',
-        title: '優惠碼 ' + this.yourCode + ' 已複製'
-      })
-    }
+    ...mapActions(couponStore, ['luckyDraw', 'copyCouponCode']),
+    ...mapActions(copyStore, ['copyCode'])
   }
 }
 </script>
 
 <style scoped lang="scss">
-// @import "@/assets/scss/viewScss/_userCouponGame";
+.couponBanner {
+  height: 250px;
+  background-image: url(https://imgur.com/53K117A.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center ;
+    @media (max-width: 600px) {
+    height: 150px;
+  }
+}
+.la-square-jelly-box,
+.la-square-jelly-box > img {
+    position: relative;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+.la-square-jelly-box {
+    display: block;
+    font-size: 0;
+    color: transparent;
+}
+.la-square-jelly-box.la-dark {
+    color: #333;
+}
+.la-square-jelly-box > img {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+}
+.la-square-jelly-box {
+    width: 250px;
+    height: 250px;
+}
+.la-square-jelly-box > img:nth-child(1),
+.la-square-jelly-box > img:nth-child(2) {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+.la-square-jelly-box > img:nth-child(1) {
+    top: -25%;
+    z-index: 1;
+    height: 100%;
+/*     border-radius: 10%; */
+    -webkit-animation: square-jelly-box-animate .6s -.1s linear infinite;
+       -moz-animation: square-jelly-box-animate .6s -.1s linear infinite;
+         -o-animation: square-jelly-box-animate .6s -.1s linear infinite;
+            animation: square-jelly-box-animate .6s -.1s linear infinite;
+}
+.la-square-jelly-box > img:nth-child(2) {
+    bottom: -9%;
+    height: 10%;
+    background: #000;
+    border-radius: 50%;
+    opacity: .2;
+    -webkit-animation: square-jelly-box-shadow .6s -.1s linear infinite;
+       -moz-animation: square-jelly-box-shadow .6s -.1s linear infinite;
+         -o-animation: square-jelly-box-shadow .6s -.1s linear infinite;
+            animation: square-jelly-box-shadow .6s -.1s linear infinite;
+}
+/*
+ * Animations
+ */
+@-webkit-keyframes square-jelly-box-animate {
+    17% {
+        border-bottom-right-radius: 10%;
+    }
+    25% {
+        -webkit-transform: translateY(25%) rotate(22.5deg);
+                transform: translateY(25%) rotate(22.5deg);
+    }
+    50% {
+        border-bottom-right-radius: 100%;
+        -webkit-transform: translateY(50%) scale(1, .9) rotate(45deg);
+                transform: translateY(50%) scale(1, .9) rotate(45deg);
+    }
+    75% {
+        -webkit-transform: translateY(25%) rotate(67.5deg);
+                transform: translateY(25%) rotate(67.5deg);
+    }
+    100% {
+        -webkit-transform: translateY(0) rotate(90deg);
+                transform: translateY(0) rotate(90deg);
+    }
+}
+@-moz-keyframes square-jelly-box-animate {
+    17% {
+        border-bottom-right-radius: 10%;
+    }
+    25% {
+        -moz-transform: translateY(25%) rotate(22.5deg);
+             transform: translateY(25%) rotate(22.5deg);
+    }
+    50% {
+        border-bottom-right-radius: 100%;
+        -moz-transform: translateY(50%) scale(1, .9) rotate(45deg);
+             transform: translateY(50%) scale(1, .9) rotate(45deg);
+    }
+    75% {
+        -moz-transform: translateY(25%) rotate(67.5deg);
+             transform: translateY(25%) rotate(67.5deg);
+    }
+    100% {
+        -moz-transform: translateY(0) rotate(90deg);
+             transform: translateY(0) rotate(90deg);
+    }
+}
+@-o-keyframes square-jelly-box-animate {
+    17% {
+        border-bottom-right-radius: 10%;
+    }
+    25% {
+        -o-transform: translateY(25%) rotate(22.5deg);
+           transform: translateY(25%) rotate(22.5deg);
+    }
+    50% {
+        border-bottom-right-radius: 100%;
+        -o-transform: translateY(50%) scale(1, .9) rotate(45deg);
+           transform: translateY(50%) scale(1, .9) rotate(45deg);
+    }
+    75% {
+        -o-transform: translateY(25%) rotate(67.5deg);
+           transform: translateY(25%) rotate(67.5deg);
+    }
+    100% {
+        -o-transform: translateY(0) rotate(90deg);
+           transform: translateY(0) rotate(90deg);
+    }
+}
+@keyframes square-jelly-box-animate {
+    17% {
+        border-bottom-right-radius: 10%;
+    }
+    25% {
+        -webkit-transform: translateY(25%) rotate(22.5deg);
+           -moz-transform: translateY(25%) rotate(22.5deg);
+             -o-transform: translateY(25%) rotate(22.5deg);
+                transform: translateY(25%) rotate(22.5deg);
+    }
+    50% {
+        border-bottom-right-radius: 100%;
+        -webkit-transform: translateY(50%) scale(1, .9) rotate(45deg);
+           -moz-transform: translateY(50%) scale(1, .9) rotate(45deg);
+             -o-transform: translateY(50%) scale(1, .9) rotate(45deg);
+                transform: translateY(50%) scale(1, .9) rotate(45deg);
+    }
+    75% {
+        -webkit-transform: translateY(25%) rotate(67.5deg);
+           -moz-transform: translateY(25%) rotate(67.5deg);
+             -o-transform: translateY(25%) rotate(67.5deg);
+                transform: translateY(25%) rotate(67.5deg);
+    }
+    100% {
+        -webkit-transform: translateY(0) rotate(90deg);
+           -moz-transform: translateY(0) rotate(90deg);
+             -o-transform: translateY(0) rotate(90deg);
+                transform: translateY(0) rotate(90deg);
+    }
+}
+@-webkit-keyframes square-jelly-box-shadow {
+    50% {
+        -webkit-transform: scale(1.25, 1);
+                transform: scale(1.25, 1);
+    }
+}
+@-moz-keyframes square-jelly-box-shadow {
+    50% {
+        -moz-transform: scale(1.25, 1);
+             transform: scale(1.25, 1);
+    }
+}
+@-o-keyframes square-jelly-box-shadow {
+    50% {
+        -o-transform: scale(1.25, 1);
+           transform: scale(1.25, 1);
+    }
+}
+@keyframes square-jelly-box-shadow {
+    50% {
+        -webkit-transform: scale(1.25, 1);
+           -moz-transform: scale(1.25, 1);
+             -o-transform: scale(1.25, 1);
+                transform: scale(1.25, 1);
+    }
+}
 </style>

@@ -134,10 +134,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.modal-body{
+  position: relative;
+}
 .horse{
   position:absolute;
   font-size:50px;
   z-index: 1;
+  overflow: hidden; 
 }
 .selected-horse{
   border-bottom: 5px dotted;
@@ -183,7 +187,7 @@ export default {
     }
 }
 .modal-content{
-  height: 600px;
+  height: 620px;
 }
 .start{
   display:block;

@@ -1,6 +1,6 @@
 <template>
   <!-- 外層放背景，內層放黑底 -->
-  <div class="productsBanner mb-5">
+  <div class="productsBanner">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
         <span class="me-2 fs-1 fw-bolder text-white">所有商品</span>
@@ -8,7 +8,7 @@
       </h1>
     </div>
   </div>
-  <div class="container">
+  <div class="container py-5">
     <div class="row">
       <div class="col-lg-3">
         <h2 class="fw-bold text-center f-kalam bg-primary">賽馬( Level )</h2>
