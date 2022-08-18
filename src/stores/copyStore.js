@@ -8,7 +8,7 @@ export default defineStore('goStore', {
       console.log(el)
       navigator.clipboard.writeText(el)
       .then((res) => {
-        console.log(res) //??
+        console.log('res', res) //??
         status.PushManager('抽獎', '複製折扣碼')
       })
       
