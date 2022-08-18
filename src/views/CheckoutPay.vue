@@ -89,7 +89,7 @@
 <script>
 import UserCheckoutBar from '@/components/UserCheckoutBar.vue'
 import GameModal from '@/components/GameModal.vue'
-import { mapState, mapActions } from 'pinia'
+import { mapActions } from 'pinia'
 import copyStore from '@/stores/copyStore'
 export default {
   data () {
@@ -105,7 +105,6 @@ export default {
     UserCheckoutBar,
     GameModal
   },
-  
   methods: {
     ...mapActions(copyStore, ['copyCode']),
     showAlert () {
