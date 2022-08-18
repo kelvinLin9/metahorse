@@ -29,7 +29,7 @@ export default defineStore('cartStore', {
       status.isLoading = true
       axios.get(url)
         .then((res) => {
-          console.log('GETC!!!!!!!!!!!!!!!!')
+          // console.log('GETC!!!!!!!!!!!!!!!!')
           this.cartNum = res.data.data.carts.length
           this.cart = res.data.data
           status.isLoading = false

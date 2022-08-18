@@ -24,7 +24,7 @@ export default defineStore('productStore', {
       status.isLoading = true
       axios.get(url)
         .then((res) => {
-          console.log("GETP!!!!!!!!!!!!!!!!")
+          // console.log("GETP!!!!!!!!!!!!!!!!")
           this.products = res.data.products
           this.productsHot = this.products.filter((item, index) => index > 14) // 先取幾個來試用
           favorite.productsBus(this.products)

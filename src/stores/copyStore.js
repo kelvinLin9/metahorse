@@ -7,11 +7,9 @@ export default defineStore('goStore', {
     copyCode (el) {
       console.log(el)
       navigator.clipboard.writeText(el)
-      .then((res) => {
-        console.log('res', res) //??
-        status.PushManager('抽獎', '複製折扣碼')
-      })
-      
+        .then(() => {
+          status.PushManager('抽獎', '複製折扣碼')
+        })
     }
   }
 })
