@@ -34,7 +34,7 @@
           <span>
             <button type="button"
                     class="btn btn-outline-primary text-dark fw-bold fs-6 ms-5"
-                    @click="copyCode(order.id)">
+                    @click.prevent="copyCode(order.id)">
               複製
             </button>
           </span>
