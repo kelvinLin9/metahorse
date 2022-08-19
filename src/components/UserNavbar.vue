@@ -36,7 +36,7 @@
           </li>
           <li class="nav-item">
             <router-link to="/UserGame" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'UserGame' }">試玩(測試用)</router-link>
+            :class="{ 'text-warning':  this.$route.name === 'UserGame' }">試玩</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
@@ -159,16 +159,12 @@ export default {
   right: 5px;
   font-size: 12px;
 }
-<<<<<<< HEAD
-/* 小購物車框定位 */
-=======
 /* 購物車按鈕 */
 .cart {
-  // background-color: transparent;
+  background-color: transparent;
   position: relative;
 }
 /* 購物車按鈕定位 */
->>>>>>> 3f963e4f29aa39af544599da094cd443b3718bd2
 .cart-box{
   min-width: 450px;
   position: absolute;
@@ -179,25 +175,23 @@ export default {
   position: absolute;
   left: 165px;
   top: 10px;
-  @media (max-width: 768px) {
-<<<<<<< HEAD
+}
+@media (max-width: 768px) {
+  .nav{
+    z-index: 1;
+  }
+  .cart-box{
+    min-width: 340px;
+  }
+  .logo {
+   position: absolute;
    left: 145px;
   }
-  @media (max-width: 576px) {
+}
+@media (max-width: 576px) {
+  .logo {
+   position: absolute;
    left: 140px;
-=======
-   left: 145px; 
-  }
-  @media (max-width: 576px) {
-   left: 137px;
-  }
-  @media (max-width: 576px) {
-   left: 130px;
->>>>>>> 3f963e4f29aa39af544599da094cd443b3718bd2
-  }
-  @media (max-width: 414px) {
-   left: 135px;
   }
 }
-
 </style>
