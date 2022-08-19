@@ -159,12 +159,7 @@ export default {
   right: 5px;
   font-size: 12px;
 }
-/* 購物車按鈕 */
-.cart {
-  background-color: transparent;
-  position: relative;
-}
-/* 購物車按鈕定位 */
+/* 小購物車框 */
 .cart-box{
   min-width: 450px;
   position: absolute;
@@ -175,23 +170,15 @@ export default {
   position: absolute;
   left: 165px;
   top: 10px;
-}
-@media (max-width: 768px) {
-  .nav{
-    z-index: 1;
-  }
-  .cart-box{
-    min-width: 340px;
-  }
-  .logo {
-   position: absolute;
+  @media (max-width: 768px) {
    left: 145px;
   }
-}
-@media (max-width: 576px) {
-  .logo {
-   position: absolute;
-   left: 140px;
+  @media (max-width: 576px) {
+   left: 137px;
+  }
+  @media (max-width: 414px) {
+   left: 130px;
   }
 }
+
 </style>
