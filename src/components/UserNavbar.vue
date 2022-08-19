@@ -161,7 +161,7 @@ export default {
 }
 /* 購物車按鈕 */
 .cart {
-  background-color: transparent;
+  // background-color: transparent;
   position: relative;
 }
 /* 購物車按鈕定位 */
@@ -175,23 +175,14 @@ export default {
   position: absolute;
   left: 165px;
   top: 10px;
-}
-@media (max-width: 768px) {
-  .nav{
-    z-index: 1;
+  @media (max-width: 768px) {
+   left: 145px; 
   }
-  .cart-box{
-    min-width: 340px;
+  @media (max-width: 576px) {
+   left: 137px;
   }
-  .logo {
-   position: absolute;
-   left: 145px;
-  }
-}
-@media (max-width: 576px) {
-  .logo {
-   position: absolute;
-   left: 140px;
+  @media (max-width: 576px) {
+   left: 130px;
   }
 }
 </style>
