@@ -48,7 +48,7 @@ export default {
     ...mapState(couponStore, ['coupon', 'draw'])
   },
   methods: {
-    ...mapActions(couponStore, ['luckyDraw', 'copyCouponCode']),
+    ...mapActions(couponStore, ['luckyDraw']),
     ...mapActions(copyStore, ['copyCode'])
   }
 }

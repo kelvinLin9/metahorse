@@ -29,15 +29,14 @@
         </table>
         <div class="d-flex justify-content-center fw-bold fs-5 p-3 mt-5 mb-2 border border-primary">
           訂單編號 :
-          <br class="d-block d-sm-none">
-          {{ order.id }}
-          <!-- <span> -->
-            <!-- <button type="button"
-                    class="btn btn-outline-primary text-dark fw-bold fs-6 ms-5"
-                    @click.prevent="copyCode(order.id)">
-              複製
-            </button> -->
-          <!-- </span> -->
+          <br class="d-block d-sm-none" >
+          <span id="orderId">
+            {{ order.id }}
+          </span>
+        </div>
+        <div class="btn btn-outline-primary text-dark fw-bold fs-6"
+            @click.prevent="copyCodeOld('orderId')">
+          複製訂單編號
         </div>
         <table class="table">
           <tbody>
@@ -106,7 +105,7 @@ export default {
     GameModal
   },
   methods: {
-    ...mapActions(copyStore, ['copyCode']),
+    ...mapActions(copyStore, ['copyCodeOld']),
     showAlert () {
       // console.log(this.order.total)
       if (this.order.total > 30000) {
