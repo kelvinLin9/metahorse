@@ -113,8 +113,8 @@ export default {
         allowOutsideClick: false,
         confirmButtonText: '回首頁'
       }).then((result) => {
-        this.hideModal ()
-        this.$router.push('/') // 先拿掉 方便測試遊戲
+        this.hideModal() // Modal關掉才不會造成回首頁後黑屏
+        this.$router.push('/') // 測試遊戲時先拿掉
       })
     },
     play () {
@@ -141,7 +141,7 @@ export default {
   position:absolute;
   font-size:50px;
   z-index: 1;
-  overflow: hidden; 
+  overflow: hidden;
 }
 .selected-horse{
   border-bottom: 5px dotted;
