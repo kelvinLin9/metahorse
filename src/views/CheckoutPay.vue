@@ -31,13 +31,13 @@
           訂單編號 :
           <br class="d-block d-sm-none">
           {{ order.id }}
-          <span>
-            <button type="button"
+          <!-- <span> -->
+            <!-- <button type="button"
                     class="btn btn-outline-primary text-dark fw-bold fs-6 ms-5"
                     @click.prevent="copyCode(order.id)">
               複製
-            </button>
-          </span>
+            </button> -->
+          <!-- </span> -->
         </div>
         <table class="table">
           <tbody>
