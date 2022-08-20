@@ -4,9 +4,9 @@ import statusStore from './statusStore'
 const status = statusStore()
 export default defineStore('goStore', {
   actions: {
-    copyCode (el) {
-      console.log(el)
-      navigator.clipboard.writeText(el)
+    copyCode (item) {
+      // console.log(item)
+      navigator.clipboard.writeText(item)
         .then(() => {
           status.PushManager('抽獎', '複製折扣碼')
         })
