@@ -66,7 +66,7 @@
           <label for="tel" class="form-label fw-bold fs-5">收件人電話：</label>
           <v-field id="tel" name="電話" type="tel" class="form-control"
                    :class="{ 'is-invalid': errors['電話'] }"
-                   placeholder="請輸入電話" rules="required"
+                   placeholder="請輸入電話" rules="numeric|min:7|max:10|required"
                    v-model="form.user.tel">
           </v-field>
           <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
