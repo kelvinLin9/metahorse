@@ -153,14 +153,11 @@ export default {
     },
     printWindow () {
       window.print()
-    },
-    goHome () {
-      this.$router.push('/')
     }
   },
   created () {
     this.orderId = this.$route.params.orderId
-    // console.log(this.orderId)
+    console.log(this.orderId)
     this.getOrder()
   }
 }
