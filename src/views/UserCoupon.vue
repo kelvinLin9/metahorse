@@ -9,7 +9,6 @@
   </div>
   <div class="container py-5 d-flex flex-column align-items-center">
     <div class="la-square-jelly-box my-5"
-<<<<<<< HEAD
           v-if="!draw">
       <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱"
           data-aos="fade-down"
@@ -17,16 +16,6 @@
       <img src="https://imgur.com/YS7AfNK.jpg" alt="陰影"
           data-aos="zoom-in"
           data-aos-duration="1500">
-=======
-          v-if="!draw"
-          >
-      <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱"
-          data-aos="fade-down"
-          data-aos-duration="2000"  >
-      <img src="https://imgur.com/YS7AfNK.jpg" alt="陰影"
-          data-aos="zoom-in"
-          data-aos-duration="2000">
->>>>>>> bd9142b2391e41426ab8eb4964ee1fdd147e184b
     </div>
     <div class="mt-1"
           v-if="draw">
@@ -132,8 +121,4 @@ export default {
          -o-animation: square-jelly-box-shadow .6s -.1s linear infinite;
             animation: square-jelly-box-shadow .6s -.1s linear infinite;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> bd9142b2391e41426ab8eb4964ee1fdd147e184b
 </style>
