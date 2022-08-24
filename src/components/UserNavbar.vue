@@ -34,10 +34,10 @@
             <router-link to="/UserSearchOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/UserGame" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'UserGame' }">試玩(測試用)</router-link>
-          </li>
+          </li> -->
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'cart' }">購物車</router-link>
@@ -47,8 +47,8 @@
             :class="{ 'text-warning':  this.$route.name === 'favorite' }">我的最愛</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/login" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'login' }">管理員登入</router-link>
+            <router-link to="/UserLogin" class="nav-link fs-5"
+            :class="{ 'text-warning':  this.$route.name === 'UserLogin' }">會員登入</router-link>
           </li>
         </ul>
 
@@ -121,9 +121,9 @@
             </RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/login" class="nav-link px-3"
-            :class="{ 'text-warning':  this.$route.name === 'login' }">
-              <i class="bi bi-person-workspace fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="管理員登入"></i>
+            <RouterLink to="/UserLogin" class="nav-link px-3"
+            :class="{ 'text-warning':  this.$route.name === 'UserLogin' }">
+              <i class="bi bi-person-workspace fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="會員登入"></i>
             </RouterLink>
           </li>
         </ul>
