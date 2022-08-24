@@ -10,8 +10,12 @@
   <div class="container py-5 d-flex flex-column align-items-center">
     <div class="la-square-jelly-box my-5"
           v-if="!draw">
-      <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱">
-      <img src="https://imgur.com/YS7AfNK.jpg" alt="陰影">
+      <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱"
+          data-aos="fade-down"
+          data-aos-duration="1500">
+      <img src="https://imgur.com/YS7AfNK.jpg" alt="陰影"
+          data-aos="zoom-in"
+          data-aos-duration="1500">
     </div>
     <div class="mt-1"
           v-if="draw">
@@ -117,129 +121,4 @@ export default {
          -o-animation: square-jelly-box-shadow .6s -.1s linear infinite;
             animation: square-jelly-box-shadow .6s -.1s linear infinite;
 }
-/*
- * Animations
- */
-// @-webkit-keyframes square-jelly-box-animate {
-//     17% {
-//         border-bottom-right-radius: 10%;
-//     }
-//     25% {
-//         -webkit-transform: translateY(25%) rotate(22.5deg);
-//                 transform: translateY(25%) rotate(22.5deg);
-//     }
-//     50% {
-//         border-bottom-right-radius: 100%;
-//         -webkit-transform: translateY(50%) scale(1, .9) rotate(45deg);
-//                 transform: translateY(50%) scale(1, .9) rotate(45deg);
-//     }
-//     75% {
-//         -webkit-transform: translateY(25%) rotate(67.5deg);
-//                 transform: translateY(25%) rotate(67.5deg);
-//     }
-//     100% {
-//         -webkit-transform: translateY(0) rotate(90deg);
-//                 transform: translateY(0) rotate(90deg);
-//     }
-// }
-// @-moz-keyframes square-jelly-box-animate {
-//     17% {
-//         border-bottom-right-radius: 10%;
-//     }
-//     25% {
-//         -moz-transform: translateY(25%) rotate(22.5deg);
-//              transform: translateY(25%) rotate(22.5deg);
-//     }
-//     50% {
-//         border-bottom-right-radius: 100%;
-//         -moz-transform: translateY(50%) scale(1, .9) rotate(45deg);
-//              transform: translateY(50%) scale(1, .9) rotate(45deg);
-//     }
-//     75% {
-//         -moz-transform: translateY(25%) rotate(67.5deg);
-//              transform: translateY(25%) rotate(67.5deg);
-//     }
-//     100% {
-//         -moz-transform: translateY(0) rotate(90deg);
-//              transform: translateY(0) rotate(90deg);
-//     }
-// }
-// @-o-keyframes square-jelly-box-animate {
-//     17% {
-//         border-bottom-right-radius: 10%;
-//     }
-//     25% {
-//         -o-transform: translateY(25%) rotate(22.5deg);
-//            transform: translateY(25%) rotate(22.5deg);
-//     }
-//     50% {
-//         border-bottom-right-radius: 100%;
-//         -o-transform: translateY(50%) scale(1, .9) rotate(45deg);
-//            transform: translateY(50%) scale(1, .9) rotate(45deg);
-//     }
-//     75% {
-//         -o-transform: translateY(25%) rotate(67.5deg);
-//            transform: translateY(25%) rotate(67.5deg);
-//     }
-//     100% {
-//         -o-transform: translateY(0) rotate(90deg);
-//            transform: translateY(0) rotate(90deg);
-//     }
-// }
-// @keyframes square-jelly-box-animate {
-//     17% {
-//         border-bottom-right-radius: 10%;
-//     }
-//     25% {
-//         -webkit-transform: translateY(25%) rotate(22.5deg);
-//            -moz-transform: translateY(25%) rotate(22.5deg);
-//              -o-transform: translateY(25%) rotate(22.5deg);
-//                 transform: translateY(25%) rotate(22.5deg);
-//     }
-//     50% {
-//         border-bottom-right-radius: 100%;
-//         -webkit-transform: translateY(50%) scale(1, .9) rotate(45deg);
-//            -moz-transform: translateY(50%) scale(1, .9) rotate(45deg);
-//              -o-transform: translateY(50%) scale(1, .9) rotate(45deg);
-//                 transform: translateY(50%) scale(1, .9) rotate(45deg);
-//     }
-//     75% {
-//         -webkit-transform: translateY(25%) rotate(67.5deg);
-//            -moz-transform: translateY(25%) rotate(67.5deg);
-//              -o-transform: translateY(25%) rotate(67.5deg);
-//                 transform: translateY(25%) rotate(67.5deg);
-//     }
-//     100% {
-//         -webkit-transform: translateY(0) rotate(90deg);
-//            -moz-transform: translateY(0) rotate(90deg);
-//              -o-transform: translateY(0) rotate(90deg);
-//                 transform: translateY(0) rotate(90deg);
-//     }
-// }
-// @-webkit-keyframes square-jelly-box-shadow {
-//     50% {
-//         -webkit-transform: scale(1.25, 1);
-//                 transform: scale(1.25, 1);
-//     }
-// }
-// @-moz-keyframes square-jelly-box-shadow {
-//     50% {
-//         -moz-transform: scale(1.25, 1);
-//              transform: scale(1.25, 1);
-//     }
-// }
-// @-o-keyframes square-jelly-box-shadow {
-//     50% {
-//         -o-transform: scale(1.25, 1);
-//            transform: scale(1.25, 1);
-//     }
-// }
-// @keyframes square-jelly-box-shadow {
-//     50% {
-//         -webkit-transform: scale(1.25, 1);
-//            -moz-transform: scale(1.25, 1);
-//              -o-transform: scale(1.25, 1);
-//                 transform: scale(1.25, 1);
-//     }
-// }
 </style>

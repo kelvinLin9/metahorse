@@ -12,13 +12,13 @@ export default defineStore('couponStore', {
     coupons: [
       {
         id: 1,
-        img: 'https://imgur.com/v2HbjI5.jpg',
+        img: 'https://imgur.com/qLKGUWI.jpg',
         discount: '5折',
         code: 'diamond'
       },
       {
         id: 2,
-        img: 'https://imgur.com/qLKGUWI.jpg',
+        img: 'https://imgur.com/v2HbjI5.jpg',
         discount: '7折',
         code: 'gold'
       },
