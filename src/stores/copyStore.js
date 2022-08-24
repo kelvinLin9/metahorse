@@ -13,7 +13,6 @@ export default defineStore('copyStore', {
     },
     copyCodeOld (id) {
       const couponCode = document.getElementById(id)
-      console.log(couponCode.textContent)
       // 該語法主要用途是代表著使用者的選取範圍，因此要建立 Selection 物件
       const selection = window.getSelection()
       // 確保每一次選取，所以可以補上 selection.removeAllRanges 以確保選取的是新的，且也不會出現反白選取的狀況
