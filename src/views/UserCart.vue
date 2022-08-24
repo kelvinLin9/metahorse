@@ -89,7 +89,7 @@
              v-if="cart.total !== 0">
           <input type="text" class="form-control" placeholder="請輸入優惠碼" aria-label="請輸入優惠碼" aria-describedby="button-addon"
           v-model="coupon_code">
-  
+
           <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" id="button-addon"
                   @click="addCouponCode(coupon_code)">
               套用優惠碼
@@ -97,13 +97,13 @@
         </div>
         <div class="text-end"
             v-if= "( cart.total < 30000 && cart.final_total === cart.total)">
-            還差 
+            還差
             <span class="fs-3">{{ `${30000 - cart.total}` }}</span>
             元即可參加抽獎
         </div>
                 <div class="text-end"
             v-if= "( cart.total < 30000 && cart.final_total !== cart.total)">
-            還差 
+            還差
             <span class="fs-3">{{ `${30000 - cart.final_total}` }}</span>
             元即可參加抽獎
         </div>

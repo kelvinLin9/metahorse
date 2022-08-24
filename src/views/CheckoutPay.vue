@@ -27,16 +27,15 @@
             </tr>
           </tfoot>
         </table>
-        <div class="d-flex justify-content-center fw-bold fs-5 p-3 mt-5 mb-2 border border-primary">
-          訂單編號 :
-          <br class="d-block d-sm-none" >
-          <span id="orderId">
-            {{ order.id }}
-          </span>
-        </div>
-        <div class="btn btn-outline-primary text-dark fw-bold fs-6"
-            @click.prevent="copyCodeOld('orderId')">
-          複製訂單編號
+        <div class="card">
+          <h5 class="card-header">訂單編號 :</h5>
+          <div class="card-body">
+            <p class="card-text" id="orderId">{{ order.id }}</p>
+            <a href="#" class="btn btn-primary btn-sm"
+              @click.prevent="copyCodeOld('orderId')">
+              複製訂單編號
+            </a>
+          </div>
         </div>
         <table class="table">
           <tbody>
