@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-4 checkout-bar w-75">
+  <div class="container py-4 checkout-bar w-75 no-print">
     <div class="row fs-5 fs-md-3 fw-bold ">
       <div style="color: #f4696b" class="la-ball-climbing-dot la-dark"
             v-if="this.$route.name === 'cart'">

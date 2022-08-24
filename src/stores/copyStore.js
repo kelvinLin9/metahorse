@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'// 起手式
 import statusStore from './statusStore'
 
 const status = statusStore()
-export default defineStore('goStore', {
+export default defineStore('copyStore', {
   actions: {
     copyCode (item) {
       // console.log(item)

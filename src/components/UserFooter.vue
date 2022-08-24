@@ -1,5 +1,5 @@
 <template>
-  <div class="footer bg-dark py-3">
+  <div class="footer bg-dark py-3 no-print">
     <div class="container-fluid">
       <ul class="list-inline text-center">
         <li class="list-inline-item text-light">

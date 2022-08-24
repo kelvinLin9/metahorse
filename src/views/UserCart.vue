@@ -85,17 +85,15 @@
          </tr>
          </tfoot>
         </table>
-
-        <div class="input-group mb-3 input-group-sm"
+        <div class="input-group mb-3"
              v-if="cart.total !== 0">
-          <input type="text" class="form-control" placeholder="請輸入優惠碼"
+          <input type="text" class="form-control" placeholder="請輸入優惠碼" aria-label="請輸入優惠碼" aria-describedby="button-addon"
           v-model="coupon_code">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" 
-            @click="addCouponCode(coupon_code)">
+  
+          <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" id="button-addon"
+                  @click="addCouponCode(coupon_code)">
               套用優惠碼
-            </button>
-          </div>
+          </button>
         </div>
         <div class="text-end"
             v-if= "( cart.total < 30000 && cart.final_total === cart.total)">
