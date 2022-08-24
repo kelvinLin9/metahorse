@@ -11,7 +11,7 @@
       <div class="col d-flex flex-column px-2 py-3 align-items-center rounded-pill"
           :class="{'bg-primary' : this.$route.name === 'cart'}">
         <font-awesome-icon icon="fa-solid fa-1"/>
-        購物車
+        購物<br class="d-block d-sm-none">車
       </div>
       <div style="color: #f4696b" class="la-ball-climbing-dot la-dark"
          v-if="this.$route.name === 'checkout'">
