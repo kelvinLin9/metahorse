@@ -46,10 +46,6 @@
             <router-link to="/favorite" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'favorite' }">我的最愛</router-link>
           </li>
-          <li class="nav-item d-block d-lg-none">
-            <router-link to="/UserLogin" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'UserLogin' }">會員登入</router-link>
-          </li>
         </ul>
 
         <!-- 購物車、最愛、使用者介面改成靠右圖示 -->
@@ -118,12 +114,6 @@
                     v-if="favoriteNum != 0">
                 {{ favoriteNum }}
               </div>
-            </RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink to="/UserLogin" class="nav-link px-3"
-            :class="{ 'text-warning':  this.$route.name === 'UserLogin' }">
-              <i class="bi bi-person-workspace fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="會員登入"></i>
             </RouterLink>
           </li>
         </ul>
