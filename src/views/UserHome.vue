@@ -208,7 +208,6 @@ export default {
       icon: 'info',
       text: '消費滿30000元即可參加抽獎',
       showCloseButton: true,
-      focusConfirm: false,
       confirmButtonText: '立即搶購'
     })
       .then((result) => {
