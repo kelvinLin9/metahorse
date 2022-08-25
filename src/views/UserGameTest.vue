@@ -5,7 +5,7 @@
       點我試玩
     </button>
   </div>
-  <GameModal ref="GameModal" />
+  <GameModal ref="GameModal" class="overflow-hidden"/>
 </template>
 
 <script>

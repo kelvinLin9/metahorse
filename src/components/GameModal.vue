@@ -22,7 +22,6 @@
         </h5>
       </div>
       <div class="modal-body">
-
         <div class="container-fluid">
           <div
           v-for="item in horses" :key="item.id"
@@ -44,7 +43,6 @@
           <span class="start"></span>
           <span class="end"></span>
         </div>
-
       </div>
     </div>
   </div>
@@ -136,12 +134,12 @@ export default {
 <style lang="scss" scoped>
 .modal-body{
   position: relative;
+  overflow-x: hidden;
 }
 .horse{
   position:absolute;
   font-size:50px;
   z-index: 1;
-  overflow: hidden;
 }
 .selected-horse{
   border-bottom: 5px dotted;
@@ -154,22 +152,18 @@ export default {
   animation-fill-mode : forwards;
 }
 .ease{
-  // animation:move 10s ease ;
   animation-timing-function: ease;
   animation-fill-mode : forwards;
 }
 .ease-in{
-  // animation:move 10s ease-in ;
   animation-timing-function: ease-in;
   animation-fill-mode : forwards;
 }
 .ease-out{
-  // animation:move 10s ease-out ;
   animation-timing-function: ease-out;
   animation-fill-mode : forwards;
 }
 .ease-in-out{
-  // animation:move 10s ease-in-out ;
   animation-timing-function: ease-in-out;
   animation-fill-mode : forwards;
 }

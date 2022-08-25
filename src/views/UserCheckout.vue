@@ -1,7 +1,7 @@
 <template>
   <UserCheckoutBar/>
   <div class="container">
-    <div class="my-3 row justify-content-center flex-sm-row-reverse">
+    <div class="py-3 row justify-content-center flex-sm-row-reverse">
       <!-- 商品明細 -->
       <div class="col-md-6">
         <div class="d-flex justify-content-center">
