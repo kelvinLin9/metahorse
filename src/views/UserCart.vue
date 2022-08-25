@@ -1,6 +1,6 @@
 <template>
   <UserCheckoutBar/>
-  <div class="container my-3"
+  <div class="container py-3"
       v-if="cart.total !== 0">
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物清單</h1>
@@ -107,7 +107,7 @@
             <span class="fs-3">{{ `${30000 - cart.final_total}` }}</span>
             元即可參加抽獎
         </div>
-      <div class="d-flex justify-content-between mt-3"
+        <div class="d-flex justify-content-between mt-3"
              v-if="cart.total !== 0">
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
                 @click="goProducts">
