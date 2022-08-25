@@ -34,10 +34,10 @@
             <router-link to="/UserSearchOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <router-link to="/UserGame" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'UserGame' }">試玩(測試用)</router-link>
-          </li> -->
+          </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'cart' }">購物車</router-link>

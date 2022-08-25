@@ -101,7 +101,7 @@
             <span class="fs-3">{{ `${30000 - cart.total}` }}</span>
             元即可參加抽獎
         </div>
-                <div class="text-end"
+        <div class="text-end"
             v-if= "( cart.total < 30000 && cart.final_total !== cart.total)">
             還差
             <span class="fs-3">{{ `${30000 - cart.final_total}` }}</span>

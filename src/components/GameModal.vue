@@ -111,6 +111,7 @@ export default {
         allowOutsideClick: false,
         confirmButtonText: '回首頁'
       }).then((result) => {
+        // this.$refs.GameModal.hideModal()
         this.hideModal() // Modal關掉才不會造成回首頁後黑屏
         this.$router.push('/') // 測試遊戲時先拿掉
       })

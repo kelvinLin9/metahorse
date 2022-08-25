@@ -140,18 +140,18 @@ import favoriteStore from '@/stores/favoriteStore'
 export default {
   data () {
     return {
-      id: '',
+      id: ''
     }
   },
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favIcons', 'favState']),
     ...mapState(productStore, ['products', 'product']),
-    ...mapState(statusStore, ['cartLoadingItem']),
+    ...mapState(statusStore, ['cartLoadingItem'])
   },
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
-    ...mapActions(productStore,['getProducts','getProduct']),
-    ...mapActions(cartStore,['addCart']),
+    ...mapActions(productStore, ['getProducts', 'getProduct']),
+    ...mapActions(cartStore, ['addCart'])
   },
   created () {
     this.id = this.$route.params.productId
