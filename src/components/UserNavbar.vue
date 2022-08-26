@@ -49,7 +49,7 @@
         </ul>
 
         <!-- 購物車、最愛、使用者介面改成靠右圖示 -->
-        <ul class="d-none d-lg-flex navbar-nav ms-auto me-2">
+        <ul class="navbar-nav d-none d-lg-flex ms-auto me-2">
           <li class="nav-item position-relative">
             <div class="nav-link px-3"
             :class="{ 'text-warning':  this.$route.name === 'cart' }"
