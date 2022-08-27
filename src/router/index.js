@@ -43,11 +43,6 @@ const routes = [
         component: () => import('../views/UserFavorite.vue')
       },
       {
-        path: 'AdminLogin',
-        name: 'AdminLogin',
-        component: () => import('../views/admin/AdminLogin.vue')
-      },
-      {
         path: 'checkout',
         name: 'checkout',
         component: () => import('../views/UserCheckout.vue')
@@ -66,7 +61,12 @@ const routes = [
         path: 'checkoutPay/:orderId',
         name: 'checkoutPay',
         component: () => import('../views/CheckoutPay.vue')
-      }
+      },
+      {
+        path: 'AdminLogin',
+        name: 'AdminLogin',
+        component: () => import('../views/admin/AdminLogin.vue')
+      },
     ]
   },
   {
