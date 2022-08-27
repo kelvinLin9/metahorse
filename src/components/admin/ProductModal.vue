@@ -148,7 +148,7 @@
                   placeholder="請輸入產品描述"
                 ></textarea>
               </div>
-                            <div class="mb-3">
+              <div class="mb-3">
                 <label for="content" class="form-label">產品說明</label>
                 <textarea
                   type="text"
@@ -160,14 +160,24 @@
               </div>
               <div class="mb-3">
                 <p>賽馬素質</p>
-                <label for="speed">速度</label>
-                <input id="speed" type="number" min="1" max="5" v-model="tempProduct.speed">
-                <label for="stamina">耐力</label>
-                <input id="stamina" type="number" min="1" max="5" v-model="tempProduct.stamina">
-                <label for="lucky">幸運</label>
-                <input id="lucky" type="number" min="1" max="5" v-model="tempProduct.lucky">
-                <label for="intelligence">智慧</label>
-                <input id="intelligence" type="number" min="1" max="5" v-model="tempProduct.intelligence">
+                <div class="row row-cols-2 row-cols-lg-4">
+                  <div class="col my-2">
+                    <label for="speed">速度：</label>
+                    <input id="speed" type="number" min="1" max="5" v-model="tempProduct.speed">
+                  </div>
+                  <div class="col my-2">
+                    <label for="stamina">耐力：</label>
+                    <input id="stamina" type="number" min="1" max="5" v-model="tempProduct.stamina">
+                  </div>
+                  <div class="col my-2">
+                    <label for="lucky">幸運：</label>
+                    <input id="lucky" type="number" min="1" max="5" v-model="tempProduct.lucky">
+                  </div>
+                  <div class="col my-2">
+                    <label for="intelligence">智慧：</label>
+                    <input id="intelligence" type="number" min="1" max="5" v-model="tempProduct.intelligence">
+                  </div>
+                </div>
               </div>
               <div class="mb-3">
                 <div class="form-check">

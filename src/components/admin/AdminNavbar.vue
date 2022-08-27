@@ -2,7 +2,7 @@
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <span class="text-warning f-kalam fs-2">MetaHorse</span>
+        <span class="text-warning f-kalam fs-2 text-center">MetaHorse</span>
         <img src="https://i.imgur.com/61qkafr.jpg" alt="logo" width="50" class="logo">
       </a>
       <!-- 漢堡選單按鈕 -->
@@ -78,45 +78,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.num{
-  width:20px;
-  top: 5px;
-  right: 5px;
-  font-size: 12px;
-}
-/* 購物車按鈕 */
-.cart {
-  background-color: transparent;
-  position: relative;
-}
-/* 購物車按鈕定位 */
-.cart-box{
-  min-width: 450px;
-  position: absolute;
-  right: 1px;
-  top: 60px;
-}
 .logo {
   position: absolute;
   left: 165px;
   top: 10px;
-}
-@media (max-width: 768px) {
-  .nav{
-    z-index: 1;
-  }
-  .cart-box{
-    min-width: 340px;
-  }
-  .logo {
-   position: absolute;
+  @media (max-width: 768px) {
    left: 145px;
   }
-}
-@media (max-width: 576px) {
-  .logo {
-   position: absolute;
-   left: 140px;
+  @media (max-width: 576px) {
+   left: 137px;
+  }
+  @media (max-width: 414px) {
+   left: 130px;
   }
 }
 </style>
