@@ -2,7 +2,7 @@
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <span class="text-warning f-kalam fs-2">MetaHorse...</span>
+        <span class="text-warning f-kalam fs-2">MetaHorse</span>
         <img src="https://i.imgur.com/61qkafr.jpg" alt="logo" width="50" class="logo">
       </a>
       <!-- 漢堡選單按鈕 -->
