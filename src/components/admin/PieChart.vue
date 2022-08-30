@@ -1,6 +1,6 @@
 <template>
   <div>
-    7788995
+    7
     <canvas id="planet-chart"></canvas>
   </div>
 </template>
