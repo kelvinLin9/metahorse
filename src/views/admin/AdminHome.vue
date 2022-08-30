@@ -39,7 +39,7 @@
       <div class="col-lg-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <canvas id="pie-chart" class="img-fluid"></canvas>
+            <PieChart/>
           </div>
         </div>
       </div>
@@ -58,8 +58,8 @@
           <span class="input-group-text bg-white border-0 ps-3 pe-1">
             <i class="bi bi-search"></i>
           </span>
-          <input type="text" 
-          class="form-control shadow-none border-0" 
+          <input type="text"
+          class="form-control shadow-none border-0"
           placeholder="search">
         </div>
       </div>
@@ -89,7 +89,7 @@
                   <td>
                     <ul class="list-unstyled">
                       <li v-for="(product, i) in item.products" :key="i">
-                        {{ product.product.title }} 數量：{{ product.qty }} / 
+                        {{ product.product.title }} 數量：{{ product.qty }} /
                         {{ product.product.unit }}
                       </li>
                     </ul>
@@ -136,8 +136,6 @@
   </div>
 </div>
 
-
-
 </template>
 
 <script>
@@ -146,12 +144,14 @@ import chartStore from '@/stores/chartStore'
 import ProductModal from '@/components/admin/ProductModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
+import PieChart from '@/components/admin/PieChart.vue'
 
 export default {
   components: {
     ProductModal,
     DelModal,
-    Pagination
+    Pagination,
+    PieChart
   },
   computed: {
     ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum'])
@@ -231,7 +231,6 @@ export default {
   //     })
   //   }
   },
-
   created () {
     this.getOrders()
     // this.getProducts()
