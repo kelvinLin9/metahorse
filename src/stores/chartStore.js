@@ -26,7 +26,7 @@ export default defineStore('productStore', {
       this.ordersNum = 0
       for (let i = 1; i <= this.pagination.total_pages; i++) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
-        this.isLoading = true
+        status.isLoading = true
         axios.get(url).then((response) => {
           this.allOrders[i - 1] = response.data.orders
           response.data.orders.forEach((item) => {
@@ -34,7 +34,7 @@ export default defineStore('productStore', {
             this.ordersNum += 1
             // console.log(this.revenue)
           })
-          this.isLoading = false
+          status.isLoading = false
           // console.log(this.allOrders)
         })
       }
@@ -42,11 +42,11 @@ export default defineStore('productStore', {
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
-      this.isLoading = true
+      status.isLoading = true
       axios.get(url, this.tempProduct).then((response) => {
         this.orders = response.data.orders
         this.pagination = response.data.pagination
-        this.isLoading = false
+        status.isLoading = false
         // console.log(response)
         this.getAllOrders()
       })

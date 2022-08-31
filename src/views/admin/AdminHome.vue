@@ -46,7 +46,8 @@
       <div class="col-lg-8">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <canvas id="bar-chart" class="img-fluid"></canvas>
+            <button @click="test()">123</button>
+            <canvas id="example" class="img-fluid"></canvas>
           </div>
         </div>
       </div>
@@ -139,6 +140,7 @@
 </template>
 
 <script>
+import Chart from 'chart.js'
 import { mapState, mapActions } from 'pinia'
 import chartStore from '@/stores/chartStore'
 import ProductModal from '@/components/admin/ProductModal.vue'
@@ -157,7 +159,7 @@ export default {
     ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum'])
   },
   methods: {
-    ...mapActions(chartStore, ['getOrders'])
+    ...mapActions(chartStore, ['getOrders']),
     // 在生命週期觸發
     // getProducts (page = 1) {
     //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
