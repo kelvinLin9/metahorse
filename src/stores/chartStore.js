@@ -12,12 +12,12 @@ export default defineStore('productStore', {
     allOrders: [],
     ordersNum: 0,
     revenue: 0,
-    category:{
-      S:0,
-      A:0,
-      B:0,
-      C:0,
-      other:0
+    category: {
+      S: 0,
+      A: 0,
+      B: 0,
+      C: 0,
+      other: 0
     },
     isNew: false,
     pagination: {},
@@ -35,28 +35,35 @@ export default defineStore('productStore', {
       for (let i = 1; i <= this.pagination.total_pages; i++) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
         // status.isLoading = true
-        axios.get(url).then((response) => {
-          this.allOrders[i - 1] = response.data.orders
-          response.data.orders.forEach((item) => {
+        axios.get(url).then((res) => {
+          this.allOrders[i - 1] = res.data.orders
+          res.data.orders.forEach((item) => {
             this.revenue += item.total
             this.ordersNum += 1
-            // console.log(this.revenue)
           })
           // status.isLoading = false
           // console.log(this.allOrders)
         })
       }
     },
+    getOrders_1 () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=1`
+      // status.isLoading = true
+      axios.get(url, this.tempProduct).then((res) => {
+        this.orders = res.data.orders
+        this.pagination = res.data.pagination
+        // status.isLoading = false
+        this.getAllOrders()
+      })
+    },
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
       // status.isLoading = true
-      axios.get(url, this.tempProduct).then((response) => {
-        this.orders = response.data.orders
-        this.pagination = response.data.pagination
+      axios.get(url, this.tempProduct).then((res) => {
+        this.orders = res.data.orders
+        this.pagination = res.data.pagination
         // status.isLoading = false
-        console.log(response.data.orders[0].products)
-        this.getAllOrders()
       })
     },
     getChartData () {
@@ -68,10 +75,10 @@ export default defineStore('productStore', {
         blue: 'rgb(54, 162, 235)',
         purple: 'rgb(153, 102, 255)',
         grey: 'rgb(201, 203, 207)'
-      };
-      var randomScalingFactor = function () {
-        return Math.round(Math.random() * 2000000);
-      };  
+      }
+      const randomScalingFactor = function () {
+        return Math.round(Math.random() * 2000000)
+      }
       this.pieChartData = {
         type: 'pie',
         data: {
@@ -82,29 +89,29 @@ export default defineStore('productStore', {
               randomScalingFactor(),
               randomScalingFactor(),
               randomScalingFactor(),
-              randomScalingFactor(),
+              randomScalingFactor()
             ],
             backgroundColor: [
               chartColors.red,
               chartColors.orange,
               chartColors.yellow,
               chartColors.green,
-              chartColors.blue,
+              chartColors.blue
             ],
             label: 'Dataset 1'
           }],
           labels: [
-            '大麥克全餐',
-            '肥宅快樂水',
-            '太爽啦義大利麵',
-            '薯條加大吃不完',
-            '兒童餐椅不給坐',
+            'S級賽馬',
+            'A級賽馬',
+            'B級賽馬',
+            'C級賽馬',
+            '其他道具'
           ]
         },
         options: {
           responsive: true
         }
-      };
+      }
       this.barChartData = {
         type: 'bar',
         data: {
@@ -115,7 +122,7 @@ export default defineStore('productStore', {
               randomScalingFactor(),
               randomScalingFactor(),
               randomScalingFactor(),
-              randomScalingFactor(),
+              randomScalingFactor()
             ],
             backgroundColor: [
               chartColors.red,
@@ -123,7 +130,7 @@ export default defineStore('productStore', {
               chartColors.yellow,
               chartColors.green,
               chartColors.blue,
-              chartColors.purple,
+              chartColors.purple
             ],
             label: 'Dataset 1'
           }],
@@ -133,13 +140,13 @@ export default defineStore('productStore', {
             '三月',
             '四月',
             '五月',
-            '六月',
+            '六月'
           ]
         },
         options: {
           responsive: true
         }
-      };
+      }
     }
   }
 })

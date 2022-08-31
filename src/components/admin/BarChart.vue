@@ -18,9 +18,8 @@ export default {
   },
   mounted () {
     // this.getChartData()
-    console.log(this.barChartData)
-    const ctx2 = document.getElementById('barChart').getContext('2d')
-    const barChart = new Chart(ctx2, this.barChartData)
+    const ctx = document.getElementById('barChart')
+    const barChart = new Chart(ctx, this.barChartData)
   }
 }
 </script>

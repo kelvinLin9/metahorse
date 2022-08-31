@@ -2,21 +2,11 @@
   <!-- <Loading :active="isLoading"></Loading> -->
 <div class="container main">
   <div class="border-bottom sticky-top bg-white menu-btn">
-    <!-- <a href="#" id="toggle-btn" class="px-3 py-2 border-end d-inline-block"> -->
       <i class="bi bi-arrows-angle-expand"></i>
-    <!-- </a> -->
   </div>
   <div class="p-4">
     <!-- 統計資料 -->
     <div class="row gy-3 mb-4">
-      <!-- <div class="col">
-        <div class="card shadow-sm">
-          <div class="card-body text-end text-nowrap">
-            <h2 class="display-6">在線人數</h2>
-            <p class="display-4">3,456</p>
-          </div>
-        </div>
-      </div> -->
       <div class="col">
         <div class="card shadow-sm">
           <div class="card-body text-end text-nowrap">
@@ -108,7 +98,7 @@
                   </td>
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-outline-primary btn-sm"
+                      <button class="btn btn-outline-primary btn-sm text-dark"
                               @click="openModal(false, item)">檢視</button>
                       <button class="btn btn-outline-danger btn-sm"
                               @click="openDelOrderModal(item)"
@@ -121,18 +111,8 @@
           </table>
         </div>
       </div>
-      <div class="card-footer bg-white">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-end mb-0">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
-      </div>
     </div>
+    <Pagination/>
   </div>
 </div>
 
@@ -156,87 +136,26 @@ export default {
     BarChart
   },
   computed: {
-    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum'])
+    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination'])
   },
   methods: {
-    ...mapActions(chartStore, ['getOrders']),
-    // 在生命週期觸發
-    // getProducts (page = 1) {
-    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
-    //   this.isLoading = true
-    //   // 不需要加入資料 get(路徑)就可以了
-    //   this.$http.get(api).then((res) => {
-    //     this.isLoading = false
-    //     if (res.data.success) {
-    //       console.log(1, res.data)
-    //       this.products = res.data.products
-    //       this.pagination = res.data.pagination
-    //     }
-    //   })
-    // },
-    // 新增(isNew)，tempProduct清空
-    // 編輯(!isNew)，tempProduct = item
-    // openModal (isNew, item) {
-    //   if (isNew) {
-    //     this.tempProduct = {}
-    //   } else {
-    //     this.tempProduct = { ...item }
-    //   }
-    //   this.isNew = isNew
-    //   const productComponent = this.$refs.productModal
-    //   productComponent.showModal()
-    // },
-    // 把外層資料儲存下來，再傳送到遠端
-    // updateProduct (item) {
-    //   // console.log(item)
-    //   this.tempProduct = item
-    //   // 新增
-    //   let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
-    //   let httpMethod = 'post'
-    //   // 編輯
-    //   if (!this.isNew) {
-    //     api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`
-    //     httpMethod = 'put'
-    //   }
-    //   const productComponent = this.$refs.productModal
-    //   this.$http[httpMethod](api, { data: this.tempProduct }).then((response) => {
-    //     console.log(response)
-    //     productComponent.hideModal()
-    //     if (response.data.success) {
-    //       this.getProducts()
-    //       this.emitter.emit('push-message', {
-    //         style: 'success',
-    //         title: '更新成功'
-    //       })
-    //     } else {
-    //       this.emitter.emit('push-message', {
-    //         style: 'danger',
-    //         title: '更新失敗',
-    //         content: response.data.message.join('、')
-    //       })
-    //     }
-    //   })
-    // },
-    // 開啟刪除 Modal
-    // openDelProductModal (item) {
-    //   this.tempProduct = { ...item }
-    //   const delComponent = this.$refs.delModal
-    //   delComponent.showModal()
-    // },
-  //   delProduct () {
-  //     const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
-  //     this.$http.delete(url).then((response) => {
-  //       console.log(response.data)
-  //       const delComponent = this.$refs.delModal
-  //       delComponent.hideModal()
-  //       this.getProducts()
-  //     })
-  //   }
+    ...mapActions(chartStore, ['getOrders_1', 'getOrders']),
+    updatePaid (item) {
+      this.isLoading = true
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
+      const paid = {
+        is_paid: item.is_paid
+      }
+      this.$http.put(api, { data: paid }).then((response) => {
+        this.isLoading = false
+        this.getOrders(this.pagination.current_page)
+        // this.$httpMessageState(response, '更新付款狀態')
+      })
+    },
   },
   created () {
-    this.getOrders()
+    this.getOrders_1()
     // this.getProducts()
   }
 }
 </script>
-

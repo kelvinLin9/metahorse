@@ -18,9 +18,8 @@ export default {
   },
   mounted () {
     this.getChartData()
-    console.log(this.pieChartData)
-    const ctx1 = document.getElementById('pieChart').getContext('2d')
-    const pieChart = new Chart(ctx1, this.pieChartData)
+    const ctx = document.getElementById('pieChart')
+    const pieChart = new Chart(ctx, this.pieChartData)
   }
 }
 </script>
