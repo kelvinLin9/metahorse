@@ -19,7 +19,9 @@ export default {
   },
   mounted () {
     this.getPieChartData()
+    console.log(this.PieChartData)
     const ctx = document.getElementById('planet-chart')
+    console.log(ctx)
     const planetChart = new Chart(ctx, this.PieChartData)
   }
 }
