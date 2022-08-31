@@ -1,10 +1,10 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <!-- <Loading :active="isLoading"></Loading> -->
 <div class="container main">
   <div class="border-bottom sticky-top bg-white menu-btn">
-    <a href="#" id="toggle-btn" class="px-3 py-2 border-end d-inline-block">
+    <!-- <a href="#" id="toggle-btn" class="px-3 py-2 border-end d-inline-block"> -->
       <i class="bi bi-arrows-angle-expand"></i>
-    </a>
+    <!-- </a> -->
   </div>
   <div class="p-4">
     <!-- 統計資料 -->
@@ -46,8 +46,7 @@
       <div class="col-lg-8">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <button @click="test()">123</button>
-            <canvas id="example" class="img-fluid"></canvas>
+            <BarChart/>
           </div>
         </div>
       </div>
@@ -140,20 +139,21 @@
 </template>
 
 <script>
-import Chart from 'chart.js'
 import { mapState, mapActions } from 'pinia'
 import chartStore from '@/stores/chartStore'
 import ProductModal from '@/components/admin/ProductModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
 import PieChart from '@/components/admin/PieChart.vue'
+import BarChart from '@/components/admin/BarChart.vue'
 
 export default {
   components: {
     ProductModal,
     DelModal,
     Pagination,
-    PieChart
+    PieChart,
+    BarChart
   },
   computed: {
     ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum'])
@@ -239,6 +239,4 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
 
-</style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="pieChart"></canvas>
+    <canvas id="barChart"></canvas>
   </div>
 </template>
 
@@ -11,16 +11,16 @@ import chartStore from '@/stores/chartStore'
 
 export default {
   computed: {
-    ...mapState(chartStore, ['pieChartData'])
+    ...mapState(chartStore, ['barChartData'])
   },
   methods: {
     ...mapActions(chartStore, ['getChartData'])
   },
   mounted () {
-    this.getChartData()
-    console.log(this.pieChartData)
-    const ctx1 = document.getElementById('pieChart').getContext('2d')
-    const pieChart = new Chart(ctx1, this.pieChartData)
+    // this.getChartData()
+    console.log(this.barChartData)
+    const ctx2 = document.getElementById('barChart').getContext('2d')
+    const barChart = new Chart(ctx2, this.barChartData)
   }
 }
 </script>
