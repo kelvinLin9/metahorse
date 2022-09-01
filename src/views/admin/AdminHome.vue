@@ -136,10 +136,10 @@ export default {
     BarChart
   },
   computed: {
-    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination'])
+    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination', '', ''])
   },
   methods: {
-    ...mapActions(chartStore, ['getOrders_1', 'getOrders']),
+    ...mapActions(chartStore, ['getOrders_1', 'getOrders', 'openModal']),
     updatePaid (item) {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
