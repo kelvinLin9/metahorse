@@ -1,9 +1,6 @@
 <template>
   <!-- <Loading :active="isLoading"></Loading> -->
 <div class="container main">
-  <div class="border-bottom sticky-top bg-white menu-btn">
-      <i class="bi bi-arrows-angle-expand"></i>
-  </div>
   <div class="p-4">
     <!-- 統計資料 -->
     <div class="row gy-3 mb-4">
@@ -43,16 +40,16 @@
     </div>
     <!-- 訂單資料 -->
     <div class="card shadow-sm">
-      <div class="card-title py-2 mb-0">
+      <!-- <div class="card-title py-2 mb-0">
         <div class="input-group mb-0">
           <span class="input-group-text bg-white border-0 ps-3 pe-1">
             <i class="bi bi-search"></i>
           </span>
           <input type="text"
           class="form-control shadow-none border-0"
-          placeholder="search">
+          placeholder="搜尋訂單">
         </div>
-      </div>
+      </div> -->
       <div class="card-body p-0">
         <div class="table-responsive">
           <table class="table table-hover mb-0 text-nowrap">
@@ -63,6 +60,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">用戶姓名</th>
                 <th scope="col">購買品項</th>
+                <th scope="col">數量</th>
                 <th scope="col">購買金額</th>
                 <th scope="col">付款狀態</th>
                 <th scope="col" class="pe-3">編輯 / 刪除</th>
@@ -79,8 +77,14 @@
                   <td>
                     <ul class="list-unstyled">
                       <li v-for="(product, i) in item.products" :key="i">
-                        {{ product.product.title }} 數量：{{ product.qty }} /
-                        {{ product.product.unit }}
+                        {{ product.product.title }}
+                      </li>
+                    </ul>
+                  </td>
+                  <td>
+                    <ul class="list-unstyled">
+                      <li v-for="(product, i) in item.products" :key="i">
+                        {{ product.qty }}
                       </li>
                     </ul>
                   </td>
@@ -112,6 +116,8 @@
         </div>
       </div>
     </div>
+    <OrderModal ref="orderModal" />
+    <!-- <DelModal ref="delModal" /> -->
     <Pagination/>
   </div>
 </div>
@@ -119,27 +125,29 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia'
+import { mapState, mapActions, mapWritableState } from 'pinia'
 import chartStore from '@/stores/chartStore'
-import ProductModal from '@/components/admin/ProductModal.vue'
+import OrderModal from '@/components/admin/OrderModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
 import PieChart from '@/components/admin/PieChart.vue'
 import BarChart from '@/components/admin/BarChart.vue'
+import 'bootstrap/js/dist/offcanvas'
 
 export default {
   components: {
-    ProductModal,
+    OrderModal,
     DelModal,
     Pagination,
     PieChart,
     BarChart
   },
   computed: {
-    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination', '', ''])
+    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination', '', '']),
+    ...mapWritableState(chartStore, ['tempOrder', 'isNew'])
   },
   methods: {
-    ...mapActions(chartStore, ['getOrders_1', 'getOrders', 'openModal']),
+    ...mapActions(chartStore, ['getOrdersFirst', 'getOrders']),
     updatePaid (item) {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
@@ -152,9 +160,28 @@ export default {
         // this.$httpMessageState(response, '更新付款狀態')
       })
     },
+    openModal (isNew, item) {
+      this.tempOrder = { ...item }
+      // console.log(this.tempOrder)
+      this.isNew = false
+      this.$refs.orderModal.showModal()
+    },
+    openDelOrderModal (item) {
+      this.tempOrder = { ...item }
+      this.$refs.delModal.showModal()
+    },
+    delOrder () {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`
+      this.isLoading = true
+      this.$http.delete(url).then((response) => {
+        // console.log(response)
+        this.$refs.delModal.hideModal()
+        this.getOrders(this.currentPage)
+      })
+    }
   },
   created () {
-    this.getOrders_1()
+    this.getOrdersFirst()
     // this.getProducts()
   }
 }

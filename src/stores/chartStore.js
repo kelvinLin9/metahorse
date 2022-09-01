@@ -1,5 +1,4 @@
 import axios from 'axios'
-import Chart from 'chart.js'
 // 起手式
 import { defineStore } from 'pinia'
 import statusStore from './statusStore'
@@ -46,7 +45,7 @@ export default defineStore('productStore', {
         })
       }
     },
-    getOrders_1 () {
+    getOrdersFirst () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=1`
       // status.isLoading = true
       axios.get(url, this.tempProduct).then((res) => {
@@ -147,39 +146,6 @@ export default defineStore('productStore', {
           responsive: true
         }
       }
-    },
-    openModal (isNew, item) {
-      this.tempOrder = { ...item }
-      this.isNew = false
-      const orderComponent = this.$refs.orderModal
-      orderComponent.showModal()
-    },
-    openDelOrderModal (item) {
-      this.tempOrder = { ...item }
-      const delComponent = this.$refs.delModal
-      delComponent.showModal()
-    },
-    updatePaid (item) {
-      this.isLoading = true
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
-      const paid = {
-        is_paid: item.is_paid
-      }
-      this.$http.put(api, { data: paid }).then((response) => {
-        this.isLoading = false
-        this.getOrders(this.currentPage)
-        this.$httpMessageState(response, '更新付款狀態')
-      })
-    },
-    delOrder () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`
-      this.isLoading = true
-      this.$http.delete(url).then((response) => {
-        console.log(response)
-        const delComponent = this.$refs.delModal
-        delComponent.hideModal()
-        this.getOrders(this.currentPage)
-      })
     }
   }
 })

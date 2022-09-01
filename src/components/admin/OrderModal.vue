@@ -99,7 +99,7 @@
                   data-bs-dismiss="modal">取消
           </button>
           <button type="button" class="btn btn-primary"
-                  @click="$emit('update-order', tempOrder)">確認</button>
+                  >確認</button>
         </div>
       </div>
     </div>
@@ -107,25 +107,22 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin'
+import { mapState, mapActions, mapWritableState } from 'pinia'
+import chartStore from '@/stores/chartStore'
 export default {
   name: 'orderModal',
-  props: {
-    order: {
-      type: Object,
-      default () { return {} }
-    }
-  },
   data () {
     return {
       status: {},
       modal: '',
-      tempOrder: {},
+      // tempOrder: {},
       isPaid: false
     }
   },
-  emits: ['update-product'],
+  computed: {
+    ...mapWritableState(chartStore, ['tempOrder', 'isNew'])
+  },
   mixins: [modalMixin],
-  inject: ['emitter'],
   watch: {
     order () {
       this.tempOrder = this.order
