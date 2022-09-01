@@ -52,10 +52,7 @@
     </tbody>
   </table>
   <!-- @emit-pages="getProducts" emit-pages觸發後執行getProducts -->
-  <Pagination
-    :pages="pagination"
-    @emit-pages="getProducts">
-  </Pagination>
+  <Pagination/>
 
   <ProductModal
     ref="productModal"
@@ -70,6 +67,8 @@
   </template>
 
 <script>
+import { mapState, mapActions, mapWritableState } from 'pinia'
+import chartStore from '@/stores/chartStore'
 import ProductModal from '@/components/admin/ProductModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
@@ -78,7 +77,7 @@ export default {
   data () {
     return {
       products: [], // 所有產品資訊
-      pagination: {}, // 分頁資訊
+      // pagination: {}, // 分頁資訊
       // 先傳給ProductModal，ProductModal接收後儲存起來
       tempProduct: {}, // 主要為了編輯
       isNew: false, // 是否新增
@@ -92,6 +91,9 @@ export default {
     Pagination
   },
   inject: ['emitter'],
+  computed: {
+    ...mapWritableState(chartStore, ['pagination'])
+  },
   methods: {
     // 在生命週期觸發
     getProducts (page = 1) {
@@ -101,7 +103,7 @@ export default {
       this.$http.get(api).then((res) => {
         this.isLoading = false
         if (res.data.success) {
-          console.log(1, res.data)
+          // console.log(1, res.data)
           this.products = res.data.products
           this.pagination = res.data.pagination
         }

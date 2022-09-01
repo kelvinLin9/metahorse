@@ -72,7 +72,6 @@ export default {
   },
   mounted () {
     this.routeName = this.$route.path // 點擊後圖標變色
-    console.log('this.$route.path', this.$route.path)
   }
 }
 </script>

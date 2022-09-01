@@ -117,7 +117,6 @@
       </div>
     </div>
     <OrderModal ref="orderModal" />
-    <!-- <DelModal ref="delModal" /> -->
     <Pagination/>
   </div>
 </div>
@@ -129,7 +128,7 @@ import { mapState, mapActions, mapWritableState } from 'pinia'
 import chartStore from '@/stores/chartStore'
 import OrderModal from '@/components/admin/OrderModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
-import DelModal from '@/components/admin/DelModal.vue'
+import DelModal from '@/components/admin/DelModal0829.vue'
 import PieChart from '@/components/admin/PieChart.vue'
 import BarChart from '@/components/admin/BarChart.vue'
 import 'bootstrap/js/dist/offcanvas'
@@ -143,7 +142,7 @@ export default {
     BarChart
   },
   computed: {
-    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination', '', '']),
+    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination']),
     ...mapWritableState(chartStore, ['tempOrder', 'isNew'])
   },
   methods: {
@@ -168,21 +167,35 @@ export default {
     },
     openDelOrderModal (item) {
       this.tempOrder = { ...item }
-      this.$refs.delModal.showModal()
+      this.$swal.fire({
+        title: '確定刪除?',
+        text: '刪除後將無法恢復',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.delOrder()
+        }
+      })
     },
     delOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`
       this.isLoading = true
-      this.$http.delete(url).then((response) => {
-        // console.log(response)
-        this.$refs.delModal.hideModal()
-        this.getOrders(this.currentPage)
+      this.$http.delete(url).then((res) => {
+        this.$swal.fire(
+          'Deleted!',
+          '刪除成功',
+          'success'
+        )
+        this.getOrders(this.pagination.current_page)
       })
     }
   },
-  created () {
+  mounted () {
     this.getOrdersFirst()
-    // this.getProducts()
   }
 }
 </script>

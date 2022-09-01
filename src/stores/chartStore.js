@@ -63,6 +63,7 @@ export default defineStore('productStore', {
         this.orders = res.data.orders
         this.pagination = res.data.pagination
         // status.isLoading = false
+        this.getAllOrders()
       })
     },
     getChartData () {
