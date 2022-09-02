@@ -3,7 +3,7 @@
 <div class="text-end mt-3">
   <button class="btn btn-primary" type="button"
     @click="getAllOrdersData()">
-    繪製圖表
+    顯示圖表
   </button>
 </div>
 <div class="container main">
@@ -32,14 +32,14 @@
       <div class="col-lg-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <PieChart/>
+            <canvas id="pieChart"></canvas>
           </div>
         </div>
       </div>
       <div class="col-lg-8">
         <div class="card shadow-sm h-100">
           <div class="card-body">
-            <BarChart/>
+            <canvas id="barChart"></canvas>
           </div>
         </div>
       </div>
@@ -134,17 +134,13 @@ import chartStore from '@/stores/chartStore'
 import OrderModal from '@/components/admin/OrderModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal0829.vue'
-import PieChart from '@/components/admin/PieChart.vue'
-import BarChart from '@/components/admin/BarChart.vue'
 import 'bootstrap/js/dist/offcanvas'
 
 export default {
   components: {
     OrderModal,
     DelModal,
-    Pagination,
-    PieChart,
-    BarChart
+    Pagination
   },
   computed: {
     ...mapState(chartStore, ['orders', 'revenue', 'ordersNum', 'pagination']),
