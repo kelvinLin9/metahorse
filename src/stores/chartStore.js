@@ -9,6 +9,8 @@ export default defineStore('productStore', {
   state: () => ({
     orders: {},
     allOrders: [],
+    allOrders1: [],
+    allOrders2: [],
     ordersNum: 0,
     revenue: 0,
     category: {
@@ -29,6 +31,7 @@ export default defineStore('productStore', {
   actions: {
     getAllOrders () {
       this.allOrders = []
+      this.allOrders1 = []
       this.revenue = 0
       this.ordersNum = 0
       for (let i = 1; i <= this.pagination.total_pages; i++) {
@@ -36,6 +39,8 @@ export default defineStore('productStore', {
         // status.isLoading = true
         axios.get(url).then((res) => {
           this.allOrders[i - 1] = res.data.orders
+          this.allOrders1.push(...res.data.orders) // 無正確排序
+          // this.allOrders2.push(...res.data.orders.products) // 無正確排序
           res.data.orders.forEach((item) => {
             this.revenue += item.total
             this.ordersNum += 1
@@ -44,16 +49,6 @@ export default defineStore('productStore', {
           // console.log(this.allOrders)
         })
       }
-    },
-    getOrdersFirst () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=1`
-      // status.isLoading = true
-      axios.get(url, this.tempProduct).then((res) => {
-        this.orders = res.data.orders
-        this.pagination = res.data.pagination
-        // status.isLoading = false
-        this.getAllOrders()
-      })
     },
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
@@ -65,6 +60,9 @@ export default defineStore('productStore', {
         // status.isLoading = false
         this.getAllOrders()
       })
+    },
+    getAllOrdersData () {
+      console.log(this.allOrders1[2].products)
     },
     getChartData () {
       const chartColors = {

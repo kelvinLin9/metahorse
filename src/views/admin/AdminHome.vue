@@ -1,5 +1,11 @@
 <template>
   <!-- <Loading :active="isLoading"></Loading> -->
+<div class="text-end mt-3">
+  <button class="btn btn-primary" type="button"
+    @click="getAllOrdersData()">
+    繪製圖表
+  </button>
+</div>
 <div class="container main">
   <div class="p-4">
     <!-- 統計資料 -->
@@ -120,7 +126,6 @@
     <Pagination/>
   </div>
 </div>
-
 </template>
 
 <script>
@@ -142,11 +147,11 @@ export default {
     BarChart
   },
   computed: {
-    ...mapState(chartStore, ['orders', 'revenue', 'allOrders', 'ordersNum', 'pagination']),
+    ...mapState(chartStore, ['orders', 'revenue', 'ordersNum', 'pagination']),
     ...mapWritableState(chartStore, ['tempOrder', 'isNew'])
   },
   methods: {
-    ...mapActions(chartStore, ['getOrdersFirst', 'getOrders']),
+    ...mapActions(chartStore, ['getOrders', 'getAllOrdersData']),
     updatePaid (item) {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
@@ -195,7 +200,7 @@ export default {
     }
   },
   mounted () {
-    this.getOrdersFirst()
+    this.getOrders()
   }
 }
 </script>
