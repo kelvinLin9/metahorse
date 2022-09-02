@@ -1,6 +1,6 @@
 <template>
-  <nav aria-label="Page navigation example mt-3">
-    <ul class="pagination justify-content-center ">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center pt-3">
       <li class="page-item"
           :class="{ 'disabled' : !pagination.has_pre }">
         <a class="page-link text-dark" href="#" aria-label="Previous"

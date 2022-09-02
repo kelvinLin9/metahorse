@@ -71,7 +71,7 @@ const routes = [
   },
   {
     path: '/dashboard',
-    component: () => import('../views/admin/AdminDashboard0829.vue'),
+    component: () => import('../views/admin/AdminDashboard.vue'),
     children: [
       {
         path: 'order',

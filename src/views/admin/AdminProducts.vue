@@ -1,13 +1,13 @@
 <template>
   <!-- <Loading :active="isLoading"></Loading> -->
-  <div class="text-end mt-3">
+  <div class="text-end pt-4">
     <button class="btn btn-primary" type="button"
     @click="openModal(true)">
       增加一個產品
     </button>
   </div>
-
-  <table class="table mt-4">
+<div class="p-1">
+  <table class="table">
     <thead>
       <tr>
         <th width="100">分類</th>
@@ -52,6 +52,8 @@
     </tbody>
   </table>
   <Pagination/>
+</div>
+  
 
   <ProductModal
     ref="productModal"
@@ -73,15 +75,6 @@ import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
 
 export default {
-  data () {
-    return {
-      // products: [], // 所有產品資訊
-      // tempProduct: {}, // 主要為了編輯
-      // isNew: false, // 是否新增
-      // isLoading: false
-    }
-  },
-  // 區域註冊
   components: {
     ProductModal,
     DelModal,
@@ -94,20 +87,6 @@ export default {
   },
   methods: {
     ...mapActions(adminStore, ['getProducts']),
-    // 在生命週期觸發
-    // getProducts (page = 1) {
-    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
-    //   this.isLoading = true
-    //   // 不需要加入資料 get(路徑)就可以了
-    //   this.$http.get(api).then((res) => {
-    //     this.isLoading = false
-    //     if (res.data.success) {
-    //       // console.log(1, res.data)
-    //       this.products = res.data.products
-    //       this.pagination = res.data.pagination
-    //     }
-    //   })
-    // },
     // 新增(isNew)，tempProduct清空
     // 編輯(!isNew)，tempProduct = item
     openModal (isNew, item) {

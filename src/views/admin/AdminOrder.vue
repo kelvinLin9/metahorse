@@ -1,13 +1,13 @@
 <template>
   <!-- <Loading :active="isLoading"></Loading> -->
-<div class="text-end mt-3">
+<div class="text-end pt-3">
   <button class="btn btn-primary" type="button"
     @click="getAllOrdersData()">
     顯示圖表
   </button>
 </div>
 <div class="container main">
-  <div class="p-4">
+  <div class="p-1">
     <!-- 統計資料 -->
     <div class="row gy-3 mb-4">
       <div class="col">
@@ -46,16 +46,6 @@
     </div>
     <!-- 訂單資料 -->
     <div class="card shadow-sm">
-      <!-- <div class="card-title py-2 mb-0">
-        <div class="input-group mb-0">
-          <span class="input-group-text bg-white border-0 ps-3 pe-1">
-            <i class="bi bi-search"></i>
-          </span>
-          <input type="text"
-          class="form-control shadow-none border-0"
-          placeholder="搜尋訂單">
-        </div>
-      </div> -->
       <div class="card-body p-0">
         <div class="table-responsive">
           <table class="table table-hover mb-0 text-nowrap">

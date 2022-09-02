@@ -1,22 +1,34 @@
 <template>
-  <Navbar :key="$route.path"/>
-  <div class="container-fluid mt-3 position-relative">
-    <ToastMessages/>
+  <AdminNavbar :key="$route.path"/>
+  <div class="user-loading position-absolute top-50 start-50 translate-middle"
+      v-if="isLoading">
+    <UserLoading/>
+  </div>
+  <div class="container-fluid position-relative min-height milkyWay">
     <router-view/>
   </div>
+  <ToastMessages/>
+  <UserFooter/>
 </template>
 
 <script>
-// 拆分元件後再import進來 .vue記得要加
+// .vue記得要加
 import emitter from '@/methods/emitter'
+import UserFooter from '@/components/UserFooter.vue'
 import ToastMessages from '@/components/ToastMessages.vue'
-import Navbar from '../../components/admin/AdminNavbar.vue'
+import AdminNavbar from '@/components/admin/AdminNavbar.vue'
+import { mapActions, mapState } from 'pinia'
+import statusStore from '@/stores/statusStore'
 
 export default {
   // 區域註冊
   components: {
-    Navbar,
-    ToastMessages
+    AdminNavbar,
+    ToastMessages,
+    UserFooter
+  },
+  computed: {
+    ...mapState(statusStore, ['isLoading'])
   },
   provide () {
     return {
@@ -36,3 +48,12 @@ export default {
   }
 }
 </script>
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
+.user-loading {
+  z-index: 1000;
+}
+.min-height {
+   min-height: calc(100vh - 60px - 130px);
+}
+</style>

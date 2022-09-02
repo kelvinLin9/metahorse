@@ -49,23 +49,16 @@ export default {
       isCollapse: false,
       routeName: '',
       status: {
-        // 對應品項 id 當loadingItem為一個特定品項的時候
-        // 我們就會把這個按鈕轉為disabled
         loadingItem: ''
       }
     }
   },
-  // watch: {
-  //   $route (to) {
-  //     console.log('$route', to)
-  //   }
-  // },
   methods: {
     logout () {
       const api = `${process.env.VUE_APP_API}logout`
       this.$http.post(api, this.user).then((res) => {
         if (res.data.success) {
-          this.$router.push('/login')
+          this.$router.push('/adminlogin')
         }
       })
     }

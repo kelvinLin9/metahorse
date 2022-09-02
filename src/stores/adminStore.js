@@ -33,10 +33,10 @@ export default defineStore('adminStore', {
     // 取得所有品項
     getProducts (page = 1) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
-      // this.isLoading = true
+      status.isLoading = true
       // 不需要加入資料 get(路徑)就可以了
       axios.get(api).then((res) => {
-        // this.isLoading = false
+        status.isLoading = false
         if (res.data.success) {
           // console.log(1, res.data)
           this.products = res.data.products
@@ -51,14 +51,14 @@ export default defineStore('adminStore', {
       this.ordersNum = 0
       for (let i = 1; i <= this.pagination.total_pages; i++) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
-        // status.isLoading = true
+        status.isLoading = true
         axios.get(url).then((res) => {
           this.allOrders.push(...res.data.orders) // 無正確排序
           res.data.orders.forEach((item) => {
             this.revenue += item.total
             this.ordersNum += 1
           })
-          // status.isLoading = false
+          status.isLoading = false
         })
       }
     },
@@ -66,11 +66,11 @@ export default defineStore('adminStore', {
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
-      // status.isLoading = true
+      status.isLoading = true
       axios.get(url, this.tempProduct).then((res) => {
         this.orders = res.data.orders
         this.pagination = res.data.pagination
-        // status.isLoading = false
+        status.isLoading = false
         this.getAllOrders()
       })
     },
@@ -179,12 +179,10 @@ export default defineStore('adminStore', {
       new Chart(ctx_bar, this.barChartData)
     },
     updatePage (page, path) {
-      console.log(123787)
       this.currentPage = page
       if (path === '/dashboard/order') {
         this.getOrders(page)
       } else if (path === '/dashboard/products') {
-        console.log(123)
         this.getProducts(page)
       }
     }
