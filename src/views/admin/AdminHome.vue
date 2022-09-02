@@ -133,13 +133,11 @@ import { mapState, mapActions, mapWritableState } from 'pinia'
 import chartStore from '@/stores/chartStore'
 import OrderModal from '@/components/admin/OrderModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
-import DelModal from '@/components/admin/DelModal0829.vue'
 import 'bootstrap/js/dist/offcanvas'
 
 export default {
   components: {
     OrderModal,
-    DelModal,
     Pagination
   },
   computed: {

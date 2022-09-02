@@ -28,6 +28,7 @@ export default defineStore('productStore', {
     barChartData: {}
   }),
   actions: {
+    // 取得所有頁面訂單資料
     getAllOrders () {
       this.allOrders = []
       this.revenue = 0
@@ -46,6 +47,7 @@ export default defineStore('productStore', {
         })
       }
     },
+    // 取得當前頁面訂單資料
     getOrders (currentPage = 1) {
       this.currentPage = currentPage
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
@@ -64,23 +66,24 @@ export default defineStore('productStore', {
       this.categoryNum.B = 0
       this.categoryNum.C = 0
       this.categoryNum.other = 0
-      for (let i = 0; i < this.allOrders.length; i++) {        
-        for (let j in this.allOrders[i].products) {
-          if(this.allOrders[i].products[j].product.category === 'S') {
+      for (let i = 0; i < this.allOrders.length; i++) {
+        for (const j in this.allOrders[i].products) {
+          if (this.allOrders[i].products[j].product.category === 'S') {
             this.categoryNum.S += this.allOrders[i].products[j].qty
-          } else if(this.allOrders[i].products[j].product.category === 'A'){
+          } else if (this.allOrders[i].products[j].product.category === 'A') {
             this.categoryNum.A += this.allOrders[i].products[j].qty
-          } else if(this.allOrders[i].products[j].product.category === 'B'){
+          } else if (this.allOrders[i].products[j].product.category === 'B') {
             this.categoryNum.B += this.allOrders[i].products[j].qty
-          } else if(this.allOrders[i].products[j].product.category === 'C'){
+          } else if (this.allOrders[i].products[j].product.category === 'C') {
             this.categoryNum.C += this.allOrders[i].products[j].qty
-          } else if(this.allOrders[i].products[j].product.category === '遊戲道具'){
+          } else if (this.allOrders[i].products[j].product.category === '遊戲道具') {
             this.categoryNum.other += this.allOrders[i].products[j].qty
-          }      
+          }
         }
       }
       this.getChartData()
     },
+    // 圖表資訊
     getChartData () {
       const chartColors = {
         red: 'rgb(255, 99, 132)',
@@ -100,7 +103,7 @@ export default defineStore('productStore', {
               this.categoryNum.A,
               this.categoryNum.B,
               this.categoryNum.C,
-              this.categoryNum.other,
+              this.categoryNum.other
             ],
             backgroundColor: [
               chartColors.red,
@@ -132,15 +135,15 @@ export default defineStore('productStore', {
               this.categoryNum.A * 79000,
               this.categoryNum.B * 49000,
               this.categoryNum.C * 29000,
-              this.categoryNum.other * 990,
+              this.categoryNum.other * 990
             ],
             backgroundColor: [
               chartColors.red,
               chartColors.orange,
               chartColors.yellow,
               chartColors.green,
-              chartColors.blue,
-            ],
+              chartColors.blue
+            ]
           }],
           labels: [
             'S',
@@ -148,16 +151,19 @@ export default defineStore('productStore', {
             'B',
             'C',
             '遊戲道具'
-          ],
+          ]
         },
         options: {
           responsive: true
-        },
+        }
       }
       const ctx_pie = document.getElementById('pieChart')
       const ctx_bar = document.getElementById('barChart')
       new Chart(ctx_pie, this.pieChartData)
       new Chart(ctx_bar, this.barChartData)
+    },
+    updatePage () {
+
     }
   }
 })
