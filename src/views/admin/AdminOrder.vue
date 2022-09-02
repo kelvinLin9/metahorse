@@ -130,7 +130,7 @@
 
 <script>
 import { mapState, mapActions, mapWritableState } from 'pinia'
-import chartStore from '@/stores/chartStore'
+import adminStore from '@/stores/adminStore'
 import OrderModal from '@/components/admin/OrderModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import 'bootstrap/js/dist/offcanvas'
@@ -141,11 +141,11 @@ export default {
     Pagination
   },
   computed: {
-    ...mapState(chartStore, ['orders', 'revenue', 'ordersNum', 'pagination']),
-    ...mapWritableState(chartStore, ['tempOrder', 'isNew'])
+    ...mapState(adminStore, ['orders', 'revenue', 'ordersNum', 'pagination']),
+    ...mapWritableState(adminStore, ['tempOrder', 'isNew'])
   },
   methods: {
-    ...mapActions(chartStore, ['getOrders', 'getAllOrdersData']),
+    ...mapActions(adminStore, ['getOrders', 'getAllOrdersData']),
     updatePaid (item) {
       this.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`

@@ -74,17 +74,13 @@ const routes = [
     component: () => import('../views/admin/AdminDashboard0829.vue'),
     children: [
       {
-        path: '',
+        path: 'order',
         name: 'AdminHome',
-        component: () => import('../views/admin/AdminHome.vue')
+        component: () => import('../views/admin/AdminOrder.vue')
       },
       {
         path: 'products',
         component: () => import('../views/admin/AdminProducts.vue')
-      },
-      {
-        path: 'orders',
-        component: () => import('../views/admin/AdminOrders.vue')
       },
       {
         path: 'coupons',

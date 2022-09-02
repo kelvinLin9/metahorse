@@ -32,6 +32,10 @@
                     <th>地址</th>
                     <td>{{ tempOrder.user.address }}</td>
                   </tr>
+                  <tr>
+                    <th>留言</th>
+                    <td>{{ tempOrder.message }}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -108,7 +112,7 @@
 <script>
 import modalMixin from '@/mixins/modalMixin'
 import { mapState, mapActions, mapWritableState } from 'pinia'
-import chartStore from '@/stores/chartStore'
+import adminStore from '@/stores/adminStore'
 export default {
   name: 'orderModal',
   data () {
@@ -120,7 +124,7 @@ export default {
     }
   },
   computed: {
-    ...mapWritableState(chartStore, ['tempOrder', 'isNew'])
+    ...mapWritableState(adminStore, ['tempOrder', 'isNew'])
   },
   mixins: [modalMixin],
   watch: {

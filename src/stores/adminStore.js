@@ -6,8 +6,10 @@ import statusStore from './statusStore'
 
 const status = statusStore()
 
-export default defineStore('productStore', {
+export default defineStore('adminStore', {
   state: () => ({
+    products: [],
+    tempProduct: {},
     orders: {},
     allOrders: [],
     ordersNum: 0,
@@ -20,14 +22,28 @@ export default defineStore('productStore', {
       other: 0
     },
     isNew: false,
-    pagination: {},
-    isLoading: false,
     tempOrder: {},
-    currentPage: 1,
     pieChartData: {},
-    barChartData: {}
+    barChartData: {},
+    pagination: {},
+    currentPage: 1,
+    isLoading: false
   }),
   actions: {
+    // 取得所有品項
+    getProducts (page = 1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
+      // this.isLoading = true
+      // 不需要加入資料 get(路徑)就可以了
+      axios.get(api).then((res) => {
+        // this.isLoading = false
+        if (res.data.success) {
+          // console.log(1, res.data)
+          this.products = res.data.products
+          this.pagination = res.data.pagination
+        }
+      })
+    },
     // 取得所有頁面訂單資料
     getAllOrders () {
       this.allOrders = []
@@ -43,7 +59,6 @@ export default defineStore('productStore', {
             this.ordersNum += 1
           })
           // status.isLoading = false
-          // console.log(this.allOrders)
         })
       }
     },
@@ -143,7 +158,8 @@ export default defineStore('productStore', {
               chartColors.yellow,
               chartColors.green,
               chartColors.blue
-            ]
+            ],
+            label: '銷售金額'
           }],
           labels: [
             'S',
@@ -162,8 +178,15 @@ export default defineStore('productStore', {
       new Chart(ctx_pie, this.pieChartData)
       new Chart(ctx_bar, this.barChartData)
     },
-    updatePage () {
-
+    updatePage (page, path) {
+      console.log(123787)
+      this.currentPage = page
+      if (path === '/dashboard/order') {
+        this.getOrders(page)
+      } else if (path === '/dashboard/products') {
+        console.log(123)
+        this.getProducts(page)
+      }
     }
   }
 })

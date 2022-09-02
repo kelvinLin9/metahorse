@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <!-- <Loading :active="isLoading"></Loading> -->
   <div class="text-end mt-3">
     <button class="btn btn-primary" type="button"
     @click="openModal(true)">
@@ -51,7 +51,6 @@
       </tr>
     </tbody>
   </table>
-  <!-- @emit-pages="getProducts" emit-pages觸發後執行getProducts -->
   <Pagination/>
 
   <ProductModal
@@ -68,7 +67,7 @@
 
 <script>
 import { mapState, mapActions, mapWritableState } from 'pinia'
-import chartStore from '@/stores/chartStore'
+import adminStore from '@/stores/adminStore'
 import ProductModal from '@/components/admin/ProductModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
@@ -76,12 +75,10 @@ import DelModal from '@/components/admin/DelModal.vue'
 export default {
   data () {
     return {
-      products: [], // 所有產品資訊
-      // pagination: {}, // 分頁資訊
-      // 先傳給ProductModal，ProductModal接收後儲存起來
-      tempProduct: {}, // 主要為了編輯
-      isNew: false, // 是否新增
-      isLoading: false
+      // products: [], // 所有產品資訊
+      // tempProduct: {}, // 主要為了編輯
+      // isNew: false, // 是否新增
+      // isLoading: false
     }
   },
   // 區域註冊
@@ -92,23 +89,25 @@ export default {
   },
   inject: ['emitter'],
   computed: {
-    ...mapWritableState(chartStore, ['pagination'])
+    ...mapState(adminStore, ['products', 'pagination']),
+    ...mapWritableState(adminStore, ['tempProduct', 'isNew'])
   },
   methods: {
+    ...mapActions(adminStore, ['getProducts']),
     // 在生命週期觸發
-    getProducts (page = 1) {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
-      this.isLoading = true
-      // 不需要加入資料 get(路徑)就可以了
-      this.$http.get(api).then((res) => {
-        this.isLoading = false
-        if (res.data.success) {
-          // console.log(1, res.data)
-          this.products = res.data.products
-          this.pagination = res.data.pagination
-        }
-      })
-    },
+    // getProducts (page = 1) {
+    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
+    //   this.isLoading = true
+    //   // 不需要加入資料 get(路徑)就可以了
+    //   this.$http.get(api).then((res) => {
+    //     this.isLoading = false
+    //     if (res.data.success) {
+    //       // console.log(1, res.data)
+    //       this.products = res.data.products
+    //       this.pagination = res.data.pagination
+    //     }
+    //   })
+    // },
     // 新增(isNew)，tempProduct清空
     // 編輯(!isNew)，tempProduct = item
     openModal (isNew, item) {
