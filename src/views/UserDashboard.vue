@@ -35,7 +35,7 @@ export default {
   computed: {
     ...mapState(statusStore, ['isLoading']),
     hasFloatCart () {
-      const name = ['cart', 'checkout', 'checkoutPay']
+      const name = ['cart', 'checkout', 'checkoutPay', 'adminLogin']
       if (name.includes(this.$route.name)) return true
       return false
     }

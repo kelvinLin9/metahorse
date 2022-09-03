@@ -1,13 +1,13 @@
 <template>
   <!-- <Loading :active="isLoading"></Loading> -->
-<div class="text-end pt-3">
+<div class="text-end py-2">
   <button class="btn btn-primary" type="button"
     @click="getAllOrdersData()">
     顯示圖表
   </button>
 </div>
 <div class="container main">
-  <div class="p-1">
+  <div class="pb-1">
     <!-- 統計資料 -->
     <div class="row gy-3 mb-4">
       <div class="col">

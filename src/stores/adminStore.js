@@ -51,7 +51,10 @@ export default defineStore('adminStore', {
       this.ordersNum = 0
       for (let i = 1; i <= this.pagination.total_pages; i++) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
-        status.isLoading = true
+        
+        setTimeout(() => {
+          console.log(i)
+       },1000*i)
         axios.get(url).then((res) => {
           this.allOrders.push(...res.data.orders) // 無正確排序
           res.data.orders.forEach((item) => {
@@ -63,9 +66,9 @@ export default defineStore('adminStore', {
       }
     },
     // 取得當前頁面訂單資料
-    getOrders (currentPage = 1) {
-      this.currentPage = currentPage
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${currentPage}`
+    getOrders (page = 1) {
+      this.currentPage = page
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
       status.isLoading = true
       axios.get(url, this.tempProduct).then((res) => {
         this.orders = res.data.orders

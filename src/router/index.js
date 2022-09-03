@@ -43,8 +43,8 @@ const routes = [
         component: () => import('../views/UserFavorite.vue')
       },
       {
-        path: 'AdminLogin',
-        name: 'AdminLogin',
+        path: 'adminLogin',
+        name: 'adminLogin',
         component: () => import('../views/admin/AdminLogin.vue')
       },
       {
