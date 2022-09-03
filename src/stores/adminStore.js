@@ -77,7 +77,6 @@ export default defineStore('adminStore', {
               this.ordersNum += 1
             })
             i++
-            console.log(i)
           }
         })
         if (i === this.pagination.total_pages) {
@@ -86,7 +85,7 @@ export default defineStore('adminStore', {
           status.isLoading = false
           this.getAllOrdersData()
         }
-      }, 3000)
+      }, 1000)
       // 用for寫會有問題
       // for (let i = 1; i <= this.pagination.total_pages; i++) {
       //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`

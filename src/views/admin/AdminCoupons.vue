@@ -74,7 +74,7 @@ export default {
         is_enabled: 0,
         percent: 100,
         code: ''
-      },
+      }
     }
   },
   computed: {
