@@ -1,12 +1,5 @@
 <template>
-  <!-- <Loading :active="isLoading"></Loading> -->
-<div class="text-end py-2">
-  <button class="btn btn-primary" type="button"
-    @click="getAllOrdersData()">
-    顯示圖表
-  </button>
-</div>
-<div class="container main">
+<div class="container pt-3">
   <div class="pb-1">
     <!-- 統計資料 -->
     <div class="row gy-3 mb-4">
@@ -46,7 +39,7 @@
     </div>
     <!-- 訂單資料 -->
     <div class="card shadow-sm">
-      <div class="card-body p-0">
+      <div class="card-body">
         <div class="table-responsive">
           <table class="table table-hover mb-0 text-nowrap">
             <thead class="bg-light border-bottom-3 fw-bold">
@@ -183,8 +176,11 @@ export default {
       })
     }
   },
-  mounted () {
-    this.getOrders()
+  mounted() {
+    // 當切到別的頁面在切回來時，圖表部分需要再次執行
+    if (this.revenue !== 0) {
+      this.getAllOrdersData()
+    } 
   }
 }
 </script>

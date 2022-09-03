@@ -27,6 +27,7 @@ export default defineStore('adminStore', {
     barChartData: {},
     pagination: {},
     currentPage: 1,
+    coupons: {},
     isLoading: false
   }),
   actions: {
@@ -34,7 +35,6 @@ export default defineStore('adminStore', {
     getProducts (page = 1) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
       status.isLoading = true
-      // 不需要加入資料 get(路徑)就可以了
       axios.get(api).then((res) => {
         status.isLoading = false
         if (res.data.success) {
@@ -43,27 +43,6 @@ export default defineStore('adminStore', {
           this.pagination = res.data.pagination
         }
       })
-    },
-    // 取得所有頁面訂單資料
-    getAllOrders () {
-      this.allOrders = []
-      this.revenue = 0
-      this.ordersNum = 0
-      for (let i = 1; i <= this.pagination.total_pages; i++) {
-        const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
-        
-        setTimeout(() => {
-          console.log(i)
-       },1000*i)
-        axios.get(url).then((res) => {
-          this.allOrders.push(...res.data.orders) // 無正確排序
-          res.data.orders.forEach((item) => {
-            this.revenue += item.total
-            this.ordersNum += 1
-          })
-          status.isLoading = false
-        })
-      }
     },
     // 取得當前頁面訂單資料
     getOrders (page = 1) {
@@ -74,8 +53,52 @@ export default defineStore('adminStore', {
         this.orders = res.data.orders
         this.pagination = res.data.pagination
         status.isLoading = false
-        this.getAllOrders()
+        // 換頁時只要執行第一個頁面
+        if (this.revenue == 0) {
+          this.getAllOrders()
+        } 
+        // this.getAllOrders()
       })
+        },
+    // 取得所有頁面訂單資料
+    getAllOrders () {
+      this.allOrders = []
+      this.revenue = 0
+      this.ordersNum = 0
+      status.isLoading = true
+      let i = 1;
+      const set = setInterval(() => {
+        const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
+        axios.get(url).then((res) => {
+          console.log(res.data.orders, i)
+          this.allOrders.push(...res.data.orders)
+          res.data.orders.forEach((item) => {
+            this.revenue += item.total
+            this.ordersNum += 1
+          })
+          i++
+        })
+        if(i === this.pagination.total_pages + 1) {
+          clearInterval(set)
+          console.log('結束')
+          status.isLoading = false
+          this.getAllOrdersData()
+
+        }
+      }, 1000);
+      // 用for寫繪有問題
+      // for (let i = 1; i <= this.pagination.total_pages; i++) {
+      //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
+      //   axios.get(url).then((res) => {
+      //     this.allOrders.push(...res.data.orders) // 無正確排序
+      //     console.log(res.data.orders)
+      //     res.data.orders.forEach((item) => {
+      //       this.revenue += item.total
+      //       this.ordersNum += 1
+      //     })
+      //     status.isLoading = false
+      //   })
+      // }
     },
     // 取得所有訂單的詳細資料
     getAllOrdersData () {
@@ -188,6 +211,14 @@ export default defineStore('adminStore', {
       } else if (path === '/dashboard/products') {
         this.getProducts(page)
       }
-    }
+    },
+    getCoupons () {
+      this.isLoading = true
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons`
+      axios.get(url, this.tempProduct).then((response) => {
+        this.coupons = response.data.coupons
+        this.isLoading = false
+      })
+    },
   }
 })

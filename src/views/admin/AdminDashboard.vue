@@ -19,6 +19,7 @@ import ToastMessages from '@/components/ToastMessages.vue'
 import AdminNavbar from '@/components/admin/AdminNavbar.vue'
 import { mapActions, mapState } from 'pinia'
 import statusStore from '@/stores/statusStore'
+import adminStore from '@/stores/adminStore'
 
 export default {
   // 區域註冊
@@ -34,6 +35,14 @@ export default {
     return {
       emitter
     }
+  },
+  methods: {
+    ...mapActions(adminStore, ['getOrders', 'getProducts', 'getCoupons']),
+  },
+  mounted () {
+    this.getOrders()
+    this.getProducts()
+    this.getCoupons()
   },
   created () {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
