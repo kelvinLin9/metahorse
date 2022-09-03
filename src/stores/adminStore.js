@@ -76,8 +76,9 @@ export default defineStore('adminStore', {
             this.revenue += item.total
             this.ordersNum += 1
           })
-          i++
+          
         })
+        i++
         if(i === this.pagination.total_pages + 1) {
           clearInterval(set)
           console.log('結束')
@@ -86,7 +87,7 @@ export default defineStore('adminStore', {
 
         }
       }, 1000);
-      // 用for寫繪有問題
+      // 用for寫會有問題
       // for (let i = 1; i <= this.pagination.total_pages; i++) {
       //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
       //   axios.get(url).then((res) => {
