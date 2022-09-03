@@ -53,40 +53,40 @@ export default defineStore('adminStore', {
         this.orders = res.data.orders
         this.pagination = res.data.pagination
         status.isLoading = false
-        // 換頁時只要執行第一個頁面
-        if (this.revenue == 0) {
+        // 如果revenue已經有值就不需要再執行，避免每次換頁都重新載入
+        if (this.revenue === 0) {
           this.getAllOrders()
-        } 
-        // this.getAllOrders()
+        }
       })
-        },
+    },
     // 取得所有頁面訂單資料
     getAllOrders () {
       this.allOrders = []
       this.revenue = 0
       this.ordersNum = 0
       status.isLoading = true
-      let i = 1;
+      let i = 1
       const set = setInterval(() => {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
         axios.get(url).then((res) => {
-          console.log(res.data.orders, i)
-          this.allOrders.push(...res.data.orders)
-          res.data.orders.forEach((item) => {
-            this.revenue += item.total
-            this.ordersNum += 1
-          })
-          
+          if (res.status === 200) {
+            console.log(res.data.orders)
+            this.allOrders.push(...res.data.orders)
+            res.data.orders.forEach((item) => {
+              this.revenue += item.total
+              this.ordersNum += 1
+            })
+            i++
+            console.log(i)
+          }
         })
-        i++
-        if(i === this.pagination.total_pages + 1) {
+        if (i === this.pagination.total_pages) {
           clearInterval(set)
           console.log('結束')
           status.isLoading = false
           this.getAllOrdersData()
-
         }
-      }, 1000);
+      }, 3000)
       // 用for寫會有問題
       // for (let i = 1; i <= this.pagination.total_pages; i++) {
       //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
@@ -220,6 +220,6 @@ export default defineStore('adminStore', {
         this.coupons = response.data.coupons
         this.isLoading = false
       })
-    },
+    }
   }
 })
