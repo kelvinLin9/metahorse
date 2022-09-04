@@ -34,7 +34,6 @@
             <router-link to="/UserSearchOrder" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>
-          <!-- 購物車、最愛 RWD -->
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
             :class="{ 'text-warning':  this.$route.name === 'cart' }">購物車</router-link>
@@ -45,8 +44,7 @@
           </li>
         </ul>
 
-        <!-- 購物車、最愛、改成靠右圖示 -->
-        <!-- 圖示補上Tooltips -->
+        <!-- 購物車、最愛、使用者介面改成靠右圖示 -->
         <ul class="navbar-nav d-none d-lg-flex ms-auto me-2">
           <li class="nav-item position-relative">
             <div class="nav-link px-3"
@@ -142,7 +140,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// 右上小圈圈
 .num {
   width:20px;
   top: 5px;
@@ -170,4 +167,5 @@ export default {
    left: 130px;
   }
 }
+
 </style>
