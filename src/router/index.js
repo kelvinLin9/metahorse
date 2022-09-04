@@ -66,7 +66,7 @@ const routes = [
         path: 'AdminLogin',
         name: 'AdminLogin',
         component: () => import('../views/admin/AdminLogin.vue')
-      },
+      }
     ]
   },
   {
