@@ -106,27 +106,34 @@ export default {
   methods: {
     ...mapActions(copyStore, ['copyCodeOld']),
     showAlert () {
-      // console.log(this.order.total)
-      if (this.order.total > 30000) {
-        this.$swal.fire({
-          title: '感謝您的支持',
-          text: '產品將會在3個工作天內寄出',
-          icon: 'success',
-          allowOutsideClick: false,
-          confirmButtonText: '開始滿額小遊戲'
-        }).then((result) => {
-          this.$refs.GameModal.showModal()
-        })
-      } else {
-        this.$swal.fire({
-          title: '感謝您的支持',
-          text: '產品將會在3個工作天內寄出',
-          icon: 'success',
-          confirmButtonText: '回首頁'
-        }).then((result) => {
-          this.$router.push('/')
-        })
-      }
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
+      this.isLoading = true
+      // 不需要加入資料 get(路徑)就可以了
+      this.$http.post(api).then((res) => {
+        this.isLoading = false
+        if (res.data.success) {
+          if (this.order.total > 30000) {
+            this.$swal.fire({
+              title: '感謝您的支持',
+              text: '產品將會在3個工作天內寄出',
+              icon: 'success',
+              allowOutsideClick: false,
+              confirmButtonText: '開始滿額小遊戲'
+            }).then((result) => {
+              this.$refs.GameModal.showModal()
+            })
+          } else {
+            this.$swal.fire({
+              title: '感謝您的支持',
+              text: '產品將會在3個工作天內寄出',
+              icon: 'success',
+              confirmButtonText: '回首頁'
+            }).then((result) => {
+              this.$router.push('/')
+            })
+          }
+        }
+      })
     },
     getOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`

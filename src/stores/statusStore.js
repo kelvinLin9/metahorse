@@ -10,7 +10,7 @@ export default defineStore('statusStore', {
     // 傳到ToastMessages.vue
     // 抽獎頁面的提示合併過來一起用
     PushManager (res, title = '更新') {
-      if (res == '抽獎' || res.data.success) {
+      if (res === '抽獎' || res.data.success) {
         const obj = {
           style: 'success',
           title: `${title}成功`
