@@ -45,7 +45,7 @@ export default defineStore('adminStore', {
       })
     },
     // 取得當前頁面訂單資料
-    getOrders (page = 1) {
+    getOrders (page = 1, isUpdatePage = false) {
       this.currentPage = page
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
       status.isLoading = true
@@ -53,8 +53,8 @@ export default defineStore('adminStore', {
         this.orders = res.data.orders
         this.pagination = res.data.pagination
         status.isLoading = false
-        // 如果revenue已經有值就不需要再執行，避免每次換頁都重新載入
-        if (this.revenue === 0) {
+        // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
+        if (!isUpdatePage) {
           this.getAllOrders()
         }
       })
@@ -84,7 +84,6 @@ export default defineStore('adminStore', {
       })
         .catch((err) => {
           console.log(err)
-          alert(err)
         })
     },
     // 取得所有訂單的詳細資料
@@ -191,12 +190,13 @@ export default defineStore('adminStore', {
       new Chart(ctx_pie, this.pieChartData)
       new Chart(ctx_bar, this.barChartData)
     },
+    // 需要判斷是哪個頁面在使用pagination元件
     updatePage (page, path) {
       this.currentPage = page
       if (path === '/dashboard/order') {
         this.getOrders(page)
       } else if (path === '/dashboard/products') {
-        this.getProducts(page)
+        this.getProducts(page, true)
       }
     },
     getCoupons () {

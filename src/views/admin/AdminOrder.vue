@@ -176,11 +176,11 @@ export default {
       })
     }
   },
-  mounted() {
-    // 當切到別的頁面在切回來時，圖表部分需要再次執行
+  mounted () {
+    // 當切到別的頁面在切回來時，圖表部分需要單獨再次執行
     if (this.revenue !== 0) {
       this.getAllOrdersData()
-    } 
+    }
   }
 }
 </script>
