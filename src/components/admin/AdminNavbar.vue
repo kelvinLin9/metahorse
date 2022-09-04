@@ -19,12 +19,12 @@
       <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item">
-           <RouterLink to="/dashboard/products" class="nav-link fs-5"
-           :class="{ 'text-warning':  routeName === '/dashboard/products' }">產品</RouterLink>
+           <RouterLink to="/dashboard/order" class="nav-link fs-5"
+           :class="{ 'text-warning':  routeName === '/dashboard/order' }">訂單</RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/dashboard/orders" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === '/dashboard/orders' }">訂單</router-link>
+            <router-link to="/dashboard/products" class="nav-link fs-5"
+            :class="{ 'text-warning':  routeName === '/dashboard/products' }">產品</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/dashboard/coupons" class="nav-link fs-5"
@@ -49,30 +49,22 @@ export default {
       isCollapse: false,
       routeName: '',
       status: {
-        // 對應品項 id 當loadingItem為一個特定品項的時候
-        // 我們就會把這個按鈕轉為disabled
         loadingItem: ''
       }
     }
   },
-  // watch: {
-  //   $route (to) {
-  //     console.log('$route', to)
-  //   }
-  // },
   methods: {
     logout () {
       const api = `${process.env.VUE_APP_API}logout`
       this.$http.post(api, this.user).then((res) => {
         if (res.data.success) {
-          this.$router.push('/login')
+          this.$router.push('/adminlogin')
         }
       })
     }
   },
   mounted () {
     this.routeName = this.$route.path // 點擊後圖標變色
-    console.log('this.$route.path', this.$route.path)
   }
 }
 </script>

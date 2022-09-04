@@ -1,23 +1,25 @@
 <template>
   <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
+    <ul class="pagination justify-content-center pt-3">
+      <li class="page-item"
+          :class="{ 'disabled' : !pagination.has_pre }">
+        <a class="page-link text-dark" href="#" aria-label="Previous"
+            @click.prevent="updatePage(pagination.current_page - 1, this.$route.path)">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-      <!-- 遠端傳回的資料 -->
-      <!-- @click.prevent="updatePage(page)" 按下頁碼回傳(emit)按下的頁數 -->
       <li class="page-item"
-      v-for="page in pages.total_pages" :key="page"
-      :class="{ 'active': page === pages.current_page }">
-        <a class="page-link" href="#"
-        @click.prevent="updatePage(page)">
+      v-for="page in pagination.total_pages" :key="page"
+      :class="{ 'active': page === pagination.current_page }">
+        <a class="page-link text-dark" href="#"
+          @click.prevent="updatePage(page, this.$route.path)">
           {{ page }}
         </a>
       </li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
+      <li class="page-item"
+          :class="{ 'disabled' : !pagination.has_next }">
+        <a class="page-link text-dark" href="#" aria-label="Next"
+        @click.prevent="updatePage(pagination.current_page + 1, this.$route.path)">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
@@ -26,14 +28,14 @@
 </template>
 
 <script>
-// :pages="{ 頁碼資訊 }"
-// @emitPages="更新頁面事件"
+import { mapState, mapActions } from 'pinia'
+import adminStore from '@/stores/adminStore'
 export default {
-  props: ['pages'], // :pages="pagination"
+  computed: {
+    ...mapState(adminStore, ['pagination'])
+  },
   methods: {
-    updatePage (page) {
-      this.$emit('emit-pages', page)
-    }
+    ...mapActions(adminStore, ['updatePage'])
   }
 }
 </script>
