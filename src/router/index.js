@@ -43,6 +43,11 @@ const routes = [
         component: () => import('../views/UserFavorite.vue')
       },
       {
+        path: 'adminLogin',
+        name: 'adminLogin',
+        component: () => import('../views/admin/AdminLogin.vue')
+      },
+      {
         path: 'checkout',
         name: 'checkout',
         component: () => import('../views/UserCheckout.vue')
@@ -61,11 +66,6 @@ const routes = [
         path: 'checkoutPay/:orderId',
         name: 'checkoutPay',
         component: () => import('../views/CheckoutPay.vue')
-      },
-      {
-        path: 'AdminLogin',
-        name: 'AdminLogin',
-        component: () => import('../views/admin/AdminLogin.vue')
       }
     ]
   },
@@ -74,12 +74,13 @@ const routes = [
     component: () => import('../views/admin/AdminDashboard.vue'),
     children: [
       {
-        path: 'products',
-        component: () => import('../views/admin/AdminProducts.vue')
+        path: 'order',
+        name: 'AdminHome',
+        component: () => import('../views/admin/AdminOrder.vue')
       },
       {
-        path: 'orders',
-        component: () => import('../views/admin/AdminOrders.vue')
+        path: 'products',
+        component: () => import('../views/admin/AdminProducts.vue')
       },
       {
         path: 'coupons',
@@ -95,11 +96,11 @@ const routes = [
 ]
 
 const router = createRouter({
-  // 網址路徑模式 使用網址hash形式 代表是由前端所模擬的 
+  // 網址路徑模式 使用網址hash形式 代表是由前端所模擬的
   history: createWebHashHistory(),
   // `routes: routes` 的缩写
   routes
-  
+
   // linkActiveClass:'active'
   // linkActiveClass: 'text-warning',
   // scrollBehavior (to, from, savedPosition) {
