@@ -76,7 +76,7 @@ const routes = [
       {
         path: 'order',
         name: 'AdminHome',
-        component: () => import('../views/admin/AdminOrders.vue')
+        component: () => import('../views/admin/AdminOrder.vue')
       },
       {
         path: 'products',
