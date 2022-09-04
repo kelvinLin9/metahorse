@@ -61,68 +61,31 @@ export default defineStore('adminStore', {
     },
     // 取得所有頁面訂單資料
     getAllOrders () {
-      this.allOrders = [] 
+      this.allOrders = []
       this.revenue = 0
       this.ordersNum = 0
-      const axios_array = []
-      for (let i = 1; i <= this.pagination.total_pages; i++){
-        const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`        
-        axios_array.push(axios.get(url))
+      status.isLoading = true
+      const axiosArray = []
+      for (let i = 1; i <= this.pagination.total_pages; i++) {
+        const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
+        axiosArray.push(axios.get(url))
       }
-      Promise.all(axios_array).then((res) => {
-        console.log(res)
-        for (let i = 1; i <= this.pagination.total_pages; i++){
-          // this.allOrders.push(res[i-1].data.orders) 
-          this.allOrders.push(...res[i-1].data.orders)
-          res[i-1].data.orders.forEach((item) => {
+      Promise.all(axiosArray).then((res) => {
+        for (let i = 1; i <= this.pagination.total_pages; i++) {
+          this.allOrders.push(...res[i - 1].data.orders)
+          res[i - 1].data.orders.forEach((item) => {
             this.revenue += item.total
             this.ordersNum += 1
           })
-          // status.isLoading = false
+          status.isLoading = false
         }
         console.log(this.allOrders)
         this.getAllOrdersData()
       })
-
-
-      // status.isLoading = true
-      // let i = 1
-      // const set = setInterval(() => {
-      //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
-      //   axios.get(url).then((res) => {
-      //     if (res.status === 200) {
-      //       console.log(res.data.orders)
-      //       this.allOrders.push(...res.data.orders)
-      //       res.data.orders.forEach((item) => {
-      //         this.revenue += item.total
-      //         this.ordersNum += 1
-      //       })
-      //       i++
-      //       console.log(i)
-      //     }
-      //   })
-      //   if (i === this.pagination.total_pages) {
-      //     clearInterval(set)
-      //     console.log('結束')
-      //     status.isLoading = false
-      //     this.getAllOrdersData()
-      //   }
-      // }, 1000)
-      // 用for寫會有問題
-      // for (let i = 1; i <= this.pagination.total_pages; i++) {
-      //   const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
-      //   axios.get(url).then((res) => {
-      //     this.allOrders[i - 1] = res.data.orders 
-      //     console.log(i, res.data.orders)
-      //     res.data.orders.forEach((item) => {
-      //       this.revenue += item.total
-      //       this.ordersNum += 1
-      //     })
-      //     status.isLoading = false
-      //   }).catch((err) => {
-      //     console.log(err)
-      //   })
-      // }
+        .catch((err) => {
+          console.log(err)
+          alert(err)
+        })
     },
     // 取得所有訂單的詳細資料
     getAllOrdersData () {
