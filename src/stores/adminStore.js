@@ -83,6 +83,8 @@ export default defineStore('adminStore', {
         console.log(this.allOrders)
         this.getAllOrdersData()
       })
+
+
       // status.isLoading = true
       // let i = 1
       // const set = setInterval(() => {
