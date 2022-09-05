@@ -47,7 +47,6 @@ export default {
 }
 </script>
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap');
 .user-loading {
   z-index: 1000;
 }
