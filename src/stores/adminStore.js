@@ -185,8 +185,9 @@ export default defineStore('adminStore', {
           responsive: true
         }
       }
-
+      
       const ctx_pie = document.getElementById('pieChart')
+      console.log(ctx_pie)
       const ctx_bar = document.getElementById('barChart')
       
       const PieC = new Chart(ctx_pie, this.pieChartData)

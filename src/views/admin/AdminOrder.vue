@@ -129,18 +129,6 @@ export default {
   },
   methods: {
     ...mapActions(adminStore, ['getOrders', 'getAllOrdersData', 'updatePaid']),
-    // updatePaid (item) {
-    //   this.isLoading = true
-    //   const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
-    //   const paid = {
-    //     is_paid: item.is_paid
-    //   }
-    //   this.$http.put(api, { data: paid }).then((response) => {
-    //     this.isLoading = false
-    //     this.getOrders(this.pagination.current_page)
-    //     // this.$httpMessageState(response, '更新付款狀態')
-    //   })
-    // },
     openModal (isNew, item) {
       this.tempOrder = { ...item }
       // console.log(this.tempOrder)
