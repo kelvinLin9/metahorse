@@ -28,7 +28,7 @@ export default defineStore('adminStore', {
     pagination: {},
     currentPage: 1,
     coupons: {},
-    isLoading: false,
+    isLoading: false
   }),
   actions: {
     // 取得所有品項
@@ -185,11 +185,11 @@ export default defineStore('adminStore', {
           responsive: true
         }
       }
-      
+
       const ctx_pie = document.getElementById('pieChart')
       console.log(ctx_pie)
       const ctx_bar = document.getElementById('barChart')
-      
+
       const PieC = new Chart(ctx_pie, this.pieChartData)
       const BarC = new Chart(ctx_bar, this.barChartData)
       // PieC.destroy()
