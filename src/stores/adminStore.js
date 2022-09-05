@@ -28,7 +28,7 @@ export default defineStore('adminStore', {
     pagination: {},
     currentPage: 1,
     coupons: {},
-    isLoading: false
+    isLoading: false,
   }),
   actions: {
     // 取得所有品項
@@ -79,7 +79,7 @@ export default defineStore('adminStore', {
           })
           status.isLoading = false
         }
-        console.log(this.allOrders)
+        // console.log(this.allOrders)
         this.getAllOrdersData()
       })
         .catch((err) => {
@@ -185,10 +185,14 @@ export default defineStore('adminStore', {
           responsive: true
         }
       }
+
       const ctx_pie = document.getElementById('pieChart')
       const ctx_bar = document.getElementById('barChart')
-      new Chart(ctx_pie, this.pieChartData)
-      new Chart(ctx_bar, this.barChartData)
+      
+      const PieC = new Chart(ctx_pie, this.pieChartData)
+      const BarC = new Chart(ctx_bar, this.barChartData)
+      // PieC.destroy()
+      // BarC.destroy()
     },
     // 需要判斷是哪個頁面在使用pagination元件
     updatePage (page, path) {
@@ -198,6 +202,18 @@ export default defineStore('adminStore', {
       } else if (path === '/dashboard/products') {
         this.getProducts(page, true)
       }
+    },
+    updatePaid (item) {
+      status.isLoading = true
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
+      const paid = {
+        is_paid: item.is_paid
+      }
+      axios.put(api, { data: paid }).then((response) => {
+        status.isLoading = false
+        this.getOrders(this.pagination.current_page)
+        // this.$httpMessageState(response, '更新付款狀態')
+      })
     },
     getCoupons () {
       this.isLoading = true
