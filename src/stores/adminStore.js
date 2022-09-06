@@ -45,7 +45,7 @@ export default defineStore('adminStore', {
       })
     },
     // 取得當前頁面訂單資料
-    getOrders (page = 1, isUpdatePage = false) {
+    getOrders (page = 1, needGetAllOrders = false) {
       this.currentPage = page
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
       status.isLoading = true
@@ -54,8 +54,9 @@ export default defineStore('adminStore', {
         this.pagination = res.data.pagination
         status.isLoading = false
         // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
-        if (!isUpdatePage) {
+        if (!needGetAllOrders) {
           this.getAllOrders()
+          console.log(123)
         }
       })
     },
@@ -187,7 +188,6 @@ export default defineStore('adminStore', {
       }
 
       const ctx_pie = document.getElementById('pieChart')
-      console.log(ctx_pie)
       const ctx_bar = document.getElementById('barChart')
 
       const PieC = new Chart(ctx_pie, this.pieChartData)
@@ -199,7 +199,7 @@ export default defineStore('adminStore', {
     updatePage (page, path) {
       this.currentPage = page
       if (path === '/dashboard/order') {
-        this.getOrders(page)
+        this.getOrders(page, true)
       } else if (path === '/dashboard/products') {
         this.getProducts(page, true)
       }
@@ -210,17 +210,19 @@ export default defineStore('adminStore', {
       const paid = {
         is_paid: item.is_paid
       }
-      axios.put(api, { data: paid }).then((response) => {
+      axios.put(api, { data: paid }).then((res) => {
         status.isLoading = false
-        this.getOrders(this.pagination.current_page)
-        // this.$httpMessageState(response, '更新付款狀態')
+        status.PushManager(res, '更新付款狀態')
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
+      this.getOrders(this.pagination.current_page, true)
+        
       })
     },
     getCoupons () {
       this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons`
-      axios.get(url, this.tempProduct).then((response) => {
-        this.coupons = response.data.coupons
+      axios.get(url, this.tempProduct).then((res) => {
+        this.coupons = res.data.coupons
         this.isLoading = false
       })
     }

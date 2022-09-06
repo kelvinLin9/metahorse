@@ -100,8 +100,8 @@ export default {
         this.tempProduct = { ...item }
       }
       this.isNew = isNew
-      const productComponent = this.$refs.productModal
-      productComponent.showModal()
+      this.$refs.productModal.showModal()
+      
     },
     // 把外層資料儲存下來，再傳送到遠端
     updateProduct (item) {
