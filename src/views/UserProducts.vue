@@ -31,7 +31,7 @@
         </div>
         <hr>
         <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
-          <div class="fw-bold list-group flex-row flex-lg-column ">
+        <div class="fw-bold list-group flex-row flex-lg-column ">
             <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
               :class="{ 'text-primary' : category == '馬鞍' ,'fs-4' : category == '馬鞍'}"
               @click.prevent="setCategory('馬鞍')">- 馬鞍</a>
@@ -79,15 +79,13 @@
                         class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
                         :disabled="cartLoadingItem === item.id"
                         @click="addCart(item.id)">
+                  <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
                   <div v-if="cartLoadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
                     加到購物車
                 </button>
-              </div>
-                <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
-              <div class="d-flex justify-content-center pb-2 fw-bold">
               </div>
             </div>
           </div>
@@ -120,9 +118,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.f-kalam {
-  font-family: 'Kalam', cursive;
-}
 .productsBanner {
   height: 250px;
   background-image: url(https://i.imgur.com/4vGqi7D.jpg);
@@ -133,8 +128,7 @@ export default {
     height: 150px;
   }
   .bg-dark{
-  z-index: 1;
-  opacity: 1;
+  opacity: 0.8;
   }
 }
 .fav-icon {
@@ -144,10 +138,6 @@ export default {
   top: 5px;
   right: 5px;
   z-index: 2;
-  i {
-    // position: absolute;
-    // top:10px;
-  }
 }
 
 .img-fit{

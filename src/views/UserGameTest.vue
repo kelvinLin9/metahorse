@@ -32,8 +32,3 @@ export default {
   }
 }
 </script>
-<!-- <style>
-body {
-  padding-right: 170px;
-}
-</style> -->

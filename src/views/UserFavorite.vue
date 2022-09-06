@@ -96,8 +96,7 @@ export default {
     height: 150px;
   }
   .bg-dark{
-  z-index: 1;
-  opacity: 1;
+  opacity: 0.8;
   }
 }
 .img-fit{

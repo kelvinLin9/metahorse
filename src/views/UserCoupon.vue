@@ -68,6 +68,9 @@ export default {
     @media (max-width: 600px) {
     height: 150px;
   }
+  .bg-dark{
+  opacity: 0.8;
+  }
 }
 .la-square-jelly-box,
 .la-square-jelly-box > img {

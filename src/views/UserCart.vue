@@ -156,19 +156,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.cartBanner {
-  height: 300px;
-  background-image: url(https://i.imgur.com/6ix9eOm.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position:center ;
-}
-
-@media (max-width: 576px) {
-  .font-sm{
-    font-size: 12px;
-  }
-}
-</style>
