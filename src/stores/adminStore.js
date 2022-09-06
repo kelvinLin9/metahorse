@@ -56,7 +56,6 @@ export default defineStore('adminStore', {
         // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
         if (!needGetAllOrders) {
           this.getAllOrders()
-          console.log(123)
         }
       })
     },
