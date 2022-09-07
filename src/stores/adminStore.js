@@ -212,9 +212,8 @@ export default defineStore('adminStore', {
       axios.put(api, { data: paid }).then((res) => {
         status.isLoading = false
         status.PushManager(res, '更新付款狀態')
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
-      this.getOrders(this.pagination.current_page, true)
-        
+        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
+        this.getOrders(this.pagination.current_page, true)
       })
     },
     getCoupons () {
