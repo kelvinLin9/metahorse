@@ -17,24 +17,70 @@
               <table class="table">
                 <tbody v-if="tempOrder.user">
                   <tr>
-                    <th style="width: 100px;">姓名</th>
-                    <td>{{ tempOrder.user.name }}</td>
+                    <th style="width: 100px;">
+                      <label for="name" class="form-label">姓名</label>
+                    </th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        v-model="tempOrder.user.name"
+                        placeholder="請輸入姓名"/>
+                    </td>
                   </tr>
                   <tr>
-                    <th>Email</th>
-                    <td>{{ tempOrder.user.email }}</td>
+                    <th>
+                      <label for="email" class="form-label">Email</label>
+                    </th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="email"
+                        v-model="tempOrder.user.email"
+                        placeholder="請輸入信箱"/>
+                    </td>
                   </tr>
                   <tr>
-                    <th>電話</th>
-                    <td>{{ tempOrder.user.tel }}</td>
+                    <th>
+                      <label for="tel" class="form-label">電話</label>
+                    </th>
+                    <td>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="tel"
+                        v-model="tempOrder.user.tel"
+                        placeholder="請輸入電話"/>
+                    </td>
                   </tr>
                   <tr>
-                    <th>地址</th>
-                    <td>{{ tempOrder.user.address }}</td>
+                    <th>
+                      <label for="address" class="form-label">地址</label>
+                    </th>
+                    <td>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="address"
+                        v-model="tempOrder.user.address"
+                        placeholder="請輸入地址"/>
+                    </td>
                   </tr>
                   <tr>
-                    <th>留言</th>
-                    <td>{{ tempOrder.message }}</td>
+                    <th>
+                      <label for="message" class="form-label">留言</label>
+                    </th>
+                    <td>
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        id="message"
+                        v-model="tempOrder.message"
+                        placeholder="請輸入留言">
+                      </textarea>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -103,6 +149,8 @@
                   data-bs-dismiss="modal">取消
           </button>
           <button type="button" class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  @click="updateOrder(tempOrder)"
                   >確認</button>
         </div>
       </div>
@@ -117,20 +165,19 @@ export default {
   name: 'orderModal',
   data () {
     return {
-      status: {},
-      modal: '',
-      // tempOrder: {},
-      isPaid: false
+      modal: ''
     }
   },
   computed: {
     ...mapWritableState(adminStore, ['tempOrder', 'isNew'])
   },
+  methods: {
+    ...mapActions(adminStore, ['updateOrder'])
+  },
   mixins: [modalMixin],
   watch: {
     order () {
       this.tempOrder = this.order
-      this.isPaid = this.tempOrder.is_paid
     }
   }
 }

@@ -82,7 +82,7 @@
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" :id="`paidSwitch${item.id}`"
                              v-model="item.is_paid"
-                             @change="updatePaid(item)">
+                             @change="updateOrder(item)">
                       <label class="form-check-label" :for="`paidSwitch${item.id}`">
                         <span v-if="item.is_paid">已付款</span>
                         <span v-else>未付款</span>
@@ -92,7 +92,7 @@
                   <td>
                     <div class="btn-group">
                       <button class="btn btn-outline-primary btn-sm text-dark"
-                              @click="openModal(false, item)">檢視</button>
+                              @click="openModal(false, item)">編輯</button>
                       <button class="btn btn-outline-danger btn-sm"
                               @click="openDelOrderModal(item)"
                       >刪除</button>
@@ -128,12 +128,20 @@ export default {
     ...mapWritableState(adminStore, ['tempOrder', 'isNew'])
   },
   methods: {
-    ...mapActions(adminStore, ['getOrders', 'getAllOrdersData', 'updatePaid']),
+    ...mapActions(adminStore, ['getOrders', 'getAllOrdersData', 'updateOrder']),
     openModal (isNew, item) {
-      this.tempOrder = { ...item }
-      // console.log(this.tempOrder)
-      this.isNew = false
+      if (isNew) {
+        this.tempOrder = {}
+      } else {
+        this.tempOrder = { ...item }
+      }
+      this.isNew = isNew
       this.$refs.orderModal.showModal()
+
+      // this.tempOrder = { ...item }
+      // // console.log(this.tempOrder)
+      // this.isNew = false
+      // this.$refs.orderModal.showModal()
     },
     openDelOrderModal (item) {
       this.tempOrder = { ...item }

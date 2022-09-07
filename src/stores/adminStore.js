@@ -45,7 +45,7 @@ export default defineStore('adminStore', {
       })
     },
     // 取得當前頁面訂單資料
-    getOrders (page = 1, needGetAllOrders = false) {
+    getOrders (page = 1, needGetAllOrders = true) {
       this.currentPage = page
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
       status.isLoading = true
@@ -54,7 +54,7 @@ export default defineStore('adminStore', {
         this.pagination = res.data.pagination
         status.isLoading = false
         // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
-        if (!needGetAllOrders) {
+        if (needGetAllOrders) {
           this.getAllOrders()
         }
       })
@@ -200,20 +200,16 @@ export default defineStore('adminStore', {
       if (path === '/dashboard/order') {
         this.getOrders(page, true)
       } else if (path === '/dashboard/products') {
-        this.getProducts(page, true)
+        this.getProducts(page, false)
       }
     },
-    updatePaid (item) {
+    updateOrder (item) {
       status.isLoading = true
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
-      const paid = {
-        is_paid: item.is_paid
-      }
-      axios.put(api, { data: paid }).then((res) => {
+      axios.put(api, { data: item }).then((res) => {
         status.isLoading = false
         status.PushManager(res, '更新付款狀態')
-        const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
-        this.getOrders(this.pagination.current_page, true)
+        this.getOrders(this.pagination.current_page, false)
       })
     },
     getCoupons () {

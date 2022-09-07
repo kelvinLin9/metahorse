@@ -91,8 +91,6 @@ export default {
   },
   methods: {
     ...mapActions(adminStore, ['getProducts']),
-    // 新增(isNew)，tempProduct清空
-    // 編輯(!isNew)，tempProduct = item
     openModal (isNew, item) {
       if (isNew) {
         this.tempProduct = {}
@@ -101,7 +99,6 @@ export default {
       }
       this.isNew = isNew
       this.$refs.productModal.showModal()
-      
     },
     // 把外層資料儲存下來，再傳送到遠端
     updateProduct (item) {
