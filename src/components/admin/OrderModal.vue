@@ -162,23 +162,12 @@ import modalMixin from '@/mixins/modalMixin'
 import { mapState, mapActions, mapWritableState } from 'pinia'
 import adminStore from '@/stores/adminStore'
 export default {
-  name: 'orderModal',
-  data () {
-    return {
-      modal: ''
-    }
-  },
   computed: {
     ...mapWritableState(adminStore, ['tempOrder', 'isNew'])
   },
   methods: {
     ...mapActions(adminStore, ['updateOrder'])
   },
-  mixins: [modalMixin],
-  watch: {
-    order () {
-      this.tempOrder = this.order
-    }
-  }
+  mixins: [modalMixin]
 }
 </script>
