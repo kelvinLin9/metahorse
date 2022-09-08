@@ -1,5 +1,5 @@
 <template>
-  <div class="favBanner ">
+  <div class="favBanner">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
         <span class="me-2 fs-1 fw-bolder text-white">我的最愛</span>
@@ -18,7 +18,7 @@
     <div class="container pt-5">
       <div class="row g-4 justify-content-center"
           v-if="favorite.length !== 0">
-        <div class="col-md-6 col-lg-4 col-12"
+        <div class="col-md-6 col-lg-4 col-10"
             v-for="item in favorite" :key="item.id">
           <div class="card rounded-3">
             <div class="card-img overflow-hidden position-relative scale">
