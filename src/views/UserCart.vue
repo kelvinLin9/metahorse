@@ -1,6 +1,16 @@
 <template>
   <UserCheckoutBar/>
   <div class="container py-3"
+      v-if="cart.total === 0">
+    <div class="text-center pt-4">
+      <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
+      <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg mt-5"
+                  @click="goProducts">
+            商品列表
+      </button>
+    </div>
+  </div>
+  <div class="container py-3"
       v-if="cart.total !== 0">
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物清單</h1>
@@ -120,16 +130,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="container my-3"
-      v-if="cart.total === 0">
-    <div class="text-center pt-4">
-      <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
-      <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg mt-5"
-                  @click="goProducts">
-            商品列表
-      </button>
-      </div>
   </div>
 </template>
 

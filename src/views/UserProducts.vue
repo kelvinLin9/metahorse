@@ -44,6 +44,11 @@
         </div>
       </div>
       <div class="col-lg-9">
+        <div class="form-floating mb-2 mt-2 mt-lg-0">
+          <input type="search" class="form-control" id="search" placeholder="search"
+          v-model="cacheSearch">
+          <label for="search">search</label>
+        </div>
         <div class="row g-4">
           <div class="col-lg-4 col-md-6 col-12"
               v-for="item in filterProducts" :key="item.id">
@@ -96,7 +101,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'pinia'
+import { mapState, mapActions, mapWritableState } from 'pinia'
 import productStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
@@ -107,7 +112,8 @@ export default {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
     ...mapActions(productStore, ['getProducts', 'setCategory']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
-    ...mapActions(goStore, ['goProduct'])
+    ...mapActions(goStore, ['goProduct']),
+    ...mapWritableState(productStore, ['cacheSearch'])
   },
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favState']),

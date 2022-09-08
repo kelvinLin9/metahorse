@@ -58,10 +58,10 @@
             </div>
           </li>
           <!-- 購物車小視窗 -->
-          <div class="dropdown-menu cart-box p-3"
+          <div class="dropdown-menu cart-box p-3 overflow-auto"
               :class="{ 'show': cartBoxState }">
             <h5 class="fw-bold" v-if="cartNum>0">已選購商品</h5>
-            <div class="table-responsive-md">
+            <div class="table-responsive-md he">
               <table class="table table-sm">
                 <thead class="table-dark">
                   <tr class="table-nowrap text-center">
@@ -149,9 +149,14 @@ export default {
 /* 小購物車框 */
 .cart-box{
   min-width: 450px;
+  max-height: 400px;
   position: absolute;
   right: 1px;
   top: 60px;
+}
+.he {
+  position: relative;
+  overflow: hidden;
 }
 .logo {
   position: absolute;

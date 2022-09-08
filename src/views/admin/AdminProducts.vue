@@ -13,15 +13,15 @@
           <table class="table table-hover mb-0 text-nowrap">
             <thead class="bg-light border-bottom-3 fw-bold">
               <tr class="align-middle">
-                <th width="100">分類</th>
-                <th width="50">產品名稱</th>
-                <th width="50">圖片</th>
-                <th width="80">產品描述</th>
-                <th width="150">說明</th>
-                <th width="120">原價</th>
-                <th width="120">售價</th>
-                <th width="100">是否啟用</th>
-                <th width="200">編輯 / 刪除</th>
+                <th>分類</th>
+                <th>產品名稱</th>
+                <th>圖片</th>
+                <th>產品描述</th>
+                <th>產品詳細說明</th>
+                <th>原價</th>
+                <th>售價</th>
+                <th>是否啟用</th>
+                <th>編輯 / 刪除</th>
               </tr>
             </thead>
             <tbody>
@@ -32,7 +32,9 @@
                   <img :src="item.imageUrl" alt="商品照片" width="100" height="100">
                 </td>
                 <td>{{ item.description }}</td>
-                <td>{{ item.content }}</td>
+                <td class="text-wrap">
+                  {{ item.content }}
+                </td>
                 <td class="text-right">
                   {{ $filters.currency(item.origin_price) }}
                 </td>
