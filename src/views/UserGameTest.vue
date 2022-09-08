@@ -17,8 +17,6 @@ export default {
   },
   methods: {
     showAlert () {
-      // console.log(this.order.total)
-
       this.$swal.fire({
         title: '感謝您的支持',
         text: '產品將會在3個工作天內寄出',

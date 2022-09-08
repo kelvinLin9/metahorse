@@ -21,7 +21,6 @@ export default defineStore('cartStore', {
       },
       message: ''
     }
-    // qty: 1 // 不需要 傳到後端就好
   }),
   actions: {
     getCart () {
@@ -29,7 +28,6 @@ export default defineStore('cartStore', {
       status.isLoading = true
       axios.get(url)
         .then((res) => {
-          // console.log('GETC!!!!!!!!!!!!!!!!')
           this.cartNum = res.data.data.carts.length
           this.cart = res.data.data
           status.isLoading = false
