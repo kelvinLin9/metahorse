@@ -154,10 +154,6 @@ export default {
   right: 1px;
   top: 60px;
 }
-.he {
-  position: relative;
-  overflow: hidden;
-}
 .logo {
   position: absolute;
   left: 165px;
