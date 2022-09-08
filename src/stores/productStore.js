@@ -106,7 +106,7 @@ export default defineStore('productStore', {
         return filterProducts
       } else {
         return this.products.filter((item) => {
-          return item.Name.match(this.cacheSearch)
+          return item.title.match(this.cacheSearch)
           // 空的欄位一樣會回傳全部資料，只有 null 才不會回傳內容
         })
       }

@@ -112,13 +112,13 @@ export default {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),
     ...mapActions(productStore, ['getProducts', 'setCategory']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
-    ...mapActions(goStore, ['goProduct']),
-    ...mapWritableState(productStore, ['cacheSearch'])
+    ...mapActions(goStore, ['goProduct'])
   },
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds', 'favState']),
     ...mapState(productStore, ['products', 'filterProducts', 'category']),
-    ...mapState(statusStore, ['cartLoadingItem'])
+    ...mapState(statusStore, ['cartLoadingItem']),
+    ...mapWritableState(productStore, ['cacheSearch'])
   }
 }
 </script>
