@@ -41,7 +41,7 @@
     <div class="card shadow-sm">
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-hover mb-0 text-nowrap">
+          <table class="table table-hover mb-0">
             <thead class="bg-light border-bottom-3 fw-bold">
               <tr class="align-middle">
                 <th scope="col" class="ps-3 py-3">購買時間</th>
@@ -61,8 +61,8 @@
                     :class="{'text-danger': !item.is_paid}">
                   <td>{{ $filters.date(item.create_at) }}</td>
                   <td>{{ item.id }}</td>
-                  <td><span v-text="item.user.email" v-if="item.user"></span></td>
-                  <td><span v-text="item.user.name" v-if="item.user"></span></td>
+                  <td class="email">{{ item.user.email }}</td>
+                  <td class="name">{{ item.user.name }}</td>
                   <td>
                     <ul class="list-unstyled">
                       <li v-for="(product, i) in item.products" :key="i">
@@ -70,7 +70,7 @@
                       </li>
                     </ul>
                   </td>
-                  <td>
+                  <td class="qty">
                     <ul class="list-unstyled">
                       <li v-for="(product, i) in item.products" :key="i">
                         {{ product.qty }}
@@ -109,6 +109,20 @@
     <Pagination/>
   </div>
 </div>
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+    </div>
+  </div>
+</div>
+
 </template>
 
 <script>
@@ -180,3 +194,15 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+  .email {
+    // word-break: break-all;
+    max-width: 200px;
+  }
+  .name {
+    max-width: 100px;
+  }
+  .qty {
+    min-width: 50px;
+  }
+</style>
