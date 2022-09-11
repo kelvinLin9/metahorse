@@ -39,11 +39,6 @@ export default {
   methods: {
     ...mapActions(adminStore, ['getOrders', 'getProducts', 'getCoupons'])
   },
-  mounted () {
-    this.getOrders()
-    this.getProducts()
-    this.getCoupons()
-  },
   created () {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
     // console.log(token)

@@ -5,7 +5,7 @@ import { defineStore } from 'pinia'
 import statusStore from './statusStore'
 
 const status = statusStore()
-
+let PieC, BarC
 export default defineStore('adminStore', {
   state: () => ({
     products: [],
@@ -45,46 +45,44 @@ export default defineStore('adminStore', {
       })
     },
     // 取得當前頁面訂單資料
-    getOrders (page = 1, needGetAllOrders = true) {
+    async getOrders (page = 1, needGetAllOrders = true) {
       this.currentPage = page
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
       status.isLoading = true
-      axios.get(url, this.tempProduct).then((res) => {
-        this.orders = res.data.orders
-        this.pagination = res.data.pagination
-        status.isLoading = false
+      await axios
+        .get(url, this.tempProduct)
+        .then((res) => {
+          this.orders = res.data.orders
+          this.pagination = res.data.pagination
+        })
         // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
-        if (needGetAllOrders) {
-          this.getAllOrders()
-        }
-      })
+      if (needGetAllOrders) {
+        this.getAllOrders()
+      }
+      status.isLoading = false
     },
     // 取得所有頁面訂單資料
-    getAllOrders () {
+    async getAllOrders () {
       this.allOrders = []
       this.revenue = 0
       this.ordersNum = 0
       status.isLoading = true
-      const axiosArray = []
-      for (let i = 1; i <= this.pagination.total_pages; i++) {
+      for (let i = 0; i <= this.pagination.total_pages; i++) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
-        axiosArray.push(axios.get(url))
-      }
-      Promise.all(axiosArray).then((res) => {
-        for (let i = 1; i <= this.pagination.total_pages; i++) {
-          this.allOrders.push(...res[i - 1].data.orders)
-          res[i - 1].data.orders.forEach((item) => {
-            this.revenue += item.total
-            this.ordersNum += 1
+        await axios
+          .get(url)
+          .then((res) => {
+            console.log(i)
+            res.data.orders.forEach((order) => {
+              this.allOrders.push(order)
+              this.ordersNum += 1
+              this.revenue += order.total
+            })
           })
-          status.isLoading = false
-        }
-        // console.log(this.allOrders)
-        this.getAllOrdersData()
-      })
-        .catch((err) => {
-          console.log(err)
-        })
+          .catch((err) => console.error(err))
+      }
+      this.getAllOrdersData()
+      status.isLoading = false
     },
     // 取得所有訂單的詳細資料
     getAllOrdersData () {
@@ -185,20 +183,23 @@ export default defineStore('adminStore', {
           responsive: true
         }
       }
-
+      console.log(PieC)
+      if (PieC && BarC) {
+        console.log(PieC)
+        PieC.destroy()
+        BarC.destroy()
+      }
       const ctx_pie = document.getElementById('pieChart')
       const ctx_bar = document.getElementById('barChart')
 
-      const PieC = new Chart(ctx_pie, this.pieChartData)
-      const BarC = new Chart(ctx_bar, this.barChartData)
-      // PieC.destroy()
-      // BarC.destroy()
+      PieC = new Chart(ctx_pie, this.pieChartData)
+      BarC = new Chart(ctx_bar, this.barChartData)
     },
     // 需要判斷是哪個頁面在使用pagination元件
     updatePage (page, path) {
       this.currentPage = page
       if (path === '/dashboard/order') {
-        this.getOrders(page, true)
+        this.getOrders(page, false)
       } else if (path === '/dashboard/products') {
         this.getProducts(page, false)
       }
@@ -216,6 +217,7 @@ export default defineStore('adminStore', {
       this.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons`
       axios.get(url, this.tempProduct).then((res) => {
+        console.log(res)
         this.coupons = res.data.coupons
         this.isLoading = false
       })
