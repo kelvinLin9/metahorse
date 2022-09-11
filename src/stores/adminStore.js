@@ -183,9 +183,10 @@ export default defineStore('adminStore', {
           responsive: true
         }
       }
-      console.log(PieC)
+      // let PieC = new Chart()
+      // let BarC = new Chart()
+      // console.log(PieC)
       if (PieC && BarC) {
-        console.log(PieC)
         PieC.destroy()
         BarC.destroy()
       }
