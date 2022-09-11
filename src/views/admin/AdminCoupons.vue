@@ -82,6 +82,7 @@ export default {
     // ...mapWritableState(adminStore, ['tempOrder', 'isNew'])
   },
   methods: {
+    ...mapActions(adminStore, ['getCoupons']),
     openCouponModal (isNew, item) {
       this.isNew = isNew
       if (this.isNew) {
@@ -128,6 +129,9 @@ export default {
         this.getCoupons()
       })
     }
+  },
+  mounted () {
+    this.getCoupons()
   }
 }
 </script>

@@ -148,6 +148,9 @@ export default {
         this.getProducts()
       })
     }
+  },
+  mounted () {
+    this.getProducts()
   }
 }
 </script>
