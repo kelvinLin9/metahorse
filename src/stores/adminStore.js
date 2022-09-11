@@ -183,16 +183,17 @@ export default defineStore('adminStore', {
           responsive: true
         }
       }
-      if (this.PieC && this.BarC) {
-        console.log('this.PieC')
-        this.PieC.destroy()
-        this.BarC.destroy()
+      console.log(PieC)
+      if (PieC && BarC) {
+        console.log(PieC)
+        PieC.destroy()
+        BarC.destroy()
       }
       const ctx_pie = document.getElementById('pieChart')
       const ctx_bar = document.getElementById('barChart')
 
-      const PieC = new Chart(ctx_pie, this.pieChartData)
-      const BarC = new Chart(ctx_bar, this.barChartData)
+      PieC = new Chart(ctx_pie, this.pieChartData)
+      BarC = new Chart(ctx_bar, this.barChartData)
     },
     // 需要判斷是哪個頁面在使用pagination元件
     updatePage (page, path) {
