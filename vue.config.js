@@ -5,7 +5,7 @@ module.exports = defineConfig({
   // 修正檔案命名問題
   lintOnSave: false,
 
-  publicPath: '/metahorse'
+  publicPath: '/metahorse/dist'
 })
 
 // module.exports = {
