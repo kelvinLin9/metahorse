@@ -4,5 +4,5 @@ module.exports = defineConfig({
 
   // 修正檔案命名問題
   lintOnSave: false,
-  publicPath: process.env.NODE_ENV === 'production' ? '/metahorse/dist' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/metahorse/' : '/'
 })
