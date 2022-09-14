@@ -72,7 +72,7 @@ export default defineStore('adminStore', {
         await axios
           .get(url)
           .then((res) => {
-            console.log(i)
+            // console.log(i)
             res.data.orders.forEach((order) => {
               this.allOrders.push(order)
               this.ordersNum += 1
@@ -190,11 +190,11 @@ export default defineStore('adminStore', {
         PieC.destroy()
         BarC.destroy()
       }
-      const ctx_pie = document.getElementById('pieChart')
-      const ctx_bar = document.getElementById('barChart')
+      const ctxPie = document.getElementById('pieChart')
+      const ctxBar = document.getElementById('barChart')
 
-      PieC = new Chart(ctx_pie, this.pieChartData)
-      BarC = new Chart(ctx_bar, this.barChartData)
+      PieC = new Chart(ctxPie, this.pieChartData)
+      BarC = new Chart(ctxBar, this.barChartData)
     },
     // 需要判斷是哪個頁面在使用pagination元件
     updatePage (page, path) {
