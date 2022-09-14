@@ -12,34 +12,34 @@
     <div class="row">
       <div class="col-lg-3">
         <h2 class="fw-bold text-center f-kalam bg-primary">賽馬( Level )</h2>
-        <div class="fw-bold list-group flex-row flex-lg-column ">
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'all' ,'fs-4' : category == 'all'}"
-              @click.prevent="setCategory('all')">- All</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'S' ,'fs-4' : category == 'S'}"
+        <div class="fw-bold list-group flex-row flex-lg-column fs-5">
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === 'all' ,'fs-4' : category === 'all'}"
+              @click.prevent="setCategory('all')">-All</a>
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === 'S' ,'fs-4' : category === 'S'}"
               @click.prevent="setCategory('S')">- S</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'A' ,'fs-4' : category == 'A'}"
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === 'A' ,'fs-4' : category === 'A'}"
               @click.prevent="setCategory('A')">- A</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'B' ,'fs-4' : category == 'B'}"
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === 'B' ,'fs-4' : category === 'B'}"
               @click.prevent="setCategory('B')">- B</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == 'C' ,'fs-4' : category == 'C'}"
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === 'C' ,'fs-4' : category === 'C'}"
               @click.prevent="setCategory('C')">- C</a>
         </div>
         <hr>
         <h2 class="fw-bold text-center f-kalam bg-primary">道具</h2>
-        <div class="fw-bold list-group flex-row flex-lg-column ">
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == '馬鞍' ,'fs-4' : category == '馬鞍'}"
+        <div class="fw-bold list-group flex-row flex-lg-column fs-5">
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === '馬鞍' ,'fs-4' : category === '馬鞍'}"
               @click.prevent="setCategory('馬鞍')">- 馬鞍</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == '馬蹄鐵' ,'fs-4' : category == '馬蹄鐵'}"
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === '馬蹄鐵' ,'fs-4' : category === '馬蹄鐵'}"
               @click.prevent="setCategory('馬蹄鐵')">- 馬蹄鐵</a>
-            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam fs-5"
-              :class="{ 'text-primary' : category == '馬飼料' ,'fs-4' : category == '馬飼料'}"
+            <a href="#" class="list-group-item list-group-item-action border-0 f-kalam"
+              :class="{ 'text-primary' : category === '馬飼料' ,'fs-4' : category === '馬飼料'}"
               @click.prevent="setCategory('馬飼料')">- 馬飼料</a>
         </div>
       </div>

@@ -3,7 +3,7 @@
   <div class="container">
     <div class="py-5 row justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物明細</h1>
-      <form class="col-10" @submit.prevent="payOrder">
+      <form class="col-10 table-responsive" @submit.prevent="payOrder">
         <table class="table align-middle">
           <thead class="table-primary">
           <th>品名</th>
