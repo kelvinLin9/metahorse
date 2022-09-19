@@ -17,9 +17,9 @@
       <div class="col-md-6 position-relative">
         <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded h-100">
 
-        <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
+        <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center"
             @click.stop="toggleFavorite(product.id)">
-          <i :class="favState(id)"></i>
+          <i :class="favState(id)" class="love"></i>
         </span>
       </div>
 
@@ -74,7 +74,7 @@
           </div>
 
           <button type="button"
-                  class="col-9 btn btn-outline-primary text-dark fw-bold fs-5"
+                  class="col-9 btn btn-outline-primary text-dark fw-bold fs-5 me-3"
                   :disabled="cartLoadingItem === product.id"
                   @click="addCart(product.id, product.qty)">
             <div v-if="cartLoadingItem === product.id"
@@ -167,5 +167,8 @@ export default {
   top: 5px;
   right: 15px;
   z-index: 2;
+}
+.love {
+  height: auto;
 }
 </style>
