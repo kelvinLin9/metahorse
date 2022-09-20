@@ -39,7 +39,7 @@
                 <img class="rounded-3 img-fit"
                       :src="item.imageUrl" alt="商品照片">
                   <!-- </a> -->
-                <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white text-center"
+                <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center"
                       @click.stop="toggleFavorite(item.id)">
                   <i :class="favState(item.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="加入 / 移除我的最愛"></i>
                 </span>

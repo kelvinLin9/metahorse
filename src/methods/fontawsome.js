@@ -12,6 +12,7 @@ import { faCashRegister } from '@fortawesome/free-solid-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faHorse } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faHeartCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { fa1, fa2, fa3 } from '@fortawesome/free-solid-svg-icons'
 /* add some free styles */
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -28,6 +29,8 @@ library.add(
   faArrowRight,
   faCartShopping,
   faHorse,
+  faHeart,
+  faHeartCircleCheck,
   fa1,
   fa2,
   fa3

@@ -8,9 +8,9 @@ export default defineStore('favoriteStore', {
     products: []
   }),
   actions: {
-    productsBus(products){
+    productsBus (products) {
       this.products = products
-      this.getFavorite ()
+      this.getFavorite()
     },
     getFavoriteIds () {
       this.favoriteIds = JSON.parse(localStorage.getItem('favoriteIds')) || []
@@ -49,7 +49,7 @@ export default defineStore('favoriteStore', {
   getters: {
     favState () {
       return (id) => {
-        return this.favoriteIds.indexOf(id) > -1 ? 'bi bi-heart-fill' : 'bi bi-heart'
+        return this.favoriteIds.indexOf(id) > -1 ? 'fa-solid fa-heart-circle-check' : 'fa-solid fa-heart'
       }
     }
   }

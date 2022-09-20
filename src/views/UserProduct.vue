@@ -17,9 +17,9 @@
       <div class="col-md-6 position-relative">
         <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded h-100">
 
-        <span class="position-absolute position-relative rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center"
+        <span class="position-absolute rounded-circle fav-icon bg-white d-flex justify-content-center align-items-center"
             @click.stop="toggleFavorite(product.id)">
-          <i :class="favState(id)" class="love position-relative"></i>
+          <font-awesome-icon :icon="favState(id)" class="love"/>
         </span>
       </div>
 
@@ -169,6 +169,6 @@ export default {
   z-index: 2;
 }
 .love {
-  top: 3px;
+  font-size: 35px;
 }
 </style>
