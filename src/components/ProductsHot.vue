@@ -41,7 +41,12 @@
                   <!-- </a> -->
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center"
                       @click.stop="toggleFavorite(item.id)">
-                  <i :class="favState(item.id)" data-bs-toggle="tooltip" data-bs-placement="top" title="加入 / 移除我的最愛"></i>
+                  <font-awesome-icon :icon="favState(id)"
+                                      class="love"
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="加入 / 移除我的最愛"
+                  />
                 </span>
               </div>
               <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
@@ -127,6 +132,9 @@ export default {
   top: 5px;
   right: 5px;
   z-index: 2;
+}
+.love {
+  font-size: 35px;
 }
 .img-fit{
   width: 100%;

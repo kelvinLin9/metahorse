@@ -19,7 +19,12 @@
 
         <span class="position-absolute rounded-circle fav-icon bg-white d-flex justify-content-center align-items-center"
             @click.stop="toggleFavorite(product.id)">
-          <font-awesome-icon :icon="favState(id)" class="love"/>
+          <font-awesome-icon :icon="favState(id)"
+                              class="love"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="加入 / 移除我的最愛"
+          />
         </span>
       </div>
 
