@@ -26,6 +26,7 @@
       </h1>
       </div>
     </swiper-slide>
+    <!-- https://imgur.com/w1VDrqL -->
     <swiper-slide>
       <div class="header-bg2 d-flex justify-content-center"
           style="background-image: url('https://imgur.com/YTmc4UB.jpg');">
