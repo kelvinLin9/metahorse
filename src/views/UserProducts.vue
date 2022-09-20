@@ -64,11 +64,17 @@
                   <!-- </a> -->
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center "
                       @click.stop="toggleFavorite(item.id)">
-                  <i :class="favState(item.id)"
+                  <!-- <i :class="favState(item.id)"
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="加入 / 移除我的最愛">
-                  </i>
+                  </i> -->
+                  <font-awesome-icon :icon="favState(item.id)"
+                              class="love"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="加入 / 移除我的最愛"
+                  />
                 </span>
               </div>
               <div class="card-body d-flex flex-column text-center fw-bold">

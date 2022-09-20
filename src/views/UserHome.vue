@@ -111,7 +111,6 @@
                 {{temp.intelligence}} / 5
               </div>
             </div>
-            <hr>
           </div>
           <!-- 星星寫法先保留 -->
             <!-- <ul class="col">

@@ -41,7 +41,7 @@
                   <!-- </a> -->
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center"
                       @click.stop="toggleFavorite(item.id)">
-                  <font-awesome-icon :icon="favState(id)"
+                  <font-awesome-icon :icon="favState(item.id)"
                                       class="love"
                                       data-bs-toggle="tooltip"
                                       data-bs-placement="top"
