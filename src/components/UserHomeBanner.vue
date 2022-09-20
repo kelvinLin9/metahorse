@@ -4,7 +4,7 @@
     :spaceBetween="30"
     :centeredSlides="true"
     :autoplay="{
-      delay: 2500,
+      delay: 25000,
       disableOnInteraction: false,
     }"
     :pagination="{
@@ -26,10 +26,10 @@
       </h1>
       </div>
     </swiper-slide>
-    <!-- https://imgur.com/w1VDrqL -->
+    <!-- https://imgur.com/Me2oZvL 方形-->
     <swiper-slide>
-      <div class="header-bg2 d-flex justify-content-center"
-          style="background-image: url('https://imgur.com/YTmc4UB.jpg');">
+      <div class="header-bg2 d-flex justify-content-center bg-dark"
+          style="background-image: url('https://imgur.com/I19pL6e.jpg');">
       <h1 class="fw-bold align-self-center header-text f-kalam">
         DIGITAL
         <br class="d-md-none">
@@ -81,8 +81,9 @@ export default {
   height: 100vh;
 }
 .header-bg2 {
-  background-size: cover;
-  background-position: center left;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
   height: 100vh;
 }
 .header-text {
