@@ -163,19 +163,19 @@
                 <div class="row row-cols-2 row-cols-lg-4">
                   <div class="col my-2">
                     <label for="speed">速度：</label>
-                    <input id="speed" type="number" min="1" max="5" v-model="tempProduct.speed">
+                    <input id="speed" type="number" min="1" max="5" v-model.number="tempProduct.speed">
                   </div>
                   <div class="col my-2">
                     <label for="stamina">耐力：</label>
-                    <input id="stamina" type="number" min="1" max="5" v-model="tempProduct.stamina">
+                    <input id="stamina" type="number" min="1" max="5" v-model.number="tempProduct.stamina">
                   </div>
                   <div class="col my-2">
                     <label for="lucky">幸運：</label>
-                    <input id="lucky" type="number" min="1" max="5" v-model="tempProduct.lucky">
+                    <input id="lucky" type="number" min="1" max="5" v-model.number="tempProduct.lucky">
                   </div>
                   <div class="col my-2">
                     <label for="intelligence">智慧：</label>
-                    <input id="intelligence" type="number" min="1" max="5" v-model="tempProduct.intelligence">
+                    <input id="intelligence" type="number" min="1" max="5" v-model.number="tempProduct.intelligence">
                   </div>
                 </div>
               </div>

@@ -51,7 +51,7 @@
                         type="number"
                         class="form-control"
                         id="tel"
-                        v-model="tempOrder.user.tel"
+                        v-model.number="tempOrder.user.tel"
                         placeholder="請輸入電話"/>
                     </td>
                   </tr>
