@@ -21,6 +21,7 @@ import { mapActions, mapState } from 'pinia'
 import productStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
+
 export default {
   components: {
     ToastMessages,

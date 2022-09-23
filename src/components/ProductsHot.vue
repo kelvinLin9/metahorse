@@ -99,6 +99,7 @@ import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
+
 export default {
   components: {
     Swiper,

@@ -47,6 +47,7 @@
 import { mapState, mapActions } from 'pinia'
 import couponStore from '@/stores/couponStore'
 import copyStore from '@/stores/copyStore'
+
 export default {
   computed: {
     ...mapState(couponStore, ['coupon', 'draw'])

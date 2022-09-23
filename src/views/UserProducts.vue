@@ -113,6 +113,7 @@ import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
+
 export default {
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'toggleFavorite']),

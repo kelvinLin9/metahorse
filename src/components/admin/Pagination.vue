@@ -30,6 +30,7 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import adminStore from '@/stores/adminStore'
+
 export default {
   computed: {
     ...mapState(adminStore, ['pagination'])

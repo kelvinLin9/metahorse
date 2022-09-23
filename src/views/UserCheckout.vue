@@ -106,6 +106,7 @@ import UserCheckoutBar from '@/components/UserCheckoutBar.vue'
 import { mapState, mapActions, mapWritableState } from 'pinia'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
+
 export default {
   components: {
     UserCheckoutBar

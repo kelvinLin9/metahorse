@@ -89,6 +89,7 @@ import UserCheckoutBar from '@/components/UserCheckoutBar.vue'
 import GameModal from '@/components/GameModal.vue'
 import { mapActions } from 'pinia'
 import copyStore from '@/stores/copyStore'
+
 export default {
   data () {
     return {

@@ -22,6 +22,7 @@
 import { mapState, mapActions } from 'pinia'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
+
 export default {
   computed: {
     ...mapState(cartStore, ['cartNum'])

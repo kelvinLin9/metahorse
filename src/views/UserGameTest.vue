@@ -11,6 +11,7 @@
 
 <script>
 import GameModal from '@/components/GameModal.vue'
+
 export default {
   components: {
     GameModal

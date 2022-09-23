@@ -29,6 +29,7 @@
 import modalMixin from '@/mixins/modalMixin'
 import { mapState } from 'pinia'
 import chartStore from '@/stores/chartStore'
+
 export default {
   props: {
     item: {}

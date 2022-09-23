@@ -42,8 +42,8 @@
               <td class="font-sm">
                 {{ item.product.title }}<br>
                 <small class="text-secondary fw-bold" v-if="item.coupon">
-                  已套用優惠券<br> ({{item.final_total / item.total * 100 }}% OFF)<br>
-                  代碼：{{item.coupon.code}}
+                  已套用優惠券<br> ({{ item.final_total / item.total * 100 }}% OFF)<br>
+                  代碼：{{ item.coupon.code }}
                 </small>
               </td>
               <td class="d-none d-sm-block">
@@ -51,7 +51,7 @@
               </td>
               <td class="font-sm">
                 NT$<br class="d-md-none">
-                {{item.product.price}}
+                {{ item.product.price }}
               </td>
               <td>
                 <div class="input-group input-group-sm">
@@ -140,6 +140,7 @@ import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
 import couponStore from '@/stores/couponStore'
+
 export default {
   components: {
     UserCheckoutBar

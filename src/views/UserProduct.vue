@@ -32,7 +32,7 @@
         <h2>{{ product.title }}</h2>
         <div>{{ product.description }}</div>
         <hr>
-        <h5>{{product.content}}</h5>
+        <h5>{{ product.content }}</h5>
         <hr>
 
         <div class="w-50" v-if="product.speed">
@@ -40,25 +40,25 @@
           <span>速度<i class="bi bi-lightning-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.speed*20}%`}">
-              {{product.speed}} / 5
+              {{ product.speed }} / 5
             </div>
           </div>
           <span>耐力<i class="bi bi-clock-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.stamina*20}%`}">
-              {{product.stamina}} / 5
+              {{ product.stamina }} / 5
             </div>
           </div>
           <span>幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.lucky*20}%`}">
-              {{product.lucky}} / 5
+              {{ product.lucky }} / 5
             </div>
           </div>
           <span>智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
           <div class="progress mb-3">
             <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${product.intelligence*20}%`}">
-              {{product.intelligence}} / 5
+              {{ product.intelligence }} / 5
             </div>
           </div>
           <hr>

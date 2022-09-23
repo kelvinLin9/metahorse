@@ -51,6 +51,7 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin'
+
 export default {
   data () {
     return {
