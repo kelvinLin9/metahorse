@@ -79,7 +79,7 @@
                     <td class="text-center">
                       <button type="button" class="btn btn-outline-primary btn-sm"
                           :disabled="cartLoadingItem === item.id"
-                          @click="removeCartItem(item.id)">
+                          @click.prevent="removeCartItem(item.id)">
                         <i class="bi bi-x"></i>
                       </button>
                     </td>
@@ -126,6 +126,7 @@ import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
+
 export default {
   computed: {
     ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState']),

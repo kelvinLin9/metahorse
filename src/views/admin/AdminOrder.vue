@@ -92,9 +92,9 @@
                   <td>
                     <div class="btn-group">
                       <button class="btn btn-outline-primary btn-sm text-dark"
-                              @click="openModal(false, item)">編輯</button>
+                              @click.prevent="openModal(false, item)">編輯</button>
                       <button class="btn btn-outline-danger btn-sm"
-                              @click="openDelOrderModal(item)"
+                              @click.prevent="openDelOrderModal(item)"
                       >刪除</button>
                     </div>
                   </td>

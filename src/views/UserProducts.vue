@@ -89,7 +89,7 @@
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
                         :disabled="cartLoadingItem === item.id"
-                        @click="addCart(item.id)">
+                        @click.prevent="addCart(item.id)">
                   <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
                   <div v-if="cartLoadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">

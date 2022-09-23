@@ -2,7 +2,7 @@
 <!-- @click="this.$refs.GameModal.showModal() -->
   <div class="text-end">
     <button class="btn btn-primary" type="button"
-    @click="showAlert ()">
+    @click.prevent="showAlert ()">
       點我試玩
     </button>
   </div>

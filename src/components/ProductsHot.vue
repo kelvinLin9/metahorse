@@ -25,8 +25,7 @@
     }"
       class="mySwiper"
     >
-      <swiper-slide v-for="(item) in productsHot" :key="item.id"
-                    @click="viewProduct(item.id)" >
+      <swiper-slide v-for="(item) in productsHot" :key="item.id">
              <div class="card rounded-3 mb-5 mx-2 mx-sm-0"
                   data-aos="flip-up"
                   data-aos-duration="2000">

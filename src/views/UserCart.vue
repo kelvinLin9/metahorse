@@ -5,7 +5,7 @@
     <div class="text-center pt-4">
       <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
       <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg mt-5"
-                  @click="goProducts">
+                  @click.prevent="goProducts">
             商品列表
       </button>
     </div>
@@ -35,7 +35,7 @@
               <td>
                 <button type="button" class="btn btn-outline-primary btn-sm"
                        :disabled="cartLoadingItem === item.id"
-                       @click="removeCartItem(item.id)">
+                       @click.prevent="removeCartItem(item.id)">
                   <i class="bi bi-x"></i>
                 </button>
               </td>
@@ -101,7 +101,7 @@
           v-model="coupon_code">
 
           <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" id="button-addon"
-                  @click="addCouponCode(coupon_code)">
+                  @click.prevent="addCouponCode(coupon_code)">
               套用優惠碼
           </button>
         </div>
@@ -120,11 +120,11 @@
         <div class="d-flex justify-content-between mt-3"
              v-if="cart.total !== 0">
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
-                @click="goProducts">
+                @click.prevent="goProducts">
             <i class="bi bi-caret-left-fill"></i>商品列表
           </button>
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
-                  @click="goCheckout">
+                  @click.prevent="goCheckout">
             填寫資料<i class="bi bi-caret-right-fill"></i>
           </button>
         </div>

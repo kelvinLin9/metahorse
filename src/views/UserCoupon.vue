@@ -23,7 +23,7 @@
     </div>
     <button type="button"
             class="btn btn-outline-primary text-dark fw-bold fs-5"
-            @click="luckyDraw(0, 2)"
+            @click.prevent="luckyDraw(0, 2)"
             v-if="!draw">
       抽獎
     </button>
@@ -36,7 +36,7 @@
       </div>
       <button type="button"
               class="btn btn-outline-primary text-dark fw-bold fs-6 mt-3"
-              @click="copyCode(coupon.code)">
+              @click.prevent="copyCode(coupon.code)">
         複製折扣碼
       </button>
     </div>

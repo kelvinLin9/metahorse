@@ -65,7 +65,7 @@
         </div>
 
         <div class="h5" v-if="!product.price">{{ product.origin_price }} 元</div>
-        <del class="h6" v-if="product.price">原價 {{ product.origin_price }} 元</del>
+        <del class="h6" v-else>原價 {{ product.origin_price }} 元</del>
         <div class="h5" v-if="product.price">現在只要 {{ product.price }} 元</div>
         <hr>
 
@@ -81,7 +81,7 @@
           <button type="button"
                   class="col-9 btn btn-outline-primary text-dark fw-bold fs-5 me-3"
                   :disabled="cartLoadingItem === product.id"
-                  @click="addCart(product.id, product.qty)">
+                  @click.prevent="addCart(product.id, product.qty)">
             <div v-if="cartLoadingItem === product.id"
                   class="spinner-grow text-danger spinner-grow-sm" role="status">
               <span class="visually-hidden">Loading...</span>
@@ -163,7 +163,7 @@ export default {
     this.getProduct(this.id)
   }
 }
-</script >
+</script>
 <style lang="scss" scoped>
 .fav-icon {
   width: 50px;

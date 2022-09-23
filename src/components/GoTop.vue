@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted () {
-    window.onscroll = function (e) {
+    window.onscroll = e => {
       // console.log(event.target.scrollingElement.scrollTop)
       if (e.target.scrollingElement.scrollTop > 350) {
         const el = document.querySelector('.goTop')

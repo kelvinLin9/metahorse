@@ -3,7 +3,7 @@
   <div class="container pt-3">
     <div class="text-end pb-3">
       <button class="btn btn-primary" type="button"
-             @click="openModal(true)">
+             @click.prevent="openModal(true)">
       新增產品
     </button>
     </div>
@@ -48,9 +48,9 @@
                 <td>
                   <div class="btn-group">
                     <button class="btn btn-outline-primary btn-sm"
-                    @click="openModal(false, item)">編輯</button>
+                    @click.prevent="openModal(false, item)">編輯</button>
                     <button class="btn btn-outline-danger btn-sm"
-                    @click="openDelProductModal(item)">刪除</button>
+                    @click.prevent="openDelProductModal(item)">刪除</button>
                   </div>
                 </td>
               </tr>
