@@ -53,11 +53,6 @@ const routes = [
         component: () => import('../views/UserCheckout.vue')
       },
       {
-        path: 'Game',
-        name: 'Game',
-        component: () => import('../views/UserGameTest.vue')
-      },
-      {
         path: 'product/:productId',
         name: 'product',
         component: () => import('../views/UserProduct.vue')
