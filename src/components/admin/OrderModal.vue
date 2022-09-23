@@ -150,7 +150,7 @@
           </button>
           <button type="button" class="btn btn-primary"
                   data-bs-dismiss="modal"
-                  @click="updateOrder(tempOrder)"
+                  @click.prevent="updateOrder(tempOrder)"
                   >確認</button>
         </div>
       </div>
@@ -159,7 +159,7 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin'
-import { mapState, mapActions, mapWritableState } from 'pinia'
+import { mapActions, mapWritableState } from 'pinia'
 import adminStore from '@/stores/adminStore'
 export default {
   computed: {

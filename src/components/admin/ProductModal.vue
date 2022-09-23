@@ -60,7 +60,7 @@
                   <button
                     type="button"
                     class="btn btn-outline-danger"
-                    @click="tempProduct.images.splice(key, 1)"
+                    @click.prevent="tempProduct.images.splice(key, 1)"
                   >
                     移除
                   </button>
@@ -72,7 +72,7 @@
                 >
                   <button
                     class="btn btn-outline-primary btn-sm d-block w-100"
-                    @click="tempProduct.images.push('')"
+                    @click.prevent="tempProduct.images.push('')"
                   >
                     新增圖片
                   </button>
@@ -204,7 +204,7 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click="$emit('update-product', tempProduct)"
+            @click.prevent="$emit('update-product', tempProduct)"
           >
             確認
           </button>

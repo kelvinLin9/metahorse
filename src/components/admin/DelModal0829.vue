@@ -18,7 +18,7 @@
                   data-bs-dismiss="modal">取消
           </button>
           <button type="button" class="btn btn-danger"
-                  @click="delOrder()">確認刪除
+                  @click.prevent="delOrder()">確認刪除
           </button>
         </div>
       </div>
@@ -27,7 +27,7 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin'
-import { mapState, mapActions, mapWritableState } from 'pinia'
+import { mapState } from 'pinia'
 import chartStore from '@/stores/chartStore'
 export default {
   props: {

@@ -56,7 +56,7 @@
 <script>
 import CouponModal from '@/components/admin/CouponModal.vue'
 import DelModal from '@/components/admin/DelModal.vue'
-import { mapState, mapActions, mapWritableState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import adminStore from '@/stores/adminStore'
 export default {
   components: {
