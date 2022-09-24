@@ -15,7 +15,7 @@ export default defineStore('productStore', {
     product: {},
     productsHot: [],
     productsGame: [],
-    temp: {}, // 暫存點擊到的賽馬資訊
+    temp: {},
     category: 'all',
     cacheSearch: ''
   }),

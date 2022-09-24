@@ -4,7 +4,7 @@
       <li class="page-item"
           :class="{ 'disabled' : !pagination.has_pre }">
         <a class="page-link text-dark" href="#" aria-label="Previous"
-            @click.prevent="updatePage(pagination.current_page - 1, this.$route.path)">
+            @click.prevent="updatePage(pagination.current_page - 1, $route.path)">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
@@ -12,14 +12,14 @@
       v-for="page in pagination.total_pages" :key="page"
       :class="{ 'active': page === pagination.current_page }">
         <a class="page-link text-dark" href="#"
-          @click.prevent="updatePage(page, this.$route.path)">
+          @click.prevent="updatePage(page, $route.path)">
           {{ page }}
         </a>
       </li>
       <li class="page-item"
           :class="{ 'disabled' : !pagination.has_next }">
         <a class="page-link text-dark" href="#" aria-label="Next"
-        @click.prevent="updatePage(pagination.current_page + 1, this.$route.path)">
+        @click.prevent="updatePage(pagination.current_page + 1, $route.path)">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>

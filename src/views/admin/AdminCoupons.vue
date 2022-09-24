@@ -1,7 +1,9 @@
 <template>
   <div class="container pt-3">
     <div class="text-end pb-3">
-      <button class="btn btn-primary" @click.prevent="openCouponModal(true)">
+      <button type=“button”
+              class="btn btn-primary"
+              @click.prevent="openCouponModal(true)">
         新增優惠券
       </button>
     </div>
@@ -32,12 +34,16 @@
               </td>
               <td>
                 <div class="btn-group">
-                  <button class="btn btn-outline-primary btn-sm"
-                          @click.prevent="openCouponModal(false, item)"
-                  >編輯</button>
-                  <button class="btn btn-outline-danger btn-sm"
-                          @click.prevent="openDelCouponModal(item)"
-                  >刪除</button>
+                  <button type="button"
+                          class="btn btn-outline-primary btn-sm"
+                          @click.prevent="openCouponModal(false, item)">
+                    編輯
+                  </button>
+                  <button type="button"
+                          class="btn btn-outline-danger btn-sm"
+                          @click.prevent="openDelCouponModal(item)">
+                    刪除
+                  </button>
                 </div>
               </td>
             </tr>
@@ -79,8 +85,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(adminStore, ['coupons']),
-    // ...mapWritableState(adminStore, ['tempOrder', 'isNew'])
+    ...mapState(adminStore, ['coupons'])
   },
   methods: {
     ...mapActions(adminStore, ['getCoupons']),

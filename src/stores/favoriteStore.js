@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'// 起手式
+import { defineStore } from 'pinia'
 
 export default defineStore('favoriteStore', {
   state: () => ({

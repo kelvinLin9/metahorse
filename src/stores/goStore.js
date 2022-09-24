@@ -3,8 +3,6 @@ import { defineStore } from 'pinia'// 起手式
 import cartStore from './cartStore'
 
 const cart = cartStore()
-// 所有資料帶出來存到cart
-// 把原本this改成cart
 
 export default defineStore('goStore', {
   actions: {

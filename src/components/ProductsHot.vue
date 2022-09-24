@@ -34,10 +34,10 @@
                         @click.prevent="goProduct(item.id)">
                   詳細資訊
                 </button>
-                  <!-- <a href="#"> -->
                 <img class="rounded-3 img-fit"
-                      :src="item.imageUrl" alt="商品照片">
-                  <!-- </a> -->
+                      :src="item.imageUrl"
+                      alt="商品照片"
+                >
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center"
                       @click.stop="toggleFavorite(item.id)">
                   <font-awesome-icon :icon="favState(item.id)"
@@ -88,8 +88,6 @@ import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-
-// import './style.css'
 
 // import required modules
 import { Navigation, FreeMode, Pagination, Scrollbar } from 'swiper'

@@ -220,9 +220,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.f-kalam {
-  font-family: 'Kalam', cursive;
-}
 .round-icon{
   width:350px;
   height:350px;

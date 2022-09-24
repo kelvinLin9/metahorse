@@ -1,54 +1,56 @@
 <template>
-
-  <!-- Modal -->
-<div class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      ref="modal">
-  <div class="modal-dialog modal-dialog-centered modal-fullscreen">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">點選賽馬開始遊戲 /
-          <span v-if="horse.id">
-            您選擇的是
-            <span class="fs-1">
-              {{ horse.id }}
+  <div class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        data-bs-backdrop="static"
+        ref="modal">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            點選賽馬開始遊戲 /
+            <span v-if="horse.id">
+              您選擇的是
+              <span class="fs-1">
+                {{ horse.id }}
+              </span>
+              號
             </span>
-            號
-          </span>
-        </h5>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div
-          v-for="item in horses" :key="item.id"
-          @click.once="selectHorse(item)"
-          class="horse d-flex"
-          :class="[item.color, item.speed, `top-${item.id}`, {'animation-start': isPlay }, {'selected-horse': horse.id === item.id}]"
-          :disabled="true">
-            <div class="fs-6">
-              {{ item.id }}
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div  v-for="item in horses"
+                  :key="item.id"
+                  @click.once="selectHorse(item)"
+                  class="horse d-flex"
+                  :class="[ item.color,
+                            item.speed,
+                           `top-${item.id}`,
+                           {'animation-start': isPlay },
+                           {'selected-horse': horse.id === item.id}
+                          ]"
+                  :disabled="true"
+            >
+              <div class="fs-6">
+                {{ item.id }}
+              </div>
+              <div>
+                <font-awesome-icon icon="fa-solid fa-horse"/>
+              </div>
             </div>
-            <div>
-              <font-awesome-icon icon="fa-solid fa-horse"/>
-            </div>
-            <div class="fs-6">
-              <!-- {{ horsesPosition }} / {{ window }} <br> -->
-               <!-- {{ item.speed }} -->
-            </div>
+            <span class="start"></span>
+            <span class="end"></span>
           </div>
-          <span class="start"></span>
-          <span class="end"></span>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 </template>
+
 <script>
 import modalMixin from '@/mixins/modalMixin'
 
@@ -111,10 +113,9 @@ export default {
         icon: 'success',
         allowOutsideClick: false,
         confirmButtonText: '回首頁'
-      }).then((result) => {
-        // this.$refs.GameModal.hideModal()
+      }).then(() => {
         this.hideModal() // Modal關掉才不會造成回首頁後黑屏
-        this.$router.push('/') // 測試遊戲時先拿掉
+        this.$router.push('/')
       })
     },
     play () {
@@ -124,8 +125,8 @@ export default {
     }
   },
   created () {
-    // 隨機分配賽馬速度
     const newArray = [...this.rank]
+    // 隨機分配賽馬速度
     this.shuffleArray(newArray)
     this.horses.forEach((item, index) => {
       item.speed = newArray[index]

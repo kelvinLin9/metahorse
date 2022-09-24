@@ -58,17 +58,10 @@
                         @click.prevent="goProduct(item.id)">
                   詳細資訊
                 </button>
-                  <!-- <a href="#"> -->
                 <img class="rounded-3 img-fit"
                       :src="item.imageUrl" alt="商品照片">
-                  <!-- </a> -->
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center "
                       @click.stop="toggleFavorite(item.id)">
-                  <!-- <i :class="favState(item.id)"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="加入 / 移除我的最愛">
-                  </i> -->
                   <font-awesome-icon :icon="favState(item.id)"
                               class="love"
                               data-bs-toggle="tooltip"

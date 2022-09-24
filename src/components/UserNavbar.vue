@@ -141,6 +141,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar {
+  // height: 60px;
+}
 .num {
   width:20px;
   top: 5px;
@@ -169,5 +172,4 @@ export default {
    left: 130px;
   }
 }
-
 </style>

@@ -69,11 +69,13 @@
           </tbody>
         </table>
         <div class="px-3 py-2 d-flex justify-content-between">
-          <button class="btn btn-secondary btn-hover rounded-0 fw-bold"
+          <button type="button"
+                  class="btn btn-secondary btn-hover rounded-0 fw-bold"
                   @click.prevent="printWindow">
             列印此頁
           </button>
-          <button class="btn btn-primary btn-hover rounded-0 fw-bold"
+          <button type="button"
+                  class="btn btn-primary btn-hover rounded-0 fw-bold"
                   @click.prevent="showAlert()">
             確認付款
           </button>
@@ -109,7 +111,6 @@ export default {
     showAlert () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
       this.isLoading = true
-      // 不需要加入資料 get(路徑)就可以了
       this.$http.post(api).then((res) => {
         this.isLoading = false
         if (res.data.success) {
@@ -120,7 +121,7 @@ export default {
               icon: 'success',
               allowOutsideClick: false,
               confirmButtonText: '開始滿額小遊戲'
-            }).then((result) => {
+            }).then(() => {
               this.$refs.GameModal.showModal()
             })
           } else {
@@ -129,7 +130,7 @@ export default {
               text: '產品將會在3個工作天內寄出',
               icon: 'success',
               confirmButtonText: '回首頁'
-            }).then((result) => {
+            }).then(() => {
               this.$router.push('/')
             })
           }
@@ -142,7 +143,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.order = res.data.order
-            // console.log(this.order)
           }
         })
         .catch((err) => console.error(err))
