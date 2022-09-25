@@ -3,7 +3,7 @@
 </template>
 
 <style lang="scss">
-@import "./assets/all";
+@import "./assets/scss/all.scss";
 body {
   padding-right: 0px !important;
 }

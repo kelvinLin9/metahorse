@@ -1,7 +1,7 @@
 // Required
 // ../ = ~
 @import "~bootstrap/scss/functions";
-@import "./helpers/variable"; //改用自己的
+@import "variable"; //改用自己的
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
 
@@ -16,7 +16,7 @@
 
 // Then add additional custom code here
 
-@import "./helpers/test";
-@import "./helpers/font";
-@import "./helpers/bg";
-@import "./helpers/print";
+@import "test";
+@import "font";
+@import "bg";
+@import "print";

@@ -167,7 +167,7 @@ export default {
     delOrder () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${this.tempOrder.id}`
       this.isLoading = true
-      this.$http.delete(url).then((res) => {
+      this.$http.delete(url).then(() => {
         this.$swal.fire(
           'Deleted!',
           '刪除成功',
@@ -184,7 +184,6 @@ export default {
 </script>
 <style lang="scss" scoped>
   .email {
-    // word-break: break-all;
     max-width: 200px;
   }
   .name {
