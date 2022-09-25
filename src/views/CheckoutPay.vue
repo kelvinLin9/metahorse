@@ -32,7 +32,7 @@
           <div class="card-body">
             <p class="card-text" id="orderId">{{ order.id }}</p>
             <a href="#" class="btn btn-primary btn-sm"
-              @click.prevent="copyCodeOld('orderId')">
+              @click.prevent="copyCode(order.id)">
               複製訂單編號
             </a>
           </div>
@@ -107,7 +107,7 @@ export default {
     GameModal
   },
   methods: {
-    ...mapActions(copyStore, ['copyCodeOld']),
+    ...mapActions(copyStore, ['copyCode']),
     showAlert () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
       this.isLoading = true
