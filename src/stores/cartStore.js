@@ -44,7 +44,7 @@ export default defineStore('cartStore', {
         qty: item.qty
       }
       axios.put(url, { data: cart })
-        .then((res) => {
+        .then(() => {
           status.cartLoadingItem = ''
           this.getCart()
         })

@@ -38,7 +38,6 @@ export default defineStore('adminStore', {
       axios.get(api).then((res) => {
         status.isLoading = false
         if (res.data.success) {
-          // console.log(1, res.data)
           this.products = res.data.products
           this.pagination = res.data.pagination
         }
@@ -72,7 +71,6 @@ export default defineStore('adminStore', {
         await axios
           .get(url)
           .then((res) => {
-            // console.log(i)
             res.data.orders.forEach((order) => {
               this.allOrders.push(order)
               this.ordersNum += 1
@@ -183,9 +181,6 @@ export default defineStore('adminStore', {
           responsive: true
         }
       }
-      // let PieC = new Chart()
-      // let BarC = new Chart()
-      // console.log(PieC)
       if (PieC && BarC) {
         PieC.destroy()
         BarC.destroy()
