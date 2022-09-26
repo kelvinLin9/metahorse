@@ -134,33 +134,6 @@
 /*
  * Animations
  */
-@-webkit-keyframes pacman-rotate-half-up {
-    0%,
-    100% {
-        transform: rotate(270deg);
-    }
-    50% {
-        transform: rotate(360deg);
-    }
-}
-@-moz-keyframes pacman-rotate-half-up {
-    0%,
-    100% {
-        transform: rotate(270deg);
-    }
-    50% {
-        transform: rotate(360deg);
-    }
-}
-@-o-keyframes pacman-rotate-half-up {
-    0%,
-    100% {
-        transform: rotate(270deg);
-    }
-    50% {
-        transform: rotate(360deg);
-    }
-}
 @keyframes pacman-rotate-half-up {
     0%,
     100% {
@@ -170,33 +143,6 @@
         transform: rotate(360deg);
     }
 }
-@-webkit-keyframes pacman-rotate-half-down {
-    0%,
-    100% {
-        transform: rotate(90deg);
-    }
-    50% {
-        transform: rotate(0deg);
-    }
-}
-@-moz-keyframes pacman-rotate-half-down {
-    0%,
-    100% {
-        transform: rotate(90deg);
-    }
-    50% {
-        transform: rotate(0deg);
-    }
-}
-@-o-keyframes pacman-rotate-half-down {
-    0%,
-    100% {
-        transform: rotate(90deg);
-    }
-    50% {
-        transform: rotate(0deg);
-    }
-}
 @keyframes pacman-rotate-half-down {
     0%,
     100% {
@@ -204,66 +150,6 @@
     }
     50% {
         transform: rotate(0deg);
-    }
-}
-@-webkit-keyframes pacman-balls {
-    0% {
-        left: 200%;
-        opacity: 0;
-        transform: translateY(-50%);
-    }
-    5% {
-        opacity: .5;
-    }
-    66% {
-        opacity: 1;
-    }
-    67% {
-        opacity: 0;
-    }
-    100% {
-        left: 0;
-        transform: translateY(-50%);
-    }
-}
-@-moz-keyframes pacman-balls {
-    0% {
-        left: 200%;
-        opacity: 0;
-        transform: translateY(-50%);
-    }
-    5% {
-        opacity: .5;
-    }
-    66% {
-        opacity: 1;
-    }
-    67% {
-        opacity: 0;
-    }
-    100% {
-        left: 0;
-        transform: translateY(-50%);
-    }
-}
-@-o-keyframes pacman-balls {
-    0% {
-        left: 200%;
-        opacity: 0;
-        transform: translateY(-50%);
-    }
-    5% {
-        opacity: .5;
-    }
-    66% {
-        opacity: 1;
-    }
-    67% {
-        opacity: 0;
-    }
-    100% {
-        left: 0;
-        transform: translateY(-50%);
     }
 }
 @keyframes pacman-balls {
