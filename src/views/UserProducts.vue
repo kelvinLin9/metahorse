@@ -49,7 +49,7 @@
           v-model="cacheSearch">
           <label for="search">search</label>
         </div>
-        <div class="row g-4">
+        <div class="row g-3">
           <div class="col-lg-4 col-md-6 col-12"
               v-for="item in filterProducts" :key="item.id">
             <div class="card rounded-3">

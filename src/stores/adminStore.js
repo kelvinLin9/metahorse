@@ -66,7 +66,7 @@ export default defineStore('adminStore', {
       this.revenue = 0
       this.ordersNum = 0
       status.isLoading = true
-      for (let i = 0; i <= this.pagination.total_pages; i++) {
+      for (let i = 1; i <= this.pagination.total_pages; i++) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${i}`
         await axios
           .get(url)
