@@ -19,16 +19,22 @@
       <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item">
-           <RouterLink to="/dashboard/order" class="nav-link fs-5"
-           :class="{ 'text-warning':  routeName === '/dashboard/order' }">訂單</RouterLink>
+            <RouterLink to="/dashboard/order" class="nav-link fs-5"
+                        :class="{ 'text-warning':  routeName === '/dashboard/order' }">
+              訂單
+            </RouterLink>
           </li>
           <li class="nav-item">
             <router-link to="/dashboard/products" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === '/dashboard/products' }">產品</router-link>
+                        :class="{ 'text-warning':  routeName === '/dashboard/products' }">
+              產品
+            </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/dashboard/coupons" class="nav-link fs-5"
-            :class="{ 'text-warning':  routeName === '/dashboard/coupons' }">優惠券</router-link>
+                        :class="{ 'text-warning':  routeName === '/dashboard/coupons' }">
+              優惠券
+            </router-link>
           </li>
           <li class="nav-item">
             <a href="#" @click.prevent="logout" class="nav-link fs-5">登出</a>
