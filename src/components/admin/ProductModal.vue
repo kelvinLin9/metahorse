@@ -239,7 +239,7 @@ export default {
   data () {
     return {
       modal: {},
-      tempProduct: {} // 準備一個物件先存起來，再傳出去，因為單向數據流
+      tempProduct: {}
     }
   },
   methods: {
