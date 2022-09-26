@@ -25,7 +25,7 @@
         <div class="col-lg-6"
             data-aos="fade-right"
             data-aos-duration="2000">
-          <img src="../image/003.jpg" alt="裝飾圖" class="w-100">
+          <img src="../assets/img/003.jpg" alt="裝飾圖" class="w-100">
         </div>
       </div>
     </div>
