@@ -16,6 +16,7 @@ export default defineStore('statusStore', {
           title: `${title}成功`
         }
         this.messages.push(obj)
+        console.log(this.messages)
       } else {
         // 有些訊息是字串，有些則是陣列，統一格式
         const message = typeof res.data.message === 'string'

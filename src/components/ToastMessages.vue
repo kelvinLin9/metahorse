@@ -8,23 +8,15 @@
 
 <script>
 import Toast from '@/components/Toast.vue'
-import { mapState, storeToRefs } from 'pinia'
+import { mapState } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import cartStore from '@/stores/cartStore'
 
 export default {
   components: { Toast },
-  // Composition API寫法
-  setup () {
-    const status = statusStore()
-    const { messages } = storeToRefs(status)
-
-    return {
-      messages
-    }
-  },
   computed: {
-    ...mapState(cartStore, ['cartBoxState'])
+    ...mapState(cartStore, ['cartBoxState']),
+    ...mapState(statusStore, ['messages'])
   }
 }
 </script>
