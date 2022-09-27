@@ -73,102 +73,47 @@
             </button>
           </div>
         </div>
-          <div class="col"
+        <div class="col"
               data-aos="fade-down-right"
               data-aos-duration="2000">
-            <div class="row d-flex flex-column">
-              <hr>
-              <div class="col mt-0 mt-sm-3">
-                <h3 class="fw-bold text-center text-lg-start lh-lg">
-                  遊戲中數值
-                </h3>
-                <h4 class="fw-bold text-center text-lg-start lh-lg">
-                  Level：{{ temp.category }}
-                </h4>
-              </div>
+          <div class="row d-flex flex-column">
+            <hr>
+            <div class="col mt-0 mt-sm-3">
+              <h3 class="fw-bold text-center text-lg-start lh-lg">
+                遊戲中數值
+              </h3>
+              <h4 class="fw-bold text-center text-lg-start lh-lg">
+                Level：{{ temp.category }}
+              </h4>
+            </div>
             <div class="w-75">
-            <span class="fw-bold fs-5">速度<i class="bi bi-lightning-fill mx-1"></i></span>
-            <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.speed*20}%`}">
-                {{ temp.speed }} / 5
+              <span class="fw-bold fs-5">速度<i class="bi bi-lightning-fill mx-1"></i></span>
+              <div class="progress mb-3">
+                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.speed*20}%`}">
+                  {{ temp.speed }} / 5
+                </div>
               </div>
-            </div>
-            <span class="fw-bold fs-5">耐力<i class="bi bi-clock-fill mx-1"></i></span>
-            <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.stamina*20}%`}">
-                {{ temp.stamina }} / 5
+              <span class="fw-bold fs-5">耐力<i class="bi bi-clock-fill mx-1"></i></span>
+              <div class="progress mb-3">
+                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.stamina*20}%`}">
+                  {{ temp.stamina }} / 5
+                </div>
               </div>
-            </div>
-            <span class="fw-bold fs-5">幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
-            <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.lucky*20}%`}">
-                {{ temp.lucky }} / 5
+              <span class="fw-bold fs-5">幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
+              <div class="progress mb-3">
+                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.lucky*20}%`}">
+                  {{ temp.lucky }} / 5
+                </div>
               </div>
-            </div>
-            <span class="fw-bold fs-5">智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
-            <div class="progress mb-3">
-              <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.intelligence*20}%`}">
-                {{ temp.intelligence }} / 5
+              <span class="fw-bold fs-5">智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
+              <div class="progress mb-3">
+                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.intelligence*20}%`}">
+                  {{ temp.intelligence }} / 5
+                </div>
               </div>
             </div>
           </div>
-          <!-- 星星寫法先保留 -->
-            <!-- <ul class="col">
-              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
-                <h4>
-                  速度 <i class="bi bi-lightning-fill mx-1"></i>：
-                </h4>
-                <span class="mx-1"
-                      v-for="key in temp.speed" :key="key">
-                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
-                </span>
-                <span class="mx-1"
-                      v-for="key in (5 - temp.speed)" :key="key">
-                  <i class="bi bi-star" data-aos="zoom-in"></i>
-                </span>
-              </li>
-              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
-                <h4>
-                  耐力 <i class="bi bi-clock-fill mx-1"></i>：
-                </h4>
-                <span class="mx-1"
-                      v-for="key in temp.stamina" :key="key">
-                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
-                </span>
-                <span class="mx-1"
-                      v-for="key in (5 - temp.stamina)" :key="key">
-                  <i class="bi bi-star" data-aos="zoom-in"></i>
-                </span>
-              </li>
-              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
-                <h4>
-                  幸運 <i class="bi bi-dice-6-fill mx-1"></i>：
-                </h4>
-                <span class="mx-1"
-                      v-for="key in temp.lucky" :key="key">
-                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
-                </span>
-                <span class="mx-1"
-                      v-for="key in (5 - temp.lucky)" :key="key">
-                  <i class="bi bi-star" data-aos="zoom-in"></i>
-                </span>
-              </li>
-              <li class="d-flex my-2 justify-content-center justify-content-lg-start">
-                <h4>
-                  智慧 <i class="bi bi-mortarboard-fill mx-1"></i>：
-                </h4>
-                <span class="mx-1"
-                      v-for="key in temp.intelligence" :key="key">
-                  <i class="bi bi-star-fill" data-aos="zoom-in"></i>
-                </span>
-                <span class="mx-1"
-                      v-for="key in (5 - temp.intelligence)" :key="key">
-                  <i class="bi bi-star" data-aos="zoom-in"></i>
-                </span>
-              </li>
-            </ul> -->
-          </div>
-          </div>
+        </div>
       </div>
     </div>
   </section>

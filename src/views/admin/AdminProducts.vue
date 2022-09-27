@@ -66,10 +66,15 @@
         </div>
       </div>
       <Pagination/>
+      <ProductModal
+        ref="productModal"
+        :product="tempProduct"
+        @update-product="updateProduct">
+      </ProductModal>
       <DelModal
-      :item="tempProduct"
-      ref="delModal"
-      @del-item="delProduct"/>
+        :item="tempProduct"
+        ref="delModal"
+        @del-item="delProduct"/>
     </div>
   </div>
 </template>
