@@ -41,6 +41,9 @@ export default defineStore('adminStore', {
           this.products = res.data.products
           this.pagination = res.data.pagination
         }
+      }).catch(() => {
+        status.isLoading = false
+        status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
       })
     },
     // 取得當前頁面訂單資料
@@ -53,6 +56,9 @@ export default defineStore('adminStore', {
         .then((res) => {
           this.orders = res.data.orders
           this.pagination = res.data.pagination
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
         // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
       if (needGetAllOrders) {
@@ -76,8 +82,10 @@ export default defineStore('adminStore', {
               this.ordersNum += 1
               this.revenue += order.total
             })
+          }).catch(() => {
+            status.isLoading = false
+            status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
           })
-          .catch((err) => console.error(err))
       }
       this.getAllOrdersData()
       status.isLoading = false
@@ -207,6 +215,9 @@ export default defineStore('adminStore', {
         status.isLoading = false
         status.PushManager(res, '更新付款狀態')
         this.getOrders(this.pagination.current_page, false)
+      }).catch(() => {
+        status.isLoading = false
+        status.PushManager(false, '更新', '發生錯誤，請重新操作')
       })
     },
     getCoupons () {
@@ -216,6 +227,9 @@ export default defineStore('adminStore', {
         console.log(res)
         this.coupons = res.data.coupons
         this.isLoading = false
+      }).catch(() => {
+        status.isLoading = false
+        status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
       })
     }
   }

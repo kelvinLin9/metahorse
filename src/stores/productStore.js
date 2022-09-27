@@ -36,20 +36,27 @@ export default defineStore('productStore', {
           this.productsGame.push(res.data.products[5])
           this.temp = this.productsGame[0]
           status.isLoading = false
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
-        .catch((err) => console.error(err))
     },
     getProduct (id) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/product/${id}`
       status.isLoading = true
-      axios.get(api).then((res) => {
-        status.isLoading = false
-        if (res.data.success) {
-          this.product = res.data.product
-          // 自己補上後端沒有的預設值
-          this.product.qty = 1
-        }
-      })
+      axios.get(api)
+        .then((res) => {
+          console.log(res.data)
+          status.isLoading = false
+          if (res.data.success) {
+            this.product = res.data.product
+            // 自己補上後端沒有的預設值
+            this.product.qty = 1
+          }
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+        })
     },
     // 無法雙向綁定的另種解法
     // 創一個新的函數傳遞category

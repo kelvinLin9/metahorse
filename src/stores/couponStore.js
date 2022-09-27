@@ -46,8 +46,10 @@ export default defineStore('couponStore', {
           cart.getCart()
           status.isLoading = false
           this.coupon_code = ''
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新操作')
         })
-        .catch((err) => console.error(err))
     },
     luckyDraw (min, max) {
       const num = Math.floor(Math.random() * (max - min + 1)) + min

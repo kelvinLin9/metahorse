@@ -31,8 +31,10 @@ export default defineStore('cartStore', {
           this.cartNum = res.data.data.carts.length
           this.cart = res.data.data
           status.isLoading = false
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
-        .catch((err) => console.error(err))
     },
     // 更改購物車商品數量
     updateCart (item) {
@@ -47,8 +49,10 @@ export default defineStore('cartStore', {
         .then(() => {
           status.cartLoadingItem = ''
           this.getCart()
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新操作')
         })
-        .catch((err) => console.error(err))
     },
     removeCartItem (id) {
       status.cartLoadingItem = id
@@ -57,12 +61,14 @@ export default defineStore('cartStore', {
       axios.delete(url)
         .then((res) => {
           console.log(res)
-          status.PushManager(res, '移除購物車品項')
+          status.PushManager(res, '更新', '此項目已移除購物車')
           status.cartLoadingItem = ''
           this.getCart()
           status.isLoading = false
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新操作')
         })
-        .catch((err) => console.error(err))
     },
     addCart (id, qty = 1) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart`
@@ -75,9 +81,11 @@ export default defineStore('cartStore', {
         .then((res) => {
           status.cartLoadingItem = ''
           this.getCart() // 重新取得購物車資料
-          status.PushManager(res, '加入購物車')
+          status.PushManager(res, '更新', '已加入購物車')
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
-        .catch((err) => console.error(err))
     },
     cartBoxToggle () {
       // 傳到ToastMessages 讓提示能移開避免擋到
@@ -99,8 +107,10 @@ export default defineStore('cartStore', {
             message: ''
           }
           this.getCart()
+        }).catch(() => {
+          status.isLoading = false
+          status.PushManager(false, '傳送', '發生錯誤，請重新填寫資料並送出')
         })
-        .catch((err) => console.error(err))
     }
   }
 })
