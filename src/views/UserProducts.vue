@@ -47,7 +47,10 @@
         <div class="form-floating mb-2 mt-2 mt-lg-0">
           <input type="search" class="form-control" id="search" placeholder="search"
           v-model="cacheSearch">
-          <label for="search">search</label>
+          <label for="search">
+            <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+            search
+          </label>
         </div>
         <div class="row g-3">
           <div class="col-lg-4 col-md-6 col-12"

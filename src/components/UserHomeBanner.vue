@@ -4,7 +4,7 @@
       :spaceBetween="30"
       :centeredSlides="true"
       :autoplay="{
-        delay: 2500,
+        delay: 25000,
         disableOnInteraction: false,
       }"
       :pagination="{
@@ -15,27 +15,32 @@
       class="mySwiper"
     >
       <swiper-slide>
-        <div class="header-bg-1 d-flex justify-content-center"
+        <div class="header-bg-1 d-flex justify-content-center align-items-center"
             style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
-        <h1 class="fw-bold align-self-center header-text f-kalam">
-          DIGITAL
-          <br class="d-md-none">
-          EQUATES
-          <br class="d-md-none">
-          REALITY
-        </h1>
+          <div class="fw-bold header-text f-kalam py-5 text-center">
+            DIGITAL
+            <br class="d-md-none">
+            EQUATES
+            <br class="d-md-none">
+            REALITY
+          </div>
+          <!-- <div>
+            <button type="button">
+              搶先體驗
+            </button>
+          </div> -->
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="header-bg-2 d-flex justify-content-center bg-dark"
+        <div class="header-bg-2 d-flex justify-content-center align-items-center bg-dark "
             style="background-image: url('https://imgur.com/I19pL6e.jpg');">
-        <h1 class="fw-bold align-self-center header-text f-kalam">
-          DIGITAL
-          <br class="d-md-none">
-          EQUATES
-          <br class="d-md-none">
-          REALITY
-        </h1>
+          <div class="fw-bold header-text f-kalam py-5 text-center">
+            DIGITAL
+            <br class="d-md-none">
+            EQUATES
+            <br class="d-md-none">
+            REALITY
+          </div>
         </div>
       </swiper-slide>
     </swiper>
@@ -80,8 +85,10 @@ export default {
   height: calc(100vh - 62px);
 }
 .header-text {
-    color: #000;
-    -webkit-text-stroke: 2px rgb(241, 229, 59);
-    font-size: 60px;
+  width: 100vw;
+  color: #000;
+  -webkit-text-stroke: 2px rgb(241, 229, 59);
+  font-size: 60px;
+  backdrop-filter: saturate(10%);
 }
 </style>
