@@ -27,10 +27,23 @@ https://kelvinlin9.github.io/metahorse/#/
 
 ## 使用技術、套件
 
-|  表头   | 表头  |
+|  技術   | 簡述  |
 | :----- | :----- |
-| 单元格  | 单元格 |
-| 单元格  | 单元格 |
+| Vue Cli 3  | 以 Vue.js 開發 SPA 網站 |
+| VueRouter  | 以 Vue.js 開發 SPA 網站、路由設計 |
+| ESlint(Standard)  | 優化程式碼品質、維持風格統一 |
+
+
+|  套件   | 簡述  |
+| :----- | :----- |
+| Bootstrap 5  | 開發 UI 介面 |
+| Vue-axios  | 串接 API |
+| Vee-validate  | 表單驗證 |
+| Swiper  | 圖片輪播 |
+| pinia  | 傳遞跨元件資料，作為狀態管理工具。 |
+| AOS  | 實現動畫特效 |
+| Sweetalert2  | 彈出提示窗 |
+
 
 ## 如何執行專案
 
