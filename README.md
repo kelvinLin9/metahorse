@@ -1,7 +1,7 @@
 # MetaHorse
 
 ## 專案簡介
----
+
 以賽馬遊戲為主題的NFT購買平台，使用Vue框架練習前端開發
 
 ### Demo
@@ -9,7 +9,6 @@
 https://kelvinlin9.github.io/metahorse/#/
 
 ## 主要功能
----
 
 ### 前台
 - 商品陳列、分類陳列、商品搜尋、單一商品介紹
@@ -27,14 +26,14 @@ https://kelvinlin9.github.io/metahorse/#/
   - 優惠券管理
 
 ## 使用技術、套件
----
+
 |  表头   | 表头  |
 | :----- | :----- |
 | 单元格  | 单元格 |
 | 单元格  | 单元格 |
 
 ## 如何執行專案
----
+
 將下載專案 Zip 檔或將專案 Clone 至本地端
 
 ### Project setup
