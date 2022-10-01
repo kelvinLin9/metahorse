@@ -17,7 +17,7 @@
       <swiper-slide>
         <div class="header-bg-1 d-flex justify-content-center align-items-center"
             style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
-          <div class="fw-bold header-text f-kalam py-5 text-center">
+          <div class="fw-bold header-text f-kalam py-2 py-md-5 text-center">
             DIGITAL
             <br class="d-md-none">
             EQUATES
@@ -34,7 +34,7 @@
       <swiper-slide>
         <div class="header-bg-2 d-flex justify-content-center align-items-center bg-dark "
             style="background-image: url('https://imgur.com/I19pL6e.jpg');">
-          <div class="fw-bold header-text f-kalam py-5 text-center">
+          <div class="fw-bold header-text f-kalam py-2 py-md-5 text-center">
             DIGITAL
             <br class="d-md-none">
             EQUATES
@@ -90,5 +90,10 @@ export default {
   -webkit-text-stroke: 2px rgb(241, 229, 59);
   font-size: 60px;
   backdrop-filter: saturate(10%);
+}
+@media (max-width: 992px) {
+  .header-text{
+    font-size: 50px;
+  }
 }
 </style>

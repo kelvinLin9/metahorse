@@ -40,7 +40,7 @@
               </span>
               <div class="px-3 py-2 d-flex justify-content-between">
                 <button type="button"
-                        class="btn btn-outline-secondary fw-bold fs-6 px-3"
+                        class="btn btn-outline-secondary text-dark fw-bold fs-6 px-3"
                         @click.stop="removeFavorite(item.id)">
                   移除收藏
                 </button>

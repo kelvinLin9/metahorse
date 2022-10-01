@@ -5,7 +5,7 @@ export default defineStore('scrollStore', {
     goTopIcon: false
   }),
   actions: {
-    scrollTop1 () {
+    scroll () {
       window.onscroll = e => {
         if (e.target.scrollingElement.scrollTop > 350) {
           this.goTopIcon = true

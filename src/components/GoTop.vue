@@ -15,14 +15,14 @@ export default {
     ...mapState(scrollStore, ['goTopIcon'])
   },
   methods: {
-    ...mapActions(scrollStore, ['scrollTop1']),
+    ...mapActions(scrollStore, ['scroll']),
     top () {
       document.documentElement.scrollTop = 0
       console.log(this.goTopIcon)
     }
   },
   mounted () {
-    this.scrollTop1()
+    this.scroll()
   }
 }
 </script>
