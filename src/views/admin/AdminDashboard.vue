@@ -8,6 +8,7 @@
     <router-view/>
   </div>
   <ToastMessages/>
+  <GoTop/>
   <UserFooter/>
 </template>
 
@@ -20,13 +21,15 @@ import AdminNavbar from '@/components/admin/AdminNavbar.vue'
 import { mapActions, mapState } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import adminStore from '@/stores/adminStore'
+import GoTop from '@/components/GoTop.vue'
 
 export default {
   // 區域註冊
   components: {
     AdminNavbar,
     ToastMessages,
-    UserFooter
+    UserFooter,
+    GoTop
   },
   computed: {
     ...mapState(statusStore, ['isLoading'])

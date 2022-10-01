@@ -76,13 +76,13 @@ export default {
 .header-bg-1 {
   background-size: cover;
   background-position: center center;
-  height: calc(100vh - 62px);
+  height: 100vh;
 }
 .header-bg-2 {
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  height: calc(100vh - 62px);
+  height: 100vh;
 }
 .header-text {
   width: 100vw;

@@ -119,13 +119,11 @@
   </section>
   <hr>
   <ProductsHot/>
-  <GoTop/>
 </template>
 
 <script>
 import UserHomeBanner from '@/components/UserHomeBanner.vue'
 import ProductsHot from '@/components/ProductsHot.vue'
-import GoTop from '@/components/GoTop.vue'
 import { mapState, mapActions, mapWritableState } from 'pinia'
 import productStore from '@/stores/productStore'
 import UserHomeCoupon from '../components/UserHomeCoupon.vue'
@@ -136,7 +134,6 @@ export default {
   components: {
     UserHomeBanner,
     ProductsHot,
-    GoTop,
     UserHomeCoupon
   },
   computed: {

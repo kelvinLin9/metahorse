@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-4 checkout-bar w-75 no-print">
+  <div class="container py-4 mt-4 checkout-bar w-75 no-print">
     <div class="row fs-5 fs-md-3 fw-bold ">
       <div class="col d-flex flex-column px-2 py-3 align-items-center rounded-pill"
           :class="{'bg-primary' : $route.name === 'cart'}">

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark no-print">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark no-print">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2 text-center">MetaHorse</span>
@@ -20,27 +20,27 @@
         <ul class="navbar-nav">
           <li class="nav-item">
            <RouterLink to="/" class="nav-link fs-5"
-           :class="{ 'text-warning':  this.$route.name === 'home' }">首頁</RouterLink>
+           :class="{ 'text-warning':  $route.name === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
             <router-link to="/products" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'products' }">產品列表</router-link>
+            :class="{ 'text-warning':  $route.name === 'products' }">產品列表</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/UserCoupon" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'UserCoupon' }">優惠活動</router-link>
+            :class="{ 'text-warning':  $route.name === 'UserCoupon' }">優惠活動</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/UserSearchOrder" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'UserSearchOrder' }">訂單查詢</router-link>
+            :class="{ 'text-warning':  $route.name === 'UserSearchOrder' }">訂單查詢</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/cart" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'cart' }">購物車</router-link>
+            :class="{ 'text-warning':  $route.name === 'cart' }">購物車</router-link>
           </li>
           <li class="nav-item d-block d-lg-none">
             <router-link to="/favorite" class="nav-link fs-5"
-            :class="{ 'text-warning':  this.$route.name === 'favorite' }">我的最愛</router-link>
+            :class="{ 'text-warning':  $route.name === 'favorite' }">我的最愛</router-link>
           </li>
         </ul>
 
@@ -48,7 +48,7 @@
         <ul class="navbar-nav d-none d-lg-flex ms-auto me-2">
           <li class="nav-item position-relative">
             <div class="nav-link px-3"
-            :class="{ 'text-warning':  this.$route.name === 'cart' }"
+            :class="{ 'text-warning':  $route.name === 'cart' }"
             @click.prevent="cartBoxToggle">
               <i class="bi bi-cart3 fs-4 cart" data-bs-toggle="tooltip" data-bs-placement="top" title="購物車"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
@@ -104,7 +104,7 @@
 
           <li class="nav-item position-relative">
             <RouterLink to="/Favorite" class="nav-link px-3"
-            :class="{ 'text-warning':  this.$route.name === 'favorite' }">
+            :class="{ 'text-warning':  $route.name === 'favorite' }">
               <i class="bi bi-search-heart fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="我的最愛"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
                     v-if="favoriteNum != 0">

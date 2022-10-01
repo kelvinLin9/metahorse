@@ -76,9 +76,7 @@ export default {
 .la-square-jelly-box,
 .la-square-jelly-box > img {
     position: relative;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
 }
 .la-square-jelly-box {
     display: block;
@@ -109,10 +107,7 @@ export default {
     z-index: 1;
     height: 100%;
 /*     border-radius: 10%; */
-    -webkit-animation: square-jelly-box-animate .6s -.1s linear infinite;
-       -moz-animation: square-jelly-box-animate .6s -.1s linear infinite;
-         -o-animation: square-jelly-box-animate .6s -.1s linear infinite;
-            animation: square-jelly-box-animate .6s -.1s linear infinite;
+    animation: square-jelly-box-animate .6s -.1s linear infinite;
 }
 .la-square-jelly-box > img:nth-child(2) {
     bottom: -9%;
@@ -120,9 +115,6 @@ export default {
     background: #000;
     border-radius: 50%;
     opacity: .2;
-    -webkit-animation: square-jelly-box-shadow .6s -.1s linear infinite;
-       -moz-animation: square-jelly-box-shadow .6s -.1s linear infinite;
-         -o-animation: square-jelly-box-shadow .6s -.1s linear infinite;
-            animation: square-jelly-box-shadow .6s -.1s linear infinite;
+    animation: square-jelly-box-shadow .6s -.1s linear infinite;
 }
 </style>

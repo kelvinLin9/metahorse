@@ -4,11 +4,12 @@
       v-if="isLoading">
     <UserLoading/>
   </div>
-  <FloatCart v-if = "!hasFloatCart" />
+  <FloatCart v-if = "hasFloatCart" />
   <ToastMessages/>
-  <div class="position-relative min-height milkyWay">
+  <div class="position-relative min-height milkyWay pt-5">
     <router-view/>
   </div>
+  <GoTop/>
   <UserFooter/>
 </template>
 
@@ -21,25 +22,27 @@ import { mapActions, mapState } from 'pinia'
 import productStore from '@/stores/productStore'
 import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
+import GoTop from '@/components/GoTop.vue'
 
 export default {
   components: {
     ToastMessages,
     UserNavbar,
     FloatCart,
-    UserFooter
-  },
-  methods: {
-    ...mapActions(productStore, ['getProducts']),
-    ...mapActions(cartStore, ['getCart'])
+    UserFooter,
+    GoTop
   },
   computed: {
     ...mapState(statusStore, ['isLoading']),
     hasFloatCart () {
       const name = ['cart', 'checkout', 'checkoutPay', 'adminLogin']
-      if (name.includes(this.$route.name)) return true
-      return false
+      if (name.includes(this.$route.name)) return false
+      return true
     }
+  },
+  methods: {
+    ...mapActions(productStore, ['getProducts']),
+    ...mapActions(cartStore, ['getCart'])
   },
   created () {
     this.getProducts()
@@ -52,6 +55,6 @@ export default {
   z-index: 1000;
 }
 .min-height {
-   min-height: calc(100vh - 60px - 130px);
+   min-height: calc(100vh - 130px);
 }
 </style>

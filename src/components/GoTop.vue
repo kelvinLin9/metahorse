@@ -1,5 +1,6 @@
 <template>
-  <div class="goTop d-none">
+  <div class="goTop"
+      :class="{'d-none' : scrollTop1 }">
     <a href="#" @click.prevent="top">
       <i class="bi bi-arrow-up-square-fill"></i>
     </a>
@@ -7,27 +8,34 @@
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import scrollStore from '@/stores/scrollStore'
 export default {
+  computed: {
+    ...mapState(scrollStore, ['scrollTop1'])
+  },
   methods: {
     top () {
       document.documentElement.scrollTop = 0
+      console.log(this.scrollTop1)
     }
   },
-  mounted () {
-    window.onscroll = e => {
-      if (e.target.scrollingElement.scrollTop > 350) {
-        const el = document.querySelector('.goTop')
-        if (el !== null) {
-          el.className = 'goTop d-block'
-        }
-      } else {
-        const el = document.querySelector('.goTop')
-        if (el !== null) {
-          el.className = 'goTop d-none'
-        }
-      }
-    }
-  }
+  // mounted () {
+  //   window.onscroll = e => {
+  //     console.log('???????????????????????//')
+  //     if (e.target.scrollingElement.scrollTop > 350) {
+  //       const el = document.querySelector('.goTop')
+  //       if (el !== null) {
+  //         el.className = 'goTop d-block'
+  //       }
+  //     } else {
+  //       const el = document.querySelector('.goTop')
+  //       if (el !== null) {
+  //         el.className = 'goTop d-none'
+  //       }
+  //     }
+  //   }
+  // }
 }
 </script>
 
@@ -41,14 +49,5 @@ export default {
 .goTop a {
   color: purple;
   font-size: 40px;
-}
-@media (max-width: 768px) {
-  .goTop{
-    right: 10px;
-    bottom: 5px;
-  }
-  .goTop a{
-    font-size: 35px;
-  }
 }
 </style>

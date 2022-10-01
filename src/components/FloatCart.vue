@@ -21,23 +21,6 @@ export default {
   },
   methods: {
     ...mapActions(goStore, ['goCart'])
-  },
-  mounted () {
-    window.onscroll = e => {
-      console.log(e.target.scrollingElement.scrollTop)
-      if (e.target.scrollingElement.scrollTop > 350) {
-        console.log(7788995)
-        const el = document.querySelector('.goTop')
-        if (el !== null) {
-          el.className = 'goTop d-block'
-        }
-      } else {
-        const el = document.querySelector('.goTop')
-        if (el !== null) {
-          el.className = 'goTop d-none'
-        }
-      }
-    }
   }
 }
 </script>
@@ -56,7 +39,7 @@ export default {
   width: 65px;
   height: 65px;
   right: 10px;
-  bottom: 60px;
+  bottom: 70px;
   z-index: 99;
 }
 @media (max-width: 992px) {
