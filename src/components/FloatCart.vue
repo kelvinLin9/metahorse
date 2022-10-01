@@ -1,5 +1,6 @@
 <template>
-  <div class="rounded-circle bg-white border border-3 border-warning d-flex justify-content-center align-items-center float-cart">
+  <div class="rounded-circle bg-white border border-3 border-warning d-flex justify-content-center align-items-center"
+      :class="{ 'float-cart-up' : goTopIcon ,'float-cart-down' : !goTopIcon}">
     <router-link to="/cart">
       <font-awesome-icon icon="fa-solid fa-cart-shopping" class="text-dark fs-1" />
       <div class="bg-danger text-white rounded-circle text-center position-absolute num"
@@ -14,10 +15,12 @@
 import { mapState, mapActions } from 'pinia'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
+import scrollStore from '@/stores/scrollStore'
 
 export default {
   computed: {
-    ...mapState(cartStore, ['cartNum'])
+    ...mapState(cartStore, ['cartNum']),
+    ...mapState(scrollStore, ['goTopIcon'])
   },
   methods: {
     ...mapActions(goStore, ['goCart'])
@@ -33,7 +36,7 @@ export default {
   right: -10px;
   font-size: 18px;
 }
-.float-cart{
+.float-cart-up{
   position: fixed;
   display: none !important;
   width: 65px;
@@ -43,7 +46,22 @@ export default {
   z-index: 99;
 }
 @media (max-width: 992px) {
-  .float-cart{
+  .float-cart-up{
+    display:flex !important;
+    z-index: 200;
+  }
+}
+.float-cart-down{
+  position: fixed;
+  display: none !important;
+  width: 65px;
+  height: 65px;
+  right: 10px;
+  bottom: 20px;
+  z-index: 99;
+}
+@media (max-width: 992px) {
+  .float-cart-down{
     display:flex !important;
     z-index: 200;
   }

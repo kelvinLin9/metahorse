@@ -1,17 +1,17 @@
 import { defineStore } from 'pinia'
 
 export default defineStore('scrollStore', {
-  getters: {
+  state: () => ({
+    goTopIcon: false
+  }),
+  actions: {
     scrollTop1 () {
-      let scrollTop1
       window.onscroll = e => {
         if (e.target.scrollingElement.scrollTop > 350) {
-          console.log('8877995')
-          scrollTop1 = true
+          this.goTopIcon = true
         } else {
-          scrollTop1 = false
+          this.goTopIcon = false
         }
-        return scrollTop1
       }
     }
   }

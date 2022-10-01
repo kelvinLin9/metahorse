@@ -1,6 +1,6 @@
 <template>
   <div class="goTop"
-      :class="{'d-none' : scrollTop1 }">
+      :class="{'d-none' : !goTopIcon }">
     <a href="#" @click.prevent="top">
       <i class="bi bi-arrow-up-square-fill"></i>
     </a>
@@ -8,34 +8,22 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 import scrollStore from '@/stores/scrollStore'
 export default {
   computed: {
-    ...mapState(scrollStore, ['scrollTop1'])
+    ...mapState(scrollStore, ['goTopIcon'])
   },
   methods: {
+    ...mapActions(scrollStore, ['scrollTop1']),
     top () {
       document.documentElement.scrollTop = 0
-      console.log(this.scrollTop1)
+      console.log(this.goTopIcon)
     }
   },
-  // mounted () {
-  //   window.onscroll = e => {
-  //     console.log('???????????????????????//')
-  //     if (e.target.scrollingElement.scrollTop > 350) {
-  //       const el = document.querySelector('.goTop')
-  //       if (el !== null) {
-  //         el.className = 'goTop d-block'
-  //       }
-  //     } else {
-  //       const el = document.querySelector('.goTop')
-  //       if (el !== null) {
-  //         el.className = 'goTop d-none'
-  //       }
-  //     }
-  //   }
-  // }
+  mounted () {
+    this.scrollTop1()
+  }
 }
 </script>
 
