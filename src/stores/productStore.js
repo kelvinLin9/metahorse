@@ -26,7 +26,9 @@ export default defineStore('productStore', {
       axios.get(url)
         .then((res) => {
           this.products = res.data.products
-          this.productsHot = this.products.filter((item, index) => index > 14) // 隨便取幾個當熱門商品
+          // 隨便取幾個當熱門商品
+          this.productsHot = this.products.filter((item, index) => index > 14)
+          // 傳一份給我的最愛比對用
           favorite.productsBus(this.products)
           // 手動挑出想展示的商品(首頁用)
           this.productsGame = []
