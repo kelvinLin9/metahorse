@@ -129,9 +129,9 @@ export default {
               title: '感謝您的支持',
               text: '產品將會在3個工作天內寄出',
               icon: 'success',
-              confirmButtonText: '回首頁'
+              confirmButtonText: '繼續購物'
             }).then(() => {
-              this.$router.push('/')
+              this.$router.push('/products')
             })
           }
         }
