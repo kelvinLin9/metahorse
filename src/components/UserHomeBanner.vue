@@ -4,7 +4,7 @@
       :spaceBetween="30"
       :centeredSlides="true"
       :autoplay="{
-        delay: 25000,
+        delay: 2500,
         disableOnInteraction: false,
       }"
       :pagination="{
@@ -15,7 +15,7 @@
       class="mySwiper"
     >
       <swiper-slide>
-        <div class="header-bg-1 d-flex justify-content-center align-items-center"
+        <div class="header-bg-1 d-flex flex-column justify-content-center align-items-center"
             style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
           <div class="fw-bold header-text f-kalam py-2 py-md-5 text-center">
             DIGITAL
@@ -24,15 +24,13 @@
             <br class="d-md-none">
             REALITY
           </div>
-          <!-- <div>
-            <button type="button">
-              搶先體驗
-            </button>
-          </div> -->
+          <router-link type="button" to="/products" class="btn btn-sm btn-secondary rounded-1 fw-bold btn-lg fs-3 mt-5">
+              搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
+          </router-link>
         </div>
       </swiper-slide>
       <swiper-slide>
-        <div class="header-bg-2 d-flex justify-content-center align-items-center bg-dark "
+        <div class="header-bg-2 d-flex flex-column justify-content-center align-items-center bg-dark "
             style="background-image: url('https://imgur.com/I19pL6e.jpg');">
           <div class="fw-bold header-text f-kalam py-2 py-md-5 text-center">
             DIGITAL
@@ -41,6 +39,9 @@
             <br class="d-md-none">
             REALITY
           </div>
+          <router-link type="button" to="/products" class="btn btn-sm btn-primary rounded-5 fw-bold btn-lg fs-3 mt-5">
+            搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
+          </router-link>
         </div>
       </swiper-slide>
     </swiper>
