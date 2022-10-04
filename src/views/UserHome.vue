@@ -23,8 +23,8 @@
           </p>
         </div>
         <div class="col-lg-6"
-            data-aos="fade-right"
-            data-aos-duration="2000">
+              data-aos="fade-right"
+              data-aos-duration="2000">
           <img src="../assets/img/003.jpg" alt="裝飾圖" class="w-100">
         </div>
       </div>
@@ -48,9 +48,9 @@
                       data-aos-easing="ease-out-cubic"
                       data-aos-duration="2000">
                     <a href="#" @click.prevent="temp = item">
-                      <img :src="item.imageUrl" alt="遊戲參考圖"
-                    class="shadow rounded img-thumbnail" width="150"
-                    :class="{'bg-primary':  item.category === temp.category}">
+                      <img  :src="item.imageUrl" alt="遊戲參考圖"
+                            class="shadow rounded img-thumbnail" width="150"
+                            :class="{'bg-primary':  item.category === temp.category}">
                     </a>
                   </div>
               </div>
@@ -60,8 +60,8 @@
           <div class="border-0 mb-0 mb-sm-5 d-flex justify-content-center"
               data-aos="zoom-in-up"
               data-aos-duration="2000">
-            <img :src="temp.imageUrl" alt="遊戲參考圖放大"
-              class="round-icon rounded-circle img-thumbnail bg-primary  d-none d-sm-block">
+            <img  :src="temp.imageUrl" alt="遊戲參考圖放大"
+                  class="round-icon rounded-circle img-thumbnail bg-primary  d-none d-sm-block">
           </div>
           <div class="d-flex justify-content-center"
               data-aos=""
@@ -89,25 +89,29 @@
             <div class="w-75">
               <span class="fw-bold fs-5">速度<i class="bi bi-lightning-fill mx-1"></i></span>
               <div class="progress mb-3">
-                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.speed*20}%`}">
+                <div class="progress-bar text-dark fw-bold" role="progressbar"
+                    :style="{width: `${temp.speed*20}%`}">
                   {{ temp.speed }} / 5
                 </div>
               </div>
               <span class="fw-bold fs-5">耐力<i class="bi bi-clock-fill mx-1"></i></span>
               <div class="progress mb-3">
-                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.stamina*20}%`}">
+                <div class="progress-bar text-dark fw-bold" role="progressbar"
+                    :style="{width: `${temp.stamina*20}%`}">
                   {{ temp.stamina }} / 5
                 </div>
               </div>
               <span class="fw-bold fs-5">幸運<i class="bi bi-dice-6-fill mx-1"></i></span>
               <div class="progress mb-3">
-                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.lucky*20}%`}">
+                <div class="progress-bar text-dark fw-bold" role="progressbar"
+                    :style="{width: `${temp.lucky*20}%`}">
                   {{ temp.lucky }} / 5
                 </div>
               </div>
               <span class="fw-bold fs-5">智慧<i class="bi bi-mortarboard-fill mx-1"></i></span>
               <div class="progress mb-3">
-                <div class="progress-bar text-dark fw-bold" role="progressbar" :style="{width: `${temp.intelligence*20}%`}">
+                <div class="progress-bar text-dark fw-bold" role="progressbar"
+                    :style="{width: `${temp.intelligence*20}%`}">
                   {{ temp.intelligence }} / 5
                 </div>
               </div>

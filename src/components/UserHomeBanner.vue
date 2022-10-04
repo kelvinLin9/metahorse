@@ -4,7 +4,7 @@
       :spaceBetween="30"
       :centeredSlides="true"
       :autoplay="{
-        delay: 2500,
+        delay: 250000,
         disableOnInteraction: false,
       }"
       :pagination="{
@@ -17,31 +17,35 @@
       <swiper-slide>
         <div class="header-bg-1 d-flex flex-column justify-content-center align-items-center"
             style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
-          <div class="fw-bold header-text f-kalam py-2 py-md-5 text-center">
-            DIGITAL
-            <br class="d-md-none">
-            EQUATES
-            <br class="d-md-none">
-            REALITY
+          <div class=" header-text-bg py-2 py-md-5 text-center">
+            <div class="fw-bold f-kalam header-text">
+              DIGITAL
+              <br class="d-md-none">
+              EQUATES
+              <br class="d-md-none">
+              REALITY
+            </div>
+            <RouterLink type="button" to="/products" class="btn btn-sm btn-secondary rounded-1 fs-5 my-2">
+                  搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
+            </RouterLink>
           </div>
-          <router-link type="button" to="/products" class="btn btn-sm btn-secondary rounded-1 fw-bold btn-lg fs-3 mt-5">
-              搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
-          </router-link>
         </div>
       </swiper-slide>
       <swiper-slide>
         <div class="header-bg-2 d-flex flex-column justify-content-center align-items-center bg-dark "
             style="background-image: url('https://imgur.com/I19pL6e.jpg');">
-          <div class="fw-bold header-text f-kalam py-2 py-md-5 text-center">
-            DIGITAL
-            <br class="d-md-none">
-            EQUATES
-            <br class="d-md-none">
-            REALITY
+          <div class=" header-text-bg py-2 py-md-5 text-center">
+            <div class="fw-bold f-kalam header-text">
+              DIGITAL
+              <br class="d-md-none">
+              EQUATES
+              <br class="d-md-none">
+              REALITY
+            </div>
+            <RouterLink type="button" to="/products" class="btn btn-sm btn-primary rounded-1 fs-5 my-2">
+                  搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
+            </RouterLink>
           </div>
-          <router-link type="button" to="/products" class="btn btn-sm btn-primary rounded-5 fw-bold btn-lg fs-3 mt-5">
-            搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
-          </router-link>
         </div>
       </swiper-slide>
     </swiper>
@@ -85,16 +89,20 @@ export default {
   background-position: center center;
   height: 100vh;
 }
-.header-text {
+.header-text-bg {
   width: 100vw;
   color: #000;
-  -webkit-text-stroke: 2px rgb(241, 229, 59);
-  font-size: 60px;
   backdrop-filter: saturate(10%);
+  .header-text{
+    -webkit-text-stroke: 2px rgb(241, 229, 59);
+    font-size: 60px;
+  }
 }
 @media (max-width: 992px) {
-  .header-text{
-    font-size: 50px;
+  .header-text-bg{
+    .header-text{
+      font-size: 50px;
+    }
   }
 }
 </style>

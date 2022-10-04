@@ -1,6 +1,6 @@
 import axios from 'axios'
 import router from '../router'
-import { defineStore } from 'pinia'// 起手式
+import { defineStore } from 'pinia'
 import statusStore from './statusStore'
 
 // 所有資料帶出來存到status
@@ -36,7 +36,6 @@ export default defineStore('cartStore', {
           status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
     },
-    // 更改購物車商品數量
     updateCart (item) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`
       status.isLoading = true

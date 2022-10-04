@@ -1,6 +1,5 @@
 import axios from 'axios'
 import Chart from 'chart.js/auto'
-// 起手式
 import { defineStore } from 'pinia'
 import statusStore from './statusStore'
 
@@ -31,7 +30,6 @@ export default defineStore('adminStore', {
     isLoading: false
   }),
   actions: {
-    // 取得所有品項
     getProducts (page = 1) {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`
       status.isLoading = true
@@ -46,7 +44,6 @@ export default defineStore('adminStore', {
         status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
       })
     },
-    // 取得當前頁面訂單資料
     async getOrders (page = 1, needGetAllOrders = true) {
       this.currentPage = page
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`
@@ -66,7 +63,6 @@ export default defineStore('adminStore', {
       }
       status.isLoading = false
     },
-    // 取得所有頁面訂單資料
     async getAllOrders () {
       this.allOrders = []
       this.revenue = 0
@@ -90,7 +86,6 @@ export default defineStore('adminStore', {
       this.getAllOrdersData()
       status.isLoading = false
     },
-    // 取得所有訂單的詳細資料
     getAllOrdersData () {
       this.categoryNum.S = 0
       this.categoryNum.A = 0

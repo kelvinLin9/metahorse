@@ -20,21 +20,21 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <RouterLink to="/dashboard/order" class="nav-link fs-5"
-                        :class="{ 'text-warning':  routeName === '/dashboard/order' }">
+                        :class="{ 'text-warning':  $route.path === '/dashboard/order' }">
               訂單
             </RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/dashboard/products" class="nav-link fs-5"
-                        :class="{ 'text-warning':  routeName === '/dashboard/products' }">
+            <RouterLink to="/dashboard/products" class="nav-link fs-5"
+                        :class="{ 'text-warning':  $route.path === '/dashboard/products' }">
               產品
-            </router-link>
+            </RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/dashboard/coupons" class="nav-link fs-5"
-                        :class="{ 'text-warning':  routeName === '/dashboard/coupons' }">
+            <RouterLink to="/dashboard/coupons" class="nav-link fs-5"
+                        :class="{ 'text-warning':  $route.path === '/dashboard/coupons' }">
               優惠券
-            </router-link>
+            </RouterLink>
           </li>
           <li class="nav-item">
             <a href="#" @click.prevent="logout" class="nav-link fs-5">登出</a>
@@ -68,9 +68,6 @@ export default {
         }
       })
     }
-  },
-  mounted () {
-    this.routeName = this.$route.path // 點擊後圖標變色
   }
 }
 </script>

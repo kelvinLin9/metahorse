@@ -67,7 +67,6 @@ import adminStore from '@/stores/adminStore'
 
 export default {
   components: {
-    // Navbar
     CouponModal,
     DelModal
   },

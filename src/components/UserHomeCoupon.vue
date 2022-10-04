@@ -8,9 +8,9 @@
         <span class="mx-2 fs-1 fw-bolder text-white">限時優惠</span>
         <span class="fs-5 text-primary align-self-end">/ 活動只到年底</span>
       </h1>
-      <router-link type="button" to="/UserCoupon" class="btn btn-outline-primary btn-hover rounded-0 fw-bold btn-lg fs-3 mt-3">
+      <RouterLink type="button" to="/UserCoupon" class="btn btn-outline-primary btn-hover rounded-0 fw-bold btn-lg fs-3 mt-3">
         火速前往
-      </router-link>
+      </RouterLink>
     </div>
   </div>
 </template>

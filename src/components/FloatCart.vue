@@ -1,13 +1,13 @@
 <template>
   <div class="rounded-circle bg-white border border-3 border-warning d-flex justify-content-center align-items-center"
       :class="{ 'float-cart-up' : goTopIcon ,'float-cart-down' : !goTopIcon}">
-    <router-link to="/cart">
+    <RouterLink to="/cart">
       <font-awesome-icon icon="fa-solid fa-cart-shopping" class="text-dark fs-1" />
       <div class="bg-danger text-white rounded-circle text-center position-absolute num"
           v-if="cartNum !== 0">
         {{ cartNum }}
       </div>
-    </router-link>
+    </RouterLink>
   </div>
 </template>
 

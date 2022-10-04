@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { defineStore } from 'pinia'// 起手式
+import { defineStore } from 'pinia'
 import statusStore from './statusStore'
 import cartStore from './cartStore'
 

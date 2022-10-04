@@ -3,9 +3,9 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item fs-5">
-          <router-link to="/products" class="fw-bold bg-dark">
+          <RouterLink to="/products" class="fw-bold bg-dark">
             產品列表
-          </router-link>
+          </RouterLink>
         </li>
         <li class="breadcrumb-item active fs-5" aria-current="page">
           {{ product.title }}

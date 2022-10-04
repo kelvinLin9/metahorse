@@ -108,7 +108,6 @@ export default {
       this.isNew = isNew
       this.$refs.productModal.showModal()
     },
-    // 把外層資料儲存下來，再傳送到遠端
     updateProduct (item) {
       // console.log(item)
       this.tempProduct = item
@@ -139,7 +138,6 @@ export default {
         }
       })
     },
-    // 開啟刪除 Modal
     openDelProductModal (item) {
       this.tempProduct = { ...item }
       const delComponent = this.$refs.delModal

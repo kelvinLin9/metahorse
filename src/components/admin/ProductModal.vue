@@ -225,7 +225,6 @@ export default {
       default () { return {} }
     }
   },
-  // 監聽product內容有沒有變動，每次外層更新資料經過props傳進來，就會觸發watch，再傳到data()因為單向數據流，不能直接修改外層資料
   watch: {
     product () {
       this.tempProduct = this.product
@@ -235,7 +234,6 @@ export default {
       }
     }
   },
-  // 必須把實體的內容回傳出來，所以要準備data()
   data () {
     return {
       modal: {},

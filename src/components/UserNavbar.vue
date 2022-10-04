@@ -23,24 +23,24 @@
            :class="{ 'text-warning':  $route.name === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/products" class="nav-link fs-5"
-            :class="{ 'text-warning':  $route.name === 'products' }">產品列表</router-link>
+            <RouterLink to="/products" class="nav-link fs-5"
+            :class="{ 'text-warning':  $route.name === 'products' }">產品列表</RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/UserCoupon" class="nav-link fs-5"
-            :class="{ 'text-warning':  $route.name === 'UserCoupon' }">優惠活動</router-link>
+            <RouterLink to="/UserCoupon" class="nav-link fs-5"
+            :class="{ 'text-warning':  $route.name === 'UserCoupon' }">優惠活動</RouterLink>
           </li>
           <li class="nav-item">
-            <router-link to="/UserSearchOrder" class="nav-link fs-5"
-            :class="{ 'text-warning':  $route.name === 'UserSearchOrder' }">訂單查詢</router-link>
+            <RouterLink to="/UserSearchOrder" class="nav-link fs-5"
+            :class="{ 'text-warning':  $route.name === 'UserSearchOrder' }">訂單查詢</RouterLink>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/cart" class="nav-link fs-5"
-            :class="{ 'text-warning':  $route.name === 'cart' }">購物車</router-link>
+            <RouterLink to="/cart" class="nav-link fs-5"
+            :class="{ 'text-warning':  $route.name === 'cart' }">購物車</RouterLink>
           </li>
           <li class="nav-item d-block d-lg-none">
-            <router-link to="/favorite" class="nav-link fs-5"
-            :class="{ 'text-warning':  $route.name === 'favorite' }">我的最愛</router-link>
+            <RouterLink to="/favorite" class="nav-link fs-5"
+            :class="{ 'text-warning':  $route.name === 'favorite' }">我的最愛</RouterLink>
           </li>
         </ul>
 
@@ -89,16 +89,16 @@
             </div>
             <h5 class="fw-bold text-center mb-3" v-if="cartNum == 0">產品尚未加入購物車!</h5>
             <div class="d-flex justify-content-end">
-              <router-link to="/cart" class="btn btn-dark btn-hover rounded-0"
+              <RouterLink to="/cart" class="btn btn-dark btn-hover rounded-0"
                           @click.prevent="cartBoxToggle"
                           v-if="cartNum > 0">
                 <font-awesome-icon icon="fa-solid fa-cash-register" /> 結帳去
-              </router-link>
-              <router-link to="/products" class="btn btn-dark btn-hover rounded-0"
+              </RouterLink>
+              <RouterLink to="/products" class="btn btn-dark btn-hover rounded-0"
                           @click.prevent="cartBoxToggle"
                           v-else>
                 <font-awesome-icon icon="fa-solid fa-basket-shopping" /> 選購去
-              </router-link>
+              </RouterLink>
             </div>
           </div>
 
