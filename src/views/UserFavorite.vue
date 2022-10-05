@@ -15,9 +15,10 @@
         <RouterLink to="products" type="button" class="btn btn-outline-primary text-dark fw-bold fs-5">回產品列表</RouterLink>
       </div>
     </div>
-    <div class="container pt-5">
-      <div class="row g-4 justify-content-center"
-          v-if="favorite.length !== 0">
+    <div class="container pt-4">
+      <!-- 桌面版 -->
+      <div class="row g-4 justify-content-center "
+          v-if="favorite.length !== 0 && false">
         <div class="col-md-6 col-lg-4 col-10"
             v-for="item in favorite" :key="item.id">
           <div class="card rounded-3">
@@ -59,6 +60,43 @@
           </div>
         </div>
       </div>
+      <!-- 手機版 -->
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr class="text-center">
+              <th>刪除</th>
+              <th>圖片</th>
+              <th>品名</th>
+              <th>單價</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <tr v-for="item in favorite" :key="item.id">
+              <td>
+                <a class="text-primary btn-outline-primary fs-1"
+                        @click.stop="removeFavorite(item.id)">
+                  <font-awesome-icon icon="fa-solid fa-trash-can" />
+                </a>
+              </td>
+              <td style="width:80px">
+                <img class="rounded-3 img-fit"
+                    :src="item.imageUrl" alt="商品照片">
+              </td>
+              <td>
+                {{ item.title }}
+                <br>
+                <span class="fs-6 text-muted">
+                  （{{ item.category }}）
+                </span>
+              </td>
+              <td>
+                {{ item.price }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -72,6 +110,11 @@ import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
 
 export default {
+  data () {
+    return {
+      window: 0
+    }
+  },
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds']),
     ...mapState(productsStore, ['products']),
@@ -82,6 +125,15 @@ export default {
     ...mapActions(productsStore, ['getProducts']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
     ...mapActions(goStore, ['goProduct'])
+  },
+  watch: {
+    window (n, o) {
+      console.log(n, o)
+      console.log(window.innerWidth)
+    }
+  },
+  mounted () {
+    this.window = window.innerWidth
   }
 }
 </script>
