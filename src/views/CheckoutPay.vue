@@ -89,25 +89,22 @@
 <script>
 import UserCheckoutBar from '@/components/UserCheckoutBar.vue'
 import GameModal from '@/components/GameModal.vue'
-import { mapActions } from 'pinia'
+import { mapState, mapActions, mapWritableState } from 'pinia'
 import copyStore from '@/stores/copyStore'
+import orderStore from '@/stores/orderStore'
 
 export default {
-  data () {
-    return {
-      order: {
-        user: {}
-      },
-      orderId: '',
-      isLoading: false
-    }
-  },
   components: {
     UserCheckoutBar,
     GameModal
   },
+  computed: {
+    ...mapWritableState(orderStore, ['orderId']),
+    ...mapState(orderStore, ['order'])
+  },
   methods: {
     ...mapActions(copyStore, ['copyCode']),
+    ...mapActions(orderStore, ['getOrder', 'payOrder']),
     showAlert () {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
       this.isLoading = true
@@ -136,27 +133,6 @@ export default {
           }
         }
       })
-    },
-    getOrder () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/order/${this.orderId}`
-      this.$http.get(url)
-        .then((res) => {
-          if (res.data.success) {
-            this.order = res.data.order
-          }
-        })
-        .catch((err) => console.error(err))
-    },
-    payOrder () {
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/pay/${this.orderId}`
-      this.$http.post(url)
-        .then((res) => {
-          console.log(res)
-          if (res.data.success) {
-            this.getOrder()
-          }
-        })
-        .catch((err) => console.error(err))
     },
     printWindow () {
       window.print()

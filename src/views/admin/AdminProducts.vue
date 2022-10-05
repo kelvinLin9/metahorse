@@ -111,7 +111,6 @@ export default {
       this.$refs.productModal.showModal()
     },
     updateProduct (item) {
-      // console.log(item)
       this.tempProduct = item
       // 新增
       let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
@@ -139,8 +138,7 @@ export default {
     },
     delProduct () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`
-      this.$http.delete(url).then((response) => {
-        console.log(response.data)
+      this.$http.delete(url).then(() => {
         const delComponent = this.$refs.delModal
         delComponent.hideModal()
         this.getProducts()

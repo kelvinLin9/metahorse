@@ -15,12 +15,12 @@
 import { mapState, mapActions } from 'pinia'
 import cartStore from '@/stores/cartStore'
 import goStore from '@/stores/goStore'
-import scrollStore from '@/stores/scrollStore'
+import windowStore from '@/stores/windowStore'
 
 export default {
   computed: {
     ...mapState(cartStore, ['cartNum']),
-    ...mapState(scrollStore, ['goTopIcon'])
+    ...mapState(windowStore, ['goTopIcon'])
   },
   methods: {
     ...mapActions(goStore, ['goCart'])

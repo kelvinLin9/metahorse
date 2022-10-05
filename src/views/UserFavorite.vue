@@ -18,7 +18,7 @@
     <div class="container pt-4">
       <!-- 桌面版 -->
       <div class="row g-4 justify-content-center "
-          v-if="favorite.length !== 0 && false">
+          v-if="favorite.length !== 0 && windowWidth > 768">
         <div class="col-md-6 col-lg-4 col-10"
             v-for="item in favorite" :key="item.id">
           <div class="card rounded-3">
@@ -64,7 +64,7 @@
       <div class="table-responsive">
         <table class="table">
           <thead>
-            <tr class="text-center">
+            <tr class="text-center table-primary ">
               <th>刪除</th>
               <th>圖片</th>
               <th>品名</th>
@@ -108,6 +108,7 @@ import cartStore from '@/stores/cartStore'
 import statusStore from '@/stores/statusStore'
 import favoriteStore from '@/stores/favoriteStore'
 import goStore from '@/stores/goStore'
+import windowStore from '@/stores/windowStore'
 
 export default {
   data () {
@@ -118,22 +119,18 @@ export default {
   computed: {
     ...mapState(favoriteStore, ['favorite', 'favoriteIds']),
     ...mapState(productsStore, ['products']),
-    ...mapState(statusStore, ['cartLoadingItem'])
+    ...mapState(statusStore, ['cartLoadingItem']),
+    ...mapState(windowStore, ['windowWidth'])
   },
   methods: {
     ...mapActions(favoriteStore, ['getFavorite', 'getFavoriteIds', 'removeFavorite']),
     ...mapActions(productsStore, ['getProducts']),
     ...mapActions(cartStore, ['getCart', 'addCart']),
-    ...mapActions(goStore, ['goProduct'])
-  },
-  watch: {
-    window (n, o) {
-      console.log(n, o)
-      console.log(window.innerWidth)
-    }
+    ...mapActions(goStore, ['goProduct']),
+    ...mapActions(windowStore, ['getWindowWidth'])
   },
   mounted () {
-    this.window = window.innerWidth
+    this.getWindowWidth()
   }
 }
 </script>

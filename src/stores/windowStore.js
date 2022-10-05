@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
 
-export default defineStore('scrollStore', {
+export default defineStore('windowStore', {
   state: () => ({
-    goTopIcon: false
+    goTopIcon: false,
+    windowWidth: 0
   }),
   actions: {
     scroll () {
@@ -13,6 +14,12 @@ export default defineStore('scrollStore', {
           this.goTopIcon = false
         }
       }
+    },
+    getWindowWidth () {
+      this.windowWidth = window.innerWidth
+      window.addEventListener('resize', () => {
+        this.windowWidth = window.innerWidth
+      })
     }
   }
 })

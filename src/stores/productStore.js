@@ -48,7 +48,6 @@ export default defineStore('productStore', {
       status.isLoading = true
       axios.get(api)
         .then((res) => {
-          console.log(res.data)
           status.isLoading = false
           if (res.data.success) {
             this.product = res.data.product

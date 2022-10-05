@@ -249,7 +249,6 @@ export default {
       this.$http.post(url, formData).then((response) => {
         if (response.data.success) {
           this.tempProduct.imageUrl = response.data.imageUrl
-          console.log(123)
         }
       })
     }

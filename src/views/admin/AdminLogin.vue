@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia'
+import statusStore from '@/stores/statusStore'
 export default {
   data () {
     return {
@@ -52,6 +54,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(statusStore, ['pushManager']),
     signIn () {
       const api = `${process.env.VUE_APP_API}admin/signin`
       this.$http.post(api, this.user)
@@ -60,9 +63,12 @@ export default {
             const { token, expired } = res.data
             document.cookie = `hexToken=${token}; expires=${new Date(expired)}`
             this.$router.push('/dashboard/order')
+          } else {
+            this.pushManager(false, '更新', '發生錯誤，請檢查帳號密碼')
           }
+        }).catch(() => {
+          this.pushManager(false, '更新', '發生錯誤，請檢查帳號密碼')
         })
-        .catch((err) => console.error(err))
     }
   }
 }

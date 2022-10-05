@@ -9,16 +9,15 @@
 
 <script>
 import { mapState, mapActions } from 'pinia'
-import scrollStore from '@/stores/scrollStore'
+import windowStore from '@/stores/windowStore'
 export default {
   computed: {
-    ...mapState(scrollStore, ['goTopIcon'])
+    ...mapState(windowStore, ['goTopIcon'])
   },
   methods: {
-    ...mapActions(scrollStore, ['scroll']),
+    ...mapActions(windowStore, ['scroll']),
     top () {
       document.documentElement.scrollTop = 0
-      console.log(this.goTopIcon)
     }
   },
   mounted () {

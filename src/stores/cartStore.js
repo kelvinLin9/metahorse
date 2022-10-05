@@ -59,7 +59,6 @@ export default defineStore('cartStore', {
       status.isLoading = true
       axios.delete(url)
         .then((res) => {
-          console.log(res)
           status.pushManager(res, '更新', '此項目已移除購物車')
           status.cartLoadingItem = ''
           this.getCart()
