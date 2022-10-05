@@ -64,6 +64,7 @@ import CouponModal from '@/components/admin/CouponModal.vue'
 import DelModal from '@/components/admin/DelModal.vue'
 import { mapState, mapActions } from 'pinia'
 import adminStore from '@/stores/adminStore'
+import statusStore from '@/stores/statusStore'
 
 export default {
   components: {
@@ -88,6 +89,7 @@ export default {
   },
   methods: {
     ...mapActions(adminStore, ['getCoupons']),
+    ...mapActions(statusStore, ['pushManager']),
     openCouponModal (isNew, item) {
       this.isNew = isNew
       if (this.isNew) {
@@ -107,17 +109,15 @@ export default {
     updateCoupon (tempCoupon) {
       if (this.isNew) {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`
-        this.$http.post(url, { data: tempCoupon }).then((response) => {
-          console.log(response, tempCoupon)
-          this.$httpMessageState(response, '新增優惠券')
+        this.$http.post(url, { data: tempCoupon }).then((res) => {
+          this.pushManager(res, '新增優惠券')
           this.getCoupons()
           this.$refs.couponModal.hideModal()
         })
       } else {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
-        this.$http.put(url, { data: this.tempCoupon }).then((response) => {
-          console.log(response)
-          this.$httpMessageState(response, '新增優惠券')
+        this.$http.put(url, { data: this.tempCoupon }).then((res) => {
+          this.pushManager(res, '編輯優惠券')
           this.getCoupons()
           this.$refs.couponModal.hideModal()
         })
@@ -126,9 +126,8 @@ export default {
     delCoupon () {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon/${this.tempCoupon.id}`
       this.isLoading = true
-      this.$http.delete(url).then((response) => {
-        console.log(response, this.tempCoupon)
-        this.$httpMessageState(response, '刪除優惠券')
+      this.$http.delete(url).then((res) => {
+        this.pushManager(res, '刪除優惠券')
         const delComponent = this.$refs.delModal
         delComponent.hideModal()
         this.getCoupons()

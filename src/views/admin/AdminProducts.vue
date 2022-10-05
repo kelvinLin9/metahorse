@@ -85,6 +85,7 @@ import adminStore from '@/stores/adminStore'
 import ProductModal from '@/components/admin/ProductModal.vue'
 import Pagination from '@/components/admin/Pagination.vue'
 import DelModal from '@/components/admin/DelModal.vue'
+import statusStore from '@/stores/statusStore'
 
 export default {
   components: {
@@ -99,6 +100,7 @@ export default {
   },
   methods: {
     ...mapActions(adminStore, ['getProducts']),
+    ...mapActions(statusStore, ['pushManager']),
     openModal (isNew, item) {
       if (isNew) {
         this.tempProduct = {}
@@ -120,21 +122,13 @@ export default {
         httpMethod = 'put'
       }
       const productComponent = this.$refs.productModal
-      this.$http[httpMethod](api, { data: this.tempProduct }).then((response) => {
-        console.log(response)
+      this.$http[httpMethod](api, { data: this.tempProduct }).then((res) => {
         productComponent.hideModal()
-        if (response.data.success) {
+        if (res.data.success) {
           this.getProducts()
-          this.emitter.emit('push-message', {
-            style: 'success',
-            title: '更新成功'
-          })
+          this.pushManager(res, '更新')
         } else {
-          this.emitter.emit('push-message', {
-            style: 'danger',
-            title: '更新失敗',
-            content: response.data.message.join('、')
-          })
+          this.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         }
       })
     },

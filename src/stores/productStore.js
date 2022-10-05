@@ -40,7 +40,7 @@ export default defineStore('productStore', {
           status.isLoading = false
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+          status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
     },
     getProduct (id) {
@@ -57,7 +57,7 @@ export default defineStore('productStore', {
           }
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+          status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
     },
     // 無法雙向綁定的另種解法

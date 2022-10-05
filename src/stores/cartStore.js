@@ -33,7 +33,7 @@ export default defineStore('cartStore', {
           status.isLoading = false
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+          status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
     },
     updateCart (item) {
@@ -50,7 +50,7 @@ export default defineStore('cartStore', {
           this.getCart()
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新操作')
+          status.pushManager(false, '更新', '發生錯誤，請重新操作')
         })
     },
     removeCartItem (id) {
@@ -60,13 +60,13 @@ export default defineStore('cartStore', {
       axios.delete(url)
         .then((res) => {
           console.log(res)
-          status.PushManager(res, '更新', '此項目已移除購物車')
+          status.pushManager(res, '更新', '此項目已移除購物車')
           status.cartLoadingItem = ''
           this.getCart()
           status.isLoading = false
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新操作')
+          status.pushManager(false, '更新', '發生錯誤，請重新操作')
         })
     },
     addCart (id, qty = 1) {
@@ -80,10 +80,10 @@ export default defineStore('cartStore', {
         .then((res) => {
           status.cartLoadingItem = ''
           this.getCart() // 重新取得購物車資料
-          status.PushManager(res, '更新', '已加入購物車')
+          status.pushManager(res, '更新', '已加入購物車')
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+          status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
     },
     cartBoxToggle () {
@@ -108,7 +108,7 @@ export default defineStore('cartStore', {
           this.getCart()
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '傳送', '發生錯誤，請重新填寫資料並送出')
+          status.pushManager(false, '傳送', '發生錯誤，請重新填寫資料並送出')
         })
     }
   }

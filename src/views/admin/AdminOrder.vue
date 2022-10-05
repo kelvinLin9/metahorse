@@ -142,11 +142,6 @@ export default {
       }
       this.isNew = isNew
       this.$refs.orderModal.showModal()
-
-      // this.tempOrder = { ...item }
-      // // console.log(this.tempOrder)
-      // this.isNew = false
-      // this.$refs.orderModal.showModal()
     },
     openDelOrderModal (item) {
       this.tempOrder = { ...item }

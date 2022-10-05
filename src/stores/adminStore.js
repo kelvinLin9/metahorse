@@ -41,7 +41,7 @@ export default defineStore('adminStore', {
         }
       }).catch(() => {
         status.isLoading = false
-        status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+        status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
       })
     },
     async getOrders (page = 1, needGetAllOrders = true) {
@@ -51,17 +51,17 @@ export default defineStore('adminStore', {
       await axios
         .get(url, this.tempProduct)
         .then((res) => {
+          status.isLoading = false
           this.orders = res.data.orders
           this.pagination = res.data.pagination
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+          status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
         // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
       if (needGetAllOrders) {
         this.getAllOrders()
       }
-      status.isLoading = false
     },
     async getAllOrders () {
       this.allOrders = []
@@ -80,7 +80,7 @@ export default defineStore('adminStore', {
             })
           }).catch(() => {
             status.isLoading = false
-            status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+            status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
           })
       }
       this.getAllOrdersData()
@@ -208,23 +208,22 @@ export default defineStore('adminStore', {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/order/${item.id}`
       axios.put(api, { data: item }).then((res) => {
         status.isLoading = false
-        status.PushManager(res, '更新付款狀態')
+        status.pushManager(res, '更新付款狀態')
         this.getOrders(this.pagination.current_page, false)
       }).catch(() => {
         status.isLoading = false
-        status.PushManager(false, '更新', '發生錯誤，請重新操作')
+        status.pushManager(false, '更新', '發生錯誤，請重新操作')
       })
     },
     getCoupons () {
-      this.isLoading = true
+      status.isLoading = true
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupons`
       axios.get(url, this.tempProduct).then((res) => {
-        console.log(res)
         this.coupons = res.data.coupons
-        this.isLoading = false
+        status.isLoading = false
       }).catch(() => {
         status.isLoading = false
-        status.PushManager(false, '更新', '發生錯誤，請重新整理頁面')
+        status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
       })
     }
   }

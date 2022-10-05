@@ -7,10 +7,10 @@ export default defineStore('copyStore', {
     copyCode (item) {
       navigator.clipboard.writeText(item)
         .then(() => {
-          status.PushManager(true, '複製', '請到購物車頁面使用')
+          status.pushManager(true, '複製', '請到購物車頁面使用')
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '複製', '發生錯誤，請重新操作')
+          status.pushManager(false, '複製', '發生錯誤，請重新操作')
         })
     }
   }

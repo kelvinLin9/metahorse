@@ -42,13 +42,13 @@ export default defineStore('couponStore', {
       status.isLoading = true
       axios.post(url, { data: coupon })
         .then((res) => {
-          status.PushManager(res, '加入優惠券')
+          status.pushManager(res, '加入優惠券')
           cart.getCart()
           status.isLoading = false
           this.coupon_code = ''
         }).catch(() => {
           status.isLoading = false
-          status.PushManager(false, '更新', '發生錯誤，請重新操作')
+          status.pushManager(false, '更新', '發生錯誤，請重新操作')
         })
     },
     luckyDraw (min, max) {
