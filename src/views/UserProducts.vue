@@ -55,16 +55,16 @@
         <div class="row g-3">
           <div class="col-lg-4 col-md-6 col-12"
               v-for="item in filterProducts" :key="item.id">
-            <div class="card rounded-3">
-              <div class="card-img overflow-hidden position-relative scale">
+            <div class="card rounded-3 scale">
+              <div class="card-img overflow-hidden position-relative">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-                        @click.prevent="goProduct(item.id)">
+                        @click.stop.prevent="goProduct(item.id)">
                   詳細資訊
                 </button>
                 <img class="rounded-3 img-fit"
                       :src="item.imageUrl" alt="商品照片">
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center "
-                      @click.stop="toggleFavorite(item.id)">
+                      @click.stop.prevent="toggleFavorite(item.id)">
                   <font-awesome-icon :icon="favState(item.id)"
                               class="love"
                               data-bs-toggle="tooltip"

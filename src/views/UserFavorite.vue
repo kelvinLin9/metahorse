@@ -21,8 +21,8 @@
           v-if="favorite.length !== 0 && windowWidth > 768">
         <div class="col-md-6 col-lg-4 col-10"
             v-for="item in favorite" :key="item.id">
-          <div class="card rounded-3">
-            <div class="card-img overflow-hidden position-relative scale">
+          <div class="card rounded-3 scale">
+            <div class="card-img overflow-hidden position-relative">
               <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
               @click.prevent="goProduct(item.id)">
                 詳細資訊
@@ -42,13 +42,13 @@
               <div class="px-3 py-2 d-flex justify-content-between">
                 <button type="button"
                         class="btn btn-outline-secondary text-dark fw-bold fs-6 px-3"
-                        @click.stop="removeFavorite(item.id)">
+                        @click.stop.prevent="removeFavorite(item.id)">
                   移除收藏
                 </button>
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-6 px-3"
                         :disabled="cartLoadingItem === item.id"
-                        @click.stop="addCart(item.id)">
+                        @click.stop.prevent="addCart(item.id)">
                   <div v-if="cartLoadingItem === item.id"
                         class="spinner-grow text-danger spinner-grow-sm" role="status">
                   <span class="visually-hidden">Loading...</span>
@@ -75,7 +75,7 @@
             <tr v-for="item in favorite" :key="item.id">
               <td>
                 <a class="text-primary btn-outline-primary fs-1"
-                        @click.stop="removeFavorite(item.id)">
+                        @click.stop.prevent="removeFavorite(item.id)">
                   <font-awesome-icon icon="fa-solid fa-trash-can" />
                 </a>
               </td>

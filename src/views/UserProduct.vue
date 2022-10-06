@@ -18,7 +18,7 @@
         <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded h-100">
 
         <span class="position-absolute rounded-circle fav-icon bg-white d-flex justify-content-center align-items-center"
-            @click.stop="toggleFavorite(product.id)">
+            @click.stop.prevent="toggleFavorite(product.id)">
           <font-awesome-icon :icon="favState(id)"
                               class="love"
                               data-bs-toggle="tooltip"
