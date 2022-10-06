@@ -3,9 +3,9 @@
     <div class="pb-1">
       <div class="text-end pb-3">
         <button class="btn btn-primary" type="button"
-               @click.prevent="openModal(true)">
-        新增產品
-      </button>
+                @click.prevent="openModal(true)">
+          新增產品
+        </button>
       </div>
       <div class="card shadow-sm">
         <div class="card-body">

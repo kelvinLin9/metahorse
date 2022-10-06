@@ -18,26 +18,31 @@
     <div class="container pt-4">
       <!-- 桌面版 -->
       <div class="row g-4 justify-content-center "
-          v-if="favorite.length !== 0 && windowWidth > 768">
+            v-if="favorite.length !== 0 && windowWidth > 768">
         <div class="col-md-6 col-lg-4 col-10"
-            v-for="item in favorite" :key="item.id">
+              v-for="item in favorite" :key="item.id">
           <div class="card rounded-3 scale">
             <div class="card-img overflow-hidden position-relative">
               <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-              @click.prevent="goProduct(item.id)">
-                詳細資訊
+                      @click.prevent="goProduct(item.id)">
+                <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
               </button>
               <img class="rounded-3 img-fit"
-                  :src="item.imageUrl" alt="商品照片">
+                  :src="item.imageUrl" alt="商品照片"
+              >
             </div>
             <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
               <span class="fs-4">
                 {{ item.title }}
-                <span class="fs-6 text-muted">（{{ item.category }}）</span>
+                <span class="fs-6 text-muted">
+                  （{{ item.category }}）
+                </span>
               </span>
               <span class="fs-5">
                 NT ${{ item.price }}
-                <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
+                <span class="text-muted text-decoration-line-through fs-6 ms-1">
+                  ${{ item.origin_price }}
+                </span>
               </span>
               <div class="px-3 py-2 d-flex justify-content-between">
                 <button type="button"
@@ -51,9 +56,9 @@
                         @click.stop.prevent="addCart(item.id)">
                   <div v-if="cartLoadingItem === item.id"
                         class="spinner-grow text-danger spinner-grow-sm" role="status">
-                  <span class="visually-hidden">Loading...</span>
+                    <span class="visually-hidden">Loading...</span>
                   </div>
-                加到購物車
+                  加到購物車
                 </button>
               </div>
             </div>
@@ -61,7 +66,8 @@
         </div>
       </div>
       <!-- 手機版 -->
-      <div class="table-responsive">
+      <div class="table-responsive"
+        v-if="favorite.length !== 0 && windowWidth <= 768">
         <table class="table">
           <thead>
             <tr class="text-center table-primary ">
@@ -69,19 +75,24 @@
               <th>圖片</th>
               <th>品名</th>
               <th>單價</th>
+              <th>加入購物車</th>
             </tr>
           </thead>
           <tbody class="text-center">
             <tr v-for="item in favorite" :key="item.id">
               <td>
-                <a class="text-primary btn-outline-primary fs-1"
-                        @click.stop.prevent="removeFavorite(item.id)">
+                <button class="btn text-primary fs-1"
+                        type="button"
+                        @click.prevent="removeFavorite(item.id)">
                   <font-awesome-icon icon="fa-solid fa-trash-can" />
-                </a>
+                </button>
               </td>
-              <td style="width:80px">
+              <td style="width:70px" class="card-img overflow-hidden position-relative scale">
                 <img class="rounded-3 img-fit"
-                    :src="item.imageUrl" alt="商品照片">
+                    :src="item.imageUrl" alt="商品照片"
+                    @click.prevent="goProduct(item.id)"
+                    data-bs-toggle="tooltip" data-bs-placement="top" title="詳細資訊"
+                >
               </td>
               <td>
                 {{ item.title }}
@@ -92,6 +103,13 @@
               </td>
               <td>
                 {{ item.price }}
+              </td>
+              <td>
+                <button class="btn text-danger fs-1"
+                        type="button"
+                        @click.prevent="addCart(item.id)">
+                  三<font-awesome-icon icon="fa-solid fa-cart-shopping"/>
+                </button>
               </td>
             </tr>
           </tbody>

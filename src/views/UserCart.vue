@@ -5,7 +5,7 @@
     <div class="text-center pt-4">
       <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
       <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg mt-5"
-                  @click.prevent="goProducts">
+              @click.prevent="goProducts">
             商品列表
       </button>
     </div>
@@ -34,8 +34,8 @@
             <tr v-for="item in cart.carts" :key="item.id">
               <td>
                 <button type="button" class="btn btn-outline-primary btn-sm"
-                       :disabled="cartLoadingItem === item.id"
-                       @click.prevent="removeCartItem(item.id)">
+                        :disabled="cartLoadingItem === item.id"
+                        @click.prevent="removeCartItem(item.id)">
                   <i class="bi bi-x"></i>
                 </button>
               </td>
@@ -56,16 +56,16 @@
               <td>
                 <div class="input-group input-group-sm">
                   <input type="number" class="form-control"
-                       min="1"
-                       :disabled="item.id === cartLoadingItem"
-                       @change="updateCart(item)"
-                       v-model.number="item.qty"
-                       @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
+                        min="1"
+                        :disabled="item.id === cartLoadingItem"
+                        @change="updateCart(item)"
+                        v-model.number="item.qty"
+                        @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
                 </div>
               </td>
               <td class="font-sm">
                 <div v-if="item.final_total === item.total">
-                   NT$ {{ $filters.currency(item.final_total) }}
+                  NT$ {{ $filters.currency(item.final_total) }}
                 </div>
                 <div v-if="item.final_total !== item.total">
                   <small class="text-secondary">
@@ -96,31 +96,30 @@
          </tfoot>
         </table>
         <div class="input-group mb-3"
-             v-if="cart.total !== 0">
+              v-if="cart.total !== 0">
           <input type="text" class="form-control" placeholder="請輸入優惠碼" aria-label="請輸入優惠碼" aria-describedby="button-addon"
-          v-model="coupon_code">
-
+                  v-model="coupon_code">
           <button class="btn btn-outline-secondary fw-bold btn-lg" type="button" id="button-addon"
                   @click.prevent="addCouponCode(coupon_code)">
-              套用優惠碼
+            套用優惠碼
           </button>
         </div>
         <div class="text-end"
             v-if= "( cart.total < 30000 && cart.final_total === cart.total)">
-            還差
-            <span class="fs-3">{{ `${30000 - cart.total}` }}</span>
-            元即可參加抽獎
+          還差
+          <span class="fs-3">{{ `${30000 - cart.total}` }}</span>
+          元即可參加抽獎
         </div>
         <div class="text-end"
             v-if= "( cart.total < 30000 && cart.final_total !== cart.total)">
-            還差
-            <span class="fs-3">{{ `${30000 - cart.final_total}` }}</span>
-            元即可參加抽獎
+          還差
+          <span class="fs-3">{{ `${30000 - cart.final_total}` }}</span>
+          元即可參加抽獎
         </div>
         <div class="d-flex justify-content-between mt-3"
-             v-if="cart.total !== 0">
+            v-if="cart.total !== 0">
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
-                @click.prevent="goProducts">
+                  @click.prevent="goProducts">
             <i class="bi bi-caret-left-fill"></i>商品列表
           </button>
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"

@@ -14,7 +14,8 @@
         <div class="input-group mt-3 mb-1">
           <input type="text" class="form-control" placeholder="輸入訂單編號" v-model="orderId">
           <button class="btn btn-dark btn-hover rounded-0" type="button"
-                  @click.prevent="getOrder">送出</button>
+                  @click.prevent="getOrder">送出
+          </button>
         </div>
         <span class="text-success" v-if="statusGet">*取得此訂單</span>
         <span class="text-danger" v-if="statusNotGet">*查無此訂單</span>

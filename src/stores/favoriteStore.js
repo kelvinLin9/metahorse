@@ -49,7 +49,7 @@ export default defineStore('favoriteStore', {
   getters: {
     favState () {
       return (id) => {
-        return this.favoriteIds.indexOf(id) > -1 ? 'fa-regular fa-heart' : 'fa-solid fa-heart'
+        return this.favoriteIds.indexOf(id) > -1 ? 'fa-solid fa-heart' : 'fa-regular fa-heart'
       }
     }
   }

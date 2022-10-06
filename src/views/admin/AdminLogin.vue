@@ -3,7 +3,7 @@
     <div class="glass-container position-absolute top-50 start-50 translate-middle">
       <div class="container py-4 ">
         <form class="row justify-content-center"
-          @submit.prevent="signIn">
+              @submit.prevent="signIn">
           <div class="col-8">
             <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
             <div class="mb-2">

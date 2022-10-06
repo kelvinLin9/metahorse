@@ -59,7 +59,7 @@
               <div class="card-img overflow-hidden position-relative">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                         @click.stop.prevent="goProduct(item.id)">
-                  詳細資訊
+                  <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
                 </button>
                 <img class="rounded-3 img-fit"
                       :src="item.imageUrl" alt="商品照片">

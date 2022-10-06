@@ -28,9 +28,9 @@
                   class="horse d-flex"
                   :class="[ item.color,
                             item.speed,
-                           `top-${item.id}`,
-                           {'animation-start': isPlay },
-                           {'selected-horse': horse.id === item.id}
+                            `top-${item.id}`,
+                            {'animation-start': isPlay },
+                            {'selected-horse': horse.id === item.id}
                           ]"
                   :disabled="true"
             >
@@ -48,7 +48,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade" id="productModal" tabindex="-1" role="dialog"
-       aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
+      aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content border-0">
         <div class="modal-header bg-dark text-white">
@@ -8,7 +8,8 @@
             <span>訂單細節</span>
           </h5>
           <button type="button" class="btn-close"
-                  data-bs-dismiss="modal" aria-label="Close"></button>
+                  data-bs-dismiss="modal" aria-label="Close">
+          </button>
         </div>
         <div class="modal-body">
           <div class="row">
@@ -26,7 +27,8 @@
                         class="form-control"
                         id="name"
                         v-model="tempOrder.user.name"
-                        placeholder="請輸入姓名"/>
+                        placeholder="請輸入姓名"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -39,7 +41,8 @@
                         class="form-control"
                         id="email"
                         v-model="tempOrder.user.email"
-                        placeholder="請輸入信箱"/>
+                        placeholder="請輸入信箱"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -52,7 +55,8 @@
                         class="form-control"
                         id="tel"
                         v-model.number="tempOrder.user.tel"
-                        placeholder="請輸入電話"/>
+                        placeholder="請輸入電話"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -65,7 +69,8 @@
                         class="form-control"
                         id="address"
                         v-model="tempOrder.user.address"
-                        placeholder="請輸入地址"/>
+                        placeholder="請輸入地址"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -78,7 +83,8 @@
                         class="form-control"
                         id="message"
                         v-model="tempOrder.message"
-                        placeholder="請輸入留言">
+                        placeholder="請輸入留言"
+                      >
                       </textarea>
                     </td>
                   </tr>
@@ -95,7 +101,7 @@
                   </tr>
                   <tr>
                     <th>下單時間</th>
-                    <td>{{ $filters.date(tempOrder.create_at)}}</td>
+                    <td>{{ $filters.date(tempOrder.create_at) }}</td>
                   </tr>
                   <tr>
                     <th>付款時間</th>
@@ -146,12 +152,15 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary"
-                  data-bs-dismiss="modal">取消
+                  data-bs-dismiss="modal">
+            取消
           </button>
           <button type="button" class="btn btn-primary"
                   data-bs-dismiss="modal"
                   @click.prevent="updateOrder(tempOrder)"
-                  >確認</button>
+          >
+            確認
+          </button>
         </div>
       </div>
     </div>

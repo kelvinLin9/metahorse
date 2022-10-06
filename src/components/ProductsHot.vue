@@ -28,48 +28,48 @@
       >
         <swiper-slide v-for="(item) in productsHot" :key="item.id">
           <div class="card rounded-3 mb-5 mx-2 mx-sm-0 scale"
-               data-aos="flip-up"
-               data-aos-duration="2000">
-           <div class="card-img overflow-hidden position-relative">
-             <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-                     @click.prevent="goProduct(item.id)">
-               詳細資訊
-             </button>
-             <img class="rounded-3 img-fit"
-                   :src="item.imageUrl"
-                   alt="商品照片"
-             >
-             <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center  align-items-center"
-                   @click.stop.prevent="toggleFavorite(item.id)">
-               <font-awesome-icon :icon="favState(item.id)"
-                                   class="love"
-                                   data-bs-toggle="tooltip"
-                                   data-bs-placement="top"
-                                   title="加入 / 移除我的最愛"
-               />
-             </span>
-           </div>
-           <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
-             <span class="fs-4">
-              {{ item.title }}
-              <span class="fs-6 text-muted">（{{ item.category }}）</span>
-             </span>
-             <span class="fs-5">
-              NT ${{ item.price }}
-              <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
-             </span>
-             <button type="button"
-                     class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
-                     :disabled="cartLoadingItem === item.id"
-                     @click.prevent="addCart(item.id)">
-              <div v-if="cartLoadingItem === item.id"
-                   class="spinner-grow text-danger spinner-grow-sm" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
+                data-aos="flip-up"
+                data-aos-duration="2000">
+            <div class="card-img overflow-hidden position-relative">
+              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
+                      @click.prevent="goProduct(item.id)">
+                <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
+              </button>
+              <img class="rounded-3 img-fit"
+                    :src="item.imageUrl"
+                    alt="商品照片"
+              >
+              <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center  align-items-center"
+                    @click.stop.prevent="toggleFavorite(item.id)">
+                <font-awesome-icon :icon="favState(item.id)"
+                                    class="love"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="加入 / 移除我的最愛"
+                />
+              </span>
+            </div>
+            <div class="card-body d-flex flex-column justify-content-center text-center fw-bold">
+              <span class="fs-4">
+                {{ item.title }}
+                <span class="fs-6 text-muted">（{{ item.category }}）</span>
+              </span>
+              <span class="fs-5">
+                NT ${{ item.price }}
+                <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
+              </span>
+              <button type="button"
+                      class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
+                      :disabled="cartLoadingItem === item.id"
+                      @click.prevent="addCart(item.id)">
+                <div v-if="cartLoadingItem === item.id"
+                    class="spinner-grow text-danger spinner-grow-sm" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
                 加到購物車
-             </button>
-           </div>
-         </div>
+              </button>
+            </div>
+          </div>
         </swiper-slide>
       </swiper>
     </div>

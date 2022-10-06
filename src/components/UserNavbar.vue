@@ -19,8 +19,8 @@
       <div class="collapse navbar-collapse ms-5" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
           <li class="nav-item">
-           <RouterLink to="/" class="nav-link fs-5"
-           :class="{ 'text-warning':  $route.name === 'home' }">首頁</RouterLink>
+            <RouterLink to="/" class="nav-link fs-5"
+            :class="{ 'text-warning':  $route.name === 'home' }">首頁</RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink to="/products" class="nav-link fs-5"
@@ -43,7 +43,6 @@
             :class="{ 'text-warning':  $route.name === 'favorite' }">我的最愛</RouterLink>
           </li>
         </ul>
-
         <!-- 購物車、最愛、使用者介面改成靠右圖示 -->
         <ul class="navbar-nav d-none d-lg-flex ms-auto me-2">
           <li class="nav-item position-relative">
@@ -101,7 +100,6 @@
               </RouterLink>
             </div>
           </div>
-
           <li class="nav-item position-relative">
             <RouterLink to="/Favorite" class="nav-link px-3"
             :class="{ 'text-warning':  $route.name === 'favorite' }">

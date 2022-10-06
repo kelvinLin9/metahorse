@@ -8,26 +8,22 @@
       </ul>
       <ul class="list-inline text-center">
         <li class="list-inline-item">
-          <a class="text-light" href="#" @click.prevent="">
+          <a class="text-light" href="#" @click.prevent>
             <i class="bi bi-facebook"></i>
           </a>
         </li>
         <li class="list-inline-item ms-2">
-          <a class="text-light" href="#" @click.prevent="">
+          <a class="text-light" href="#" @click.prevent>
             <i class="bi bi-messenger"></i>
           </a>
         </li>
         <li class="list-inline-item ms-2">
-          <a class="text-light" href="#" @click.prevent="">
+          <a class="text-light" href="#" @click.prevent>
             <i class="bi bi-instagram"></i>
           </a>
         </li>
         <li class="list-inline-item ms-2">
-          <a
-            class="text-light"
-            href=""
-            target="_blank"
-          >
+          <a class="text-light" href="https://github.com/kelvinLin9">
             <i class="bi bi-github"></i>
           </a>
         </li>

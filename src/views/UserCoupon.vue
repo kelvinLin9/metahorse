@@ -27,7 +27,6 @@
             v-if="!draw">
       抽獎
     </button>
-
     <div class="d-flex flex-column align-items-center"
           v-if="draw">
       <div class="fs-5 text-center fw-bold">

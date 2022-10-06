@@ -1,6 +1,6 @@
 <template>
   <div class="toast-container"
-       :class="{ 'toast-a' : !cartBoxState ,'toast-b' : cartBoxState}">
+      :class="{ 'toast-a' : !cartBoxState ,'toast-b' : cartBoxState}">
     <Toast v-for="(msg, key) in messages" :key="key"
             :msg="msg"/>
   </div>

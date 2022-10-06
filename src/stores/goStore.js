@@ -1,5 +1,5 @@
 import router from '../router'
-import { defineStore } from 'pinia'// 起手式
+import { defineStore } from 'pinia'
 import cartStore from './cartStore'
 
 const cart = cartStore()

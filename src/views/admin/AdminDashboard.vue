@@ -5,7 +5,7 @@
     <UserLoading/>
   </div>
   <div class="container-fluid position-relative min-height milkyWay">
-    <router-view/>
+    <RouterView/>
   </div>
   <ToastMessages/>
   <GoTop/>
@@ -59,6 +59,6 @@ export default {
   z-index: 1000;
 }
 .min-height {
-   min-height: calc(100vh - 60px - 130px);
+  min-height: calc(100vh - 60px - 130px);
 }
 </style>

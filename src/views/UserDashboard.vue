@@ -7,7 +7,7 @@
   <FloatCart v-if = "hasFloatCart" />
   <ToastMessages/>
   <div class="position-relative min-height milkyWay pt-5">
-    <router-view/>
+    <RouterView/>
   </div>
   <GoTop/>
   <UserFooter/>
@@ -55,6 +55,6 @@ export default {
   z-index: 1000;
 }
 .min-height {
-   min-height: calc(100vh - 130px);
+  min-height: calc(100vh - 130px);
 }
 </style>

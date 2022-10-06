@@ -7,7 +7,6 @@
         新增優惠券
       </button>
     </div>
-
     <div class="card shadow-sm">
       <div class="card-body">
         <div class="table-responsive">
@@ -52,10 +51,14 @@
         </div>
       </div>
     </div>
-
-    <couponModal :coupon="tempCoupon" ref="couponModal"
-    @update-coupon="updateCoupon"/>
-    <DelModal :item="tempCoupon" ref="delModal" @del-item="delCoupon"/>
+    <CouponModal :coupon="tempCoupon"
+                  ref="couponModal"
+                  @update-coupon="updateCoupon"
+    />
+    <DelModal :item="tempCoupon"
+              ref="delModal"
+              @del-item="delCoupon"
+    />
   </div>
 </template>
 
