@@ -13,6 +13,7 @@ https://kelvinlin9.github.io/metahorse/#/
 ### 前台
 - 商品陳列、分類陳列、商品搜尋、單一商品介紹
 - 購物車（新增項目、編輯數量、刪除項目、套用優惠券）
+- 收藏功能
 - 優惠活動（抽獎）
 - 訂單查詢
 - 結帳、結帳後小遊戲
@@ -31,12 +32,12 @@ https://kelvinlin9.github.io/metahorse/#/
 | :----- | :----- |
 | Vue Cli 3  | 以 Vue.js 開發 SPA 網站 |
 | VueRouter  | 以 Vue.js 開發 SPA 網站、路由設計 |
+| Bootstrap 5  | 開發 UI 介面 |
 | ESlint(Standard)  | 優化程式碼品質、維持風格統一 |
 
 
 |  套件   | 簡述  |
 | :----- | :----- |
-| Bootstrap 5  | 開發 UI 介面 |
 | Vue-axios  | 串接 API |
 | Vee-validate  | 表單驗證 |
 | Swiper  | 圖片輪播 |
