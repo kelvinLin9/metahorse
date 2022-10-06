@@ -1,6 +1,6 @@
 <template>
   <UserHomeBanner/>
-  <section class="my-3 my-lg-5">
+  <section class="py-3 py-lg-5">
     <div class="container">
       <div class="row row-cols-lg-2 row-cols-1 align-items-center flex-row-reverse">
         <div class="col-lg-6">
@@ -31,7 +31,7 @@
     </div>
   </section>
   <UserHomeCoupon/>
-  <section class="py-3 ">
+  <section class="py-3">
     <div class="container">
       <h2 class="fw-bold text-center text-lg-start lh-lg"
           data-aos="fade-down"
@@ -130,7 +130,7 @@
     </div>
   </section>
   <hr>
-  <ProductsHot/>
+  <ProductsHot class="pt-3"/>
 </template>
 
 <script>

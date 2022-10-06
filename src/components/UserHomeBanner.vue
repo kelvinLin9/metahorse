@@ -81,13 +81,13 @@ export default {
 .header-bg-1 {
   background-size: cover;
   background-position: center center;
-  height: 100vh;
+  height: calc(100vh - 73px);
 }
 .header-bg-2 {
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100vh;
+  height: calc(100vh - 73px);
 }
 .header-text-bg {
   width: 100vw;

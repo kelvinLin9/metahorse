@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark no-print">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark no-print">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <span class="text-warning f-kalam fs-2 text-center">MetaHorse</span>
@@ -158,13 +158,13 @@ export default {
   left: 165px;
   top: 10px;
   @media (max-width: 768px) {
-   left: 145px;
+    left: 145px;
   }
   @media (max-width: 576px) {
-   left: 137px;
+    left: 137px;
   }
   @media (max-width: 414px) {
-   left: 130px;
+    left: 130px;
   }
 }
 </style>
