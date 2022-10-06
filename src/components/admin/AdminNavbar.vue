@@ -20,19 +20,22 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <RouterLink to="/dashboard/order" class="nav-link fs-5"
-                        :class="{ 'text-warning':  $route.path === '/dashboard/order' }">
+                        :class="{ 'text-warning':  $route.path === '/dashboard/order' }"
+            >
               訂單
             </RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink to="/dashboard/products" class="nav-link fs-5"
-                        :class="{ 'text-warning':  $route.path === '/dashboard/products' }">
+                        :class="{ 'text-warning':  $route.path === '/dashboard/products' }"
+            >
               產品
             </RouterLink>
           </li>
           <li class="nav-item">
             <RouterLink to="/dashboard/coupons" class="nav-link fs-5"
-                        :class="{ 'text-warning':  $route.path === '/dashboard/coupons' }">
+                        :class="{ 'text-warning':  $route.path === '/dashboard/coupons' }"
+            >
               優惠券
             </RouterLink>
           </li>
@@ -78,13 +81,13 @@ export default {
   left: 165px;
   top: 10px;
   @media (max-width: 768px) {
-   left: 145px;
+    left: 145px;
   }
   @media (max-width: 576px) {
-   left: 137px;
+    left: 137px;
   }
   @media (max-width: 414px) {
-   left: 130px;
+    left: 130px;
   }
 }
 </style>
