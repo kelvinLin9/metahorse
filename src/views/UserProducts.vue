@@ -55,10 +55,12 @@
         <div class="row g-3">
           <div class="col-lg-4 col-md-6 col-12"
               v-for="item in filterProducts" :key="item.id">
-            <div class="card rounded-3 scale">
+            <div class="card rounded-3 scale"
+                        @click.prevent="goProduct(item.id)"
+            >
               <div class="card-img overflow-hidden position-relative">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-                        @click.stop.prevent="goProduct(item.id)">
+                >
                   <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
                 </button>
                 <img class="rounded-3 img-fit"
@@ -85,7 +87,7 @@
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
                         :disabled="cartLoadingItem === item.id"
-                        @click.prevent="addCart(item.id)">
+                        @click.stop.prevent="addCart(item.id)">
                   <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
                   <div v-if="cartLoadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">
@@ -156,6 +158,7 @@ export default {
 }
 // 圖片放大，配合overflow-hidden
 .scale{
+  cursor:pointer;
   &:hover{
     .btn{
       opacity: 1;
