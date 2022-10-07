@@ -28,11 +28,11 @@
       >
         <swiper-slide v-for="(item) in productsHot" :key="item.id">
           <div class="card rounded-3 mb-5 mx-2 mx-sm-0 scale"
+                @click.prevent="goProduct(item.id)"
                 data-aos="flip-up"
                 data-aos-duration="2000">
             <div class="card-img overflow-hidden position-relative">
-              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-                      @click.prevent="goProduct(item.id)">
+              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button">
                 <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
               </button>
               <img class="rounded-3 img-fit"
@@ -61,7 +61,7 @@
               <button type="button"
                       class="btn btn-outline-primary text-dark fw-bold fs-5 mt-3"
                       :disabled="cartLoadingItem === item.id"
-                      @click.prevent="addCart(item.id)">
+                      @click.stop.prevent="addCart(item.id)">
                 <div v-if="cartLoadingItem === item.id"
                     class="spinner-grow text-danger spinner-grow-sm" role="status">
                   <span class="visually-hidden">Loading...</span>
@@ -138,6 +138,7 @@ export default {
 }
 // 圖片放大
 .scale{
+  cursor:pointer;
   &:hover{
     .btn{
       opacity: 1;

@@ -56,7 +56,7 @@
           <div class="col-lg-4 col-md-6 col-12"
               v-for="item in filterProducts" :key="item.id">
             <div class="card rounded-3 scale"
-                        @click.prevent="goProduct(item.id)"
+                @click.prevent="goProduct(item.id)"
             >
               <div class="card-img overflow-hidden position-relative">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"

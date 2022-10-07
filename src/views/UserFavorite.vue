@@ -21,10 +21,11 @@
             v-if="favorite.length !== 0 && windowWidth > 768">
         <div class="col-md-6 col-lg-4 col-10"
               v-for="item in favorite" :key="item.id">
-          <div class="card rounded-3 scale">
+          <div class="card rounded-3 scale"
+              @click.prevent="goProduct(item.id)"
+          >
             <div class="card-img overflow-hidden position-relative">
-              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
-                      @click.prevent="goProduct(item.id)">
+              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button">
                 <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
               </button>
               <img class="rounded-3 img-fit"
@@ -44,11 +45,11 @@
                   ${{ item.origin_price }}
                 </span>
               </span>
-              <div class="px-3 py-2 d-flex justify-content-between">
+              <div class="px-2 py-2 d-flex justify-content-between">
                 <button type="button"
                         class="btn btn-outline-secondary text-dark fw-bold fs-6 px-3"
                         @click.stop.prevent="removeFavorite(item.id)">
-                  移除收藏
+                  刪除
                 </button>
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-6 px-3"
@@ -173,6 +174,7 @@ export default {
   transition: 0.5s;
 }
 .scale{
+  cursor:pointer;
   &:hover{
     .btn{
       opacity: 1;
