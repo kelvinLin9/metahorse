@@ -1,5 +1,5 @@
 <template>
-  <div class="home-coupon-banner my-5">
+  <div class="home-coupon-banner">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex flex-column justify-content-center align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
         <div class="la-timer">
