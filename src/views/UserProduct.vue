@@ -13,7 +13,7 @@
       </ol>
     </nav>
     <div class="row justify-content-center">
-      <div class="col-md-6 position-relative">
+      <div class="col-lg-6 position-relative">
         <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded h-100">
         <span class="position-absolute rounded-circle fav-icon bg-white d-flex justify-content-center align-items-center"
             @click.stop.prevent="toggleFavorite(product.id)">
@@ -25,7 +25,7 @@
           />
         </span>
       </div>
-      <div class="col-md-6 d-flex flex-column">
+      <div class="col-lg-6 d-flex flex-column">
         <h2>{{ product.title }}</h2>
         <div>{{ product.description }}</div>
         <hr>
