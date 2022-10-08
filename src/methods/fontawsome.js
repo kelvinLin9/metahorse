@@ -3,7 +3,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 /* import font awesome icon component */
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' //main.js自己出現的重複了?
 
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'

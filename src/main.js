@@ -16,6 +16,7 @@ import 'aos/dist/aos.css'
 
 import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
+
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { Form, Field, ErrorMessage, defineRule, configure } from 'vee-validate'
 import AllRules from '@vee-validate/rules'
@@ -29,6 +30,7 @@ import { currency, date } from './methods/filters'
 import UserLoading from '@/components/UserLoading.vue'
 
 const app = createApp(App)
+// 加上$避免跟區域元件的變數產生衝突
 app.config.globalProperties.$filters = {
   date,
   currency
@@ -58,6 +60,7 @@ app.AOS = new AOS.init()
 
 app.use(AOS)
 
+// 全域註冊，在所有地方都可能用的到
 app.component('UserLoading', UserLoading)
 app.component('Loading', Loading)
 app.component('VForm', Form)
