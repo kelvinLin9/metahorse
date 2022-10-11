@@ -111,10 +111,10 @@ export default {
         text: '獎品將會在和商品一併寄出',
         icon: 'success',
         allowOutsideClick: false,
-        confirmButtonText: '回首頁'
+        confirmButtonText: '繼續購物'
       }).then(() => {
         this.hideModal() // Modal關掉才不會造成回首頁後黑屏
-        this.$router.push('/')
+        this.$router.push('/products')
       })
     },
     play () {
