@@ -42,10 +42,16 @@ export default defineStore('couponStore', {
       status.isLoading = true
       axios.post(url, { data: coupon })
         .then((res) => {
-          status.pushManager(res, '加入優惠券')
-          cart.getCart()
-          status.isLoading = false
-          this.coupon_code = ''
+          if (res.data.success === true) {
+            status.pushManager(res, '加入優惠券', res.data.message)
+            cart.getCart()
+            status.isLoading = false
+            this.coupon_code = ''
+          } else {
+            status.pushManager(false, '加入優惠券', res.data.message)
+            status.isLoading = false
+            this.coupon_code = ''
+          }
         }).catch(() => {
           status.isLoading = false
           status.pushManager(false, '更新', '發生錯誤，請重新操作')
