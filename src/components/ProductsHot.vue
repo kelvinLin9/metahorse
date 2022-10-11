@@ -5,7 +5,7 @@
         data-aos-duration="2000">熱銷商品
     </h3>
     <div class="row g-4 pb-5">
-      <swiper
+      <Swiper
         :loop="true"
         :slidesPerView="1"
         :spaceBetween="20"
@@ -26,14 +26,14 @@
       }"
         class="mySwiper"
       >
-        <swiper-slide v-for="(item) in productsHot" :key="item.id">
+        <SwiperSlide v-for="(item) in productsHot" :key="item.id">
           <div class="card rounded-3 mb-5 mx-2 mx-sm-0 scale"
                 @click.prevent="goProduct(item.id)"
                 data-aos="flip-up"
                 data-aos-duration="2000">
             <div class="card-img overflow-hidden position-relative">
               <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button">
-                <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
+                <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
               </button>
               <img class="rounded-3 img-fit"
                     :src="item.imageUrl"
@@ -41,7 +41,7 @@
               >
               <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center  align-items-center"
                     @click.stop.prevent="toggleFavorite(item.id)">
-                <font-awesome-icon :icon="favState(item.id)"
+                <FontAwesomeIcon :icon="favState(item.id)"
                                     class="love"
                                     data-bs-toggle="tooltip"
                                     data-bs-placement="top"
@@ -70,7 +70,7 @@
               </button>
             </div>
           </div>
-        </swiper-slide>
+        </SwiperSlide>
       </swiper>
     </div>
   </div>

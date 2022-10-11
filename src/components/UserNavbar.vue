@@ -91,12 +91,12 @@
               <RouterLink to="/cart" class="btn btn-dark btn-hover rounded-0"
                           @click.prevent="cartBoxToggle"
                           v-if="cartNum > 0">
-                <font-awesome-icon icon="fa-solid fa-cash-register" /> 結帳去
+                <FontAwesomeIcon icon="fa-solid fa-cash-register" /> 結帳去
               </RouterLink>
               <RouterLink to="/products" class="btn btn-dark btn-hover rounded-0"
                           @click.prevent="cartBoxToggle"
                           v-else>
-                <font-awesome-icon icon="fa-solid fa-basket-shopping" /> 選購去
+                <FontAwesomeIcon icon="fa-solid fa-basket-shopping" /> 選購去
               </RouterLink>
             </div>
           </div>

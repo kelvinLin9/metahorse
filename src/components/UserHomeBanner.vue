@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <swiper
+    <Swiper
       :spaceBetween="30"
       :centeredSlides="true"
       :autoplay="{
@@ -14,7 +14,7 @@
       :modules="modules"
       class="mySwiper"
     >
-      <swiper-slide>
+      <SwiperSlide>
         <div class="header-bg-1 d-flex flex-column justify-content-center align-items-center"
             style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
           <div class=" header-text-bg py-2 py-md-5 text-center">
@@ -26,12 +26,12 @@
               REALITY
             </div>
             <RouterLink type="button" to="/products" class="btn btn-sm btn-secondary rounded-1 fs-5 my-2">
-                  搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
+                  搶先體驗&nbsp;&nbsp;&nbsp;三<FontAwesomeIcon icon="fa-solid fa-person-running" />
             </RouterLink>
           </div>
         </div>
-      </swiper-slide>
-      <swiper-slide>
+      </SwiperSlide>
+      <SwiperSlide>
         <div class="header-bg-2 d-flex flex-column justify-content-center align-items-center bg-dark "
             style="background-image: url('https://imgur.com/I19pL6e.jpg');">
           <div class=" header-text-bg py-2 py-md-5 text-center">
@@ -43,11 +43,11 @@
               REALITY
             </div>
             <RouterLink type="button" to="/products" class="btn btn-sm btn-primary rounded-1 fs-5 my-2">
-                  搶先體驗&nbsp;&nbsp;&nbsp;三<font-awesome-icon icon="fa-solid fa-person-running" />
+                  搶先體驗&nbsp;&nbsp;&nbsp;三<FontAwesomeIcon icon="fa-solid fa-person-running" />
             </RouterLink>
           </div>
         </div>
-      </swiper-slide>
+      </SwiperSlide>
     </swiper>
   </div>
 </template>

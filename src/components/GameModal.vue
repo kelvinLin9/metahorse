@@ -38,7 +38,7 @@
                 {{ item.id }}
               </div>
               <div>
-                <font-awesome-icon icon="fa-solid fa-horse"/>
+                <FontAwesomeIcon icon="fa-solid fa-horse"/>
               </div>
             </div>
             <span class="start"></span>

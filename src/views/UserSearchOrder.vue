@@ -23,11 +23,11 @@
           <h2 class="fs-2 text-center fw-bold mt-5">運送狀況</h2>
           <div class="d-flex justify-content-center align-items-center mt-5">
             <h5 class="fw-bold mb-0 text-warning">訂單成立</h5>
-            <font-awesome-icon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
             <h5 class="fw-bold mb-0 text-black-50 active">訂單處理中</h5>
-            <font-awesome-icon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
             <h5 class="text-black-50 fw-bold mb-0">出貨中</h5>
-            <font-awesome-icon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right" class="fs-5 mx-3" />
             <h5 class="text-black-50 fw-bold mb-0 ">完成出貨(2~3天)</h5>
           </div>
           <h2 class="fs-2 text-center fw-bold mt-5">寄送明細</h2>

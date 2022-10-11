@@ -48,7 +48,7 @@
           <input type="search" class="form-control" id="search" placeholder="search"
           v-model="cacheSearch">
           <label for="search">
-            <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
             search
           </label>
         </div>
@@ -61,13 +61,13 @@
               <div class="card-img overflow-hidden position-relative">
                 <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button"
                 >
-                  <font-awesome-icon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
+                  <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
                 </button>
                 <img class="rounded-3 img-fit"
                       :src="item.imageUrl" alt="商品照片">
                 <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center align-items-center "
                       @click.stop.prevent="toggleFavorite(item.id)">
-                  <font-awesome-icon :icon="favState(item.id)"
+                  <FontAwesomeIcon :icon="favState(item.id)"
                               class="love"
                               data-bs-toggle="tooltip"
                               data-bs-placement="top"
