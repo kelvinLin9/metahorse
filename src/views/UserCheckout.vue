@@ -42,39 +42,41 @@
           <h1 class="fs-2 fw-bold">收件人資訊</h1>
         </div>
         <div class="mb-3">
-          <label for="email" class="form-label fw-bold fs-5 ">Email：</label>
-          <v-field id="email" name="email" type="email" class="form-control"
+          <label for="email" class="form-label fw-bold fs-5 ">
+            Email：
+          </label>
+          <vField id="email" name="email" type="email" class="form-control"
                 :class="{ 'is-invalid': errors['email'] }"
                 placeholder="請輸入 Email" rules="email|required"
                 v-model="form.user.email">
-          </v-field>
+          </vField>
           <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
         </div>
         <div class="mb-3">
           <label for="name" class="form-label fw-bold fs-5">收件人姓名：</label>
-          <v-field id="name" name="姓名" type="text" class="form-control"
+          <vField id="name" name="姓名" type="text" class="form-control"
                   :class="{ 'is-invalid': errors['姓名'] }"
                   placeholder="請輸入姓名" rules="required"
                   v-model="form.user.name">
-          </v-field>
+          </vField>
           <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
         </div>
         <div class="mb-3">
           <label for="tel" class="form-label fw-bold fs-5">收件人電話：</label>
-          <v-field id="tel" name="電話" type="tel" class="form-control"
+          <vField id="tel" name="電話" type="tel" class="form-control"
                   :class="{ 'is-invalid': errors['電話'] }"
                   placeholder="請輸入電話" rules="numeric|min:7|max:10|required"
                   v-model="form.user.tel">
-          </v-field>
+          </vField>
           <ErrorMessage name="電話" class="invalid-feedback"></ErrorMessage>
         </div>
         <div class="mb-3">
           <label for="address" class="form-label fw-bold fs-5">收件人地址：</label>
-          <v-field id="address" name="地址" type="text" class="form-control"
+          <vField id="address" name="地址" type="text" class="form-control"
                   :class="{ 'is-invalid': errors['地址'] }"
                   placeholder="請輸入地址" rules="required"
                   v-model="form.user.address">
-          </v-field>
+          </vField>
           <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
         </div>
         <div class="mb-3">
