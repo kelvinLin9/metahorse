@@ -36,7 +36,7 @@
           </table>
         </div>
       </div>
-      <v-form class="col-md-6" v-slot="{ errors }"
+      <vForm class="col-md-6" v-slot="{ errors }"
               @submit="gotoPay">
         <div class="d-flex justify-content-center">
           <h1 class="fs-2 fw-bold">收件人資訊</h1>
@@ -91,7 +91,7 @@
             付款去<i class="bi bi-caret-right-fill"></i>
           </button>
         </div>
-      </v-form>
+      </vForm>
     </div>
   </div>
 </template>
