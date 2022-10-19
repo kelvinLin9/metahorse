@@ -69,9 +69,9 @@
       <!-- 手機版 -->
       <div class="table-responsive"
         v-if="favorite.length !== 0 && windowWidth <= 768">
-        <table class="table">
+        <table class="table align-middle">
           <thead>
-            <tr class="text-center table-primary ">
+            <tr class="text-center table-primary">
               <th>刪除</th>
               <th>圖片</th>
               <th>品名</th>
@@ -95,21 +95,21 @@
                     data-bs-toggle="tooltip" data-bs-placement="top" title="詳細資訊"
                 >
               </td>
-              <td>
+              <td class="fs-7">
                 {{ item.title }}
                 <br>
-                <span class="fs-6 text-muted">
+                <span class="fs-7 text-muted">
                   （{{ item.category }}）
                 </span>
               </td>
-              <td>
-                {{ item.price }}
+              <td class="fs-8">
+                NT$ {{ item.price }}
               </td>
               <td>
                 <button class="btn text-danger fs-1"
                         type="button"
                         @click.prevent="addCart(item.id)">
-                  三<FontAwesomeIcon icon="fa-solid fa-cart-shopping"/>
+                  <FontAwesomeIcon icon="fa-solid fa-cart-shopping"/>
                 </button>
               </td>
             </tr>

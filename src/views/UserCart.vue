@@ -20,7 +20,7 @@
       <div class="col">
         <table class="table align-middle">
           <thead class="table-primary">
-            <tr>
+            <tr class="text-center">
               <th>刪除</th>
               <th>品名</th>
               <th class="d-none d-sm-block">圖片</th>
@@ -82,18 +82,18 @@
             <td colspan="7" class="text-end fs-3">
               總計：NT$ {{ $filters.currency(cart.total) }}
             </td>
-         </tr>
-         <tr v-if="cart.final_total !== cart.total">
-           <td colspan="7" class="text-end fs-4">
-             <del>總計：NT$ {{ $filters.currency(cart.total) }}</del>
-           </td>
-         </tr>
-         <tr v-if="cart.final_total !== cart.total">
-           <td colspan="7" class="text-end text-secondary fw-bold fs-3">
-             折扣價：NT$ {{ $filters.currency(cart.final_total) }}
-           </td>
-         </tr>
-         </tfoot>
+          </tr>
+          <tr v-if="cart.final_total !== cart.total">
+            <td colspan="7" class="text-end fs-4">
+              <del>總計：NT$ {{ $filters.currency(cart.total) }}</del>
+            </td>
+          </tr>
+          <tr v-if="cart.final_total !== cart.total">
+            <td colspan="7" class="text-end text-secondary fw-bold fs-3">
+              折扣價：NT$ {{ $filters.currency(cart.final_total) }}
+            </td>
+          </tr>
+          </tfoot>
         </table>
         <div class="input-group mb-3"
               v-if="cart.total !== 0">

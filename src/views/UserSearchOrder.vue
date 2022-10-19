@@ -140,11 +140,11 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;
-    @media (max-width: 600px) {
+  @media (max-width: 600px) {
     height: 150px;
   }
   .bg-dark{
-  opacity: 0.8;
+    opacity: 0.8;
   }
 }
 </style>
