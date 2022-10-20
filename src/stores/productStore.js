@@ -26,6 +26,10 @@ export default defineStore('productStore', {
       axios.get(url)
         .then((res) => {
           this.products = res.data.products
+          this.products.forEach((item) => {
+            // 自己補上後端沒有的預設值
+            item.qty = 1
+          })
           // 隨便取幾個當熱門商品
           this.productsHot = this.products.filter((item, index) => index > 14)
           // 傳一份給我的最愛比對用

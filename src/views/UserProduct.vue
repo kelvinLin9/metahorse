@@ -161,6 +161,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
 .fav-icon {
   width: 50px;
