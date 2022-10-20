@@ -34,8 +34,8 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="customFile" class="form-label"
-                  >或 上傳圖片
+                <label for="customFile" class="form-label">
+                  或 上傳圖片
                   <i class="fas fa-spinner fa-spin"></i>
                 </label>
                 <input
