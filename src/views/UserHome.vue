@@ -68,7 +68,7 @@
               data-aos-duration="2000">
             <button type="button"
                     class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg fs-3"
-                    @click.prevent="goProducts">
+                    @click="goProducts">
               馬上購買
             </button>
           </div>

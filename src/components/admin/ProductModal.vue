@@ -59,20 +59,18 @@
                   <button
                     type="button"
                     class="btn btn-outline-danger"
-                    @click.prevent="tempProduct.images.splice(key, 1)"
+                    @click="tempProduct.images.splice(key, 1)"
                   >
                     移除
                   </button>
                 </div>
                 <div
-                  v-if="
-                    tempProduct.images[tempProduct.images.length - 1] || !tempProduct.images.length
-                  "
+                  v-if="tempProduct.images[tempProduct.images.length - 1] || !tempProduct.images.length"
                 >
                   <button
                     type="button"
                     class="btn btn-outline-primary btn-sm d-block w-100"
-                    @click.prevent="tempProduct.images.push('')"
+                    @click="tempProduct.images.push('')"
                   >
                     新增圖片
                   </button>
@@ -113,7 +111,6 @@
                   />
                 </div>
               </div>
-
               <div class="row gx-2">
                 <div class="mb-3 col-md-6">
                   <label for="origin_price" class="form-label">原價</label>
@@ -203,7 +200,7 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click.prevent="$emit('update-product', tempProduct)"
+            @click="$emit('update-product', tempProduct)"
           >
             確認
           </button>

@@ -71,12 +71,12 @@
         <div class="px-3 py-2 d-flex justify-content-between">
           <button type="button"
                   class="btn btn-secondary btn-hover rounded-0 fw-bold"
-                  @click.prevent="printWindow">
+                  @click="printWindow">
             列印此頁
           </button>
           <button type="button"
                   class="btn btn-primary btn-hover rounded-0 fw-bold"
-                  @click.prevent="showAlert()">
+                  @click="showAlert()">
             確認付款
           </button>
         </div>

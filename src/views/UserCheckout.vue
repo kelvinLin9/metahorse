@@ -86,7 +86,7 @@
         </div>
         <div class="d-flex justify-content-between mt-3">
           <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
-          @click.prevent="goCart">
+          @click="goCart">
           <i class="bi bi-caret-left-fill"></i>回購物車
           </button>
           <button type="submit" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg">

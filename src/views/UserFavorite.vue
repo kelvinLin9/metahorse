@@ -22,7 +22,7 @@
         <div class="col-md-6 col-lg-4 col-10"
               v-for="item in favorite" :key="item.id">
           <div class="card rounded-3 scale"
-              @click.prevent="goProduct(item.id)"
+              @click="goProduct(item.id)"
           >
             <div class="card-img overflow-hidden position-relative">
               <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button">
@@ -48,13 +48,13 @@
               <div class="px-2 py-2 d-flex justify-content-between">
                 <button type="button"
                         class="btn btn-outline-secondary text-dark fw-bold fs-6 px-3"
-                        @click.stop.prevent="removeFavorite(item.id)">
+                        @click.stop="removeFavorite(item.id)">
                   刪除
                 </button>
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-6 px-3"
                         :disabled="cartLoadingItem === item.id"
-                        @click.stop.prevent="addCart(item.id)">
+                        @click.stop="addCart(item.id)">
                   <div v-if="cartLoadingItem === item.id"
                         class="spinner-grow text-danger spinner-grow-sm" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -84,14 +84,14 @@
               <td>
                 <button class="btn text-primary fs-1"
                         type="button"
-                        @click.prevent="removeFavorite(item.id)">
+                        @click="removeFavorite(item.id)">
                   <FontAwesomeIcon icon="fa-solid fa-trash-can" />
                 </button>
               </td>
               <td style="width:70px" class="card-img overflow-hidden position-relative scale">
                 <img class="rounded-3 img-fit"
                     :src="item.imageUrl" alt="商品照片"
-                    @click.prevent="goProduct(item.id)"
+                    @click="goProduct(item.id)"
                     data-bs-toggle="tooltip" data-bs-placement="top" title="詳細資訊"
                 >
               </td>
@@ -108,7 +108,7 @@
               <td>
                 <button class="btn text-danger fs-1"
                         type="button"
-                        @click.prevent="addCart(item.id)">
+                        @click="addCart(item.id)">
                   <FontAwesomeIcon icon="fa-solid fa-cart-shopping"/>
                 </button>
               </td>

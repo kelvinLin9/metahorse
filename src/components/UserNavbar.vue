@@ -47,8 +47,8 @@
         <ul class="navbar-nav d-none d-lg-flex ms-auto me-2">
           <li class="nav-item position-relative">
             <div class="nav-link px-3"
-            :class="{ 'text-warning':  $route.name === 'cart' }"
-            @click.prevent="cartBoxToggle">
+                :class="{ 'text-warning':  $route.name === 'cart' }"
+                @click="cartBoxToggle">
               <i class="bi bi-cart3 fs-4 cart" data-bs-toggle="tooltip" data-bs-placement="top" title="購物車"></i>
               <div class="bg-danger text-white rounded-circle text-center position-absolute num"
                     v-if="cartNum !== 0">
@@ -78,7 +78,7 @@
                     <td class="text-center">
                       <button type="button" class="btn btn-outline-primary btn-sm"
                           :disabled="cartLoadingItem === item.id"
-                          @click.prevent="removeCartItem(item.id)">
+                          @click="removeCartItem(item.id)">
                         <i class="bi bi-x"></i>
                       </button>
                     </td>
@@ -89,12 +89,12 @@
             <h5 class="fw-bold text-center mb-3" v-if="cartNum == 0">產品尚未加入購物車!</h5>
             <div class="d-flex justify-content-end">
               <RouterLink to="/cart" class="btn btn-dark btn-hover rounded-0"
-                          @click.prevent="cartBoxToggle"
+                          @click="cartBoxToggle"
                           v-if="cartNum > 0">
                 <FontAwesomeIcon icon="fa-solid fa-cash-register" /> 結帳去
               </RouterLink>
               <RouterLink to="/products" class="btn btn-dark btn-hover rounded-0"
-                          @click.prevent="cartBoxToggle"
+                          @click="cartBoxToggle"
                           v-else>
                 <FontAwesomeIcon icon="fa-solid fa-basket-shopping" /> 選購去
               </RouterLink>

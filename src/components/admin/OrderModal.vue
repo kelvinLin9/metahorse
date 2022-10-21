@@ -157,7 +157,7 @@
           </button>
           <button type="button" class="btn btn-primary"
                   data-bs-dismiss="modal"
-                  @click.prevent="updateOrder(tempOrder)"
+                  @click="updateOrder(tempOrder)"
           >
             確認
           </button>

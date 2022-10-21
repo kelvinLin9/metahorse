@@ -3,7 +3,7 @@
     <div class="text-end pb-3">
       <button type=“button”
               class="btn btn-primary"
-              @click.prevent="openCouponModal(true)">
+              @click="openCouponModal(true)">
         新增優惠券
       </button>
     </div>
@@ -35,12 +35,12 @@
                 <div class="btn-group">
                   <button type="button"
                           class="btn btn-outline-primary btn-sm"
-                          @click.prevent="openCouponModal(false, item)">
+                          @click="openCouponModal(false, item)">
                     編輯
                   </button>
                   <button type="button"
                           class="btn btn-outline-danger btn-sm"
-                          @click.prevent="openDelCouponModal(item)">
+                          @click="openDelCouponModal(item)">
                     刪除
                   </button>
                 </div>

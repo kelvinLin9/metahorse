@@ -16,7 +16,7 @@
       <div class="col-lg-6 position-relative">
         <img :src="product.imageUrl" alt="商品照片" class="img-fluid mb-3 rounded h-100">
         <span class="position-absolute rounded-circle fav-icon bg-white d-flex justify-content-center align-items-center"
-            @click.stop.prevent="toggleFavorite(product.id)">
+            @click.stop="toggleFavorite(product.id)">
           <FontAwesomeIcon :icon="favState(id)"
                               class="love"
                               data-bs-toggle="tooltip"
@@ -78,7 +78,7 @@
           <button type="button"
                   class="col-9 btn btn-outline-primary text-dark fw-bold fs-5 me-3"
                   :disabled="cartLoadingItem === product.id"
-                  @click.prevent="addCart(product.id, product.qty)">
+                  @click="addCart(product.id, product.qty)">
             <div v-if="cartLoadingItem === product.id"
                   class="spinner-grow text-danger spinner-grow-sm" role="status">
               <span class="visually-hidden">Loading...</span>

@@ -28,7 +28,7 @@
       >
         <SwiperSlide v-for="(item) in productsHot" :key="item.id">
           <div class="card rounded-3 mb-5 mx-2 mx-sm-0 scale"
-                @click.prevent="goProduct(item.id)"
+                @click="goProduct(item.id)"
                 data-aos="flip-up"
                 data-aos-duration="2000">
             <div class="card-img overflow-hidden position-relative">
@@ -40,7 +40,7 @@
                     alt="商品照片"
               >
               <span class="position-absolute rounded-circle fs-2 p-1 fav-icon bg-white d-flex justify-content-center  align-items-center"
-                    @click.stop.prevent="toggleFavorite(item.id)">
+                    @click.stop="toggleFavorite(item.id)">
                 <FontAwesomeIcon :icon="favState(item.id)"
                                     class="love"
                                     data-bs-toggle="tooltip"
