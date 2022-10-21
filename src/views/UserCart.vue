@@ -39,23 +39,22 @@
                   <i class="bi bi-x"></i>
                 </button>
               </td>
-              <td class="font-sm">
+              <td class="fs-7">
                 {{ item.product.title }}<br>
-                <small class="text-secondary fw-bold" v-if="item.coupon">
-                  已套用優惠券<br> ({{ item.final_total / item.total * 100 }}% OFF)<br>
-                  代碼：{{ item.coupon.code }}
-                </small>
+                <!-- <small class="text-secondary fw-bold" v-if="item.coupon">
+                  已套用優惠券<br> ({{ item.final_total / item.total * 100 }}% OFF)
+                </small> -->
               </td>
               <td class="d-none d-sm-block">
                 <img :src="item.product.imageUrl" alt="商品照片" width="50">
               </td>
-              <td class="font-sm">
-                NT$<br class="d-md-none">
+              <td class="fs-7">
+                NT$
                 {{ item.product.price }}
               </td>
               <td>
                 <div class="input-group input-group-sm">
-                  <input type="number" class="form-control"
+                  <input type="number" class="form-control fs-7"
                         min="1"
                         :disabled="item.id === cartLoadingItem"
                         @change="updateCart(item)"
@@ -63,7 +62,7 @@
                         @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
                 </div>
               </td>
-              <td class="font-sm">
+              <td class="fs-7">
                 <div v-if="item.final_total === item.total">
                   NT$ {{ $filters.currency(item.final_total) }}
                 </div>
