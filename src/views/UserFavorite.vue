@@ -72,11 +72,11 @@
         <table class="table align-middle">
           <thead>
             <tr class="text-center table-primary">
-              <th>刪除</th>
+              <th></th>
               <th>圖片</th>
               <th>品名</th>
               <th>單價</th>
-              <th>加入購物車</th>
+              <th></th>
             </tr>
           </thead>
           <tbody class="text-center">
@@ -109,7 +109,7 @@
                 <button class="btn text-danger fs-1"
                         type="button"
                         @click="addCart(item.id)">
-                  <FontAwesomeIcon icon="fa-solid fa-cart-shopping"/>
+                  <font-awesome-icon icon="fa-solid fa-cart-plus" />
                 </button>
               </td>
             </tr>

@@ -29,7 +29,7 @@
             <tfoot class="text-center table-primary">
               <tr>
                 <td colspan="3" class="text-end fs-4">
-                  總計 :NT$ {{ $filters.currency(cart.final_total) }} 元
+                  總計 : NT$ {{ $filters.currency(cart.final_total) }} 元
                 </td>
               </tr>
             </tfoot>
@@ -85,9 +85,9 @@
                     v-model="form.message"></textarea>
         </div>
         <div class="d-flex justify-content-between mt-3">
-          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
+          <button type="button" class="btn btn-outline-primary btn-hover rounded-0 fw-bold btn-lg text-dark"
           @click="goCart">
-          <i class="bi bi-caret-left-fill"></i>回購物車
+          <i class="bi bi-caret-left-fill "></i>回購物車
           </button>
           <button type="submit" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg">
             付款去<i class="bi bi-caret-right-fill"></i>

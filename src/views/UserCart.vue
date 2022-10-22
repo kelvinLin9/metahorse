@@ -6,7 +6,7 @@
       <h3 class="fw-bold">購物車還沒有任何商品，趕快挑選產品加入購物車 !</h3>
       <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg mt-5"
               @click="goProducts">
-            商品列表
+        商品列表
       </button>
     </div>
   </div>
@@ -15,81 +15,92 @@
     <div class="d-flex justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物清單</h1>
     </div>
-    <div class="row mt-2">
+    <div class="row mt-2 justify-content-center">
       <!-- 購物車列表 -->
-      <div class="col">
-        <table class="table align-middle">
+      <div class="col-lg-9 col-xl-8">
+        <table class="table align-middle table-hover">
           <thead class="table-primary">
-            <tr class="text-center">
+            <tr>
               <th>刪除</th>
-              <th>品名</th>
               <th class="d-none d-sm-block">圖片</th>
-              <th>單價</th>
-              <th style="width:80px">數量</th>
+              <th>品名</th>
+              <th class="d-none d-md-block">單價</th>
+              <th style="width:60px">數量</th>
               <th>總價</th>
             </tr>
           </thead>
           <tbody>
-          <template v-if="cart.carts">
-            <tr v-for="item in cart.carts" :key="item.id">
-              <td>
-                <button type="button" class="btn btn-outline-primary btn-sm"
-                        :disabled="cartLoadingItem === item.id"
-                        @click="removeCartItem(item.id)">
-                  <i class="bi bi-x"></i>
-                </button>
-              </td>
-              <td class="fs-7">
-                {{ item.product.title }}<br>
-                <!-- <small class="text-secondary fw-bold" v-if="item.coupon">
-                  已套用優惠券<br> ({{ item.final_total / item.total * 100 }}% OFF)
-                </small> -->
-              </td>
-              <td class="d-none d-sm-block">
-                <img :src="item.product.imageUrl" alt="商品照片" width="50">
-              </td>
-              <td class="fs-7">
-                NT$
-                {{ item.product.price }}
-              </td>
-              <td>
-                <div class="input-group input-group-sm">
-                  <input type="number" class="form-control fs-7"
-                        min="1"
-                        :disabled="item.id === cartLoadingItem"
-                        @change="updateCart(item)"
-                        v-model.number="item.qty"
-                        @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
-                </div>
-              </td>
-              <td class="fs-7">
-                <div v-if="item.final_total === item.total">
-                  NT$ {{ $filters.currency(item.final_total) }}
-                </div>
-                <div v-if="item.final_total !== item.total">
-                  <small class="text-secondary">
-                  折扣價：
-                  </small><br class="d-lg-none">
-                  NT$ {{ $filters.currency(item.final_total) }}
-                </div>
-              </td>
-            </tr>
-          </template>
+            <template v-if="cart.carts">
+              <tr v-for="item in cart.carts" :key="item.id">
+                <td>
+                  <button type="button" class="btn text-primary fs-3"
+                          :disabled="cartLoadingItem === item.id"
+                          @click="removeCartItem(item.id)">
+                    <FontAwesomeIcon icon="fa-solid fa-trash-can"/>
+                  </button>
+                </td>
+                <td class="d-none d-sm-table-cell">
+                  <img :src="item.product.imageUrl" alt="商品照片" width="80">
+                </td>
+                <td class="fs-title">
+                  {{ item.product.title }}<br>
+                </td>
+                <td class="d-none d-md-table-cell">
+                  <small class="fs-7">
+                    NT$
+                  </small>
+                    {{ item.product.price }}
+                </td>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <input type="number" class="form-control fs-7"
+                          min="1"
+                          :disabled="item.id === cartLoadingItem"
+                          @change="updateCart(item)"
+                          v-model.number="item.qty"
+                          @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
+                  </div>
+                </td>
+                <td class="fs-6">
+                  <div v-if="item.final_total === item.total">
+                                      <small class="fs-7">
+                    NT$
+                  </small>
+                    NT$ {{ $filters.currency(item.final_total) }}
+                  </div>
+                  <div v-if="item.final_total !== item.total">
+                    <small class="fs-7">
+                      NT$
+                    </small>
+                    {{ $filters.currency(item.final_total) }}
+                  </div>
+                </td>
+              </tr>
+            </template>
           </tbody>
           <tfoot>
           <tr v-if="cart.final_total === cart.total">
-            <td colspan="7" class="text-end fs-3">
-              總計：NT$ {{ $filters.currency(cart.total) }}
+            <td colspan="7" class="text-end fs-4">
+              總計：
+              <small>
+                NT$
+              </small>
+              {{ $filters.currency(cart.total) }}
             </td>
           </tr>
           <tr v-if="cart.final_total !== cart.total">
-            <td colspan="7" class="text-end fs-4">
-              <del>總計：NT$ {{ $filters.currency(cart.total) }}</del>
+            <td colspan="7" class="text-end fs-5">
+              <del>總計：
+                NT$ {{ $filters.currency(cart.total) }}</del>
             </td>
           </tr>
           <tr v-if="cart.final_total !== cart.total">
             <td colspan="7" class="text-end text-secondary fw-bold fs-3">
-              折扣價：NT$ {{ $filters.currency(cart.final_total) }}
+              折扣價：
+              <small>
+                NT$
+              </small>
+              {{ $filters.currency(cart.final_total) }}
             </td>
           </tr>
           </tfoot>
@@ -117,11 +128,11 @@
         </div>
         <div class="d-flex justify-content-between mt-3"
             v-if="cart.total !== 0">
-          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
+          <button type="button" class="btn btn-outline-primary btn-hover rounded-0 fw-bold btn-lg text-dark"
                   @click="goProducts">
             <i class="bi bi-caret-left-fill"></i>商品列表
           </button>
-          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg"
+          <button type="button" class="btn btn-primary btn-hover rounded-0 fw-bold btn-lg "
                   @click="goCheckout">
             填寫資料<i class="bi bi-caret-right-fill"></i>
           </button>
@@ -155,3 +166,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.fs-title {
+  font-size: 16px;
+  @media (max-width: 576px) {
+  font-size: 14px;
+  }
+}
+</style>

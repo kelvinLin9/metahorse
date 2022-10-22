@@ -59,13 +59,13 @@ export default defineStore('cartStore', {
       status.isLoading = true
       axios.delete(url)
         .then((res) => {
-          status.pushManager(res, '更新', '此項目已移除購物車')
+          status.pushManager(res, '刪除', '此項目已移除購物車')
           status.cartLoadingItem = ''
           this.getCart()
           status.isLoading = false
         }).catch(() => {
           status.isLoading = false
-          status.pushManager(false, '更新', '發生錯誤，請重新操作')
+          status.pushManager(false, '刪除', '發生錯誤，請重新操作')
         })
     },
     addCart (id, qty = 1) {

@@ -22,7 +22,7 @@
           <tfoot>
             <tr>
               <td colspan="3" class="text-end fs-4">
-                總計 :NT$ {{ $filters.currency(order.total) }} 元
+                總計 : NT$ {{ $filters.currency(order.total) }} 元
               </td>
             </tr>
           </tfoot>
