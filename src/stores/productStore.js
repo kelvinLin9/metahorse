@@ -55,7 +55,8 @@ export default defineStore('productStore', {
             this.product = res.data.product
             // 自己補上後端沒有的預設值
             this.product.qty = 1
-            // 取得相關商品
+            // 移除選定商品本身
+            this.products.splice(20 - this.product.num, 1)
             if (this.product.category === '遊戲道具') {
               this.productsRelated = this.products.filter((item, index) => {
                 return item.category === '遊戲道具'
