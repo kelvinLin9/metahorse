@@ -129,10 +129,12 @@
         </div>
       </div>
     </div>
+    <ProductsRelated/>
   </div>
 </template>
 
 <script>
+import ProductsRelated from '@/components/ProductsRelated.vue'
 import { mapState, mapActions } from 'pinia'
 import statusStore from '@/stores/statusStore'
 import productStore from '@/stores/productStore'
@@ -140,6 +142,9 @@ import cartStore from '@/stores/cartStore'
 import favoriteStore from '@/stores/favoriteStore'
 
 export default {
+  components: {
+    ProductsRelated
+  },
   data () {
     return {
       id: ''

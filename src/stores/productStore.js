@@ -12,6 +12,7 @@ export default defineStore('productStore', {
     product: {},
     productsHot: [],
     productsGame: [],
+    productsRelated: [],
     temp: {},
     category: 'all',
     cacheSearch: ''
@@ -54,6 +55,16 @@ export default defineStore('productStore', {
             this.product = res.data.product
             // 自己補上後端沒有的預設值
             this.product.qty = 1
+            // 取得相關商品
+            if (this.product.category === '遊戲道具') {
+              this.productsRelated = this.products.filter((item, index) => {
+                return item.category === '遊戲道具'
+              })
+            } else {
+              this.productsRelated = this.products.filter((item, index) => {
+                return item.category !== '遊戲道具'
+              })
+            }
           }
         }).catch(() => {
           status.isLoading = false
