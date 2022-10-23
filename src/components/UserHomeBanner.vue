@@ -16,7 +16,7 @@
     >
       <SwiperSlide>
         <div class="header-bg-1 d-flex flex-column justify-content-center align-items-center"
-            style="background-image: url('https://imgur.com/Z73YJ0F.jpg');">
+            style="background-image: url('https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666489409836.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=P78beXFoeglBvNZtFCrwkydUmSF9NK2nTP3PrwkKI7JgS4z5ieSLRF9fPRyGPioaW9LoVRseYiKhoY%2Fns2la%2BfZeUv04Ocw97W6ujNV7rboiha3vGHYUkgBZE0d4Nz0YzUwP%2FtFCO2ftE1nKs4pzfqmXwgs2%2B5O2SUIAnBGjLvsOMYNkXWvI%2FKCTb%2Br0WCXI2SX6iXeg8l6iJVgtAZZNeiQQfD%2F8h4sFsGbW%2BOp0HnVRjzSwuEupu%2BOydRFewMX%2FMdXuV%2FOBgKCxbx6g%2B6500SMSxGlCQ7Q1tvYO870GVbBZRX9mXiYjwVh8I3cMIARsNRGzLdBD50yx5kpRzfB1Ww%3D%3D');">
           <div class=" header-text-bg py-2 py-md-5 text-center">
             <div class="fw-bold f-kalam header-text">
               DIGITAL
@@ -33,7 +33,7 @@
       </SwiperSlide>
       <SwiperSlide>
         <div class="header-bg-2 d-flex flex-column justify-content-center align-items-center bg-dark "
-            style="background-image: url('https://imgur.com/I19pL6e.jpg');">
+            style="background-image: url('https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666489606588.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=jot%2Fa86YkiWSst4PXEulQpkEA4%2BunWNZtsDAOXSJm3TYA03D1P3%2FhzxhC4aW3GYAiE0apQCIsjg1pYiqauUBK7LGPO5bNFORZbtLvGkonC7u7fx9jXmHc1xncEiK7igfnkll9sppno0ykfyIpdPztSurEfi%2BBgCnOmIxTrkWh9RJTQOXenu1omrfIWIiXXmWPt5vNoLe%2BWrJQanG%2FfQ5vcLI9C6sxCYl5K5K9o8JWWqxxRACVHbqebcDJmn7eReJzLjfmim%2F4R6ufagUdscHwlJ1F9Je7%2B4Qqys01V25dNPN02XLSaj5e3YjuwbZUWeEII7KBjlCjZtwoMsz%2BekETA%3D%3D');">
           <div class=" header-text-bg py-2 py-md-5 text-center">
             <div class="fw-bold f-kalam header-text">
               DIGITAL

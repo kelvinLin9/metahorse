@@ -157,7 +157,7 @@ export default {
 <style lang="scss" scoped>
 .favBanner {
   height: 250px;
-  background-image: url(https://imgur.com/ItH7aoO.jpg);
+  background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666490697166.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=PN%2FJQamCh0W8oppAPBZXRjSdxNLWO5CNU5kZE%2FAooIU3%2F4cmsb6wwHVGZwLLkNPG%2F5Fw9JKoss5VZRcK7IUUoS0ecWXuzGS77oQeRdrqYfRSNLaUPpvT%2BRHDeFoflhD7lbCP2peFFKf7BqsBN5VgQUPIJQ4zDU29VZe%2FszIeARlLpgZGVXkG8SlovAqQD3cXHdS4s6WvWFeyae5BGi6MBsBTeLp%2FbDmDwqybR8Aa0eJCN7UE6gN0ViSDHhNXpDDQKXcdNDa3THZYlt%2BWSyBD%2BrCLSkW%2F6C9Ufi7K6Mr%2F%2FdJVinszNFTnaIeObQSV9VLdREwLA5nUvbvvGIO9mMSL0g%3D%3D);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;

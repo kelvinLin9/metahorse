@@ -25,7 +25,7 @@
         <div class="col-lg-6"
               data-aos="fade-right"
               data-aos-duration="2000">
-          <img src="../assets/img/003.jpg" alt="裝飾圖" class="w-100">
+          <img src="https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666489100476.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=OONcxH4uqQ1avrsKOVsy0FG84tOIVjeRNITaRea9I0P3A9ABHZv48qagsgbeaUaG3cg%2BhX0DFC8Hp9c3b4jwAr7p3ELFM9qUjA4iUFnQWUvly0qAyKIEuh35wFdFE89EZHfoSzF7Fw6EFILDyO8zDx4CVZhKzLL0neexYu6JMwtomwv2yYJGLtSzgdeGh1DkIg1wP5WgaSniopleMfJS6Nwto08YyW3fQxhtjrzYsLMmCQDOXfuF55%2FpK0qPuZzQhtw2eOnlqZ6WCg6WPynJ2NorijjNve1N8Z6TStVW8PLbaALW26%2BcyKBIMcwdybTX6I9r%2BRELacKUPQ%2FV9GyNiQ%3D%3D" alt="裝飾圖" class="w-100">
         </div>
       </div>
     </div>

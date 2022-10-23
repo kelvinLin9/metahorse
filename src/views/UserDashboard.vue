@@ -50,6 +50,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 .user-loading {
   z-index: 1000;

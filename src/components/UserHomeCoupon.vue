@@ -24,7 +24,7 @@ export default {
 <style lang="scss" scoped>
 .home-coupon-banner {
   height: 300px;
-  background-image: url(https://imgur.com/jIKW0bT.jpg);
+  background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666489763581.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=cgptY84tGKxDnLLchmAC4Xv5b1Ivk6dPFDv6qozCcyESk9dKO%2BCUe3HBXaeCoY4Wp0B%2Fujuy%2FYt8KsV6cP6OPgQYuKhZCim1dGafXEiqB%2BuBv2qYv%2F8E3SUcE9%2B6Szt2IR6tNQSHSPsfJGbeHRsYlHl0ZLXayclD439Up%2Bd8XXx9iOF1iqlvnbLjFJR7IC5%2BC%2FCKb%2BvLEV4uttyPtxm1ga%2FNxwXCfM9gQGpMR%2Bd4xQQmCb80zhcXAK%2F0ECp6%2B5XmS3ZHBJe%2BPI%2Bqa9KlcMfAgvbt%2Ft2PCZmSDnr5Ai6znRv7HPXAxBct3%2FDJ9nkbV1PZVlbTozy4iL8LS9Vg6BFX3w%3D%3D);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;

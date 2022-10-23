@@ -1,8 +1,8 @@
 <template>
-<div class="container pt-3">
-  <div class="pb-1">
-    <!-- 統計資料 -->
-    <div class="row gy-3 mb-4">
+  <div class="container pt-3">
+    <div class="pb-1">
+      <!-- 統計資料 -->
+      <div class="row gy-3 mb-4">
       <div class="col">
         <div class="card shadow-sm">
           <div class="card-body text-end text-nowrap">
@@ -19,9 +19,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- 統計圖表 -->
-    <div class="row gy-3 mb-4">
+      </div>
+      <!-- 統計圖表 -->
+      <div class="row gy-3 mb-4">
       <div class="col-lg-4">
         <div class="card shadow-sm h-100">
           <div class="card-body">
@@ -36,84 +36,84 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- 訂單資料 -->
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-hover mb-0">
-            <thead class="bg-light border-bottom-3 fw-bold">
-              <tr class="align-middle">
-                <th scope="col" class="ps-3 py-3">購買時間</th>
-                <th scope="col">訂單編號</th>
-                <th scope="col">Email</th>
-                <th scope="col">用戶姓名</th>
-                <th scope="col">購買品項</th>
-                <th scope="col">數量</th>
-                <th scope="col">購買金額</th>
-                <th scope="col">付款狀態</th>
-                <th scope="col" class="pe-3">編輯 / 刪除</th>
-              </tr>
-            </thead>
-            <tbody>
-              <template v-for="(item, key) in orders" :key="key">
-                <tr v-if="orders.length"
-                    :class="{'text-danger': !item.is_paid}">
-                  <td>{{ $filters.date(item.create_at) }}</td>
-                  <td>{{ item.id }}</td>
-                  <td class="email">{{ item.user.email }}</td>
-                  <td class="name">{{ item.user.name }}</td>
-                  <td>
-                    <ul class="list-unstyled">
-                      <li v-for="(product, i) in item.products" :key="i">
-                        {{ product.product.title }}
-                      </li>
-                    </ul>
-                  </td>
-                  <td class="qty">
-                    <ul class="list-unstyled">
-                      <li v-for="(product, i) in item.products" :key="i">
-                        {{ product.qty }}
-                      </li>
-                    </ul>
-                  </td>
-                  <td class="text-right">{{ $filters.currency(item.total) }}</td>
-                  <td>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" :id="`paidSwitch${item.id}`"
-                            v-model="item.is_paid"
-                            @change="updateOrder(item)">
-                      <label class="form-check-label" :for="`paidSwitch${item.id}`">
-                        <span v-if="item.is_paid">已付款</span>
-                        <span v-else>未付款</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button"
-                              class="btn btn-outline-primary btn-sm text-dark"
-                              @click="openModal(false, item)">
-                        編輯
-                      </button>
-                      <button type="button"
-                              class="btn btn-outline-danger btn-sm"
-                              @click="openDelOrderModal(item)">
-                        刪除
-                      </button>
-                    </div>
-                  </td>
+      </div>
+      <!-- 訂單資料 -->
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="bg-light border-bottom-3 fw-bold">
+                <tr class="align-middle">
+                  <th scope="col" class="ps-3 py-3">購買時間</th>
+                  <th scope="col">訂單編號</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">用戶姓名</th>
+                  <th scope="col">購買品項</th>
+                  <th scope="col">數量</th>
+                  <th scope="col">購買金額</th>
+                  <th scope="col">付款狀態</th>
+                  <th scope="col" class="pe-3">編輯 / 刪除</th>
                 </tr>
-              </template>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <template v-for="(item, key) in orders" :key="key">
+                  <tr v-if="orders.length"
+                      :class="{'text-danger': !item.is_paid}">
+                    <td>{{ $filters.date(item.create_at) }}</td>
+                    <td>{{ item.id }}</td>
+                    <td class="email">{{ item.user.email }}</td>
+                    <td class="name">{{ item.user.name }}</td>
+                    <td>
+                      <ul class="list-unstyled">
+                        <li v-for="(product, i) in item.products" :key="i">
+                          {{ product.product.title }}
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="qty">
+                      <ul class="list-unstyled">
+                        <li v-for="(product, i) in item.products" :key="i">
+                          {{ product.qty }}
+                        </li>
+                      </ul>
+                    </td>
+                    <td class="text-right">{{ $filters.currency(item.total) }}</td>
+                    <td>
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" :id="`paidSwitch${item.id}`"
+                              v-model="item.is_paid"
+                              @change="updateOrder(item)">
+                        <label class="form-check-label" :for="`paidSwitch${item.id}`">
+                          <span v-if="item.is_paid">已付款</span>
+                          <span v-else>未付款</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button"
+                                class="btn btn-outline-primary btn-sm text-dark"
+                                @click="openModal(false, item)">
+                          編輯
+                        </button>
+                        <button type="button"
+                                class="btn btn-outline-danger btn-sm"
+                                @click="openDelOrderModal(item)">
+                          刪除
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
+      <OrderModal ref="orderModal" />
+      <Pagination></Pagination>
     </div>
-    <OrderModal ref="orderModal" />
-    <Pagination/>
   </div>
-</div>
 </template>
 
 <script>
@@ -177,6 +177,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
   .email {
     max-width: 200px;

@@ -1,13 +1,14 @@
 <template>
-<div style="color: #f6d860" class="la-pacman la-2x">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
+  <div style="color: #f6d860" class="la-pacman la-2x">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+  </div>
 </template>
+
 <style lang="scss" scoped>
 /*!
  * Load Awesome v1.1.0 (http://github.danielcardoso.net/load-awesome/)

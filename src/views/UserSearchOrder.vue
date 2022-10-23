@@ -133,10 +133,11 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
 .searchBanner {
   height: 250px;
-  background-image: url(https://imgur.com/DyXZwoE.jpg);
+  background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666490670322.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=oaa98PqXIN0nT87os0YMBVRwLaV9f%2BuE%2BAXTLEAmukKoimASC0m9StjhanYa2t1n6Fm2gOAKepx9SRe3aipyOD47SJJMLyoF15RomAO%2BSqKlltO%2FP5f5dBhU2DDP7IbZcjhMH7rrz229Mr9aPjQZb3hZ2PytDvUXv3ztQqstcQVmc%2FDKZhsMqzVPfS1eIxqDUkFqbba8GaFd%2FyfAl3GCskMyANaR%2BfQX4e7uVjuFuVGyfHrldUyMeglMT1wHMXXfSfKMm%2FtQpWrQU%2BY3zGcwZ9v2TrhHxmSVAZYlRc3M9TfeuY%2BtdCnByYffk64dVYQt%2FFjxSzdOdOn%2FgzqTT8gxHA%3D%3D);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;

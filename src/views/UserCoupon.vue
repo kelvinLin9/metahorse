@@ -10,10 +10,10 @@
   <div class="container py-5 d-flex flex-column align-items-center">
     <div class="la-square-jelly-box my-5"
           v-if="!draw">
-      <img src="https://imgur.com/YS7AfNK.jpg" alt="寶箱"
+      <img src="https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666489905621.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=ZvwFR%2FmgVGiu9WIDNpTZS5J%2FuDG90OzdYLSmDvlXcfvxnPsBt2AM6yNeH5D5CQJd2shjGTwkJWbPKqvqKA9a%2BE74cJXFwpxSnYlguO7ujuWtD3t9Ieu3P9HsyQcmZab9DoxaNWJyLBNuVgbiQziVVom0XvVlMq%2B7r6gf3cPiPl5M3HOpPlHbILos%2BGxHz6E3DsNExbgEJQww2HO4tx0pec2gThRbqB8nxb%2Bwco8hOETNkWBWmYnWAOSlqh3wo7QFSXb0H0lJcw9tFda3sR9Sh0aD3%2FI5%2FZHIXWC5QEOyNWdfubHqQ9YsCoecmGr1iOuK3NbAih2NuG6wynIxeDjnIw%3D%3D" alt="寶箱"
           data-aos="fade-down"
           data-aos-duration="1500">
-      <img src="https://imgur.com/YS7AfNK.jpg" alt="陰影"
+      <img src="https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666489905621.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=ZvwFR%2FmgVGiu9WIDNpTZS5J%2FuDG90OzdYLSmDvlXcfvxnPsBt2AM6yNeH5D5CQJd2shjGTwkJWbPKqvqKA9a%2BE74cJXFwpxSnYlguO7ujuWtD3t9Ieu3P9HsyQcmZab9DoxaNWJyLBNuVgbiQziVVom0XvVlMq%2B7r6gf3cPiPl5M3HOpPlHbILos%2BGxHz6E3DsNExbgEJQww2HO4tx0pec2gThRbqB8nxb%2Bwco8hOETNkWBWmYnWAOSlqh3wo7QFSXb0H0lJcw9tFda3sR9Sh0aD3%2FI5%2FZHIXWC5QEOyNWdfubHqQ9YsCoecmGr1iOuK3NbAih2NuG6wynIxeDjnIw%3D%3D" alt="陰影"
           data-aos="zoom-in"
           data-aos-duration="1500">
     </div>
@@ -61,7 +61,7 @@ export default {
 <style scoped lang="scss">
 .couponBanner {
   height: 250px;
-  background-image: url(https://imgur.com/53K117A.jpg);
+  background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666490626014.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=FNoAOxLLzSOuoZnBQ9AQg1tADvOMxhj%2BNTT4bqBpLDhzjZdLe7%2BqEvYHu7VfmEJ1YQkLzmJ9jOxgcDPweVN4EO%2Fa3W6lmJQQaRU38%2FnVr1V7wCki7AKlxwqIH3aDUQtX1BioaVpoVIXL7nvNf8zpWsYaIl611YveCEB9n5VJ9Vw9CZK7cnWrZUrtl0pf%2F6hg3yZ%2Bv2Bozo8n4WojKjY8%2BZR8hGMRFosRGNYRhPNKJMl7RQVcTz5%2FvpfCnG4GKliN8laX0y7horzYei2DTi913vcYcFTuskfiizgcT3kl4eLyqT8Y16TjRtiJrsogus8AqdnyDS7KkkmR1uV6Gj1Xrg%3D%3D);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;

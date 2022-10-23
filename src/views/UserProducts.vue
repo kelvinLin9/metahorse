@@ -1,5 +1,4 @@
 <template>
-  <!-- 外層放背景，內層放黑底 -->
   <div class="productsBanner">
     <div class="bg-dark bg-opacity-75 w-100 h-100 d-flex align-items-center">
       <h1 class="w-100 d-flex align-items-center justify-content-center">
@@ -142,7 +141,7 @@ export default {
 <style lang="scss" scoped>
 .productsBanner {
   height: 250px;
-  background-image: url(https://i.imgur.com/4vGqi7D.jpg);
+  background-image: url(https://storage.googleapis.com/vue-course-api.appspot.com/kelvinlin9/1666490583092.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=TuG7uToyQQgQPSLoxxPXW1WD2I0HdVVEQEcn6LU3k8VDdcxWPMic3a9l5jbeCIOg2FE8m7xswHXUr%2BLkW8jkq2gd7WgD4J9Q9lfSbZqlUYDSB50Hp3dWRNV%2FEgyWkuh5LQxQRssR8k6JTV880QKiMUh4iu0GMqChQ1I%2FxXQ84jUbDOvcN7MDu1eI2%2FnLjNJgSQhavfe6sOkKKUl7qFGptThJw%2FZZiv9b%2BoCppdL9tqi8lOPHCm901EZUQUrV%2BPburvexV2dRBjaOvh2npxAkYd9TTWkAukdleS32o0o00Dcg2Bp%2FkBKTTkV9zaAYM9kvqNjKfB0flb3UhFP4r1qbIQ%3D%3D);
   background-repeat: no-repeat;
   background-size: cover;
   background-position:center ;

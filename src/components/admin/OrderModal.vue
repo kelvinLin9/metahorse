@@ -166,6 +166,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import modalMixin from '@/mixins/modalMixin'
 import { mapActions, mapWritableState } from 'pinia'

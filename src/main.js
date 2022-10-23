@@ -47,14 +47,12 @@ Object.keys(AllRules).forEach((rule) => {
 })
 
 configure({
-  generateMessage: localize({ zh_TW: zhTW }), // 載入繁體中文語系
+  generateMessage: localize({ zh_TW: zhTW }),
   validateOnInput: true // 當輸入任何內容直接進行驗證
 })
-// 設定預設語系
 setLocale('zh_TW')
 
 const pinia = createPinia()
-// 手機板不觸發 { disable: 'phone' }
 
 app.AOS = new AOS.init()
 

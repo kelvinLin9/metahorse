@@ -20,6 +20,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
 //沒被購物車小視窗擋到
 .toast-a {
