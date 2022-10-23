@@ -63,10 +63,10 @@
                 </td>
                 <td class="fs-6">
                   <div v-if="item.final_total === item.total">
-                                      <small class="fs-7">
-                    NT$
-                  </small>
-                    NT$ {{ $filters.currency(item.final_total) }}
+                    <small class="fs-7">
+                      NT$
+                    </small>
+                    {{ $filters.currency(item.final_total) }}
                   </div>
                   <div v-if="item.final_total !== item.total">
                     <small class="fs-7">
@@ -82,7 +82,7 @@
           <tr v-if="cart.final_total === cart.total">
             <td colspan="7" class="text-end fs-4">
               總計：
-              <small>
+              <small class="fs-6">
                 NT$
               </small>
               {{ $filters.currency(cart.total) }}
@@ -90,14 +90,16 @@
           </tr>
           <tr v-if="cart.final_total !== cart.total">
             <td colspan="7" class="text-end fs-5">
-              <del>總計：
-                NT$ {{ $filters.currency(cart.total) }}</del>
+              <del>
+                總計：NT$
+                {{ $filters.currency(cart.total) }}
+              </del>
             </td>
           </tr>
           <tr v-if="cart.final_total !== cart.total">
             <td colspan="7" class="text-end text-secondary fw-bold fs-3">
               折扣價：
-              <small>
+              <small class="fs-6">
                 NT$
               </small>
               {{ $filters.currency(cart.final_total) }}

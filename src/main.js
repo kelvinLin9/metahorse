@@ -14,7 +14,6 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-import Loading from 'vue3-loading-overlay'
 import 'vue3-loading-overlay/dist/vue3-loading-overlay.css'
 
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -59,7 +58,6 @@ app.AOS = new AOS.init()
 app.use(AOS)
 
 app.component('UserLoading', UserLoading)
-app.component('Loading', Loading)
 app.component('VForm', Form)
 app.component('VField', Field)
 app.component('ErrorMessage', ErrorMessage)

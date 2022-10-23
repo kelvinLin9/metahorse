@@ -69,25 +69,18 @@
       <!-- 手機版 -->
       <div class="table-responsive"
         v-if="favorite.length !== 0 && windowWidth <= 768">
-        <table class="table align-middle">
+        <table class="table table-sm align-middle">
           <thead>
             <tr class="text-center table-primary">
-              <th></th>
               <th>圖片</th>
               <th>品名</th>
               <th>單價</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
           <tbody class="text-center">
             <tr v-for="item in favorite" :key="item.id">
-              <td>
-                <button class="btn text-primary fs-1"
-                        type="button"
-                        @click="removeFavorite(item.id)">
-                  <FontAwesomeIcon icon="fa-solid fa-trash-can" />
-                </button>
-              </td>
               <td style="width:70px" class="card-img overflow-hidden position-relative scale">
                 <img class="rounded-3 img-fit"
                     :src="item.imageUrl" alt="商品照片"
@@ -106,10 +99,17 @@
                 NT$ {{ item.price }}
               </td>
               <td>
-                <button class="btn text-danger fs-1"
+                <button class="btn text-danger fs-4"
                         type="button"
                         @click="addCart(item.id)">
                   <font-awesome-icon icon="fa-solid fa-cart-plus" />
+                </button>
+              </td>
+              <td>
+                <button class="btn text-primary fs-4"
+                        type="button"
+                        @click="removeFavorite(item.id)">
+                  <FontAwesomeIcon icon="fa-solid fa-trash-can" />
                 </button>
               </td>
             </tr>

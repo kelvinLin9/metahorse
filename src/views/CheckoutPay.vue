@@ -3,26 +3,33 @@
   <div class="container">
     <div class="py-5 row justify-content-center">
       <h1 class="fs-2 text-center fw-bold">購物明細</h1>
-      <form class="col-6 table-responsive" @submit.prevent="payOrder">
+      <form class="col-12 col-md-9 col-lg-6 table-responsive" @submit.prevent="payOrder">
         <table class="table align-middle">
           <thead class="table-primary">
-          <th>品名</th>
-          <th>數量</th>
-          <th class="text-end">小計</th>
+            <th>品名</th>
+            <th>數量</th>
+            <th class="text-end">小計</th>
           </thead>
           <tbody>
-          <tr v-for="item in order.products" :key="item.id">
-            <td>{{ item.product.title }}</td>
-            <td>{{ item.qty }}</td>
-            <td class="text-end">
-              NT$ {{ $filters.currency(item.final_total) }} 元
-            </td>
-          </tr>
+            <tr v-for="item in order.products" :key="item.id">
+              <td>{{ item.product.title }}</td>
+              <td>{{ item.qty }}</td>
+              <td class="text-end">
+                <small class="fs-7">
+                  NT$
+                </small>
+                {{ $filters.currency(item.final_total) }} 元
+              </td>
+            </tr>
           </tbody>
           <tfoot>
             <tr>
               <td colspan="3" class="text-end fs-4">
-                總計 : NT$ {{ $filters.currency(order.total) }} 元
+                總計 :
+                <small class="fs-6">
+                  NT$
+                </small>
+                {{ $filters.currency(order.total) }} 元
               </td>
             </tr>
           </tfoot>
