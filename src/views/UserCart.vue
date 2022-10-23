@@ -17,7 +17,7 @@
     </div>
     <div class="row mt-2 justify-content-center">
       <!-- 購物車列表 -->
-      <div class="col-lg-9 col-xl-8">
+      <div class="col-lg-9 col-xl-6">
         <table class="table align-middle table-hover">
           <thead class="table-primary">
             <tr>
