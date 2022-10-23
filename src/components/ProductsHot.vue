@@ -148,7 +148,6 @@ export default {
   object-fit: cover;
   transition: 0.5s;
 }
-// 圖片放大
 .scale{
   cursor:pointer;
   &:hover{
@@ -161,7 +160,7 @@ export default {
   }
 }
 .bg-dark{
-  z-index: 1; // 往上拉才點的到，不然會點到a標籤
+  z-index: 1;
   opacity: 0;
   transition: 0.5s;
 }

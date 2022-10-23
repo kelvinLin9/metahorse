@@ -1,6 +1,6 @@
 <template>
   <div class="toast-container"
-      :class="{ 'toast-a' : !cartBoxState ,'toast-b' : cartBoxState}">
+      :class="{ 'toast-right' : !cartBoxState ,'toast-left' : cartBoxState}">
     <Toast v-for="(msg, key) in messages" :key="key"
             :msg="msg"/>
   </div>
@@ -22,15 +22,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//沒被購物車小視窗擋到
-.toast-a {
+.toast-right {
   position: fixed;
   right: 20px;
   top: 90px;
   z-index: 999;
 }
-//被購物車小視窗擋道到
-.toast-b {
+.toast-left {
   position: fixed;
   right: 470px;
   top: 90px;

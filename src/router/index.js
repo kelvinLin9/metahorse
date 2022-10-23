@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-// import HomeView from '../views/UserHome.vue' // 寫routes在裡面比較方便
 
 const routes = [
   {
@@ -91,9 +90,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  // 網址路徑模式 使用網址hash形式 代表是由前端所模擬的
   history: createWebHashHistory(),
-  // `routes: routes` 的缩写
   routes
 })
 

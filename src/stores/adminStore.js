@@ -58,7 +58,6 @@ export default defineStore('adminStore', {
           status.isLoading = false
           status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
-        // 如果分頁元件就不需要再執行，避免每次換頁都重新載入
       if (needGetAllOrders) {
         this.getAllOrders()
       }
@@ -109,7 +108,6 @@ export default defineStore('adminStore', {
       }
       this.getChartData()
     },
-    // 圖表資訊
     getChartData () {
       const chartColors = {
         red: 'rgb(255, 99, 132)',
@@ -194,7 +192,6 @@ export default defineStore('adminStore', {
       PieC = new Chart(ctxPie, this.pieChartData)
       BarC = new Chart(ctxBar, this.barChartData)
     },
-    // 需要判斷是哪個頁面在使用pagination元件
     updatePage (page, path) {
       this.currentPage = page
       if (path === '/dashboard/order') {

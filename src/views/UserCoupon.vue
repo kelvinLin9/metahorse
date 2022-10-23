@@ -102,10 +102,9 @@ export default {
     width: 100%;
 }
 .la-square-jelly-box > img:nth-child(1) {
-    top: -5%; // 25%
+    top: -5%; // 預設25%
     z-index: 1;
     height: 100%;
-/*     border-radius: 10%; */
     animation: square-jelly-box-animate .6s -.1s linear infinite;
 }
 .la-square-jelly-box > img:nth-child(2) {

@@ -48,7 +48,7 @@ Object.keys(AllRules).forEach((rule) => {
 
 configure({
   generateMessage: localize({ zh_TW: zhTW }),
-  validateOnInput: true // 當輸入任何內容直接進行驗證
+  validateOnInput: true
 })
 setLocale('zh_TW')
 
@@ -58,7 +58,6 @@ app.AOS = new AOS.init()
 
 app.use(AOS)
 
-// 全域註冊，在所有地方都可能用的到
 app.component('UserLoading', UserLoading)
 app.component('Loading', Loading)
 app.component('VForm', Form)

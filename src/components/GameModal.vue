@@ -99,7 +99,7 @@ export default {
       inputArray.sort(() => Math.random() - 0.5)
     },
     selectHorse (item) {
-      if (this.isPlay) return // 如果正在玩遊戲的話，就不要繼續執行
+      if (this.isPlay) return
       this.horse = { ...item }
       this.play()
     },
@@ -113,7 +113,7 @@ export default {
         allowOutsideClick: false,
         confirmButtonText: '繼續購物'
       }).then(() => {
-        this.hideModal() // Modal關掉才不會造成回首頁後黑屏
+        this.hideModal()
         this.$router.push('/products')
       })
     },
@@ -125,7 +125,6 @@ export default {
   },
   created () {
     const newArray = [...this.rank]
-    // 隨機分配賽馬速度
     this.shuffleArray(newArray)
     this.horses.forEach((item, index) => {
       item.speed = newArray[index]
@@ -172,7 +171,6 @@ export default {
 }
 .super{
   animation-timing-function: cubic-bezier(1,0,0.28,10);
-  // animation-timing-function: cubic-bezier(0.75,0.35,1,0);
   animation-fill-mode : forwards;
 }
 @keyframes move{

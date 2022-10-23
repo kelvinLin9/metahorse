@@ -1,11 +1,8 @@
 import axios from 'axios'
-// 起手式
 import { defineStore } from 'pinia'
 import statusStore from './statusStore'
 import favoriteStore from './favoriteStore'
 
-// 所有資料帶出來存到status
-// 把原本this改成status
 const status = statusStore()
 const favorite = favoriteStore()
 

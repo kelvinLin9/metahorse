@@ -217,14 +217,12 @@ export default {
   props: {
     product: {
       type: Object,
-      // 如果外層沒有正確傳遞，預設回傳空物件
       default () { return {} }
     }
   },
   watch: {
     product () {
       this.tempProduct = this.product
-      // 多圖範例
       if (!this.tempProduct.images) {
         this.tempProduct.images = []
       }

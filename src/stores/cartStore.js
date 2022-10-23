@@ -3,8 +3,6 @@ import router from '../router'
 import { defineStore } from 'pinia'
 import statusStore from './statusStore'
 
-// 所有資料帶出來存到status
-// 把原本this改成status
 const status = statusStore()
 
 export default defineStore('cartStore', {
@@ -78,7 +76,7 @@ export default defineStore('cartStore', {
       axios.post(url, { data: cart })
         .then((res) => {
           status.cartLoadingItem = ''
-          this.getCart() // 重新取得購物車資料
+          this.getCart()
           status.pushManager(res, '更新', '已加入購物車')
         }).catch(() => {
           status.isLoading = false
@@ -86,7 +84,6 @@ export default defineStore('cartStore', {
         })
     },
     cartBoxToggle () {
-      // 傳到ToastMessages 讓提示能移開避免擋到
       this.cartBoxState = !this.cartBoxState
     },
     gotoPay () {

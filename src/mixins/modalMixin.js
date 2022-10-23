@@ -10,7 +10,6 @@ export default {
     }
   },
   mounted () {
-    // this.$refs.modal 指向ref="modal"
     this.modal = new Modal(this.$refs.modal)
   }
 }

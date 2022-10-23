@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// .vue記得要加
 import emitter from '@/methods/emitter'
 import UserFooter from '@/components/UserFooter.vue'
 import ToastMessages from '@/components/ToastMessages.vue'
@@ -24,7 +23,6 @@ import adminStore from '@/stores/adminStore'
 import GoTop from '@/components/GoTop.vue'
 
 export default {
-  // 區域註冊
   components: {
     AdminNavbar,
     ToastMessages,

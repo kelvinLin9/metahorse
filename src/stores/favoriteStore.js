@@ -27,7 +27,7 @@ export default defineStore('favoriteStore', {
     },
     toggleFavorite (item) {
       const clickId = item
-      const hasFavorite = this.favoriteIds.some((item) => item === clickId) // v-on 所以只判斷點擊的那一次
+      const hasFavorite = this.favoriteIds.some((item) => item === clickId)
       if (!hasFavorite) {
         this.favoriteIds.push(item)
         localStorage.setItem('favoriteIds', JSON.stringify(this.favoriteIds))

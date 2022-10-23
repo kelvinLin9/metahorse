@@ -112,10 +112,8 @@ export default {
     },
     updateProduct (item) {
       this.tempProduct = item
-      // 新增
       let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`
       let httpMethod = 'post'
-      // 編輯
       if (!this.isNew) {
         api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${item.id}`
         httpMethod = 'put'
