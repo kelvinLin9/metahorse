@@ -7,7 +7,7 @@
   <FloatCart v-if = "hasFloatCart" />
   <ToastMessages/>
   <div class="position-relative min-height milkyWay">
-    <RouterView/>
+    <RouterView :key="$route.path"/>
   </div>
   <GoTop/>
   <UserFooter/>

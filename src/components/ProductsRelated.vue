@@ -25,11 +25,13 @@
       }"
         class="mySwiper"
       >
-        <SwiperSlide v-for="(item) in productsRelated" :key="item.id">
+        <SwiperSlide v-for="item in productsRelated" :key="item.id">
           <div class="card rounded-3 mb-5 mx-2 mx-sm-0 scale"
                 @click="goProduct(item.id)">
             <div class="card-img overflow-hidden position-relative">
-              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75" type="button">
+              <button class="btn bg-dark fs-4 position-absolute text-white w-100 h-100 bg-opacity-75"
+                      type="button"
+              >
                 <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" /> 詳細資訊
               </button>
               <img class="rounded-3 img-fit"
@@ -69,7 +71,6 @@
                         class="col-7 btn btn-outline-primary text-dark fw-bold fs- me-2"
                         :disabled="cartLoadingItem === item.id"
                         @click.stop="addCart(item.id, item.qty)">
-                  <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
                   <div v-if="cartLoadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">
                     <span class="visually-hidden">Loading...</span>
