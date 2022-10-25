@@ -129,7 +129,7 @@
         </div>
       </div>
     </div>
-    <ProductsRelated/>
+    <ProductsRelated :key="$route.path"/>
   </div>
 </template>
 

@@ -72,7 +72,6 @@
                         class="col-7 btn btn-outline-primary text-dark fw-bold fs- me-2"
                         :disabled="cartLoadingItem === item.id"
                         @click.stop="addCart(item.id, item.qty)">
-                  <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
                   <div v-if="cartLoadingItem === item.id"
                       class="spinner-grow text-danger spinner-grow-sm" role="status">
                     <span class="visually-hidden">Loading...</span>
