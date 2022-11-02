@@ -65,7 +65,7 @@
                 <thead class="table-dark">
                   <tr class="table-nowrap text-center">
                     <th class="text-start">商品名稱</th>
-                    <th>數量</th>
+                    <th style="width:70px">數量</th>
                     <th class="text-end">價格</th>
                     <th></th>
                   </tr>
@@ -73,8 +73,22 @@
                 <tbody>
                   <tr class="table-nowrap" v-for="item in cart.carts" :key="item.id">
                     <td>{{ item.product.title }}</td>
-                    <td class="text-center">{{ item.qty }}</td>
-                    <td class="text-end">NT$ {{ $filters.currency(item.total) }}</td>
+                    <td>
+                      <div class="input-group input-group-sm">
+                      <input type="number" class="form-control fs-7"
+                            min="1"
+                            :disabled="item.id === cartLoadingItem"
+                            @change="updateCart(item)"
+                            v-model.number="item.qty"
+                            @input="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1">
+                      </div>
+                    </td>
+                    <td class="text-end">
+                      <small class="fs-7">
+                        NT$
+                      </small>
+                      {{ $filters.currency(item.total) }}
+                    </td>
                     <td class="text-center">
                       <button type="button" class="btn btn-outline-primary btn-sm"
                           :disabled="cartLoadingItem === item.id"
@@ -127,7 +141,7 @@ import goStore from '@/stores/goStore'
 
 export default {
   computed: {
-    ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState']),
+    ...mapState(cartStore, ['cart', 'cartNum', 'cartBoxState', 'updateCart']),
     ...mapState(favoriteStore, ['favoriteNum']),
     ...mapState(statusStore, ['cartLoadingItem'])
   },

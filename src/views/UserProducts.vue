@@ -84,19 +84,10 @@
                   <span class="text-muted text-decoration-line-through fs-6 ms-1">${{ item.origin_price }}</span>
                 </span>
                 <div class="row mt-2">
-                  <div class="input-group input-group-sm col">
-                    <input type="number" class="form-control"
-                          min="1"
-                          :disabled="item.id === cartLoadingItem"
-                          v-model.number="item.qty"
-                          @input.stop="item.qty = Number($event.target.value.replace(/^(0+)|[^\d]+/g, '')) || 1"
-                          @click.stop
-                    >
-                  </div>
                   <button type="button"
-                          class="col-7 btn btn-outline-primary text-dark fw-bold fs- me-2"
+                          class=" btn btn-outline-primary text-dark fw-bold"
                           :disabled="cartLoadingItem === item.id"
-                          @click.stop="addCart(item.id, item.qty)">
+                          @click.stop="addCart(item.id)">
                     <!-- 按下特定id按鈕之後先disabled，運行完之後再開放，避免重複點擊 -->
                     <div v-if="cartLoadingItem === item.id"
                         class="spinner-grow text-danger spinner-grow-sm" role="status">
