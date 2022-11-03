@@ -131,7 +131,6 @@
 </template>
 
 <script>
-// 響應式行為會使用到折疊的 JavaScript 插件
 import 'bootstrap/js/dist/collapse'
 import { mapState, mapActions } from 'pinia'
 import cartStore from '@/stores/cartStore'

@@ -7,7 +7,6 @@ export default defineStore('statusStore', {
     messages: []
   }),
   actions: {
-    // 傳到ToastMessages.vue
     pushManager (res = true, title = '更新', content = '') {
       if (res) {
         const obj = {

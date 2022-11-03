@@ -72,8 +72,6 @@ export default defineStore('productStore', {
           status.pushManager(false, '更新', '發生錯誤，請重新整理頁面')
         })
     },
-    // 無法雙向綁定的另種解法
-    // 創一個新的函數傳遞category
     setCategory (i) {
       this.category = i
     }
@@ -128,7 +126,6 @@ export default defineStore('productStore', {
       } else {
         return this.products.filter((item) => {
           return item.title.match(this.cacheSearch)
-          // 空的欄位一樣會回傳全部資料，只有 null 才不會回傳內容
         })
       }
     }
