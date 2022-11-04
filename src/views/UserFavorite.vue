@@ -49,7 +49,7 @@
                 <button type="button"
                         class="btn btn-outline-secondary text-dark fw-bold fs-6 px-3"
                         @click.stop="removeFavorite(item.id)">
-                  刪除
+                  &emsp;&ensp;刪除&ensp;&emsp;
                 </button>
                 <button type="button"
                         class="btn btn-outline-primary text-dark fw-bold fs-6 px-3"
