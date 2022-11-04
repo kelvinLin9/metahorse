@@ -53,7 +53,7 @@ setLocale('zh_TW')
 
 const pinia = createPinia()
 
-app.AOS = new AOS.Init()
+app.AOS = new AOS.init()
 
 app.use(AOS)
 
