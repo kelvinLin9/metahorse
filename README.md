@@ -1,5 +1,5 @@
 # MetaHorse
-
+![](https://i.imgur.com/qxJp5NF.png)
 ## 專案簡介
 
 以賽馬遊戲為主題的NFT購買平台，使用Vue框架練習前端開發
